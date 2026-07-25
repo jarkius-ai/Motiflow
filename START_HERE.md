@@ -16,6 +16,10 @@ Read these documents in order:
 
 `START_HERE.md` is the navigation authority. It does not replace the governing content of the documents it routes to.
 
+The current blocked-path control document is
+[`docs/03-delivery/PENDING_WORK_TO_READY.md`](docs/03-delivery/PENDING_WORK_TO_READY.md).
+Use it to order the pending validation, sign-off, and Task 001 readiness work.
+
 ## Current Navigation Bias
 
 For immediate planning and execution, route toward the smallest creative-direction-first MVP proof unless a newer accepted task specification supersedes it.

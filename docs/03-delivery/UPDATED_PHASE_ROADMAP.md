@@ -60,9 +60,24 @@ Nothing is deleted by normal workflow execution. Assets transition through activ
 
 ## Immediate next backlog
 
-1. Execute `docs/01-product/MVP_VALIDATION_PLAN.md` and record the baseline plus product-owner decision.
-2. Obtain required human review of the two-gate workflow and canonical artifact vocabulary.
-3. Write the ready task specification for canonical schemas, fixtures, and the single validation command that proves them.
-4. Build one executable workflow before broadening platform surface area.
-5. Add the thin Model Gateway interface, deterministic mock, and one real provider.
-6. Run generated candidates through critics and capture final approval evidence.
+Use [`PENDING_WORK_TO_READY.md`](PENDING_WORK_TO_READY.md) as the active
+operational path through the blocked pre-implementation state.
+
+1. Authorize validation setup: owner, facilitator, participants, restricted
+   evidence controls, and frozen tools/settings.
+2. Execute `docs/01-product/MVP_VALIDATION_PLAN.md` with the prepared cases and
+   record terminal evidence.
+3. Record the accountable product-owner `PROCEED`, `REVISE`, or `STOP`
+   decision.
+4. Obtain required human review of the two-gate workflow, canonical artifact
+   vocabulary, envelope, approval references, schema policy, and validator
+   toolchain.
+5. Create the governed `evidence/sign-off commit`.
+6. Run the MEOS Definition of Ready check and promote Task 001 only when every
+   prerequisite passes.
+7. Build the canonical schemas, fixtures, and single validation command.
+8. Build one executable workflow before broadening platform surface area.
+9. Add the thin Model Gateway interface, deterministic mock, and one real
+   provider.
+10. Run generated candidates through critics and capture final approval
+    evidence.
