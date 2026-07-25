@@ -1,90 +1,111 @@
-# Motiflow Engineering Operating System (MEOS)
+# Motiflow Engineering Operating System (MEOS) — Project Bootstrap
 
 ## Purpose
-This document is the mandatory entry point for every human engineer and AI agent working on Motiflow.
 
-Its job is to provide enough trusted context to resume work safely without depending on prior chat history.
+This document is the engineering bootstrap for Motiflow. It provides the verified delivery state, engineering controls, and continuation procedure needed to resume work safely without depending on prior chat history.
 
-## Mission
-Build Motiflow as an AI-native creative workflow platform using predictable, traceable, and verifiable engineering practices.
+It is not the product charter and not the product architecture authority.
+
+- **Motiflow** is the product and repository identity.
+- **ACDS** is the product architecture.
+- **MEOS** is the engineering governance and delivery system.
+
+Begin at [`START_HERE.md`](../START_HERE.md), which defines the canonical onboarding order.
 
 ## Current Project State
 
-### Current milestone
-MEOS v1.0 governance and documentation baseline are complete and ready to guide implementation.
+### Current Milestone
+
+Repository foundation alignment is in progress. Document authority, canonical terminology, target repository structure, migration sequencing, and root onboarding are being normalized before structural migration or product implementation.
 
 ### Completed
-- Project Charter and documentation hierarchy established.
-- MEOS engineering and AI constitutions approved.
-- Context strategy and machine-readable context routing established.
+
+- Project Charter and foundational architecture context established.
+- MEOS engineering and AI constitutions established.
+- Context strategy and machine-readable role and task routing established.
 - Task Specification and Definition of Ready established.
 - Quality Gate and engineering improvement flywheel established.
 - Architecture Rules and ADR Process established.
 - Coding Standard and Review Standard established.
 - Golden Path from idea to production established.
 - AI Workforce Charter and machine-readable roles established.
-- MEOS v1.0 release-readiness assessment and project changelog created.
+- Foundation standards for document authority, terminology, and repository structure added.
+- Repository migration plan and initial terminology ADR added.
+- Canonical root reading order aligned across repository entry points.
 
-### Current focus
-Move from governance design to real product delivery by applying MEOS end-to-end to the first concrete Motiflow feature.
+### Current Focus
 
-### Next priorities
-1. Select and specify the first implementation-ready Motiflow feature.
-2. Execute that feature through the Golden Path using a complete Task Specification.
-3. Implement and verify the feature in a real Git workspace with build, test, review, and release evidence.
-4. Create a lean MEOS Validator for repository structure, metadata, links, context routing, and release checks.
-5. Add CI enforcement only for rules proven valuable through real feature delivery.
-6. Design the Agent Runtime and managed Git workspace after the manual workflow is validated.
+Complete the repository-alignment foundation PR, verify links and terminology, and prepare the next focused documentation-normalization phase.
 
-### Deferred until justified by real use
-- Full knowledge graph platform.
-- Autonomous multi-agent orchestration.
-- Large custom Context Engine.
-- Broad automated governance beyond proven checks.
+### Next Priorities
+
+1. Review and accept the foundation terminology ADR.
+2. Verify root-document links, paths, and exact casing.
+3. Classify authoritative, supporting, operational, historical, and generated documents.
+4. Identify duplicate, obsolete, and orphaned documentation.
+5. Create the architecture dependency map and repository glossary.
+6. Select the first implementation-ready vertical slice.
+7. Execute that slice through the MEOS Golden Path with real build, test, review, and release evidence.
+8. Add lean automated checks only for rules proven valuable by repository use.
+
+### Deferred Until Justified by Real Use
+
+- Full knowledge-graph platform.
+- Autonomous multi-agent engineering governance.
+- Large custom context engine.
+- Broad automated enforcement beyond proven checks.
+
+These deferrals apply to engineering-governance automation. They do not change the approved ACDS product architecture, which includes workflow orchestration and specialist creative engines.
+
+## Canonical Read Order
+
+The repository navigation authority is [`START_HERE.md`](../START_HERE.md).
+
+The foundation order is:
+
+1. `START_HERE.md`
+2. `PROJECT_CHARTER.md`
+3. `MASTER_CONTEXT.md`
+4. `CONTEXT_INDEX.yaml`
+5. `MEOS/20_PROJECT_BOOTSTRAP.md`
+6. applicable MEOS standards and role definitions
+7. applicable product requirements and architecture
+8. applicable contracts and ADRs
+9. current task specification and acceptance criteria
+10. current implementation and verification evidence
 
 ## How to Continue in a New Chat or Agent Session
 
-A new AI session must not rely on conversation memory. It should:
+A new session must not rely on conversation memory. It should:
 
-1. Read this file completely.
-2. Read `PROJECT_CHARTER.md`.
-3. Read `CONTEXT_INDEX.yaml` and follow the route matching the task and role.
-4. Read the applicable PRD, architecture, contracts, ADRs, standards, and current task.
-5. Confirm the current milestone, task scope, acceptance criteria, constraints, and required evidence before editing.
-6. Follow `MEOS/15_GOLDEN_PATH.md` and finish through `MEOS/10_QUALITY_GATE.md`.
-7. Stop and ask for clarification when authoritative sources conflict or required context is missing.
-8. Update this Current Project State section when a milestone materially changes.
+1. read `START_HERE.md` and complete the foundation reading order;
+2. follow the minimum task- and role-specific route in `CONTEXT_INDEX.yaml`;
+3. confirm the current milestone, scope, acceptance criteria, constraints, decision authority, and required evidence;
+4. apply `MEOS/15_GOLDEN_PATH.md` and finish through `MEOS/10_QUALITY_GATE.md`;
+5. stop and escalate when authoritative sources conflict or required context is missing;
+6. update this Current Project State section when a milestone materially changes.
 
-A recommended continuation prompt is:
+Recommended continuation prompt:
 
-> Read `MEOS/20_PROJECT_BOOTSTRAP.md`, then `PROJECT_CHARTER.md` and `CONTEXT_INDEX.yaml`. Load the minimum authoritative context for the current task, summarize the verified project state, identify missing inputs, and continue from the next priority without inventing requirements.
-
-## Authoritative Read Order
-1. `MEOS/20_PROJECT_BOOTSTRAP.md`
-2. `PROJECT_CHARTER.md`
-3. `CONTEXT_INDEX.yaml`
-4. Applicable MEOS standards and role definitions
-5. Applicable product requirements and architecture
-6. Applicable contracts and ADRs
-7. Current task specification and acceptance criteria
-8. Current implementation and verification evidence
-
-When documents conflict, use authority, status, version, and explicit supersession rules. Do not silently choose the most convenient interpretation.
+> Read `START_HERE.md`, then `PROJECT_CHARTER.md`, `MASTER_CONTEXT.md`, `CONTEXT_INDEX.yaml`, and `MEOS/20_PROJECT_BOOTSTRAP.md`. Load the minimum authoritative context for the current task, summarize the verified project state, identify assumptions or conflicts, and continue from the next approved priority without inventing requirements.
 
 ## Non-Negotiable Rules
-- Never bypass architecture or approved contracts.
+
+- Never bypass accepted architecture or approved contracts.
 - Never invent requirements, APIs, schemas, events, or configuration.
 - Every implementation task starts from a ready Task Specification.
-- Every behavior change includes appropriate tests or explicitly documented verification limits.
+- Every behavior change includes appropriate tests or documented verification limits.
 - Every architecture-significant change requires an ADR.
 - Documentation and operational evidence are part of the deliverable.
 - AI-generated work is untrusted until independently verified.
-- Never claim a build, test, commit, push, deployment, or validation that was not actually observed.
+- Never claim a build, test, commit, push, deployment, or validation that was not observed.
 
 ## Engineering Flywheel
+
 Think → Plan → Build → Verify → Critique → Improve → Retest → Document → Learn → Repeat.
 
-Stop the loop when:
+Stop when:
+
 - all mandatory gates pass;
 - no meaningful improvement remains;
 - a human decision is required;
@@ -92,13 +113,17 @@ Stop the loop when:
 - continuing would violate architecture, security, privacy, or approved scope.
 
 ## Definition of Ready
+
 Implementation may begin only when requirements, acceptance criteria, dependencies, affected contracts, constraints, risks, test approach, and decision authority are sufficiently clear under `MEOS/06_DEFINITION_OF_READY.md`.
 
 ## Definition of Done
+
 A task is complete only when requirements are satisfied, checks are executed with recorded evidence, documentation is updated, independent review is complete where required, compatibility and rollback are assessed, and the Quality Gate produces an acceptable outcome.
 
 ## Verification Discipline
+
 Conversation is not evidence. Verification must come from observable artifacts such as:
+
 - repository contents and Git history;
 - build, lint, type-check, test, and security output;
 - contract and migration checks;
@@ -106,14 +131,17 @@ Conversation is not evidence. Verification must come from observable artifacts s
 - deployment and rollback evidence;
 - release-readiness records.
 
-When a real Git workspace is unavailable, clearly distinguish between:
+When a real Git workspace is unavailable, distinguish between:
+
 - confirmed through the GitHub API;
 - inferred from documents;
 - proposed but not implemented; and
 - unverified because execution access is unavailable.
 
 ## Stop Conditions
+
 Stop and escalate when:
+
 - requirements or authoritative documents conflict;
 - architecture or a contract would be violated;
 - security, privacy, data-loss, or irreversible migration risk is unresolved;
@@ -122,4 +150,5 @@ Stop and escalate when:
 - human approval is explicitly required.
 
 ## Success Metric
-Motiflow is successful when valuable product changes can move from approved intent to production through a repeatable, understandable, and evidence-backed workflow—not merely when documentation exists or code appears complete.
+
+MEOS succeeds when valuable Motiflow changes move from approved intent to production through a repeatable, understandable, and evidence-backed workflow—not merely when documentation exists or code appears complete.
