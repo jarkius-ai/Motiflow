@@ -1,7 +1,7 @@
 # Motiflow Document Index
 
-**Status:** Authoritative navigation index  
-**Owner:** Documentation and Chief Architect  
+**Status:** Authoritative navigation index
+**Owner:** Documentation and Chief Architect
 **Applies to:** Repository documentation
 
 ## Purpose
@@ -74,11 +74,11 @@ Use `CONTEXT_INDEX.yaml` to select the minimum complete MEOS context for a task.
 | Concern | Canonical location |
 |---|---|
 | Engine contracts and behavior | `docs/04-ai/` |
-| Evaluation and critic specifications | `docs/04-ai/` and `evaluation/` when implemented |
+| Evaluation and critic specifications | `docs/04-ai/` and `evaluations/` when implemented |
 | Prompt assets | `prompts/` |
 | Reusable knowledge | `knowledge/` |
-| Workflow definitions | `workflows/` when implemented |
-| Canonical schemas | `schemas/` when implemented |
+| Workflow definitions | `packages/workflows/` when implemented |
+| Canonical schemas | `packages/schemas/` when implemented |
 
 ## Implementation evidence
 

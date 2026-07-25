@@ -1,6 +1,6 @@
 # Motiflow Glossary
 
-**Status:** Authoritative vocabulary reference  
+**Status:** Authoritative vocabulary reference
 **Owner:** Chief Architect
 
 This glossary expands `TERMINOLOGY.md`. When definitions conflict, `TERMINOLOGY.md` and accepted ADRs take precedence.

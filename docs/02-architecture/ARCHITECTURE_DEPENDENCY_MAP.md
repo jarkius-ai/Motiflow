@@ -1,7 +1,7 @@
 # Motiflow Architecture Dependency Map
 
-**Status:** Proposed architecture control  
-**Owner:** Chief Architect  
+**Status:** Proposed architecture control
+**Owner:** Chief Architect
 **Related authority:** `MASTER_CONTEXT.md`, ADR-0001
 
 ## Purpose

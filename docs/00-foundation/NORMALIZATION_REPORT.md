@@ -1,7 +1,7 @@
 # Motiflow Documentation Normalization Report
 
-**Status:** Phase 2 baseline complete  
-**Owner:** Documentation and Chief Architect  
+**Status:** Phase 2 baseline complete
+**Owner:** Documentation and Chief Architect
 **Review date:** 2026-07-25
 
 ## Scope
