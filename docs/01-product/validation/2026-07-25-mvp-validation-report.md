@@ -8,9 +8,10 @@
 **Session instruments:** [`VALIDATION_SESSION_INSTRUMENTS.md`](VALIDATION_SESSION_INSTRUMENTS.md)
 **Artifact worksheets:** [`VALIDATION_ARTIFACT_WORKSHEETS.md`](VALIDATION_ARTIFACT_WORKSHEETS.md)
 **Instrument dry run:** [`2026-07-26-validation-instrument-dry-run.md`](2026-07-26-validation-instrument-dry-run.md) — internal desk check only
-**Preparation base revision:** `df7af54`; the review packet is uncommitted
-**Review-candidate SHA for participant sessions:** PENDING; record after the candidate commit exists
-**Evidence/sign-off commit or signed tag:** PENDING; created after evidence and decisions are recorded
+**Preparation base revision:** `df7af54`
+**`review-candidate commit` SHA for participant sessions:** `efc4b5e2bb71b6da2e2ee39ce187fd39bd117411`; committed packet, not yet presented to participants
+**`trace-preparation commit`:** RECORDED; records the candidate SHA but claims no participant evidence or human decision
+**`evidence/sign-off commit`:** PENDING; created after evidence and decisions are recorded, then optionally identified by a signed tag
 **Restricted evidence location:** Pending; do not store participant identities or confidential inputs here
 
 ## Decision status
@@ -48,7 +49,7 @@ and one edge case. No case has participant execution evidence yet.
 
 `CASE_PREPARED` confirms only that the input packet is usable. The validation
 round remains blocked until the controlled setup, participants, restricted
-evidence location, and review-candidate SHA below are recorded.
+evidence location, and `review-candidate commit` SHA below are recorded.
 
 ## Participant coverage
 
@@ -70,7 +71,8 @@ and raw notes in the declared restricted evidence location.
 - Pre-generation constraint-sufficiency check revision: `VALIDATION_SESSION_INSTRUMENTS.md` section 8
 - Deterministic review checklist revision: `VALIDATION_SESSION_INSTRUMENTS.md` section 9
 - Focused critic rubric revision: `VALIDATION_SESSION_INSTRUMENTS.md` section 10
-- Review-candidate SHA presented to participants: PENDING
+- `review-candidate commit` SHA: `efc4b5e2bb71b6da2e2ee39ce187fd39bd117411`
+- `review-candidate commit` presentation status: PENDING; no participant session has occurred
 
 ## Pre-session authorization gate
 
@@ -83,14 +85,19 @@ does not satisfy this gate.
 - [ ] Restricted evidence location, access owner, and retention/deletion rule
   are recorded outside this public packet.
 - [ ] Baseline and proposed tool names, versions, and settings are frozen.
-- [ ] The review candidate is committed first; its SHA is then recorded
-  consistently in this report and the contract-acceptance packet by a later
-  evidence/sign-off commit. The evidence/sign-off commit may receive a signed
-  tag after verification.
+- [x] The `review-candidate commit` exists and its SHA is recorded consistently in
+  this report and the contract-acceptance packet.
+- [x] The `trace-preparation commit` records the candidate SHA across the
+  readiness packet before the first participant session.
 - [ ] The facilitator confirms that only synthetic or authorized anonymized
   input material will be used.
 
 **Session authorization:** `BLOCKED`
+
+Post-session revision requirement: the later `evidence/sign-off commit` must
+record actual evidence, dispositions, decision links, and signatures. A signed
+tag may identify it after verification but does not replace it. This is a
+completion requirement, not a pre-session condition.
 
 ## Session run sheets
 
@@ -122,7 +129,7 @@ ID means the session did not stop under the protocol.
 This review is separate from intended-user sessions. Product participants do
 not need to understand or approve all ten internal contracts.
 
-| Reviewer ID | Role | Review-candidate SHA | Ten-artifact boundaries | Versioned lineage and freshness | Approval/schema semantics | Findings evidence ID | Disposition |
+| Reviewer ID | Role | `review-candidate commit` SHA | Ten-artifact boundaries | Versioned lineage and freshness | Approval/schema semantics | Findings evidence ID | Disposition |
 |---|---|---|---|---|---|---|---|
 | AR-01 | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING |
 | ER-01 | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING |
@@ -166,7 +173,7 @@ Per-role variance and interpretation: PENDING
 - Explicit exclusions: PENDING
 - Constraints or required corrections: PENDING
 - Rerun scope if `REVISE`: PENDING
-- Reviewed candidate SHA: PENDING
+- Reviewed `review-candidate commit` SHA: PENDING
 - Name / role / date: PENDING
 
 ## Report integrity

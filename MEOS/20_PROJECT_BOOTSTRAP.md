@@ -52,6 +52,11 @@ The operational artifacts for this gate are:
 - [`tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md`](tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md) — first bounded story; blocked until its prerequisites pass; and
 - [`../docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md`](../docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md) — current BMAD readiness evidence and score.
 
+The `review-candidate commit` is
+`efc4b5e2bb71b6da2e2ee39ce187fd39bd117411`. The `trace-preparation commit`
+records that SHA without claiming field evidence, decisions, or signatures. The
+`evidence/sign-off commit` and its optional signed tag remain pending.
+
 ### Next Priorities
 
 1. Run `docs/01-product/MVP_VALIDATION_PLAN.md` with 5–10 representative inputs and 2–3 intended users or design partners.

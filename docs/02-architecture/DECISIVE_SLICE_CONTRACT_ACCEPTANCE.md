@@ -4,8 +4,10 @@
 **Owner:** Product and Chief Architect
 **Scope:** Pre-implementation freeze for the ten-artifact, two-gate MVP contract
 **Related authority:** [`DATA_CONTRACTS.md`](DATA_CONTRACTS.md), [`RUNTIME_CONTRACTS.md`](RUNTIME_CONTRACTS.md), [`WORKFLOW_STATE_MACHINE.md`](WORKFLOW_STATE_MACHINE.md), [`VERSIONING_AND_COMPATIBILITY.md`](VERSIONING_AND_COMPATIBILITY.md), [`../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md`](../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md)
-**Preparation base revision:** `df7af54`; the review packet is uncommitted
-**Review-candidate revision:** PENDING; record the candidate commit SHA in the later evidence/sign-off commit
+**Preparation base revision:** `df7af54`
+**`review-candidate commit` SHA:** `efc4b5e2bb71b6da2e2ee39ce187fd39bd117411`; committed and awaiting human review evidence
+**`trace-preparation commit`:** RECORDED; records the candidate SHA only
+**`evidence/sign-off commit`:** PENDING; required after actual review and acceptance decisions
 
 ## Acceptance rule
 
@@ -18,12 +20,15 @@ first implementation task. A comment, meeting, or chat acknowledgement does not
 count unless it is transcribed into the sign-off section with the reviewed
 revision.
 
-Revision recording is intentionally two-step: first commit the review candidate
-without attempting to include its own SHA; then record that candidate SHA and
-all dispositions/signatures in a later evidence/sign-off commit. A signed tag on
-the evidence/sign-off commit may identify the final acceptance record. No file
-is required to contain the SHA of the commit that first introduces that same
-file content.
+Revision recording follows the three stages governed by
+[`MVP_VALIDATION_PLAN.md`](../01-product/MVP_VALIDATION_PLAN.md): the
+`review-candidate commit` freezes the review packet without attempting to
+contain its own SHA; the `trace-preparation commit` records that SHA while
+leaving unobserved evidence and decisions pending; and, after human review, the
+`evidence/sign-off commit` records actual decision links, dispositions, and
+signatures against the `review-candidate commit` SHA. A signed tag may identify the verified
+`evidence/sign-off commit`, but does not replace it. No file must contain the
+SHA of the commit that first introduces that same file content.
 
 ## Review surface
 
@@ -174,7 +179,7 @@ Laravel bootstrap
 
 ## Required human sign-off
 
-| Authority | Name | Decision | Review-candidate SHA | Date | Constraints / rationale |
+| Authority | Name | Decision | `review-candidate commit` SHA | Date | Constraints / rationale |
 |---|---|---|---|---|---|
 | Accountable product owner | PENDING | PENDING | PENDING | PENDING | PENDING |
 | Chief architect | PENDING | PENDING | PENDING | PENDING | PENDING |
@@ -189,8 +194,8 @@ locations, validator/toolchain, and the single-command contract.
 **Outcome:** `PENDING`
 Allowed outcomes: `ACCEPTED | REWORK | REJECTED`
 
-**Accepted review-candidate SHA:** PENDING
-**Evidence/sign-off commit or signed tag:** PENDING
+**Accepted `review-candidate commit` SHA:** PENDING
+**`evidence/sign-off commit`:** PENDING; optional signed tag also pending
 **Residual risks accepted by:** PENDING
 **Required follow-up:** PENDING
 

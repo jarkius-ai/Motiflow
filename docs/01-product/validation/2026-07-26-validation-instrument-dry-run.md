@@ -4,7 +4,7 @@
 **Evidence class:** Internal protocol verification; zero participant-evidence credit
 **Scope:** Difficult-case paths, measurement fields, stop records, and contract traceability
 **Execution date/timezone:** 2026-07-26, Asia/Bangkok workspace clock
-**Reviewed state:** Current uncommitted review packet; rerun after the packet is frozen
+**Reviewed state:** Included in `review-candidate commit` `efc4b5e2bb71b6da2e2ee39ce187fd39bd117411`; human fieldwork remains pending
 
 ## Non-claim
 
@@ -64,8 +64,10 @@ session, the dated validation report must still record:
   and dates;
 - the restricted evidence location, access owner, and retention/deletion rule;
 - frozen baseline and proposed tools, versions, and settings; and
-- a committed review candidate whose SHA is recorded in the later
-  evidence/sign-off commit shared by the validation and contract packets.
+- a committed `review-candidate commit` whose SHA is recorded across the
+  readiness packet by a committed `trace-preparation commit` before fieldwork.
+  The later `evidence/sign-off commit` must record actual evidence, decision
+  links, dispositions, and signatures against that SHA.
 
 ## Desk-check conclusion
 

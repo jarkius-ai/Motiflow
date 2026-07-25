@@ -71,9 +71,27 @@ Do not start fieldwork until the validation report records:
 - input IDs and coverage tags;
 - the facilitator and allowed manual or generation tools;
 - the external location for restricted raw notes and source material; and
-- the review-candidate commit SHA being presented. Create that candidate commit
-  first, then record its SHA in a later evidence/sign-off commit or equivalent
-  signed tag; do not require a commit to contain its own SHA.
+- the `review-candidate commit` SHA being presented.
+
+Use this three-stage revision trace; the stage names are normative throughout
+the readiness packet:
+
+1. **`review-candidate commit`:** freeze the packet that will be reviewed and
+   record its externally knowable SHA. Do not require this commit to contain
+   its own SHA.
+2. **`trace-preparation commit`:** record the `review-candidate commit` SHA in
+   the validation report, contract-acceptance record, readiness review, task,
+   bootstrap, and context index while leaving all unobserved participant
+   evidence, decisions, dispositions, and signatures explicitly pending. This
+   stage must be committed before the first participant session.
+3. **`evidence/sign-off commit`:** after the sessions and human reviews, record
+   the actual evidence, decision links, dispositions, and signatures against
+   the `review-candidate commit` SHA. A signed tag may identify this commit
+   after verification; it does not replace the commit.
+
+This sequence avoids self-reference. Only the committed third stage completes
+the revision trace; preparing or committing the second stage does not claim
+field evidence or approval.
 
 Use the dated evidence record at
 [`validation/2026-07-25-mvp-validation-report.md`](validation/2026-07-25-mvp-validation-report.md)
@@ -187,7 +205,7 @@ The report must contain:
 - references to external raw evidence by opaque ID only;
 - the contract-review decision; and
 - the named product-owner `PROCEED`, `REVISE`, or `STOP` decision, rationale,
-  constraints, date, and reviewed candidate SHA.
+  constraints, date, and reviewed `review-candidate commit` SHA.
 
 `PROCEED` requires every exit criterion and mandatory human review to pass.
 `REVISE` requires named changes and a rerun scope. `STOP` records why the wedge

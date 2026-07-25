@@ -74,6 +74,10 @@ contract_acceptance: docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md
 blocking_architecture_decision: docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md
 current_task: MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md
 readiness_review: docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md
+readiness_review_candidate_sha: efc4b5e2bb71b6da2e2ee39ce187fd39bd117411
+readiness_revision_trace_status: review_candidate_committed_trace_preparation_recorded_evidence_signoff_pending
+readiness_score_current: 37
+readiness_machine_verifiable_ceiling: 37
 
 roles:
   chief_architect:

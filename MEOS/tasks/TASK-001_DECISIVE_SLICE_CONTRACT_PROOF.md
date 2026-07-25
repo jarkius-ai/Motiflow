@@ -333,6 +333,11 @@ rewrite an accepted version in place.
 
 - Created by: Codex planning review
 - Date: 2026-07-25
+- `review-candidate commit` SHA: `efc4b5e2bb71b6da2e2ee39ce187fd39bd117411`
+- `trace-preparation commit`: RECORDED; records only the candidate SHA and
+  keeps participant evidence, decisions, and signatures pending
+- `evidence/sign-off commit`: PENDING; must contain real evidence and human
+  decisions before this task can satisfy its readiness prerequisites
 - Implementation notes: none; task is blocked at the human/evidence gate
 - Completion notes: not started
 - File list: not applicable
