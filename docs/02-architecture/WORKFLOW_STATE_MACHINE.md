@@ -1,6 +1,6 @@
 # Motiflow Workflow State Machine
 
-**Status:** Proposed architecture freeze v0.1  
+**Status:** Proposed architecture freeze v0.1
 **Owner:** Chief Architect
 
 ## Run states

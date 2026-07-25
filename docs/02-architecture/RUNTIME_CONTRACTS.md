@@ -1,7 +1,7 @@
 # Motiflow Runtime Contracts
 
-**Status:** Proposed architecture freeze v0.1  
-**Owner:** Chief Architect  
+**Status:** Proposed architecture freeze v0.1
+**Owner:** Chief Architect
 **Applies to:** Creative Kernel, Workflow Orchestrator, engines, agents, critics, connectors, and applications
 
 ## Contract principles

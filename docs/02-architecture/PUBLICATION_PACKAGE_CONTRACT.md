@@ -1,6 +1,6 @@
 # Publication Package Contract
 
-Status: Proposed for architecture freeze  
+Status: Proposed for architecture freeze
 Applies to: Motiflow / ACDS runtime
 
 ## Purpose

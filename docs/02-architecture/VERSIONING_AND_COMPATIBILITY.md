@@ -1,6 +1,6 @@
 # Motiflow Versioning and Compatibility Policy
 
-**Status:** Proposed architecture freeze v0.1  
+**Status:** Proposed architecture freeze v0.1
 **Owner:** Chief Architect
 
 ## Version domains
