@@ -67,7 +67,7 @@ Motiflow is the product, ACDS is the product architecture, and MEOS is the engin
 
 Several documents describe repository structures at different stages. `REPOSITORY_STRUCTURE.md` is now the canonical target-state reference. Other trees must be labelled current, transitional, or historical.
 
-### Architecture summary duplication — accepted with boundaries
+### Architecture summary duplication — controlled with boundaries
 
 `MASTER_CONTEXT.md`, product specifications, and detailed architecture documents may each summarize the architecture for different audiences. Summaries are acceptable when they link to the canonical source and do not redefine component responsibilities.
 
@@ -106,7 +106,7 @@ When two documents overlap:
 
 - [x] Canonical bootstrap established.
 - [x] Document authority defined.
-- [x] Terminology frozen.
+- [x] Foundation identity terminology normalized; decisive-slice artifact vocabulary remains review-ready pending human acceptance.
 - [x] Document index created.
 - [x] Glossary created.
 - [x] Architecture dependency map created.

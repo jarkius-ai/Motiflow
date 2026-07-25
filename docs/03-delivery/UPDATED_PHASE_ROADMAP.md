@@ -1,48 +1,58 @@
 # Motiflow Delivery Roadmap
 
-**Status:** Delivery planning artifact
+**Status:** Review-ready delivery planning artifact
 **Owner:** Delivery and Product
 **Scope:** Motiflow implementation phases and sequencing after the documentation baseline
 
-## Completed foundation stream
+This document proposes delivery sequencing. It does not, by itself, change human-accepted product intent, architecture, or ADR decisions.
+
+## Merged documentation stream
 
 - Phase 1 — Repository foundation
 - Phase 2 — Documentation normalization
-- Phase 2.5 — Runtime contract freeze
+- Phase 2.5 — Proposed runtime contract baseline
 
 ## Product and implementation stream
 
-### Phase 3 — Editorial Operating System
+### Phase 3 — Manual validation baseline
 
-Define the Publication Package, crawler ingestion, review workspace, content lifecycle, and synchronized article/visual outputs.
+Define the manual validation path for the decisive creative-direction slice before broad automation begins.
 
-### Phase 4 — AI Execution and Automation Layer
+### Phase 4 — Two-gate workflow review
 
-Implement the provider-neutral Model Gateway, capability registry, adapters, structured-output validation, prompt versioning, cost controls, telemetry, and deterministic mock execution.
+Review and obtain required human acceptance of the proposed first workflow, which preserves two explicit gates:
 
-### Phase 5 — Schemas and Workflow DSL
+- Gate 1: require authorized human approval of the Creative Direction Package before generation proceeds.
+- Gate 2: require authorized human final approval after generated candidates and critics complete.
 
-Create executable schemas for artifacts, publications, evaluations, approvals, model invocations, and workflow definitions.
+### Phase 5 — Canonical schemas, fixtures, and validation command
 
-### Phase 6 — Crawler-to-Publication Reference Workflow
+Create the canonical contracts, fixtures, and one repository validation command needed to prove the first slice without expanding into broader infrastructure.
 
-Run a crawled Markdown file through ingestion, analysis, editorial generation, creative direction, critique, and review preparation.
+### Phase 6 — One executable workflow
 
-### Phase 7 — Human Review Workspace
+Implement one executable workflow that carries a creative brief through direction definition, generation handoff, critique, and approval readiness.
 
-Deliver side-by-side article, HTML, social copy, image, citation, findings, and approval views.
+### Phase 7 — Thin Model Gateway
 
-### Phase 8 — Publishing Connectors
+Add only the thinnest model-execution layer required by the first workflow:
 
-Support Markdown and HTML export first, followed by controlled CMS and social publishing connectors.
+- provider-neutral interface;
+- deterministic mock implementation;
+- one real provider integration.
 
-### Phase 9 — Editorial Memory and Learning Engine
+### Phase 8 — Generated candidates, critics, and final approval
 
-Retain source revisions, outputs, prompts, model calls, reviewer edits, rejected alternatives, decisions, and outcomes. Extract reusable patterns without deleting history.
+Use the first workflow and thin gateway to produce generated candidates, run critics, and record the final approval decision with full provenance.
 
-### Phase 10 — Measurement and Continuous Improvement
+## Explicit deferrals
 
-Ingest publication performance, compare variants, evaluate model/prompt changes, and feed validated lessons back into routing, prompts, and editorial memory.
+- Multi-provider routing.
+- Fallback mesh and resilience breadth beyond the first provider path.
+- Cost, token, latency, and validation dashboards.
+- CMS and social publishing.
+- SDK ecosystem expansion.
+- Editorial authoring automation beyond what the first slice requires.
 
 ## Retention principle
 
@@ -50,11 +60,9 @@ Nothing is deleted by normal workflow execution. Assets transition through activ
 
 ## Immediate next backlog
 
-1. Define TypeScript Model Gateway contracts.
-2. Add model capability and invocation JSON Schemas.
-3. Implement deterministic mock adapter.
-4. Add prompt registry format.
-5. Implement schema and semantic validation.
-6. Add usage and cost ledger.
-7. Integrate first real provider adapter.
-8. Build the sample Markdown ingestion workflow.
+1. Execute `docs/01-product/MVP_VALIDATION_PLAN.md` and record the baseline plus product-owner decision.
+2. Obtain required human review of the two-gate workflow and canonical artifact vocabulary.
+3. Write the ready task specification for canonical schemas, fixtures, and the single validation command that proves them.
+4. Build one executable workflow before broadening platform surface area.
+5. Add the thin Model Gateway interface, deterministic mock, and one real provider.
+6. Run generated candidates through critics and capture final approval evidence.

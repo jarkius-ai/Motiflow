@@ -26,7 +26,7 @@ Motiflow evaluates both intermediate reasoning artifacts and final creative outp
 
 ## Report structure
 
-An `EvaluationReport` includes scope, evaluator identity and version, findings, severity, supporting evidence, confidence, recommended action, blocking status, and links to affected artifact fields.
+A `Critic Evaluation Package` includes scope, evaluator identities and versions, deterministic findings, critic findings, severity, supporting evidence, confidence, recommended action, blocking status, and links to affected artifact fields.
 
 ## Release gate
 

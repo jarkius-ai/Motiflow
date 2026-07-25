@@ -11,20 +11,20 @@
 3. Research, audience, brand, and narrative engines run where appropriate.
 4. The Knowledge Fusion stage produces a grounded strategic summary.
 5. Direction engines propose narrative and metaphor candidates.
-6. The system ranks candidates using constraints, evidence, and critic feedback.
-7. A human approves or edits the selected direction.
-8. Motiflow creates a versioned Creative Direction Package.
+6. The system ranks direction candidates using constraints and evidence.
+7. Motiflow creates a versioned Creative Direction Package.
+8. An authorized human approves it, producing a Direction Approval Record, or requests revision.
 
 ## Journey B: Direction to generated assets
 
 1. User selects an approved Creative Direction Package.
-2. Prompt Compiler converts the package into provider-specific generation requests.
-3. Generation jobs run in parallel across selected formats or providers.
+2. The system creates a Generation Specification tied to the approved direction version.
+3. The MVP sends the specification to one rendering provider and receives a Generated Candidate Set.
 4. Outputs are checked for technical and policy constraints.
-5. Visual, brand, and business critics produce evaluation reports.
+5. Focused critics produce a Critic Evaluation Package.
 6. Low-confidence or failed outputs are retried within configured limits.
-7. Human reviewers compare candidates, annotate, approve, or request revision.
-8. Approved assets and provenance are stored in the project history.
+7. An authorized human compares candidates, annotates, and records final approval or requests revision.
+8. The Final Approval Record and Provenance Record are stored with the approved candidate set.
 
 ## Journey C: Review and revision
 
@@ -35,7 +35,7 @@
 5. Only affected stages rerun.
 6. The new version is linked to its parent and previous decisions remain available.
 
-## Journey D: Build a reusable workflow
+## Journey D: Build a reusable workflow after MVP proof
 
 1. Administrator or developer chooses engines from the catalog.
 2. They connect nodes into a DAG with declared artifact contracts.

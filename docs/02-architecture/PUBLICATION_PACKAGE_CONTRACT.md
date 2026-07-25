@@ -1,19 +1,34 @@
 # Publication Package Contract
 
-Status: Proposed for architecture freeze
+Status: Proposed post-MVP specialization
 Applies to: Motiflow / ACDS runtime
 
 ## Purpose
 
-Motiflow must produce a complete, review-ready publication package rather than treating the generated image as the only final artifact.
+The Publication Package is a post-MVP specialization that assembles already-approved MVP artifacts for publishing systems, editorial workflows, or channel-specific exports.
 
-The package combines editorial content, visual assets, metadata, provenance, review state, and export formats so a reviewer can assess the image and article together before publication.
+It is not the canonical MVP workflow output. The decisive MVP slice ends with the governed artifact chain through `Final Approval Record` and `Provenance Record`; the Publication Package wraps those records only after final approval.
 
 ## Core principle
 
-> The final deliverable is a governed content-and-visual package, not an isolated image.
+> The Publication Package is an optional container built on top of approved canonical artifacts, not a replacement for them.
 
-## Canonical output
+## Canonical MVP dependency chain
+
+Every Publication Package must reference these canonical artifacts:
+
+- Intake Package
+- Normalized Brief
+- Knowledge Fusion Package
+- Creative Direction Package
+- Direction Approval Record
+- Generation Specification
+- Generated Candidate Set
+- Critic Evaluation Package
+- Final Approval Record
+- Provenance Record
+
+## Specialized container shape
 
 ```yaml
 publication_package:
@@ -22,6 +37,18 @@ publication_package:
   workflow_run_id:
   version:
   status:
+
+  canonical_refs:
+    intake_package_ref:
+    normalized_brief_ref:
+    knowledge_fusion_package_ref:
+    creative_direction_package_ref:
+    direction_approval_record_ref:
+    generation_specification_ref:
+    generated_candidate_set_ref:
+    critic_evaluation_package_ref:
+    final_approval_record_ref:
+    provenance_record_ref:
 
   source:
     source_document_ids: []
@@ -79,7 +106,7 @@ publication_package:
     source_versions: []
     engine_versions: []
     model_versions: []
-    prompt_versions: []
+    generation_spec_versions: []
     knowledge_versions: []
     human_edits: []
 
@@ -93,7 +120,7 @@ publication_package:
 
 ## Required outputs
 
-Every publication package must include:
+Every Publication Package must include:
 
 1. A final title and article body.
 2. Both Markdown and sanitized HTML representations.
@@ -103,6 +130,7 @@ Every publication package must include:
 6. Editorial, visual, factual, and brand review status.
 7. A machine-readable manifest.
 8. Version and approval history.
+9. References to the full canonical MVP artifact chain.
 
 ## Optional outputs
 
@@ -188,12 +216,13 @@ Overall approval requires all configured mandatory review dimensions to pass.
 
 ## Packaging rules
 
+- The package may be assembled only after a valid Final Approval Record exists.
 - Article and image versions are pinned together at approval.
 - Replacing the hero image after approval invalidates visual and final approval.
 - Material editorial changes invalidate factual and final approval.
 - Metadata-only corrections may use a configurable lightweight approval path.
-- Exports must be reproducible from the approved package version.
-- Publishing connectors may consume only an approved package unless an explicit preview mode is used.
+- Exports must be reproducible from the approved canonical artifact versions.
+- Publishing connectors may consume only an approved Publication Package unless an explicit preview mode is used.
 
 ## Recommended export directory
 

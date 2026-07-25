@@ -16,14 +16,16 @@ Begin at [`START_HERE.md`](../START_HERE.md), which defines the canonical onboar
 
 ### Current Milestone
 
-Documentation and architecture baseline work is complete on `main`. The repository is now in pre-implementation readiness for the first executable slice: pull requests #1 through #4 are merged, `origin/main` contains the reconciled documentation baseline, and runtime/application implementation has not yet begun on the default branch.
+The initial documentation baseline is merged on `main`, and this reconciliation pass prepares a review-ready handoff for the first executable slice. Runtime/application implementation has not yet begun on the default branch.
+
+Accepted product and architecture decisions remain controlled by the Product Charter, `MASTER_CONTEXT.md`, accepted ADRs, and other authoritative documents. Delivery-sequencing documents under `docs/03-delivery/` are planning artifacts until a human explicitly accepts or promotes them.
 
 ### Completed
 
 - PR #1 merged: repository foundation and canonical onboarding baseline established.
 - PR #2 merged: documentation normalization baseline completed.
-- PR #3 merged: runtime and architecture contract baseline frozen before implementation.
-- PR #4 merged: AI execution layer documentation and implementation sequencing accepted on `main`.
+- PR #3 merged: proposed runtime and architecture contract baseline added for review before implementation.
+- PR #4 merged: AI execution layer documentation and proposed implementation sequencing added on `main`.
 - Project Charter and foundational architecture context established.
 - MEOS engineering and AI constitutions established.
 - Context strategy and machine-readable role and task routing established.
@@ -36,17 +38,19 @@ Documentation and architecture baseline work is complete on `main`. The reposito
 
 ### Current Focus
 
-Translate the accepted documentation and architecture baseline into the first implementation-ready task without inventing speculative structure. The immediate focus is Phase 4A readiness: scope the first executable slice, define its verification plan, and introduce only the canonical directories required by real code.
+Execute the MVP validation plan and translate its evidence plus the reconciled authoritative context into the first implementation-ready task without inventing speculative structure. The immediate focus is readiness for a decisive creative-direction vertical slice: validate the workflow manually, obtain the accountable product-owner decision and required contract review, then define canonical schemas and fixtures, prove one executable workflow, and introduce only the canonical directories required by real code.
 
 ### Next Priorities
 
-1. Select and scope the first implementation slice from the accepted roadmap, expected to begin with provider-neutral Model Gateway contracts plus supporting schemas and tests.
-2. Write or refine the task specification, acceptance criteria, and verification plan for that slice under `MEOS/06_DEFINITION_OF_READY.md`.
-3. Introduce only the canonical implementation directories required by the first real code change; avoid speculative repository skeletons.
-4. Implement the first contracts-and-testability slice with build, test, and review evidence.
-5. Follow with mock adapter, validation, prompt-control, and routing work in the accepted AI execution order.
-6. Preserve the documentation baseline while implementation begins; structural migration remains incremental and evidence-driven.
-7. Add lean automation only after a rule has proven valuable through real implementation work.
+1. Run `docs/01-product/MVP_VALIDATION_PLAN.md` with 5–10 representative inputs and 2–3 intended users or design partners.
+2. Record baseline measures and an accountable product-owner proceed, revise, or stop decision in a dated validation report without committing confidential participant material.
+3. Obtain required human review of the two-gate state machine and canonical ten-artifact vocabulary; review-ready status is not acceptance.
+4. Write the first task specification, acceptance criteria, JSON Schemas, fixtures, and validation-command plan under `MEOS/06_DEFINITION_OF_READY.md`.
+5. Introduce only the canonical implementation directories required by that task; avoid speculative repository skeletons and do not create a `packages/ai/` subtree.
+6. Implement one executable workflow before broadening infrastructure.
+7. Add a thin Model Gateway only after the workflow shape is proven, limited to an interface, deterministic mock, and one real provider.
+8. Complete generated candidates, critics, final approval, and provenance evidence before platform expansion.
+9. Preserve the documentation baseline while implementation begins; structural migration remains incremental and evidence-driven.
 
 ### Deferred Until Justified by Real Use
 
@@ -54,8 +58,13 @@ Translate the accepted documentation and architecture baseline into the first im
 - Autonomous multi-agent engineering governance.
 - Large custom context engine.
 - Broad automated enforcement beyond proven checks.
+- Multi-provider routing and fallback mesh.
+- Cost, token, latency, and validation dashboards.
+- CMS and social publishing connectors.
+- SDK ecosystem expansion.
+- Editorial authoring automation beyond what the first slice strictly requires.
 
-These deferrals apply to engineering-governance automation. They do not change the approved ACDS product architecture, which includes workflow orchestration and specialist creative engines.
+These deferrals apply to implementation sequencing. They do not remove capabilities from the target ACDS architecture; they postpone unproven breadth until the decisive slice demonstrates demand.
 
 ## Canonical Read Order
 
@@ -87,7 +96,7 @@ A new session must not rely on conversation memory. It should:
 
 Recommended continuation prompt:
 
-> Read `START_HERE.md`, then `PROJECT_CHARTER.md`, `MASTER_CONTEXT.md`, `CONTEXT_INDEX.yaml`, and `MEOS/20_PROJECT_BOOTSTRAP.md`. Load the minimum authoritative context for the current task, summarize the verified project state, identify assumptions or conflicts, and continue from the next approved priority without inventing requirements.
+> Read `START_HERE.md`, then `PROJECT_CHARTER.md`, `MASTER_CONTEXT.md`, `CONTEXT_INDEX.yaml`, and `MEOS/20_PROJECT_BOOTSTRAP.md`. Load the minimum authoritative context for the current task, distinguish accepted decisions from review-ready planning artifacts, summarize the verified project state, identify assumptions or conflicts, and continue from the next approved priority without inventing requirements.
 
 ## Non-Negotiable Rules
 

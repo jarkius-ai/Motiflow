@@ -57,6 +57,8 @@ The first commercial wedge is enterprise editorial visual direction for articles
 
 This wedge is strong because it combines high creative expectations with repeatable workflows, brand constraints, frequent production, and measurable revision pain.
 
+The MVP proves the creative-direction-to-approved-candidate loop for this wedge. Article authoring, SEO, social variants, CMS publishing, and generalized publication packaging are later specializations, not prerequisites for validating the core product promise.
+
 ## Long-term expansion
 
 After proving the core loop, Motiflow may expand into:

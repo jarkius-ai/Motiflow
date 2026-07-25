@@ -2,13 +2,13 @@
 
 **Architecture name:** Autonomous Creative Direction System (ACDS)  
 **Version:** 1.0  
-**Status:** Foundational source of truth  
+**Status:** Review-ready architecture context
 **Product name:** Motiflow  
 **Positioning:** Creative intelligence, orchestrated.
 
 ## 1. Purpose
 
-This document is the durable context for Motiflow. Product requirements, architecture, UX, AI-engine design, implementation plans, and future AI-assisted work must align with it unless an accepted Architecture Decision Record explicitly changes the direction.
+This document is the durable context for Motiflow. Product requirements, architecture, UX, AI-engine design, implementation plans, and future AI-assisted work must align with it unless a later ADR explicitly changes the direction.
 
 Motiflow is not merely an image generator or prompt-writing tool. It is a governed creative-intelligence platform that converts business context, research, narrative intent, audience needs, and brand constraints into explainable visual direction and production-ready outputs.
 
@@ -34,7 +34,7 @@ Modern generative workflows often fail because they begin with rendering before 
 - model lock-in
 - limited governance, provenance, and auditability
 
-Motiflow addresses these weaknesses by separating discovery, reasoning, direction, compilation, generation, and review into explicit stages with structured contracts.
+Motiflow addresses these weaknesses by separating discovery, reasoning, direction approval, generation specification, generation, deterministic and critic review, final approval, and export into explicit stages with structured contracts.
 
 ## 5. Product philosophy
 
@@ -44,7 +44,7 @@ Motiflow addresses these weaknesses by separating discovery, reasoning, directio
 4. **One dominant metaphor.** Supporting symbolism may exist, but the main visual mechanism must remain coherent.
 5. **Separate reasoning from rendering.** Intelligence engines determine what should be communicated; rendering models determine how pixels are produced.
 6. **Structured outputs over uncontrolled prose.** Engines exchange typed packages that can be validated, versioned, compared, and reused.
-7. **Human judgment remains explicit.** Human approval is required at meaningful quality, brand, legal, or reputational gates.
+7. **Human judgment remains explicit.** Human approval is required at two decisive gates: direction approval before generation and final approval before export or publication.
 8. **Model independence.** Models are replaceable providers behind stable interfaces.
 9. **Explainability by design.** Major decisions must preserve rationale, evidence, confidence, provenance, and alternatives.
 10. **Quality over raw generation volume.** The system optimizes for usable and defensible creative outcomes, not the number of generated variants.
@@ -65,7 +65,11 @@ Motiflow addresses these weaknesses by separating discovery, reasoning, directio
 ```text
 Human / API / Connector Input
             ↓
+       Intake Package
+            ↓
       Brief Normalization
+            ↓
+      Normalized Brief
             ↓
       Creative Kernel
             ↕
@@ -77,23 +81,26 @@ Human / API / Connector Input
  │ Research • Business Context  │
  └───────────────────────────────┘
             ↓
-       Knowledge Fusion
+   Knowledge Fusion Package
             ↓
  ┌───────────────────────────────┐
  │ Creative Reasoning           │
  │ Symbol • Metaphor • Direction│
- │ Composition • Visual DNA     │
+ │ Direction Approval Gate      │
  └───────────────────────────────┘
             ↓
-       Prompt Compilation
+   Generation Specification
             ↓
-       Connector Gateway
+       Generation
             ↓
-      Rendering Providers
+  Deterministic/Critic Review
             ↓
- Multi-Critic Review + Human Gate
+   Final Approval Gate
             ↓
- Approved Artifact + Provenance
+     Provenance Record
+            ↓
+           Export
+            └── post-MVP: Publication Package → Publish
 ```
 
 ## 8. Creative Kernel responsibilities
@@ -143,36 +150,47 @@ The outputs are combined into a validated Knowledge Fusion Package. Conflicts, w
 
 ### Sequential creative commitment
 
-Symbolism, dominant metaphor, and core creative direction require progressively constrained decisions. These stages are predominantly sequential because each decision narrows the next design space.
+Knowledge fusion, core creative direction, direction approval, generation specification, deterministic review, critic review, and final approval require progressively constrained decisions. These stages are predominantly sequential because each decision narrows the next design space and changes which downstream artifacts remain valid.
+
+### Direction approval and specification
+
+The Creative Direction Package is the first decisive human gate. The workflow must pause in an awaiting-direction-approval state until a valid Direction Approval Record exists for the current package version.
+
+After direction approval, the system compiles a Generation Specification. This replaces legacy `PromptPackage` terminology and is the only canonical generation handoff.
 
 ### Parallel design derivation
 
-Once a direction is accepted, composition, lighting, material language, camera logic, palette, and provider-specific adaptation may be derived in parallel.
+Once direction approval is recorded, composition, lighting, material language, camera logic, palette, and provider-specific adaptation may be derived in parallel inside the Generation Specification.
 
 ### Compilation and review
 
-The final direction is compiled into provider-neutral and provider-specific generation instructions. Multiple critics then evaluate narrative alignment, visual coherence, brand safety, technical quality, originality, and usability before human approval.
+The Creative Direction Package is first presented for explicit human direction approval. Only the approved version may be compiled into a Generation Specification. Generated candidates then pass deterministic checks and focused critics before a separate human final-approval gate.
 
-## 11. Canonical packages
+## 11. Canonical artifacts
 
-The system should evolve around immutable, versioned packages such as:
+The decisive MVP workflow slice uses these immutable, versioned canonical artifacts:
 
 - Intake Package
 - Normalized Brief
-- Research Package
-- Audience Package
-- Brand Constraint Package
-- Narrative Package
 - Knowledge Fusion Package
-- Symbol Package
 - Creative Direction Package
-- Visual DNA Package
-- Composition Package
+- Direction Approval Record
 - Generation Specification
+- Generated Candidate Set
 - Critic Evaluation Package
-- Approval Record
-- Artifact Package
-- Change Set
+- Final Approval Record
+- Provenance Record
+
+Legacy aliases map as follows:
+
+- `CreativeBrief` → `Intake Package`
+- `StrategicContext` → `Knowledge Fusion Package`
+- `PromptPackage` → `Generation Specification`
+- `GeneratedAsset` → `Generated Candidate Set`
+- `ApprovalDecision` or generic `Approval Record` → `Direction Approval Record` or `Final Approval Record`, depending on gate
+- `Publication Package` → post-MVP specialization container assembled after final approval
+
+Research, audience, brand, narrative, symbol, Visual DNA, and composition outputs may be supporting artifacts or owned package sections. They must not introduce competing names for the canonical handoffs above.
 
 Every package should include at minimum:
 
@@ -208,9 +226,13 @@ A composite score may support prioritization, but it must not hide dimension-lev
 
 ## 13. Human approval gates
 
-Human approval should be configurable but mandatory for:
+The decisive slice has two explicit human approval gates:
 
-- final creative-direction commitment in enterprise workflows
+- Direction approval after the Creative Direction Package and before Generation Specification.
+- Final approval after the Generated Candidate Set and Critic Evaluation Package and before export or publication.
+
+Additional review dimensions may be configured around those gates for:
+
 - brand exceptions
 - legal, regulatory, or reputational risk
 - external publication
@@ -218,7 +240,7 @@ Human approval should be configurable but mandatory for:
 - conflicting critic results
 - material changes after approval
 
-Every approval or override must be recorded with actor, timestamp, rationale, and affected package version.
+Every approval or override must be recorded with actor, timestamp, rationale, and affected package version. The canonical records are `Direction Approval Record` and `Final Approval Record`.
 
 ## 14. UX philosophy
 
@@ -250,7 +272,7 @@ The UI should feel like a creative operating environment, not a generic chatbot 
 - Observability across every run
 - Automated tests for schemas, workflows, engines, and policies
 - Reproducible inputs and configuration
-- Backward compatibility unless an ADR approves a breaking change
+- Backward compatibility unless an ADR documents a breaking change
 - Documentation updated in the same change as architecture or behavior
 
 ## 16. Initial technology direction
@@ -285,7 +307,7 @@ These are preferred foundations, not irreversible commitments. Material changes 
 
 ## 18. Repository strategy
 
-The repository is the durable source of truth. Chat conversations may accelerate work, but accepted knowledge must be committed into version-controlled documents, schemas, tests, or ADRs.
+The repository is the durable source of truth. Chat conversations may accelerate work, but durable knowledge must be committed into version-controlled documents, schemas, tests, or ADRs.
 
 ```text
 Motiflow/
@@ -331,7 +353,7 @@ Motiflow succeeds when teams can reliably:
 
 The first release should focus on editorial and enterprise visual-direction workflows. It should not attempt to replace every creative application, digital asset management platform, or project-management tool.
 
-The MVP should prove the complete reasoning-to-approval loop with a limited number of engines and rendering providers before broadening scope.
+The MVP should prove the complete reasoning-to-approval loop with a limited number of engines and rendering providers before broadening scope. Publication packaging is a post-MVP specialization layered on top of approved canonical artifacts rather than the MVP's primary output.
 
 ## 21. Decision discipline
 
@@ -360,4 +382,4 @@ Any significant change to architecture, core terminology, canonical packages, se
 
 ## 23. Working instruction for future AI-assisted sessions
 
-Use this document as the authoritative project context. Preserve established terminology and architecture. Clearly identify assumptions, proposed changes, unresolved decisions, and affected documents. Do not silently introduce breaking changes. Convert accepted outcomes into repository artifacts rather than relying on conversation history.
+Use this document as the authoritative project context. Preserve established terminology and architecture. Clearly identify assumptions, proposed changes, unresolved decisions, and affected documents. Do not silently introduce breaking changes. Convert approved outcomes into repository artifacts rather than relying on conversation history.

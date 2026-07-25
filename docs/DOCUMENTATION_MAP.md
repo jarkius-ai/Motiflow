@@ -1,6 +1,8 @@
 # Documentation Map
 
-This file explains where Motiflow knowledge belongs and which documents are authoritative.
+**Status:** Supporting transitional navigation summary
+
+The authoritative navigation index is [`00-foundation/DOCUMENT_INDEX.md`](00-foundation/DOCUMENT_INDEX.md), and conflict resolution is controlled by [`00-foundation/DOCUMENT_AUTHORITY.md`](00-foundation/DOCUMENT_AUTHORITY.md). This map summarizes the current transitional layout only.
 
 ## Authority order
 
@@ -11,21 +13,24 @@ This file explains where Motiflow knowledge belongs and which documents are auth
 5. `docs/archive/` — historical source material only
 6. Chat history and informal notes — non-authoritative inputs
 
-When documents conflict, the higher authority wins unless a newer ADR explicitly changes the decision.
+When documents conflict, apply the Document Authority Standard rather than inferring authority from this summary.
 
-## Structure
+## Current transitional structure
 
 ```text
 docs/
 ├── 00-foundation/   # manifesto, philosophy, principles
 ├── 01-product/      # users, journeys, requirements, outcomes
 ├── 02-architecture/ # kernel, orchestrator, engines, contracts
+├── 03-delivery/     # review-ready sequencing proposals
 ├── 03-engineering/  # implementation architecture and standards
 ├── 04-ai/           # evaluation, memory, prompting, review
-├── 05-governance/   # contribution, security, decisions, releases
+├── 05-governance/   # transitional contribution guidance
 ├── adr/             # architecture decision records
 └── archive/         # superseded and imported historical material
 ```
+
+`docs/VISION.md`, `docs/PRD.md`, `docs/ROADMAP.md`, and `docs/SYSTEM_DESIGN.md` remain active at their current paths until a focused migration updates all inbound links. The proposed target layout is defined in [`00-foundation/REPOSITORY_STRUCTURE.md`](00-foundation/REPOSITORY_STRUCTURE.md).
 
 ## Document status
 

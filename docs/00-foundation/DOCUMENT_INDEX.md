@@ -33,19 +33,31 @@ This index identifies the canonical home of each major concern. It is a navigati
 | Concern | Canonical location |
 |---|---|
 | Product charter | `PROJECT_CHARTER.md` |
-| Product vision | `docs/01-product/` |
-| Product requirements | `docs/01-product/` |
-| Personas and jobs | `docs/01-product/` |
+| Product vision | [`docs/VISION.md`](../VISION.md) pending focused structural migration |
+| Product requirements | [`docs/PRD.md`](../PRD.md) pending focused structural migration |
+| Personas and jobs | [`docs/01-product/PERSONAS.md`](../01-product/PERSONAS.md) |
 | User journeys and UX behavior | `docs/01-product/` and `docs/05-design/` |
-| Roadmap and implementation sequencing | `docs/01-product/` or an explicitly approved roadmap document |
+| Review-ready product roadmap | [`docs/ROADMAP.md`](../ROADMAP.md) pending focused structural migration |
+| Human-accepted implementation sequencing | An explicitly approved roadmap or task specification |
+| MVP validation plan | [`docs/01-product/MVP_VALIDATION_PLAN.md`](../01-product/MVP_VALIDATION_PLAN.md) |
 
 Product documents may expand the charter but must not redefine Motiflow, ACDS, MEOS, or canonical component boundaries.
+
+## Delivery planning status
+
+`docs/03-delivery/` contains supporting delivery-planning and implementation-sequencing artifacts. Unless a document there is explicitly promoted through human approval, treat it as proposed or review-ready rather than as accepted product or architecture authority.
+
+Current delivery-planning artifacts include:
+
+- `docs/03-delivery/UPDATED_PHASE_ROADMAP.md`
+- `docs/03-delivery/AI_EXECUTION_IMPLEMENTATION_PLAN.md`
 
 ## Architecture authority
 
 | Concern | Canonical location |
 |---|---|
 | Stable architecture context | `MASTER_CONTEXT.md` |
+| Reference system design | [`docs/SYSTEM_DESIGN.md`](../SYSTEM_DESIGN.md) pending focused structural migration |
 | Detailed architecture specifications | `docs/02-architecture/` |
 | Architecture dependency direction | [`docs/02-architecture/ARCHITECTURE_DEPENDENCY_MAP.md`](../02-architecture/ARCHITECTURE_DEPENDENCY_MAP.md) |
 | Data and artifact contracts | `docs/02-architecture/DATA_CONTRACTS.md` |

@@ -1,6 +1,6 @@
 # Motiflow Workflow State Machine
 
-**Status:** Proposed architecture freeze v0.1
+**Status:** Review-ready architecture contract v0.3
 **Owner:** Chief Architect
 
 ## Run states
@@ -13,20 +13,20 @@ CREATED
 → DISCOVERY_COMPLETE
 → FUSION_RUNNING
 → KNOWLEDGE_FUSED
-→ SYMBOLIZING
-→ SYMBOLIZED
 → DIRECTING
-→ DIRECTED
-→ DESIGNING
-→ DESIGNED
-→ COMPILING
-→ COMPILED
-→ REVIEWING
-→ AWAITING_HUMAN_APPROVAL
-→ APPROVED
+→ CREATIVE_DIRECTION_READY
+→ AWAITING_DIRECTION_APPROVAL
+→ DIRECTION_APPROVED
+→ SPECIFYING_GENERATION
+→ GENERATION_SPECIFIED
 → GENERATING
-→ GENERATED
-→ PUBLISHED
+→ GENERATED_CANDIDATES_READY
+→ DETERMINISTIC_REVIEWING
+→ CRITIC_REVIEWING
+→ AWAITING_FINAL_APPROVAL
+→ FINAL_APPROVED
+→ EXPORTING
+→ EXPORTED
 ```
 
 Exceptional states:
@@ -39,6 +39,25 @@ FAILED
 CANCEL_REQUESTED
 CANCELLED
 ```
+
+## Canonical decisive-slice artifact sequence
+
+The decisive workflow slice uses one canonical artifact vocabulary:
+
+```text
+Intake Package
+→ Normalized Brief
+→ Knowledge Fusion Package
+→ Creative Direction Package
+→ Direction Approval Record
+→ Generation Specification
+→ Generated Candidate Set
+→ Critic Evaluation Package
+→ Final Approval Record
+→ Provenance Record
+```
+
+`Publication Package` is not a canonical MVP workflow artifact. It is an optional post-MVP container assembled only after `FINAL_APPROVED`.
 
 ## Transition rules
 
@@ -64,21 +83,24 @@ Each transition must define:
 | VALIDATED | DISCOVERY_RUNNING | Orchestrator | Required discovery nodes registered |
 | DISCOVERY_RUNNING | DISCOVERY_COMPLETE | Orchestrator | Required nodes succeeded and outputs validate |
 | DISCOVERY_COMPLETE | FUSION_RUNNING | Orchestrator | Synchronization barrier reached |
-| FUSION_RUNNING | KNOWLEDGE_FUSED | Kernel | Fusion package validates |
-| KNOWLEDGE_FUSED | SYMBOLIZING | Orchestrator | Required evidence threshold met |
-| SYMBOLIZING | SYMBOLIZED | Kernel | Symbol package validates and one dominant metaphor exists |
-| SYMBOLIZED | DIRECTING | Orchestrator | Symbol package accepted |
-| DIRECTING | DIRECTED | Kernel | Creative direction package validates |
-| DIRECTED | DESIGNING | Orchestrator | Direction gate passed |
-| DESIGNING | DESIGNED | Kernel | Required design packages validate |
-| DESIGNED | COMPILING | Orchestrator | Target providers selected |
-| COMPILING | COMPILED | Kernel | Generation specifications validate and no prompt drift detected |
-| COMPILED | REVIEWING | Orchestrator | Required critics registered |
-| REVIEWING | AWAITING_HUMAN_APPROVAL | Review Fusion | Critical gates pass or require human resolution |
-| AWAITING_HUMAN_APPROVAL | APPROVED | Authorized human | Approval record valid |
-| APPROVED | GENERATING | Orchestrator | Generation authorization valid |
-| GENERATING | GENERATED | Kernel | Generated asset record validates |
-| GENERATED | PUBLISHED | Authorized publishing workflow | Publication approval and connector authorization valid |
+| FUSION_RUNNING | KNOWLEDGE_FUSED | Kernel | Knowledge Fusion Package validates |
+| KNOWLEDGE_FUSED | DIRECTING | Orchestrator | Required evidence threshold met |
+| DIRECTING | CREATIVE_DIRECTION_READY | Kernel | Creative Direction Package validates and is reviewable |
+| CREATIVE_DIRECTION_READY | AWAITING_DIRECTION_APPROVAL | Orchestrator | Review materials and diff context exist |
+| AWAITING_DIRECTION_APPROVAL | DIRECTION_APPROVED | Authorized human | Direction Approval Record is valid for the current Creative Direction Package version |
+| DIRECTION_APPROVED | SPECIFYING_GENERATION | Orchestrator | Direction approval remains current and no invalidating upstream change exists |
+| SPECIFYING_GENERATION | GENERATION_SPECIFIED | Kernel | Generation Specification validates and references the approved direction |
+| GENERATION_SPECIFIED | GENERATING | Orchestrator | Target providers selected and generation authorization valid |
+| GENERATING | GENERATED_CANDIDATES_READY | Kernel | Generated Candidate Set validates, even when it contains one candidate |
+| GENERATED_CANDIDATES_READY | DETERMINISTIC_REVIEWING | Orchestrator | Required deterministic checks are registered |
+| DETERMINISTIC_REVIEWING | CRITIC_REVIEWING | Kernel | Deterministic checks complete and findings are packaged for critic consumption |
+| CRITIC_REVIEWING | AWAITING_FINAL_APPROVAL | Review Fusion | Required critic evaluations complete and Critic Evaluation Package validates |
+| AWAITING_FINAL_APPROVAL | FINAL_APPROVED | Authorized human | Final Approval Record is valid for the current Generated Candidate Set and Critic Evaluation Package |
+| FINAL_APPROVED | EXPORTING | Orchestrator | Export targets selected |
+| EXPORTING | EXPORTED | Kernel | Provenance Record validates and export manifest is reproducible |
+The core MVP state machine ends at `EXPORTED`. There is no generation-to-export shortcut: every exported output must pass deterministic review, critic evaluation, final approval, and provenance capture first.
+
+An optional post-MVP publication specialization may begin from `EXPORTED`. Its publishing states and connector contracts are outside this core state machine and must not change the canonical MVP artifact chain.
 
 ## Revision behavior
 
@@ -92,6 +114,8 @@ A critic, validator, or human may route a run to `REVISION_REQUIRED` with:
 - preserved unaffected artifacts.
 
 After revision, the Orchestrator resumes from the earliest invalidated node rather than restarting the full run.
+
+Revising an approved Creative Direction Package invalidates the Direction Approval Record, Generation Specification, Generated Candidate Set, Critic Evaluation Package, Final Approval Record, and Provenance Record. Revising generated candidates does not invalidate direction approval unless direction-owned fields change.
 
 ## Clarification behavior
 
@@ -145,4 +169,4 @@ An approval is invalid when:
 - required critic findings are unresolved;
 - approval conditions are unmet.
 
-Material changes invalidate dependent approvals automatically.
+Direction approval and final approval are independent human gates. Material changes invalidate dependent approvals automatically, and no run may bypass either gate on the path to export or publication.

@@ -4,6 +4,8 @@
 **Owner:** Engineering and Chief Architect
 **Scope:** Initial implementation stack, bounded modules, and engineering architecture direction
 
+This document sets engineering direction and repository boundaries. Review-ready delivery plans may propose sequencing, but they do not override human-accepted architecture decisions until explicitly approved.
+
 ## Initial stack direction
 
 - Backend: Laravel 11+ on PHP 8.3 or later
@@ -40,6 +42,7 @@ The stack is a starting direction, not an irreversible constraint. Architecture 
 - API and event contracts are versioned.
 - Secrets never enter prompts or persisted artifacts.
 - Tests cover contracts, workflow transitions, invalidation, authorization, and provider failure modes.
+- The first executable slice must preserve two explicit human gates: direction approval before generation and final-candidate approval after critique.
 
 ## Repository evolution
 
@@ -70,4 +73,6 @@ examples/
 diagrams/
 ```
 
-The first implementation milestone should prove one complete workflow before expanding into a broad engine ecosystem.
+The first implementation milestone should prove one complete creative-direction workflow before expanding into a broad engine ecosystem.
+
+Early implementation must align with the canonical `packages/*` boundaries shown above. Do not create a `packages/ai/` subtree. For the first slice, schemas belong in `packages/schemas/`, workflow definitions in `packages/workflows/`, provider-facing gateway code in `packages/connectors/`, critics in `packages/critics/`, and cross-cutting validation/provenance utilities only where justified in `packages/shared/`.

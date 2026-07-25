@@ -1,12 +1,14 @@
 # Article Ingestion and Editorial Pipeline
 
-Status: Proposed for architecture freeze
+**Status:** Deferred post-MVP specialization
+**Owner:** Product and Chief Architect
+**Scope:** Optional crawler ingestion and editorial publication expansion after MVP proof
 
 ## Purpose
 
-Integrate an existing daily article crawler that stores source articles as Markdown files with the Motiflow creative-direction workflow.
+Describe a possible post-MVP integration between an existing daily article crawler and Motiflow's creative-direction workflow.
 
-The crawler remains an upstream source producer. Motiflow ingests its Markdown outputs, validates and enriches them, generates editorial and visual artifacts, and assembles a review-ready Publication Package.
+The crawler remains an upstream source producer. For the MVP, a crawler-produced article may be used only as source material for an Intake Package. Editorial authoring, publication packaging, and CMS export remain outside the decisive slice.
 
 ## Boundary
 
@@ -21,11 +23,11 @@ Ingestion Connector
         ↓
 Source Normalization + Deduplication
         ↓
-Editorial and Creative Workflow
+Creative Workflow
         ↓
-Publication Package
+Approved candidate + provenance
         ↓
-Side-by-Side Review
+Optional post-MVP Publication Package
         ↓
 Markdown / HTML / CMS Export
 ```
@@ -48,7 +50,7 @@ The crawler submits the Markdown document and metadata through an authenticated 
 
 The crawler commits articles to a configured Git repository and Motiflow processes new or changed files.
 
-The MVP should support watched-directory or manifest ingestion first because both preserve the crawler as an independent component.
+If this specialization is prioritized after MVP proof, watched-directory or manifest ingestion is the smallest starting point because both preserve the crawler as an independent component.
 
 ## Source document contract
 
@@ -218,9 +220,9 @@ Examples:
 - HTML sanitation failure → block export;
 - missing hero image → permit content-only review when workflow policy allows.
 
-## MVP integration
+## Post-MVP specialization sequence
 
-Recommended first implementation:
+Recommended first implementation only after the decisive creative workflow is validated:
 
 1. Configure one crawler output directory.
 2. Read new `.md` files using a cursor or manifest.

@@ -13,9 +13,40 @@ Historical origin path:
 
 This handoff consolidates earlier Motiflow project context, architectural decisions, pending work, and implementation ideas so historical continuity is preserved without depending on prior chat history.
 
+## Current handoff framing for the next team
+
+This file preserves broad historical context, but it should not drive the next team toward broad infrastructure-first implementation.
+
+The decisive MVP slice is creative-direction-first:
+
+```text
+Source Material
+  → Analysis / Narrative framing as needed
+  → Creative Direction
+  → Approval Gate 1
+  → One provider-backed generation/review loop
+  → Approval Gate 2
+  → Archive proof artifacts
+```
+
+Use the two approval gates explicitly:
+
+- **Approval Gate 1** — human approval of the proposed creative direction before downstream production hardens around it
+- **Approval Gate 2** — human approval of the final review package before export, publication, or equivalent release
+
+Until that MVP proof exists, park these as post-MVP concerns:
+
+- publication-platform breadth
+- editorial authoring breadth
+- multi-provider Model Gateway expansion
+- broad routing, fallback, and provider registry infrastructure
+- publishing connectors and distribution automation
+
+Historical sections below remain useful for future-state architecture, but they are not the recommended build order for the next slice.
+
 ## 1. Product
 
-Motiflow is an AI Editorial Operating System that transforms crawler-produced Markdown articles into reviewable, publication-ready packages.
+Motiflow is a creative-intelligence system whose broader historical framing included editorial packaging and publishing workflows. The current decisive slice is narrower: prove that the product can turn source material into validated creative direction, carry that direction through one provider-backed generation path, and hold human approval before anything is finalized.
 
 Core systems:
 
@@ -25,7 +56,7 @@ Core systems:
 - Creative Kernel — provider-neutral editorial and creative reasoning
 - Workflow Orchestrator — controls stages, dependencies, retries, joins, and verification gates
 - Model Gateway — provider-neutral AI execution
-- Publication Package — canonical artifact for each article
+- Publication Package — deferred post-MVP container for publication-specialized workflows
 - Editorial Memory — permanent retained history
 - Decision Ledger — decisions, reasons, evidence, alternatives, and lessons
 - Knowledge Vault / Graph — connected project and editorial knowledge
@@ -42,14 +73,14 @@ Markdown
   ↓
 Motiflow
   ↓
-Publication Package
+Post-MVP Publication Package specialization
 ```
 
 Motiflow does not replace the crawler.
 
-## 3. Canonical publication package
+## 3. Historical publication specialization (post-MVP)
 
-Each article package should contain:
+If a later publication specialization is authorized, each article package may contain:
 
 - source and source hash
 - metadata and normalized content
@@ -155,10 +186,15 @@ Source
   → Analysis
   → Narrative
   → Creative Direction
-  → Prompt Generation
+  → Approval Gate 1
+  → Prompt Generation / Directed Rendering
+  → Review
+  → Approval Gate 2
 ```
 
-Then parallelize:
+Only after this proof should broader downstream authoring, export, and publishing flows become immediate implementation priorities.
+
+Historical broader downstream flow:
 
 ```text
 Narrative
@@ -171,7 +207,7 @@ Narrative
 
 Join, verify, then enter human review.
 
-## 10. AI execution architecture
+## 10. Historical AI execution architecture target
 
 ```text
 Workflow Orchestrator
@@ -187,9 +223,9 @@ OpenAI / Anthropic / Gemini / future providers
 
 The Creative Kernel must remain provider-neutral.
 
-Model selection is capability-based, not vendor-based.
+Model selection is capability-based, not vendor-based, but broad provider-neutral infrastructure is not the next immediate slice. For MVP proof, keep the implementation narrow and use only the minimum provider-backed path needed to prove creative-direction-to-review flow.
 
-## 11. Model Gateway responsibilities
+## 11. Historical Model Gateway responsibilities
 
 - capability routing
 - provider and model registry
@@ -207,6 +243,8 @@ Model selection is capability-based, not vendor-based.
 
 Every invocation should record workflow ID, package ID, stage, capability, provider, model, prompt ID/version, schema version, latency, token usage, retries, fallback, cost, validation result, errors, and output hash.
 
+Treat the majority of this section as post-MVP infrastructure breadth. For the first proof slice, keep only the minimum provenance and validation needed to support the two approval gates and reproducible review.
+
 ## 12. Repository state snapshot
 
 Repository:
@@ -223,12 +261,12 @@ Verified branch state on July 25, 2026:
 - merged pull requests: `#1`, `#2`, `#3`, `#4`
 - implementation status on `main`: not started
 
-Documentation and architecture baseline accepted on `main`:
+Historical documentation baseline merged on `main`:
 
 - PR #1 — repository foundation
 - PR #2 — documentation normalization
-- PR #3 — runtime and architecture contract freeze
-- PR #4 — AI execution layer documentation and sequencing
+- PR #3 — proposed runtime and architecture contracts
+- PR #4 — AI execution layer documentation and proposed sequencing
 
 Historical note:
 
@@ -259,7 +297,12 @@ The earlier `agent/ai-execution-layer` branch and draft-PR context described a p
 - end-to-end tests
 - publishing connectors
 
-## 14. Accepted canonical target repository structure
+Immediate-slice note:
+
+- Not-yet-implemented does not mean immediate priority.
+- Publication-platform breadth, editorial authoring breadth, multi-provider infrastructure, and publishing connectors stay parked until the creative-direction-first MVP proof is accepted.
+
+## 14. Canonical target repository structure
 
 Authoritative source:
 
@@ -309,7 +352,7 @@ Motiflow/
 
 Use lifecycle states for publication flow and retention, not as a competing top-level repository tree.
 
-## 15. Pending implementation priorities
+## 15. Current implementation priorities for MVP proof
 
 ### P0 — Bootstrap synchronization
 
@@ -318,239 +361,86 @@ Status on July 25, 2026:
 - superseded by `START_HERE.md`, `CONTEXT_INDEX.yaml`, and `MEOS/20_PROJECT_BOOTSTRAP.md`
 - do not create alternate bootstrap authorities unless an accepted task explicitly requires them
 
-### P1 — Model Gateway contracts
+### P1 — Creative-direction-first task definition
 
-Implement TypeScript contracts for gateway, adapters, requests, results, models, providers, routing, retry, fallback, validation, provenance, usage, cost, and errors.
+Write the first implementation-ready task around one decisive flow from source material to approved creative direction and one downstream provider-backed reviewable output path.
 
 Exit criteria:
 
-- compile, lint, and tests pass
-- no real API credentials required
-- provider SDKs stay isolated
-- domain code depends on contracts
+- acceptance criteria and verification plan are explicit
+- the two approval gates are named in the task
+- scope excludes broad platform and connector expansion
 
-### P2 — Capability Registry
+### P2 — Source-to-direction artifacts
 
-Store capability IDs, schemas, supported providers/models, quality tier, latency tier, cost tier, fallback order, validation, timeout, and retry policy.
+Implement only the minimum contracts, schemas, and storage needed to preserve source context, reasoning trail, creative-direction output, approval state, and reproducible review artifacts.
 
-### P3 — Deterministic Mock Adapter
+### P3 — Single-provider proof path
 
-Support deterministic fixtures, seeded outputs, forced failures, malformed responses, latency, retry, fallback, cost, and validation simulations.
+Implement one narrow provider-backed generation path after creative direction is approved. Prefer deterministic or tightly scoped execution over broad routing infrastructure.
 
-### P4 — Prompt Registry
+### P4 — Review package with two approval gates
 
-Store prompt ID/version, template, variables, capability, schemas, model guidance, stop conditions, evaluation notes, deprecation, hash, and audit history.
+Support reviewable artifacts, explicit revision handling, and the two human approvals:
 
-No silent prompt replacement.
+- creative-direction approval before downstream production hardens
+- final review-package approval before export or publication
 
-### P5 — Validation
-
-Structured:
-
-- schema conformance
-- required fields
-- enums and types
-- artifact presence
-
-Semantic:
-
-- completeness
-- unsupported claims
-- citation coverage
-- contradiction checks
-- editorial alignment
-- channel suitability
-- image constraints
-- duplicate detection
-
-### P6 — Usage and Cost Ledger
-
-Capture provider, model, capability, workflow/package/stage, prompt/version, token usage, cache, cost, latency, retries, fallback, timestamp, and success/failure.
-
-### P7 — Publication Package
-
-Implement manifest and canonical filesystem layout. History should be append-only.
-
-### P8 — Markdown Ingestion
-
-Implement inbox scanning, parsing, frontmatter, hashing, duplicate detection, metadata extraction, package creation, lifecycle transition, and audit event.
-
-### P9 — Workflow Engine
-
-Support sequential stages, parallel tasks, joins, verification gates, human approval gates, retry, fallback, resumability, idempotency, event history, pause, and resume.
-
-### P10 — Editorial workflow
+### P5 — End-to-end MVP proof
 
 ```text
-Markdown Import
-  → Normalize
-  → Metadata
-  → Analyze
-  → Claims
-  → Citations
-  → Narrative
+Source Material
+  → Normalize / Analyze as needed
+  → Narrative framing as needed
   → Creative Direction
-  → Visual Prompts
-  → LinkedIn
-  → Newsletter
-  → Markdown
-  → HTML
-  → Assemble
+  → Approval Gate 1
+  → One provider-backed generation path
   → Review
-  → Approve
-  → Publish/Export
-  → Archive
-  → Learn
+  → Approval Gate 2
+  → Archive proof artifacts
 ```
 
-### P11 — Editorial Memory
+### P6 — Post-MVP breadth
 
-Store article context, prompts, visuals, assets, feedback, approvals, publishing results, analytics, and lessons.
+Only after P5 is accepted should the team broaden into:
 
-### P12 — Knowledge Vault and Graph
+- publication-platform expansion
+- editorial authoring breadth
+- multi-provider gateway and routing infrastructure
+- publishing connectors
+- large-scale memory, graph, and learning surfaces
 
-Implement entity/topic/relation extraction, source/article/model/decision/prompt/asset/performance linkage, semantic retrieval, and precedent search.
+## 16. Current engineering sequence
 
-### P13 — Decision Ledger
+### Phase 1 — Validation evidence and human decision
 
-Implement architecture, workflow, editorial, routing, prompt, policy, and approval decisions.
+- run `docs/01-product/MVP_VALIDATION_PLAN.md`
+- record baselines from 5–10 inputs and 2–3 intended users or design partners
+- record the product-owner proceed, revise, or stop decision
+- obtain required review of the two-gate contracts and canonical artifact vocabulary
 
-### P14 — Learning Engine
+### Phase 2 — Executable contract proof
 
-Inputs:
+- first ready task specification and verification plan
+- JSON Schemas for the ten canonical artifacts
+- deterministic valid and invalid fixtures
+- one repository validation command
+- one executable workflow using a narrow connector port
 
-- accepted and rejected outputs
-- revisions
-- image selection
-- publication performance
-- cost and latency
-- validation failures
-- provider and prompt performance
+### Phase 3 — Single-provider decisive slice
 
-Outputs:
+- thin Model Gateway interface and deterministic mock
+- one tightly scoped real provider path
+- generated candidates, deterministic checks, and focused critics
+- Approval Gate 1 and Approval Gate 2 evidence
+- final approval and reproducible provenance artifacts
 
-- recommendations
-- pattern reports
-- prompt improvement proposals
-- routing proposals
-- quality warnings
-- reusable creative patterns
+### Phase 4 — Post-proof hardening and expansion
 
-The Learning Engine must not silently modify prompts, policies, or architecture.
-
-### P15 — Human Review Workspace
-
-Required UX:
-
-- article queue
-- lifecycle status
-- search and filters
-- source, analysis, narrative, and creative-direction views
-- side-by-side image and article review
-- prompt history
-- compare variants
-- comments
-- approve, reject, revise
-- readiness checklist
-- audit trail
-- publishing status
-
-### P16 — First real provider adapter
-
-Build only after mock coverage is stable.
-
-### P17 — End-to-end vertical slice
-
-```text
-Crawler Markdown
-  → Import
-  → Publication Package
-  → Analysis
-  → Narrative
-  → Creative Direction
-  → Prompt
-  → Image/placeholder
-  → Markdown
-  → HTML
-  → Review
-  → Approval
-  → Archive
-```
-
-## 16. Engineering phases
-
-### Phase 4A — Bootstrap and Contracts
-
-- bootstrap docs
-- repository skeleton
-- TypeScript and tests
-- shared contracts
-- Model Gateway interfaces
-- capability schemas
-- error taxonomy
-
-### Phase 4B — Mock AI Execution
-
-- deterministic mock
-- registry and routing
-- retry/fallback
-- validators
-- telemetry
-- cost ledger
-
-### Phase 4C — Publication Package Foundation
-
-- package schema and manifest
-- lifecycle
-- filesystem adapter
-- audit events
-- hashing
-- artifact registry
-
-### Phase 4D — Markdown Ingestion
-
-- crawler importer
-- frontmatter
-- duplicate handling
-- normalized metadata
-- ingestion workflow
-
-### Phase 5 — Editorial Generation
-
-- analysis
-- claims and citations
-- narrative
-- creative direction
-- image prompts
-- Markdown, HTML, LinkedIn, newsletter
-
-### Phase 6 — Review Workspace
-
-- queue
-- side-by-side review
-- revisions
-- approvals
-- audit history
-
-### Phase 7 — Editorial Memory
-
-- permanent records
-- retrieval
-- precedent lookup
-- outcome analysis
-
-### Phase 8 — Provider Expansion
-
-- production adapters
-- routing and budget policies
-- evaluations
-
-### Phase 9 — Publishing and Analytics
-
-- export/connectors
-- publishing records
-- metrics
-- learning recommendations
+- provider expansion
+- editorial authoring breadth
+- publication/export connectors
+- deeper memory, graph, analytics, and learning systems
 
 ## 17. Engineering rules
 
@@ -565,49 +455,54 @@ Crawler Markdown
 - Tests must run without real credentials.
 - Use deterministic mocks first.
 - Prefer coherent vertical slices.
+- Do not let broad Model Gateway or connector scope displace the creative-direction-first MVP proof.
 - Preserve failures as learning data.
 - Record reasons for decisions.
 - Route models by capability.
 - Keep the Creative Kernel provider-neutral.
 
-## 18. Recommended first implementation task
+## 18. Recommended next task
 
 Start with:
 
 ```text
-MG-001 — Implement provider-neutral Model Gateway and connector SDK contracts
+CD-000 — Execute MVP validation and record the product-owner decision
+```
+
+Use `docs/01-product/MVP_VALIDATION_PLAN.md`. Do not begin broad implementation until the dated validation report, product-owner proceed/revise/stop decision, and required human contract review exist.
+
+Then prepare:
+
+```text
+CD-001 — Specify and validate the ten decisive-slice artifact contracts
 ```
 
 Suggested canonical paths to introduce only when implementation begins:
 
 ```text
-packages/connector-sdk/src/model-gateway.ts
-packages/connector-sdk/src/model-request.ts
-packages/connector-sdk/src/model-result.ts
-packages/connector-sdk/src/errors.ts
-packages/connector-sdk/src/index.ts
-packages/schemas/model-invocation.schema.json
-tests/contract/model-gateway.contract.test.ts
+packages/creative-kernel/
+packages/workflows/
+packages/schemas/
+tests/
 ```
 
-Follow with these canonical package paths rather than a `packages/ai/*` subtree:
+Add narrower paths only when the slice requires them. Favor artifact, approval, and review contracts before broad gateway surface area.
 
-- `packages/connectors/mock/` for the deterministic mock adapter
-- `packages/connectors/` for provider-specific adapters
-- `packages/schemas/` for capability and output schemas
+Follow with these canonical package paths only as the proof slice justifies them:
+
+- `packages/connectors/` for the single provider-backed proof path or deterministic mock needed by the slice
+- `packages/schemas/` for approval, artifact, and output schemas
 - `packages/workflows/` for executable workflow definitions
 - `packages/creative-kernel/` and `packages/orchestrator/` when runtime ownership is needed by the implementation slice
 
-Then:
+Then, only as validation evidence and ready task specifications justify:
 
 ```text
-MG-002 — Capability Registry
-MG-003 — Deterministic Mock Adapter
-MG-004 — Structured Validator
-MG-005 — Usage and Cost Ledger
-MG-006 — Markdown Ingestion
-MG-007 — Publication Package Manifest
-MG-008 — First End-to-End Workflow
+CD-002 — Executable two-gate workflow with deterministic fixtures
+CD-003 — Thin gateway and single-provider generation proof
+CD-004 — Candidate critics and final-approval loop
+CD-005 — End-to-end reproducible provenance proof
+CD-006 — Post-proof gateway, connector, and platform expansion
 ```
 
 ## 19. Repository workflow note
@@ -622,9 +517,9 @@ Current verified truth:
 
 Use current repository state, accepted MEOS process, and task-specific branches as needed. Do not follow the old `agent/ai-execution-layer` checkout, copy, or PR instructions from prior versions of this handoff.
 
-## 20. North Star
+## 20. Historical expansion north star (post-MVP)
 
-Build an AI-native Editorial Operating System that transforms crawled Markdown into publication packages with:
+The current decisive north star is the two-gate creative-direction workflow described above. The broader historical expansion vision is an AI-native Editorial Operating System that transforms crawled Markdown into publication packages with:
 
 - high-quality editorial reasoning
 - reusable creative direction

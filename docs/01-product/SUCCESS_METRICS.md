@@ -8,13 +8,17 @@ Motiflow measures success across strategic quality, creative quality, operationa
 
 ## North Star
 
-**Percentage of projects that move from a validated brief to an approved, production-ready creative package without restarting the strategy.**
+**Percentage of projects that move from a validated brief through approved creative direction to a final approved candidate without restarting the strategy.**
 
 ## Product metrics
 
 - Time from submitted brief to approved direction
 - First-review approval rate
 - Average number of revision cycles
+- Direction usefulness score
+- Rationale clarity score
+- Final candidate acceptance rate
+- Candidate revision count
 - Percentage of reused knowledge and approved components
 - Workflow completion rate
 - User adoption by role and workspace
@@ -49,11 +53,22 @@ Motiflow measures success across strategic quality, creative quality, operationa
 
 ## Initial MVP targets
 
-Targets will be baselined during pilot use. The MVP should demonstrate:
+Targets must first be baselined through [`MVP_VALIDATION_PLAN.md`](MVP_VALIDATION_PLAN.md), then recalibrated during pilot use. The MVP should demonstrate:
 
-- A complete brief-to-approved-direction workflow
+- A complete brief-to-final-approved-candidate workflow with both human gates
+- Baseline measurement across 5–10 representative briefs and 2–3 intended users or design partners
 - Reliable schema validation between every node
 - Selective reruns after feedback
-- Human approval before final generation and release
-- Full version history and provenance for every accepted artifact
+- Separate human direction and final-candidate approval gates
+- Full version history and provenance for every approved direction and final candidate
+- Measurable improvement in time to approved direction compared with the baseline workflow
 - Measurable reduction in avoidable revision cycles compared with an unstructured prompting workflow
+
+## Pre-build baseline measures
+
+- Time from source brief to an approved creative direction using the current manual process
+- Number of direction revision cycles before approval
+- Intended-user rating of direction usefulness
+- Intended-user rating of rationale clarity
+- Percentage of briefs that require clarification before direction can be approved
+- Number of candidate revisions before final approval

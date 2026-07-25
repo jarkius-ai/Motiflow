@@ -1,7 +1,7 @@
 # Motiflow System Design
 
 **Version:** 0.1  
-**Status:** Foundation draft
+**Status:** Review-ready foundation draft
 
 ## 1. Architectural approach
 
@@ -48,7 +48,7 @@ Hosts or invokes specialist engines through a common contract. Initial engines a
 - Symbol Intelligence
 - Creative Director
 - Visual DNA
-- Prompt Compiler
+- Generation Specification Compiler
 - Narrative Critic
 - Visual Critic
 - Brand and Policy Critic
@@ -68,7 +68,7 @@ The gateway owns credentials, provider-specific mapping, rate limits, request po
 
 ### Package Store
 
-PostgreSQL stores structured metadata, package indexes, workflow state, permissions, and approval records. Large package payloads and generated assets may be stored in S3-compatible object storage with content hashes and database references.
+PostgreSQL stores structured metadata, package indexes, workflow state, permissions, direction approval records, final approval records, and provenance records. Large package payloads and generated assets may be stored in S3-compatible object storage with content hashes and database references.
 
 ### Queue and event infrastructure
 
@@ -97,33 +97,37 @@ No component should absorb the responsibilities of all other layers.
 ```text
 Project Created
     ↓
-Brief Submitted
+Intake Package
     ↓
 Brief Normalizer
     ↓
+Normalized Brief
+    ↓
 [ Narrative | Audience | Business | Brand ]
     ↓
-Knowledge Fusion
+Knowledge Fusion Package
     ↓
-Symbol Intelligence
+Creative Direction Package
     ↓
-Creative Director
+Awaiting Direction Approval
     ↓
-Human Direction Approval
+Direction Approved
     ↓
-[ Visual DNA | Composition | Provider Adaptation ]
+Generation Specification
     ↓
-Prompt Compiler
+Generation
     ↓
-Rendering Connector
+Generated Candidate Set
     ↓
-Generated Candidates
+[ Deterministic Review | Narrative Critic | Visual Critic | Brand/Policy Critic ]
     ↓
-[ Narrative Critic | Visual Critic | Brand/Policy Critic ]
+Awaiting Final Approval
     ↓
-Human Final Approval
+Final Approved
     ↓
-Approved Artifact Package
+Provenance Record
+    ↓
+Export
 ```
 
 ## 5. Package contract
@@ -133,7 +137,7 @@ Every engine receives a validated envelope and returns a new immutable package.
 ```json
 {
   "package_id": "uuid",
-  "package_type": "creative_direction",
+  "package_type": "creative_direction_package",
   "schema_version": "1.0",
   "project_id": "uuid",
   "run_id": "uuid",
@@ -161,17 +165,24 @@ Every engine receives a validated envelope and returns a new immutable package.
 
 ## 6. Workflow states
 
-Initial run states:
+Initial decisive-slice run states:
 
-- drafted
-- queued
-- running
-- waiting_for_dependency
-- waiting_for_approval
-- retry_scheduled
-- failed
-- cancelled
-- completed
+- created
+- validating
+- discovery_running
+- knowledge_fused
+- creative_direction_ready
+- awaiting_direction_approval
+- direction_approved
+- generation_specified
+- generating
+- generated_candidates_ready
+- deterministic_reviewing
+- critic_reviewing
+- awaiting_final_approval
+- final_approved
+- exporting
+- exported
 
 Initial stage states:
 
@@ -185,19 +196,31 @@ Initial stage states:
 
 State transitions must be explicit and validated by the Kernel.
 
+The decisive slice must preserve two explicit human gates:
+
+1. `Creative Direction Package` → `awaiting_direction_approval` → `Direction Approval Record`
+2. `Critic Evaluation Package` → `awaiting_final_approval` → `Final Approval Record`
+
+There is no `generated -> exported` shortcut. The core workflow ends at export, which happens only after final approval and provenance capture. An optional post-MVP publication specialization may begin from the exported artifacts.
+
 ## 7. Event examples
 
 - `project.created`
-- `brief.submitted`
+- `intake_package.created`
+- `normalized_brief.created`
 - `package.validated`
 - `stage.ready`
 - `stage.started`
 - `stage.completed`
 - `stage.failed`
-- `approval.requested`
-- `approval.recorded`
+- `direction_approval.requested`
+- `direction_approval.recorded`
 - `generation.requested`
-- `artifact.created`
+- `candidate_set.created`
+- `critic_evaluation.completed`
+- `final_approval.requested`
+- `final_approval.recorded`
+- `provenance_record.created`
 - `run.completed`
 
 Events should include identifiers, event version, tenant, actor or service, correlation ID, timestamp, and minimal routing data. Sensitive package content should not be duplicated into every event.
@@ -213,11 +236,14 @@ Core database domains:
 - workflow definitions
 - workflow runs and stages
 - packages and package relationships
+- direction approval records
+- final approval records
+- provenance records
 - engine definitions and versions
 - connector configurations
 - generation requests and artifacts
 - critic evaluations
-- approvals and comments
+- comments and decision threads
 - policies
 - audit events
 
@@ -243,6 +269,7 @@ Long-running commands should return an accepted response with run and status ref
 - Command endpoints that initiate work should support idempotency keys.
 - Engine stages should persist their execution attempt and input package set.
 - Retries must not create duplicate approved packages or generation requests.
+- Retries must not bypass direction approval or final approval gates.
 - External provider retries must distinguish safe retries from operations that may already have completed.
 - Dead-letter handling must preserve enough context for diagnosis and controlled recovery.
 
@@ -259,7 +286,31 @@ Confidence is not a substitute for validation. The system should preserve:
 
 Fusion must surface material conflicts and may route the workflow to clarification or human review rather than forcing a single conclusion.
 
-## 12. Security boundaries
+## 12. Canonical decisive-slice artifact vocabulary
+
+Use these artifact names consistently across runtime, UX, and workflow documents:
+
+- Intake Package
+- Normalized Brief
+- Knowledge Fusion Package
+- Creative Direction Package
+- Direction Approval Record
+- Generation Specification
+- Generated Candidate Set
+- Critic Evaluation Package
+- Final Approval Record
+- Provenance Record
+
+Legacy aliases map as follows:
+
+- `StrategicContext` → `Knowledge Fusion Package`
+- `PromptPackage` → `Generation Specification`
+- `GeneratedAsset` → `Generated Candidate Set`
+- `ApprovalDecision` → `Direction Approval Record` or `Final Approval Record`, depending on the gate
+
+`Publication Package` is a post-MVP export container, not the canonical MVP output.
+
+## 13. Security boundaries
 
 - Studio clients never receive provider secrets.
 - Connector credentials are scoped by tenant, environment, and provider.
@@ -268,7 +319,7 @@ Fusion must surface material conflicts and may route the workflow to clarificati
 - Audit records are append-oriented.
 - Human overrides and approvals require authenticated identity.
 
-## 13. Deployment direction
+## 14. Deployment direction
 
 A practical first deployment may use:
 
@@ -282,7 +333,7 @@ A practical first deployment may use:
 
 The first implementation may be a modular monolith with background workers. Logical boundaries should be preserved so high-load or security-sensitive components can later be extracted without redesigning product contracts.
 
-## 14. Testing strategy
+## 15. Testing strategy
 
 - schema contract tests
 - workflow graph validation tests
@@ -295,7 +346,7 @@ The first implementation may be a modular monolith with background workers. Logi
 - provider failure and retry tests
 - package-lineage integrity tests
 
-## 15. Key design constraints
+## 16. Key design constraints
 
 - Do not persist hidden chain-of-thought.
 - Do persist concise rationale, evidence, assumptions, confidence, and decisions.
@@ -303,8 +354,9 @@ The first implementation may be a modular monolith with background workers. Logi
 - Do not allow an engine to mutate previous packages.
 - Do not let orchestration logic become embedded in UI code.
 - Do not let provider-specific prompt syntax become the creative system's source of truth.
+- Do not treat Publication Package as the canonical MVP approval artifact.
 
-## 16. Open architecture questions
+## 17. Open architecture questions
 
 - Exact queue and event technology beyond the MVP
 - Package payload storage threshold between PostgreSQL and object storage

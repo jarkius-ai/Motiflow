@@ -1,118 +1,155 @@
 # AI Execution Implementation Plan
 
-**Status:** Implementation planning artifact
+**Status:** Review-ready implementation planning artifact
 **Owner:** Delivery and Chief Architect
-**Scope:** Sequenced implementation of the provider-neutral AI execution foundation
+**Scope:** Sequenced implementation of the first creative-direction execution slice
+
+This plan is a review-ready delivery proposal. It must not be treated as a human-accepted architecture decision unless it is explicitly approved and promoted through the repository's governing process.
 
 ## Objective
 
-Implement the provider-neutral execution foundation required to automate the path from crawled Markdown to a review-ready Publication Package.
+Implement the narrowest executable path that proves Motiflow can move from a brief or source article through grounded creative direction, direction approval, generated candidates, critic review, final human approval, and provenance.
 
-## Phase 4A — Contracts and testability
+## Required sequence
 
 Deliver:
 
-- `ModelGateway` interface;
-- request, response, error, usage, and trace types;
-- capability registry schema;
-- mock model adapter;
-- JSON Schema output validator;
-- semantic validation extension points;
-- unit and contract tests.
+### 1. Manual validation baseline
+
+Deliver:
+
+- a manually executable creative-direction validation path;
+- representative source inputs and expected review criteria;
+- clear evidence for what counts as review-ready direction before generation;
+- the product-owned `docs/01-product/MVP_VALIDATION_PLAN.md` as the validation protocol.
 
 Exit criteria:
 
-- engines compile without provider SDK dependencies;
-- mock workflows produce deterministic artifacts;
-- invalid output cannot enter the artifact store;
-- every invocation has a trace and usage record.
+- humans can run the slice manually without hidden workflow assumptions;
+- expected approval signals and rejection reasons are explicit;
+- the first automation work has a stable target to preserve.
 
-## Phase 4B — Prompt and configuration control
+### 2. Two-gate workflow correction
 
 Deliver:
 
-- versioned prompt registry;
-- model routing configuration;
-- privacy/provider policies;
-- workflow budgets;
-- model and prompt provenance in artifact metadata.
+- Gate 1: authorized human direction approval before generation;
+- Gate 2: final human approval after generated candidates and critics complete;
+- workflow states and transition rules that preserve both gates;
+- provenance rules for decisions, rejections, and superseded candidates.
 
 Exit criteria:
 
-- prompt changes are versioned and reviewable;
-- model names can change without application-code changes;
-- workflow execution stops safely when budgets are exceeded.
+- generation cannot proceed without an authorized Direction Approval Record for the current direction version;
+- final approval cannot be implied by intermediate success;
+- rejected or superseded paths remain traceable.
 
-## Phase 4C — Provider adapters
-
-Deliver adapters in this order:
-
-1. unified TypeScript AI SDK adapter;
-2. OpenAI native adapter;
-3. Anthropic native adapter;
-4. Google native adapter.
-
-Each adapter must pass the same contract suite and expose only declared capabilities.
-
-## Phase 4D — Routing, resilience, and observability
+### 3. Canonical schemas, fixtures, and validation command
 
 Deliver:
 
-- capability-based routing;
-- timeout and retry policy;
-- fallback routing;
-- rate-limit handling;
-- provider health signals;
-- cost, token, latency, and validation dashboards;
-- retained failure and supersession records.
+- canonical schemas for all ten decisive-slice artifacts, from Intake Package through Provenance Record;
+- deterministic fixtures that exercise happy-path and invalid-path behavior;
+- one canonical repository validation command that proves the slice contracts end to end;
+- schema and semantic validation rules for the first slice.
 
-## Phase 4E — First automated workflow
+Exit criteria:
 
-```text
-Crawler Markdown
-  -> source hash and duplicate detection
-  -> Publication Package creation
-  -> metadata and claim extraction
-  -> narrative analysis
-  -> article and social variants
-  -> creative direction and image prompt
-  -> visual generation handoff
-  -> editorial and visual critique
-  -> human review queue
-```
+- invalid or incomplete artifacts fail before workflow execution continues;
+- fixtures protect the intended slice behavior from drift;
+- the validation command is the default proof for the slice contracts.
 
-The crawler remains independent. It writes Markdown to an inbox or calls an ingestion endpoint. Motiflow owns normalization, processing, retention, review, and export.
+### 4. One executable workflow
 
-## Proposed package layout
+Deliver:
+
+- one workflow that runs the validated slice from Intake Package through both approval gates and Provenance Record;
+- workflow-local provenance and audit records;
+- execution hooks that use the canonical schemas and fixtures rather than ad hoc payloads.
+
+Exit criteria:
+
+- the workflow can run deterministically in test mode;
+- its stage boundaries match the two-gate design;
+- the workflow is simpler to reason about than any broader infrastructure alternative.
+
+### 5. Thin Model Gateway
+
+Deliver:
+
+- a provider-neutral interface that the first workflow can call;
+- deterministic mock execution for tests and fixture runs;
+- one real provider integration;
+- request, response, error, usage, and trace types required by the first slice only.
+
+Exit criteria:
+
+- workflow code does not import provider SDKs directly;
+- mock execution produces repeatable outputs for fixtures;
+- one real provider path works without requiring routing breadth or a provider mesh.
+
+### 6. Generated candidates, critics, and final approval
+
+Deliver:
+
+- generation of the first candidate set from an approved direction;
+- critic passes required by the first slice;
+- final approval capture with retained rationale and provenance;
+- stored records of superseded and rejected candidates.
+
+Exit criteria:
+
+- a reviewer can inspect candidates, critic findings, and the final decision in one coherent path;
+- the slice proves Motiflow's value before multi-provider or platform breadth is added;
+- final approval evidence is durable and queryable.
+
+## Proposed canonical package alignment
 
 ```text
 packages/
-  ai/
-    gateway/
-    registry/
-    routing/
-    validation/
-    prompts/
-    telemetry/
-    testing/
+  schemas/
+    intake/
+    brief/
+    knowledge-fusion/
+    creative-direction/
+    generation/
+    critics/
+    approvals/
+    provenance/
+  workflows/
+    creative-direction-slice/
   connectors/
-    ai/
-      unified-sdk/
-      openai/
-      anthropic/
-      google/
+    model-gateway/
       mock/
+      provider-1/
+  critics/
+    creative-direction/
+    generated-candidate/
+  shared/
+    validation/
+    provenance/
 ```
+
+Do not introduce a `packages/ai/` subtree. Use the canonical top-level package boundaries from `docs/00-foundation/REPOSITORY_STRUCTURE.md`.
+
+## Explicit deferrals
+
+- multi-provider routing and provider-mesh orchestration;
+- fallback mesh and resilience breadth beyond the first provider path;
+- dashboards for cost, token, latency, or validation analytics;
+- CMS or social publishing connectors;
+- SDK ecosystem expansion;
+- editorial authoring automation beyond what the first slice strictly requires.
 
 ## Security and operational requirements
 
-- API keys are provided through secret management and never stored in publication packages.
+- API keys are provided through secret management and never stored in governed artifacts.
 - Restricted content is routed only to approved providers.
 - Logs must redact source content where policy requires it.
-- Publishing remains human-gated initially.
+- Export remains human-gated through the Final Approval Record.
 - All external calls are idempotency-aware and traceable.
 - Physical deletion requires a separate policy-authorized process.
 
 ## Definition of done
 
-Phase 4 is complete when a sample Markdown article can run through the workflow using the mock adapter and at least one real provider, producing a validated, versioned Publication Package with complete provenance and no direct provider dependency inside an engine.
+This slice is complete when a representative Intake Package can run through one executable workflow using canonical schemas, deterministic fixtures, the thin Model Gateway, critics, and one real provider path, ending in recorded final human approval with complete provenance and no direct provider dependency inside workflow code.

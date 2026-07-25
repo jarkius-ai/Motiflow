@@ -1,6 +1,6 @@
 # Motiflow Runtime Contracts
 
-**Status:** Proposed architecture freeze v0.1
+**Status:** Review-ready architecture contract v0.1
 **Owner:** Chief Architect
 **Applies to:** Creative Kernel, Workflow Orchestrator, engines, agents, critics, connectors, and applications
 
@@ -14,13 +14,31 @@
 - The Orchestrator coordinates execution but does not perform specialist reasoning.
 - External providers are accessed only through the Connector Gateway.
 - Human approvals are explicit records and state transitions.
+- The decisive slice exposes exactly two human gates: direction approval and final approval.
+
+## Canonical decisive-slice vocabulary
+
+Runtime contracts use these canonical artifact names for the decisive workflow slice:
+
+- Intake Package
+- Normalized Brief
+- Knowledge Fusion Package
+- Creative Direction Package
+- Direction Approval Record
+- Generation Specification
+- Generated Candidate Set
+- Critic Evaluation Package
+- Final Approval Record
+- Provenance Record
+
+Legacy aliases remain readable for migration purposes only. In particular, `StrategicContext` maps to `Knowledge Fusion Package`, `PromptPackage` maps to `Generation Specification`, and generic approval records must be specialized as either `Direction Approval Record` or `Final Approval Record`.
 
 ## Canonical artifact envelope
 
 ```yaml
 artifact:
   id: art_<uuid>
-  type: narrative_package
+  type: creative_direction_package
   schema_version: 1.0.0
   artifact_version: 1
   project_id: prj_<uuid>
@@ -29,7 +47,7 @@ artifact:
   status: valid
   created_at: 2026-07-25T00:00:00Z
   producer:
-    component_id: narrative-engine
+    component_id: creative-director
     component_version: 0.1.0
     model_provider: optional
     model_name: optional
@@ -58,15 +76,15 @@ Each engine registers:
 
 ```yaml
 engine:
-  id: narrative-engine
+  id: creative-director
   version: 0.1.0
-  capability: narrative_analysis
+  capability: creative_direction
   accepts:
-    - normalized_brief@1
+    - knowledge_fusion_package@1
   produces:
-    - narrative_package@1
+    - creative_direction_package@1
   owns:
-    - payload.narrative
+    - payload.direction
   execution:
     idempotent: true
     timeout_seconds: 120
@@ -82,8 +100,8 @@ Invocation request:
 engine_request:
   request_id: req_<uuid>
   run_id: run_<uuid>
-  node_id: node_narrative
-  capability: narrative_analysis
+  node_id: node_creative_direction
+  capability: creative_direction
   input_artifact_refs: []
   project_context_ref: ctx_<uuid>
   constraints: {}
@@ -116,7 +134,7 @@ Capability request:
 ```yaml
 connector_request:
   request_id: conreq_<uuid>
-  capability: high_precision_narrative_analysis
+  capability: candidate_generation
   provider_policy:
     allowed_providers: []
     preferred_provider: null
@@ -155,25 +173,77 @@ Provider-native request and response types must not escape the connector impleme
 
 ```yaml
 workflow:
-  id: editorial-banner
+  id: creative-direction-decisive-slice
   version: 1.0.0
-  input_schema: normalized_brief@1
-  output_schema: approved_artifact@1
+  input_schema: intake_package@1
+  output_schema: provenance_record@1
   mode_default: guided
   nodes:
-    - id: narrative
-      capability: narrative_analysis
+    - id: normalize-brief
+      capability: brief_normalization
       depends_on: []
+      retry_policy: standard
+      timeout_seconds: 60
+      approval_gate: false
+    - id: knowledge-fusion
+      capability: knowledge_fusion
+      depends_on: [normalize-brief]
       retry_policy: standard
       timeout_seconds: 120
       approval_gate: false
-  gates: []
+    - id: creative-direction
+      capability: creative_direction
+      depends_on: [knowledge-fusion]
+      retry_policy: standard
+      timeout_seconds: 120
+      approval_gate: true
+    - id: generation-specification
+      capability: generation_specification
+      depends_on: [creative-direction]
+      retry_policy: standard
+      timeout_seconds: 120
+      approval_gate: false
+    - id: generate-candidates
+      capability: candidate_generation
+      depends_on: [generation-specification]
+      retry_policy: standard
+      timeout_seconds: 300
+      approval_gate: false
+    - id: deterministic-review
+      capability: deterministic_candidate_review
+      depends_on: [generate-candidates]
+      retry_policy: standard
+      timeout_seconds: 90
+      approval_gate: false
+    - id: critic-review
+      capability: critic_evaluation
+      depends_on: [deterministic-review]
+      retry_policy: standard
+      timeout_seconds: 180
+      approval_gate: true
+  gates:
+    - id: direction_approval
+      subject_artifact_type: creative_direction_package@1
+      approval_record_type: direction_approval_record@1
+    - id: final_approval
+      subject_artifact_type: generated_candidate_set@1
+      required_companion_artifact_type: critic_evaluation_package@1
+      approval_record_type: final_approval_record@1
   budgets:
     max_duration_seconds: 1800
     max_cost: null
   completion:
-    required_nodes: []
-    required_artifact_types: []
+    required_nodes: [normalize-brief, knowledge-fusion, creative-direction, generation-specification, generate-candidates, deterministic-review, critic-review]
+    required_artifact_types:
+      - normalized_brief@1
+      - knowledge_fusion_package@1
+      - creative_direction_package@1
+      - direction_approval_record@1
+      - generation_specification@1
+      - generated_candidate_set@1
+      - critic_evaluation_package@1
+      - final_approval_record@1
+      - provenance_record@1
 ```
 
 Workflow definitions reference capabilities, not provider names or implementation classes.
@@ -182,33 +252,34 @@ Workflow definitions reference capabilities, not provider names or implementatio
 
 ```yaml
 critic:
-  id: editorial-critic
+  id: visual-alignment-critic
   version: 0.1.0
-  dimension: editorial_quality
+  dimension: visual_alignment
   accepts:
-    - creative_direction_package@1
+    - generation_specification@1
+    - generated_candidate_set@1
   produces:
-    - critic_evaluation@1
+    - critic_evaluation_package@1
 ```
 
 Evaluation output:
 
 ```yaml
 critic_evaluation:
-  dimension: editorial_quality
+  dimension: visual_alignment
   score: 0
   gate_status: pass
   findings:
-    - code: EDITORIAL_HERO_UNCLEAR
+    - code: VISUAL_DIRECTION_MISMATCH
       severity: major
       message: ""
-      affected_path: payload.direction.hero
+      affected_path: payload.candidates[0]
       recommendation: ""
 ```
 
 A critic does not mutate the reviewed artifact.
 
-## Approval contract
+## Human gate contract
 
 ```yaml
 approval_record:
@@ -216,7 +287,8 @@ approval_record:
   project_id: prj_<uuid>
   run_id: run_<uuid>
   artifact_ref: art_<uuid>@1
-  gate_id: final_direction
+  record_type: direction_approval_record
+  gate_id: direction_approval
   decision: approved
   actor_id: usr_<uuid>
   actor_role: creative_director
@@ -226,6 +298,8 @@ approval_record:
 ```
 
 Allowed decisions: `approved`, `rejected`, `revision_requested`, `waived`.
+
+Canonical gate IDs are `direction_approval` and `final_approval`. Generation must not start without a valid approved `direction_approval` record for the current `Creative Direction Package`, and export must not start without a valid approved `final_approval` record for the current `Generated Candidate Set` plus `Critic Evaluation Package`.
 
 ## Error contract
 
@@ -254,6 +328,8 @@ The Kernel rejects a write when:
 - a state transition is invalid;
 - an immutable artifact is modified in place;
 - a human gate is bypassed.
+
+The Kernel also rejects any attempt to export directly from generated outputs without passing through deterministic review, critic evaluation, final approval, and provenance capture.
 
 ## Architecture-freeze rule
 

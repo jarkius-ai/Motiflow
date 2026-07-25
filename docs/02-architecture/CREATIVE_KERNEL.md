@@ -17,26 +17,25 @@ The Creative Kernel is Motiflow's domain foundation. It defines the stable langu
 - Artifact comparison and invalidation rules
 - Domain events
 
-## Core artifacts
+## Canonical decisive-slice artifacts
 
-- `CreativeBrief`
-- `AudienceProfile`
-- `ResearchPack`
-- `BrandContext`
-- `NarrativeStructure`
-- `MetaphorCandidateSet`
-- `CreativeDirectionPackage`
-- `PromptPackage`
-- `GeneratedAsset`
-- `EvaluationReport`
-- `HumanFeedback`
-- `ApprovalDecision`
-- `CreativeMemoryRecord`
+- `Intake Package`
+- `Normalized Brief`
+- `Knowledge Fusion Package`
+- `Creative Direction Package`
+- `Direction Approval Record`
+- `Generation Specification`
+- `Generated Candidate Set`
+- `Critic Evaluation Package`
+- `Final Approval Record`
+- `Provenance Record`
+
+Audience profiles, research packs, brand context, narrative structures, metaphor candidates, human feedback, and creative memory may exist as supporting records. They do not replace or rename the canonical handoffs above.
 
 ## Kernel rules
 
 1. Every artifact has a globally unique identifier, schema version, project identifier, creator, timestamps, and provenance.
-2. Artifacts are immutable after publication; corrections create new versions.
+2. Artifacts are immutable once emitted; corrections create new versions.
 3. Every engine declares accepted input and emitted output contract versions.
 4. Confidence is attached to claims and decisions, not treated as a single unexplained number.
 5. Downstream artifacts record the exact upstream versions used.

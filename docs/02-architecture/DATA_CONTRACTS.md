@@ -1,6 +1,6 @@
 # Data Contracts
 
-**Status:** Architecture contract specification
+**Status:** Review-ready architecture contract specification
 **Owner:** Chief Architect
 **Scope:** Versioned artifact, package, event, and data exchange contracts
 
@@ -13,7 +13,7 @@ Every artifact includes:
 ```json
 {
   "artifact_id": "uuid",
-  "artifact_type": "CreativeBrief",
+  "artifact_type": "intake_package",
   "schema_version": "1.0.0",
   "project_id": "uuid",
   "workflow_run_id": "uuid",
@@ -36,22 +36,60 @@ Every artifact includes:
 - Unknown fields should not silently affect decisions.
 - Human-authored and machine-authored content must remain distinguishable.
 - Claims derived from sources should carry evidence references.
-- Validation occurs both before execution and before artifact publication.
+- Validation occurs both before execution and before approval, export, or publication.
+
+## Canonical decisive-slice vocabulary
+
+The decisive workflow slice uses one canonical artifact vocabulary:
+
+- Intake Package
+- Normalized Brief
+- Knowledge Fusion Package
+- Creative Direction Package
+- Direction Approval Record
+- Generation Specification
+- Generated Candidate Set
+- Critic Evaluation Package
+- Final Approval Record
+- Provenance Record
+
+Supporting upstream analysis artifacts may still exist internally, but approval gates, runtime contracts, and system documentation should use the canonical names above for the decisive slice.
+
+## Legacy alias mapping
+
+| Legacy term | Canonical term | Notes |
+|---|---|---|
+| `CreativeBrief` | `Intake Package` | Raw submitted project input |
+| `StrategicContext` | `Knowledge Fusion Package` | Use the fused, validated strategic handoff |
+| `NarrativeStructure` | `Creative Direction Package` | Narrative structure becomes structured content inside the direction package |
+| `MetaphorCandidateSet` | `Creative Direction Package` | Dominant metaphor selection resolves before direction approval |
+| `PromptPackage` | `Generation Specification` | Canonical generation handoff; avoid `PromptPackage` in new contracts |
+| `GeneratedAsset` | `Generated Candidate Set` | Generation yields a set, even when it contains one candidate |
+| `EvaluationReport` | `Critic Evaluation Package` | Deterministic checks and critic findings travel together |
+| `ApprovalDecision` | `Direction Approval Record` or `Final Approval Record` | Use the gate-specific canonical record |
+| `ApprovedArtifactPackage` | `Generated Candidate Set`, `Final Approval Record`, and `Provenance Record` | Use the explicit gate and lineage artifacts instead of one umbrella term |
 
 ## Initial contract sequence
 
 ```text
-CreativeBrief
-→ ResearchPack + AudienceProfile + BrandContext
-→ StrategicContext
-→ NarrativeStructure + MetaphorCandidateSet
-→ CreativeDirectionPackage
-→ PromptPackage
-→ GeneratedAsset
-→ EvaluationReport
-→ ApprovalDecision
+Intake Package
+→ Normalized Brief
+→ Knowledge Fusion Package
+→ Creative Direction Package
+→ Direction Approval Record
+→ Generation Specification
+→ Generated Candidate Set
+→ Critic Evaluation Package
+→ Final Approval Record
+→ Provenance Record
 ```
 
 ## Invalidation
 
 A new artifact version invalidates only downstream artifacts whose declared dependencies include changed fields or claims. Field-level dependency declarations are preferred where implementation cost is justified.
+
+At minimum:
+
+- a new `Creative Direction Package` invalidates the `Direction Approval Record`, `Generation Specification`, `Generated Candidate Set`, `Critic Evaluation Package`, `Final Approval Record`, and `Provenance Record`;
+- a new `Generation Specification` invalidates the `Generated Candidate Set`, `Critic Evaluation Package`, `Final Approval Record`, and `Provenance Record`;
+- a new `Generated Candidate Set` or `Critic Evaluation Package` invalidates the `Final Approval Record` and `Provenance Record`.

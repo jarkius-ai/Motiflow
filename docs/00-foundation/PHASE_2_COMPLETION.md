@@ -1,6 +1,6 @@
 # Phase 2 Completion Record
 
-**Status:** Complete for documentation normalization baseline
+**Status:** Historical completion record for the documentation normalization baseline
 **Date:** 2026-07-25
 
 ## Completed
@@ -22,6 +22,6 @@
 
 These are implementation tasks for the repository validator and CI phase, not manual normalization work.
 
-## Exit decision
+## Historical exit decision
 
-The repository is ready to proceed to architecture contract freeze. Structural moves should remain separate from contract definition and should only occur when implementation introduces real packages or schemas.
+This phase originally handed off to architecture contract review. The current milestone and next work are controlled by [`../../CONTEXT_INDEX.yaml`](../../CONTEXT_INDEX.yaml) and [`../../MEOS/20_PROJECT_BOOTSTRAP.md`](../../MEOS/20_PROJECT_BOOTSTRAP.md); this record does not freeze or accept later contracts. Structural moves remain separate from contract definition and should occur only when implementation introduces real packages or schemas.

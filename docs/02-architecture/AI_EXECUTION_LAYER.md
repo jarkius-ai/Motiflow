@@ -1,6 +1,6 @@
 # AI Execution Layer
 
-**Status:** Proposed architecture specification
+**Status:** Review-ready target architecture specification
 **Owner:** Chief Architect
 **Scope:** Provider-neutral model execution, routing, validation, provenance, and usage controls
 
@@ -9,6 +9,8 @@
 The AI Execution Layer connects Motiflow engines to external language and multimodal models without coupling the Creative Kernel or Workflow Orchestrator to any provider.
 
 The orchestrator owns workflow state, retries, approvals, budgets, idempotency, and persistence. Models provide bounded cognitive capabilities such as extraction, analysis, writing, creative direction, critique, and learning synthesis.
+
+This document describes the eventual boundary, not the initial delivery sequence. The MVP implements only the gateway interface, deterministic mock, one real provider adapter, validation, and provenance required by the decisive creative workflow. Multi-provider routing, fallback, registries, ledgers, and dashboards remain deferred until that workflow demonstrates value.
 
 ## Core principle
 
@@ -38,7 +40,7 @@ Motiflow Model Gateway
 
 ## Responsibilities
 
-The layer MUST provide:
+The complete target layer MUST provide:
 
 - provider-neutral model invocation contracts;
 - capability-based routing rather than hard-coded model selection;
@@ -71,7 +73,8 @@ export interface ModelRequest<TInput> {
   };
   trace: {
     workflowRunId: string;
-    publicationId?: string;
+    projectId: string;
+    artifactId?: string;
     stepId: string;
   };
 }
@@ -81,7 +84,16 @@ Engines MUST call this interface or an equivalent Motiflow-owned contract. They 
 
 ## Capability routing
 
-Initial capabilities include:
+The decisive-slice capabilities are:
+
+- brief-normalization
+- knowledge-fusion
+- creative-direction
+- generation-specification
+- candidate-generation
+- candidate-critique
+
+Potential later capabilities include:
 
 - metadata-extraction
 - claim-extraction
@@ -120,14 +132,14 @@ Semantic validation
       +-- human clarification
 ```
 
-Valid JSON is not sufficient. Semantic validators MUST detect unknown citations, mismatched publication IDs, unsupported destinations, invalid confidence ranges, and contradictions with approved narrative artifacts.
+Valid JSON is not sufficient. Semantic validators MUST detect unknown citations, mismatched artifact references, invalid confidence ranges, and contradictions with the approved Creative Direction Package or Generation Specification.
 
 ## Deterministic boundaries
 
 Models MUST NOT control:
 
 - workflow state transitions;
-- publication identifiers;
+- artifact and project identifiers;
 - file paths and retention decisions;
 - authentication and secrets;
 - database transactions;
@@ -143,15 +155,12 @@ Every invocation produces a retained execution record, including failed, rejecte
 
 The record includes provider, model, adapter, prompt version, schema version, input/output artifact versions, token usage, estimated cost, latency, validation findings, reviewer outcome, and supersession links.
 
-## Initial implementation order
+## Delivery sequence
 
-1. ModelGateway interface
-2. Model capability registry
-3. Mock adapter
-4. Structured-output validator
-5. Prompt registry
-6. Cost and usage ledger
-7. Unified SDK adapter
-8. Native provider adapters
-9. Routing and fallback engine
-10. First crawler-to-publication workflow
+1. Manually validate the full two-gate creative workflow with representative briefs and intended users.
+2. Freeze the decisive-slice artifact contracts, fixtures, and validation command through human review.
+3. Build one executable workflow against a narrow connector port and deterministic fixtures.
+4. Add the `ModelGateway` interface and deterministic mock required by that workflow.
+5. Add structured and semantic validation plus invocation provenance required by the slice.
+6. Add one real provider adapter and prove the generated-candidate path through final approval.
+7. Consider registries, ledgers, routing, fallback, and additional adapters only from observed demand.

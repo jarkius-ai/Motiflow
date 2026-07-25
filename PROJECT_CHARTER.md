@@ -52,9 +52,17 @@ These names are related but not interchangeable. Canonical definitions are maint
 
 ## Initial Product Boundary
 
-The first release focuses on editorial and enterprise technology visual-direction workflows. Motiflow v1 is not intended to replace general graphic-design suites, digital asset management platforms, presentation authoring systems, project-management tools, or human brand approval.
+The first release focuses on editorial and enterprise technology creative-direction workflows. Motiflow v1 is not intended to replace general graphic-design suites, digital asset management platforms, presentation authoring systems, project-management tools, or human brand approval.
 
-The MVP must prove one complete path from source material to validated creative direction, provider-specific generation, multi-critic review, and human approval.
+The MVP must prove one complete path from source material to a validated, explainable Creative Direction Package, explicit human direction approval, one-provider generation, focused critic review, and explicit human final approval with provenance.
+
+The canonical decisive-slice sequence is:
+
+`Intake Package` → `Normalized Brief` → `Knowledge Fusion Package` → `Creative Direction Package` → `Direction Approval Record` → `Generation Specification` → `Generated Candidate Set` → `Critic Evaluation Package` → `Final Approval Record` → `Provenance Record`.
+
+An article or other editorial document may be source material for that path. The creative-direction-first MVP does not author complete articles, generate SEO packages, produce social variants, operate CMS publishing flows, or deliver full publication-platform behavior. Generation exists only to prove that an approved direction produces reviewable candidates; broader publishing and platform specialization remain later expansions.
+
+Before broad implementation, the team must test the proposed workflow manually with representative briefs and intended users, establish a baseline, and record which stages create measurable value.
 
 ## Strategic Goal
 

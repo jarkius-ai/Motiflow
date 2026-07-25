@@ -13,7 +13,7 @@ Its underlying product architecture is the **Autonomous Creative Direction Syste
 - **Motiflow Direction** — symbolism, metaphor, and creative-direction engines
 - **Motiflow Flow** — workflow orchestration and execution monitoring
 - **Motiflow Review** — multi-critic evaluation and human approval gates
-- **Motiflow Platform** — APIs, connectors, SDKs, and enterprise integration
+- **Motiflow Platform** — APIs, connectors, SDKs, and enterprise integration after MVP proof
 
 ## Start Here
 
@@ -45,9 +45,19 @@ Foundation standards:
 - Use model-agnostic interfaces
 - Require human approval at meaningful risk and quality gates
 
+## Current Decisive Slice
+
+The next implementation slice should prove a creative-direction-first MVP, not broad platform breadth.
+
+- Start with one end-to-end path from source material to validated creative direction
+- Carry that direction through one provider-backed generation and review loop
+- Require **Approval Gate 1** before committing creative direction downstream
+- Require **Approval Gate 2** after candidate critique and before export or any equivalent finalization step
+- Park publication-platform breadth, editorial authoring expansion, multi-provider infrastructure, and publishing connectors until MVP proof is accepted
+
 ## Target Repository Structure
 
-The following is the approved target structure. It describes the canonical target state and does not claim that every directory already exists on the current branch:
+The following is the proposed canonical target structure. It describes a target state and does not claim that every directory already exists on the current branch:
 
 ```text
 Motiflow/
@@ -81,6 +91,6 @@ Directories should be introduced only when they contain implemented or intention
 
 ## Current Status
 
-**Foundation alignment phase — terminology, document authority, repository structure, and migration sequencing.**
+**Pre-implementation readiness for a creative-direction-first MVP proof.**
 
-Implementation should begin only after the governing documents, canonical contracts, and first vertical-slice task are aligned and ready under MEOS.
+The documentation baseline is reconciled and review-ready. The next work is to execute the MVP validation plan, record the accountable product-owner decision, and prepare the first ready implementation task for the source-to-direction-to-generation-to-review loop. Broad Model Gateway infrastructure, publication-platform expansion, editorial authoring breadth, and connector ecosystems remain deferred.

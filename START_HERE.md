@@ -16,6 +16,20 @@ Read these documents in order:
 
 `START_HERE.md` is the navigation authority. It does not replace the governing content of the documents it routes to.
 
+## Current Navigation Bias
+
+For immediate planning and execution, route toward the smallest creative-direction-first MVP proof unless a newer accepted task specification supersedes it.
+
+- Prove one end-to-end path from source material through approved creative direction, one-provider generation, critic review, and final approval
+- Keep two explicit human approval gates in view:
+  - Approval Gate 1: approve the creative direction before downstream production hardens around it
+  - Approval Gate 2: approve the final candidate after critic review and before export
+- Park publication-platform breadth, editorial authoring expansion, multi-provider infrastructure, and publishing connectors until that MVP proof is accepted
+
+If `CONTEXT_INDEX.yaml` or `MEOS/20_PROJECT_BOOTSTRAP.md` still route immediate work toward broad Model Gateway-first infrastructure, treat that as stale routing to reconcile rather than a reason to skip the creative-direction-first proof.
+
+Keep the detailed contracts, task specs, and ADR decisions in their authoritative documents rather than duplicating them here.
+
 ## Foundation Standards
 
 Before changing authoritative documentation or repository structure, review:
@@ -32,7 +46,7 @@ Architecture-significant terminology changes must follow the ADR process and exp
 
 Use this instruction:
 
-> Read `START_HERE.md`, then `PROJECT_CHARTER.md`, `MASTER_CONTEXT.md`, `CONTEXT_INDEX.yaml`, and `MEOS/20_PROJECT_BOOTSTRAP.md`. Follow the minimum task- and role-specific route defined in `CONTEXT_INDEX.yaml`. Summarize the verified project state, identify assumptions or conflicts, and continue from the next approved priority without inventing requirements.
+> Read `START_HERE.md`, then `PROJECT_CHARTER.md`, `MASTER_CONTEXT.md`, `CONTEXT_INDEX.yaml`, and `MEOS/20_PROJECT_BOOTSTRAP.md`. Follow the minimum task- and role-specific route defined in `CONTEXT_INDEX.yaml`, but explicitly surface any stale routing that still prioritizes broad Model Gateway-first work over the creative-direction-first MVP proof. Summarize the verified project state, identify assumptions or conflicts, and continue from the next approved priority without inventing requirements.
 
 Do not treat previous chat memory as the source of truth. Repository artifacts, accepted decisions, current tasks, executable checks, and recorded evidence are authoritative.
 

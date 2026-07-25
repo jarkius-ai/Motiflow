@@ -10,14 +10,19 @@ repository_state:
   merged_pull_requests: [1, 2, 3, 4]
   implementation_status: not_started
 
-current_milestone: phase-4a-pre-implementation-readiness
+current_milestone: decisive-slice-validation-and-task-readiness
 current_focus:
-  - translate accepted documentation and architecture into the first implementation-ready task specification
+  - execute the MVP validation plan and record the product-owner proceed, revise, or stop decision
+  - after required human review, translate authoritative context and review-ready contracts into the first implementation-ready task specification for the creative-direction vertical slice
   - preserve canonical repository boundaries and avoid speculative structure before code exists
+  - keep review-ready sequencing artifacts distinct from human-accepted product and architecture decisions
 next_priorities:
-  - scope provider-neutral Model Gateway contracts with supporting schemas and contract tests
-  - define the verification path for the first executable slice before implementation begins
-  - introduce only the canonical directories required by the first real implementation change
+  - run docs/01-product/MVP_VALIDATION_PLAN.md with 5 to 10 representative inputs and 2 to 3 intended users or design partners
+  - record baseline measures and an accountable product-owner decision in a dated validation report outside confidential source material
+  - obtain required human review of the two-gate state machine and canonical ten-artifact vocabulary
+  - write a ready task specification for JSON Schemas, fixtures, and one validation command
+  - implement one executable workflow before adding infrastructure breadth
+  - introduce a thin Model Gateway only after the workflow shape is proven, limited to an interface, deterministic mock, and one real provider
 
 identity:
   product: Motiflow
