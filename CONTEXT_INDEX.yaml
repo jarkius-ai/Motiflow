@@ -1,13 +1,27 @@
-version: 3
-status: approved
+version: 4
+status: proposed
 owner: Chief Architect
-release: MEOS-1.0
+release: repository-alignment-foundation
+
+identity:
+  product: Motiflow
+  product_architecture: ACDS
+  engineering_governance: MEOS
 
 bootstrap:
-  entrypoint: MEOS/20_PROJECT_BOOTSTRAP.md
-  read_order:
+  entrypoint: START_HERE.md
+  foundation_read_order:
     - PROJECT_CHARTER.md
+    - MASTER_CONTEXT.md
+    - CONTEXT_INDEX.yaml
     - MEOS/20_PROJECT_BOOTSTRAP.md
+  governance_references:
+    - docs/00-foundation/DOCUMENT_AUTHORITY.md
+    - docs/00-foundation/TERMINOLOGY.md
+    - docs/00-foundation/REPOSITORY_STRUCTURE.md
+    - docs/00-foundation/MIGRATION_PLAN.md
+    - docs/00-foundation/DOCUMENTATION_QUALITY_CHECKLIST.md
+  engineering_baseline:
     - MEOS/01_ENGINEERING_CONSTITUTION.md
     - MEOS/02_AI_CONSTITUTION.md
     - MEOS/03_CONTEXT_STRATEGY.md
