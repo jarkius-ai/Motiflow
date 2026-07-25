@@ -11,40 +11,50 @@ This document defines permitted dependency direction. It prevents the repository
 ## System layers
 
 ```text
-User Interfaces / External API
+Application Surfaces (Studio / API / approved worker entry points)
             ↓
-Application Services
+Workflow-facing application services
             ↓
 Creative Kernel ↔ Workflow Orchestrator
             ↓
-Engines / Agents / Evaluation
+Specialist Engines / Critics / Agent roles
             ↓
-Connector Gateway
+Connector Gateway / Connector implementations
             ↓
 External Providers and Enterprise Systems
 
-Cross-cutting: schemas, events, policy, provenance, observability, security
+Cross-cutting contracts: schemas, workflows, policy, provenance, observability, security
 ```
 
 ## Canonical dependency direction
 
 ```text
 apps
-  → sdk
-  → orchestrator
-  → engines / agents / evaluation
-  → core contracts
+  → workflow/orchestration APIs
+  → Creative Kernel contracts
+  → packages/schemas and packages/workflows
 
-engines / agents / evaluation
-  → core contracts
-  → connector interfaces
+packages/orchestrator
+  → packages/workflows
+  → Creative Kernel contracts
+  → engine and connector capability interfaces
+
+packages/engines and packages/critics
+  → Creative Kernel contracts
+  → packages/schemas
+  → approved connector and knowledge capability interfaces
+
+agent roles
+  → declared workflow, engine, and connector capabilities
+  → policies and tool boundaries
 
 connectors
-  → connector interfaces
+  → connector-sdk and gateway interfaces
+  → packages/schemas
   → shared infrastructure abstractions
 
 all runtime packages
-  → schemas and shared primitives
+  → packages/schemas and narrowly scoped shared utilities
 ```
 
 A lower layer must not import application UI, product-specific presentation logic, or a higher-level workflow implementation.
@@ -87,7 +97,7 @@ Engines must not:
 
 ### Agents
 
-Agents coordinate bounded task execution using approved tools and engines. They must operate through declared capabilities and policies. Agent convenience must not create hidden cross-layer dependencies.
+Agents coordinate bounded task execution using approved tools, workflows, and engines. They must operate through declared capabilities and policies. Agent convenience must not create hidden cross-layer dependencies or imply a standalone agent package boundary.
 
 ### Evaluation
 
@@ -144,9 +154,9 @@ Each event contract must define:
 | Workflow plan and node execution state | Workflow Orchestrator |
 | Specialist artifact section | Producing engine, validated by Kernel |
 | Provider credentials and raw provider normalization | Connector Gateway |
-| Critic findings | Evaluation layer |
+| Critic findings | Critics and evaluation artifacts |
 | Approval decision | Authorized human gate / approval service |
-| Product presentation state | Application layer |
+| Product presentation state | Application surfaces |
 
 ## Prohibited dependency patterns
 

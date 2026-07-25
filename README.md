@@ -47,29 +47,34 @@ Foundation standards:
 
 ## Target Repository Structure
 
-The following is the approved target structure, not a claim that every directory already exists:
+The following is the approved target structure. It describes the canonical target state and does not claim that every directory already exists on the current branch:
 
 ```text
 Motiflow/
+├── MEOS/
+├── docs/
 ├── apps/
+│   ├── studio/
+│   ├── api/
+│   └── worker/
 ├── packages/
-│   ├── core/
+│   ├── creative-kernel/
 │   ├── orchestrator/
 │   ├── engines/
-│   ├── agents/
-│   ├── evaluation/
+│   ├── critics/
 │   ├── connectors/
-│   ├── sdk/
+│   ├── schemas/
+│   ├── workflows/
+│   ├── engine-sdk/
+│   ├── connector-sdk/
 │   └── shared/
-├── schemas/
-├── workflows/
-├── prompts/
 ├── knowledge/
-├── docs/
-├── infrastructure/
-├── tools/
+├── prompts/
+├── evaluations/
 ├── examples/
-└── tests/
+├── tools/
+├── infrastructure/
+└── diagrams/
 ```
 
 Directories should be introduced only when they contain implemented or intentionally governed artifacts.

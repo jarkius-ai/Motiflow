@@ -24,7 +24,7 @@ The stack is a starting direction, not an irreversible constraint. Architecture 
 - Reviews and Approvals
 - Assets and Provenance
 - Knowledge and Connectors
-- Evaluation and Analytics
+- Critics and Evaluation
 - Administration and Governance
 
 ## Engineering rules
@@ -39,19 +39,31 @@ The stack is a starting direction, not an irreversible constraint. Architecture 
 
 ## Repository evolution
 
+The target implementation layout follows [`docs/00-foundation/REPOSITORY_STRUCTURE.md`](../00-foundation/REPOSITORY_STRUCTURE.md). It is a target-state reference, not a statement that every directory already exists today.
+
 ```text
 apps/
   studio/
   api/
+  worker/
 packages/
   creative-kernel/
   orchestrator/
+  engines/
+  critics/
+  connectors/
+  schemas/
+  workflows/
   engine-sdk/
   connector-sdk/
-  ui/
-schemas/
+  shared/
+knowledge/
+prompts/
+evaluations/
 infrastructure/
-tests/
+tools/
+examples/
+diagrams/
 ```
 
 The first implementation milestone should prove one complete workflow before expanding into a broad engine ecosystem.
