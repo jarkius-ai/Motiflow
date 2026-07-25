@@ -6,7 +6,7 @@ release: pre-implementation-readiness
 repository_state:
   current_branch: main
   default_branch: main
-  remote_head: fa0f22d
+  remote_head: origin/main
   merged_pull_requests: [1, 2, 3, 4]
   implementation_status: not_started
 

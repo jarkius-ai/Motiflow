@@ -16,7 +16,7 @@ Begin at [`START_HERE.md`](../START_HERE.md), which defines the canonical onboar
 
 ### Current Milestone
 
-Documentation and architecture baseline work is complete on `main`. The repository is now in pre-implementation readiness for the first executable slice: pull requests #1 through #4 are merged, `origin/main` is at `fa0f22d`, and runtime/application implementation has not yet begun on the default branch.
+Documentation and architecture baseline work is complete on `main`. The repository is now in pre-implementation readiness for the first executable slice: pull requests #1 through #4 are merged, `origin/main` contains the reconciled documentation baseline, and runtime/application implementation has not yet begun on the default branch.
 
 ### Completed
 
