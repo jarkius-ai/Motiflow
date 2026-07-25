@@ -135,8 +135,10 @@ Required outputs:
 Repository updates:
 
 - commit the completed validation, acceptance, ADR, and readiness evidence;
-- record the resulting commit as the `evidence/sign-off commit` wherever the
-  readiness packet requires it.
+  that commit is the `evidence/sign-off commit`; and
+- identify the `evidence/sign-off commit` through an optional signed tag or a
+  later audit record. Do not require that commit to contain or record its own
+  SHA.
 
 Exit condition: the revision-trace anchor can be earned.
 
