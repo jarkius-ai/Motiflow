@@ -1,19 +1,127 @@
-version: 1
+version: 2
+status: approved
+owner: Chief Architect
+
 bootstrap:
-  - PROJECT_CHARTER.md
-  - MEOS/20_PROJECT_BOOTSTRAP.md
+  entrypoint: MEOS/20_PROJECT_BOOTSTRAP.md
+  read_order:
+    - PROJECT_CHARTER.md
+    - MEOS/20_PROJECT_BOOTSTRAP.md
+    - MEOS/02_AI_CONSTITUTION.md
+    - MEOS/03_CONTEXT_STRATEGY.md
+    - MEOS/roles.yaml
+    - MEOS/05_TASK_SPECIFICATION.md
+    - MEOS/06_DEFINITION_OF_READY.md
+
+mandatory_completion_context:
+  - MEOS/01_ENGINEERING_CONSTITUTION.md
+  - MEOS/10_QUALITY_GATE.md
+
+role_registry: MEOS/roles.yaml
+
 roles:
-  architect:
-    reads:
-      - MEOS/**
+  chief_architect:
+    required:
       - docs/02-architecture/**
-  backend:
-    reads:
-      - MEOS/01_ENGINEERING_CONSTITUTION.md
-      - MEOS/10_QUALITY_GATE.md
-  frontend:
-    reads:
-      - MEOS/01_ENGINEERING_CONSTITUTION.md
+      - docs/adr/**
       - docs/01-product/**
-routing:
+  product_owner:
+    required:
+      - docs/00-foundation/**
+      - docs/01-product/**
+  backend:
+    required:
+      - docs/02-architecture/**
+      - docs/03-engineering/**
+      - docs/01-product/**
+  frontend:
+    required:
+      - docs/01-product/**
+      - docs/02-architecture/**
+      - docs/03-engineering/**
+      - docs/05-design/**
+  ai_engineer:
+    required:
+      - docs/04-ai/**
+      - docs/02-architecture/**
+      - docs/01-product/**
+  qa:
+    required:
+      - task_specification
+      - acceptance_criteria
+      - affected_contracts
+      - implementation_and_tests
+  security_reviewer:
+    required:
+      - affected_architecture
+      - data_contracts
+      - threat_models
+      - implementation_diff
+  reviewer:
+    required:
+      - task_specification
+      - context_manifest
+      - implementation_diff
+      - test_results
+      - affected_docs_and_contracts
+  documentation:
+    required:
+      - changed_artifacts
+      - controlling_requirements
+      - architecture_decisions
+  release_manager:
+    required:
+      - quality_gate_report
+      - test_results
+      - migration_and_rollback_plan
+      - release_notes
+
+task_routing:
+  architecture_change:
+    roles: [chief_architect, reviewer]
+    require:
+      - docs/02-architecture/**
+      - docs/adr/**
+  product_change:
+    roles: [product_owner, reviewer]
+    require:
+      - docs/01-product/**
+  backend_change:
+    roles: [backend, reviewer, qa]
+    require:
+      - affected_api_contracts
+      - affected_data_contracts
+      - affected_tests
+  frontend_change:
+    roles: [frontend, reviewer, qa]
+    require:
+      - affected_user_journey
+      - affected_design_contract
+      - affected_api_contracts
+  ai_change:
+    roles: [ai_engineer, reviewer, qa]
+    require:
+      - affected_ai_contracts
+      - evaluation_criteria
+      - safety_and_cost_constraints
+  security_sensitive_change:
+    roles: [security_reviewer, reviewer]
+    require:
+      - threat_model
+      - affected_data_flows
+      - security_tests
+  release:
+    roles: [release_manager, qa]
+    require:
+      - quality_gate_report
+      - release_notes
+      - migration_and_rollback_plan
+
+routing_rules:
   default: bootstrap
+  task_must_declare_role: true
+  task_must_declare_references: true
+  use_minimum_complete_context: true
+  archived_sources_are_non_authoritative: true
+  missing_or_conflicting_context: stop_and_escalate
+  completion_requires_quality_gate: true
