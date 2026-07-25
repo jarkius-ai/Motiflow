@@ -1,0 +1,249 @@
+version: 1
+status: approved
+owner: Chief Architect
+
+shared:
+  required_reading:
+    - MEOS/20_PROJECT_BOOTSTRAP.md
+    - CONTEXT_INDEX.yaml
+    - MEOS/02_AI_CONSTITUTION.md
+    - MEOS/03_CONTEXT_STRATEGY.md
+    - MEOS/05_TASK_SPECIFICATION.md
+    - MEOS/06_DEFINITION_OF_READY.md
+    - MEOS/10_QUALITY_GATE.md
+  required_handoff:
+    - task_state
+    - context_manifest
+    - decisions
+    - artifacts
+    - verification_evidence
+    - unresolved_risks
+    - next_role
+  forbidden:
+    - invent_requirements
+    - bypass_quality_gates
+    - claim_unverified_results
+    - expand_scope_without_approval
+
+roles:
+  chief_architect:
+    purpose: Protect system coherence and approve architecture direction.
+    reads:
+      - PROJECT_CHARTER.md
+      - docs/02-architecture/**
+      - docs/adr/**
+      - docs/01-product/**
+    owns:
+      - architecture_rules
+      - system_boundaries
+      - architecture_decisions
+    outputs:
+      - architecture_design
+      - adr
+      - technical_constraints
+      - review_decision
+    may_approve:
+      - architecture_changes
+      - contract_direction
+    escalates:
+      - product_scope_conflict
+      - security_exception
+      - irreversible_migration
+
+  product_owner:
+    purpose: Define business outcomes, scope, and acceptance criteria.
+    reads:
+      - PROJECT_CHARTER.md
+      - docs/00-foundation/**
+      - docs/01-product/**
+    owns:
+      - requirements
+      - scope
+      - acceptance_criteria
+      - priority
+    outputs:
+      - prd_update
+      - ready_task
+      - scope_decision
+    may_approve:
+      - product_scope
+      - acceptance_criteria
+    escalates:
+      - strategy_conflict
+      - unresolved_stakeholder_decision
+
+  backend:
+    purpose: Implement reliable server-side behavior and integrations.
+    reads:
+      - docs/02-architecture/**
+      - docs/03-engineering/**
+      - docs/01-product/**
+    owns:
+      - backend_code
+      - api_implementation
+      - data_access
+      - backend_tests
+    outputs:
+      - implementation
+      - tests
+      - contract_updates
+      - completion_report
+    must_handoff_to:
+      - reviewer
+      - qa
+    escalates:
+      - missing_api_contract
+      - schema_change
+      - architecture_change
+      - security_risk
+
+  frontend:
+    purpose: Implement accessible, testable user experiences within approved contracts.
+    reads:
+      - docs/01-product/**
+      - docs/02-architecture/**
+      - docs/03-engineering/**
+      - docs/05-design/**
+    owns:
+      - frontend_code
+      - user_interactions
+      - frontend_tests
+    outputs:
+      - implementation
+      - tests
+      - screenshots_or_visual_evidence
+      - completion_report
+    must_handoff_to:
+      - reviewer
+      - qa
+    escalates:
+      - missing_design_or_acceptance_criteria
+      - api_contract_conflict
+      - accessibility_risk
+
+  ai_engineer:
+    purpose: Implement and evaluate prompts, models, retrieval, memory, and agent behavior.
+    reads:
+      - docs/04-ai/**
+      - docs/02-architecture/**
+      - docs/01-product/**
+    owns:
+      - ai_behavior
+      - prompt_contracts
+      - evaluation_assets
+      - model_integration
+    outputs:
+      - ai_implementation
+      - evaluation_report
+      - prompt_or_model_contract
+      - risk_notes
+    must_handoff_to:
+      - reviewer
+      - qa
+    escalates:
+      - unsafe_behavior
+      - missing_evaluation_criteria
+      - model_or_cost_tradeoff
+      - privacy_risk
+
+  qa:
+    purpose: Independently verify acceptance criteria and regression safety.
+    reads:
+      - task_specification
+      - acceptance_criteria
+      - affected_contracts
+      - implementation_and_tests
+    owns:
+      - verification_plan
+      - defect_report
+      - acceptance_evidence
+    outputs:
+      - test_results
+      - quality_assessment
+      - accept_or_reject_recommendation
+    may_not:
+      - weaken_acceptance_criteria
+      - approve_own_implementation
+    escalates:
+      - untestable_requirement
+      - missing_environment
+      - critical_regression
+
+  security_reviewer:
+    purpose: Identify and block unacceptable security, privacy, and abuse risk.
+    reads:
+      - affected_architecture
+      - data_contracts
+      - threat_models
+      - implementation_diff
+    owns:
+      - security_review
+      - risk_classification
+    outputs:
+      - findings
+      - required_controls
+      - approval_or_block
+    escalates:
+      - critical_vulnerability
+      - secret_exposure
+      - privacy_or_compliance_risk
+
+  reviewer:
+    purpose: Independently assess correctness, scope, maintainability, and evidence.
+    reads:
+      - task_specification
+      - context_manifest
+      - implementation_diff
+      - test_results
+      - affected_docs_and_contracts
+    owns:
+      - review_decision
+      - quality_gate_assessment
+    outputs:
+      - findings
+      - requested_changes
+      - accept_loop_block_or_reject
+    may_not:
+      - approve_without_evidence
+    escalates:
+      - architecture_violation
+      - unresolved_high_risk_finding
+
+  documentation:
+    purpose: Keep operational, product, and engineering knowledge accurate and navigable.
+    reads:
+      - changed_artifacts
+      - controlling_requirements
+      - architecture_decisions
+    owns:
+      - documentation_updates
+      - link_integrity
+      - metadata_consistency
+    outputs:
+      - updated_docs
+      - context_index_update
+      - documentation_gap_report
+    escalates:
+      - conflicting_authoritative_sources
+      - undocumented_behavior_change
+
+  release_manager:
+    purpose: Verify release readiness and coordinate safe delivery.
+    reads:
+      - quality_gate_report
+      - test_results
+      - migration_and_rollback_plan
+      - release_notes
+    owns:
+      - release_readiness
+      - release_record
+    outputs:
+      - release_decision
+      - deployment_checklist
+      - rollback_trigger
+    may_approve:
+      - release_execution
+    escalates:
+      - failed_gate
+      - missing_rollback
+      - production_risk
