@@ -1,0 +1,19 @@
+version: 1
+bootstrap:
+  - PROJECT_CHARTER.md
+  - MEOS/20_PROJECT_BOOTSTRAP.md
+roles:
+  architect:
+    reads:
+      - MEOS/**
+      - docs/02-architecture/**
+  backend:
+    reads:
+      - MEOS/01_ENGINEERING_CONSTITUTION.md
+      - MEOS/10_QUALITY_GATE.md
+  frontend:
+    reads:
+      - MEOS/01_ENGINEERING_CONSTITUTION.md
+      - docs/01-product/**
+routing:
+  default: bootstrap
