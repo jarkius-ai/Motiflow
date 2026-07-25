@@ -6,7 +6,11 @@
 
 Motiflow engines exchange explicit, versioned artifacts. JSON Schema is the initial machine-readable contract format; application types are generated from those schemas where practical.
 
-## Common envelope
+## Current common-envelope draft
+
+This example is one input to proposed ADR-0003, not the accepted decisive-slice
+schema. Its versionless `parent_artifact_ids` cannot prove stale-parent
+invalidation and must not be copied into Task 001 schemas.
 
 Every artifact includes:
 
@@ -25,6 +29,30 @@ Every artifact includes:
   "payload": {}
 }
 ```
+
+## Pending ADR-0003 decisive-slice overlay
+
+The pending proposal replaces versionless parent IDs with
+`parent_artifact_refs`. Each entry contains exactly `artifact_id`,
+`artifact_type`, and positive integer `artifact_version`:
+
+```json
+{
+  "parent_artifact_refs": [
+    {
+      "artifact_id": "uuid",
+      "artifact_type": "knowledge_fusion_package",
+      "artifact_version": 2
+    }
+  ],
+  "created_by": {"type": "human|engine|system", "id": "string"}
+}
+```
+
+The proposal remains unaccepted. If accepted, semantic validation must reject a
+parent reference whose artifact does not exist, stored type differs, or version
+is no longer the current non-invalidated dependency version. `created_by` has
+only `type` and `id`; approval role remains under `payload.actor.actor_role`.
 
 ## Contract rules
 

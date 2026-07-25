@@ -36,10 +36,15 @@ This index identifies the canonical home of each major concern. It is a navigati
 | Product vision | [`docs/VISION.md`](../VISION.md) pending focused structural migration |
 | Product requirements | [`docs/PRD.md`](../PRD.md) pending focused structural migration |
 | Personas and jobs | [`docs/01-product/PERSONAS.md`](../01-product/PERSONAS.md) |
-| User journeys and UX behavior | `docs/01-product/` and `docs/05-design/` |
+| User journeys and current UX behavior | [`docs/01-product/USER_JOURNEYS.md`](../01-product/USER_JOURNEYS.md) and other applicable `docs/01-product/` specifications; `docs/05-design/` when implemented |
 | Review-ready product roadmap | [`docs/ROADMAP.md`](../ROADMAP.md) pending focused structural migration |
 | Human-accepted implementation sequencing | An explicitly approved roadmap or task specification |
 | MVP validation plan | [`docs/01-product/MVP_VALIDATION_PLAN.md`](../01-product/MVP_VALIDATION_PLAN.md) |
+| Current MVP validation evidence | [`docs/01-product/validation/2026-07-25-mvp-validation-report.md`](../01-product/validation/2026-07-25-mvp-validation-report.md) |
+| Prepared validation cases | [`docs/01-product/validation/VALIDATION_CASE_CATALOG.md`](../01-product/validation/VALIDATION_CASE_CATALOG.md) |
+| Validation session instruments | [`docs/01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md`](../01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md) |
+| Validation artifact worksheets | [`docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md`](../01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md) |
+| Validation instrument dry run | [`docs/01-product/validation/2026-07-26-validation-instrument-dry-run.md`](../01-product/validation/2026-07-26-validation-instrument-dry-run.md) |
 
 Product documents may expand the charter but must not redefine Motiflow, ACDS, MEOS, or canonical component boundaries.
 
@@ -51,6 +56,11 @@ Current delivery-planning artifacts include:
 
 - `docs/03-delivery/UPDATED_PHASE_ROADMAP.md`
 - `docs/03-delivery/AI_EXECUTION_IMPLEMENTATION_PLAN.md`
+- `docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md`
+
+The first proposed implementation story is
+[`MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md`](../../MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md).
+It remains blocked until its evidence and human-acceptance prerequisites pass.
 
 ## Architecture authority
 
@@ -61,7 +71,9 @@ Current delivery-planning artifacts include:
 | Detailed architecture specifications | `docs/02-architecture/` |
 | Architecture dependency direction | [`docs/02-architecture/ARCHITECTURE_DEPENDENCY_MAP.md`](../02-architecture/ARCHITECTURE_DEPENDENCY_MAP.md) |
 | Data and artifact contracts | `docs/02-architecture/DATA_CONTRACTS.md` |
+| Decisive-slice contract acceptance | [`docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`](../02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md) |
 | Architecture decisions | `docs/adr/` |
+| Proposed canonical artifact-envelope decision | [`docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md`](../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md) |
 | Security architecture | `docs/02-architecture/` and relevant ADRs |
 
 ## Engineering governance

@@ -40,12 +40,24 @@ Accepted product and architecture decisions remain controlled by the Product Cha
 
 Execute the MVP validation plan and translate its evidence plus the reconciled authoritative context into the first implementation-ready task without inventing speculative structure. The immediate focus is readiness for a decisive creative-direction vertical slice: validate the workflow manually, obtain the accountable product-owner decision and required contract review, then define canonical schemas and fixtures, prove one executable workflow, and introduce only the canonical directories required by real code.
 
+The operational artifacts for this gate are:
+
+- [`../docs/01-product/validation/2026-07-25-mvp-validation-report.md`](../docs/01-product/validation/2026-07-25-mvp-validation-report.md) — open evidence record; participant evidence pending;
+- [`../docs/01-product/validation/VALIDATION_CASE_CATALOG.md`](../docs/01-product/validation/VALIDATION_CASE_CATALOG.md) — eight prepared synthetic case packets; round authorization still pending;
+- [`../docs/01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md`](../docs/01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md) — controlled facilitator, measurement, deterministic-review, and critic instruments;
+- [`../docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md`](../docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md) — provisional ten-artifact manual worksheets for field validation;
+- [`../docs/01-product/validation/2026-07-26-validation-instrument-dry-run.md`](../docs/01-product/validation/2026-07-26-validation-instrument-dry-run.md) — internal difficult-case protocol check; not participant evidence;
+- [`../docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`](../docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md) — review packet; human acceptance pending;
+- [`../docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md`](../docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md) — proposed envelope and approval-reference resolution; Chief Architect acceptance pending;
+- [`tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md`](tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md) — first bounded story; blocked until its prerequisites pass; and
+- [`../docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md`](../docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md) — current BMAD readiness evidence and score.
+
 ### Next Priorities
 
 1. Run `docs/01-product/MVP_VALIDATION_PLAN.md` with 5–10 representative inputs and 2–3 intended users or design partners.
-2. Record baseline measures and an accountable product-owner proceed, revise, or stop decision in a dated validation report without committing confidential participant material.
-3. Obtain required human review of the two-gate state machine and canonical ten-artifact vocabulary; review-ready status is not acceptance.
-4. Write the first task specification, acceptance criteria, JSON Schemas, fixtures, and validation-command plan under `MEOS/06_DEFINITION_OF_READY.md`.
+2. Complete the dated validation report with baseline measures and an accountable product-owner proceed, revise, or stop decision without committing confidential participant material.
+3. Resolve the artifact-envelope and approval-reference conflicts and obtain the required human acceptance of the two-gate state machine, canonical ten-artifact vocabulary, and first contract-proof boundary; review-ready status is not acceptance.
+4. Run `MEOS/06_DEFINITION_OF_READY.md` against Task 001 and promote it from blocked to ready only when every prerequisite passes.
 5. Introduce only the canonical implementation directories required by that task; avoid speculative repository skeletons and do not create a `packages/ai/` subtree.
 6. Implement one executable workflow before broadening infrastructure.
 7. Add a thin Model Gateway only after the workflow shape is proven, limited to an interface, deterministic mock, and one real provider.

@@ -8,7 +8,9 @@ This document sets engineering direction and repository boundaries. Review-ready
 
 ## Initial stack direction
 
-- Backend: Laravel 11+ on PHP 8.3 or later
+- Backend application: select and record a currently supported Laravel release
+  and compatible supported PHP version at implementation freeze; do not carry
+  an unsupported framework baseline forward by default
 - Frontend: React with TypeScript and Inertia.js
 - Database: PostgreSQL
 - Cache and queues: Redis
@@ -17,6 +19,12 @@ This document sets engineering direction and repository boundaries. Review-ready
 - Deployment: containerized services with environment-specific infrastructure definitions
 
 The stack is a starting direction, not an irreversible constraint. Architecture decisions should be recorded before major deviations.
+
+Task 001's contract validator is not the backend application. Its pending
+toolchain proposal is a plain PHP CLI entrypoint with Composer and an approved,
+locked Opis version; it must not bootstrap Laravel or add framework
+dependencies. The engineering lead must approve that toolchain before any
+dependency or implementation is added.
 
 ## Bounded modules
 

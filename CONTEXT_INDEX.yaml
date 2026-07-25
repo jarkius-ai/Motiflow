@@ -13,14 +13,16 @@ repository_state:
 current_milestone: decisive-slice-validation-and-task-readiness
 current_focus:
   - execute the MVP validation plan and record the product-owner proceed, revise, or stop decision
-  - after required human review, translate authoritative context and review-ready contracts into the first implementation-ready task specification for the creative-direction vertical slice
+  - complete docs/01-product/validation/2026-07-25-mvp-validation-report.md with real participant evidence
+  - close docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md through required human review
+  - promote MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md from blocked to ready only after its prerequisites pass
   - preserve canonical repository boundaries and avoid speculative structure before code exists
   - keep review-ready sequencing artifacts distinct from human-accepted product and architecture decisions
 next_priorities:
   - run docs/01-product/MVP_VALIDATION_PLAN.md with 5 to 10 representative inputs and 2 to 3 intended users or design partners
-  - record baseline measures and an accountable product-owner decision in a dated validation report outside confidential source material
-  - obtain required human review of the two-gate state machine and canonical ten-artifact vocabulary
-  - write a ready task specification for JSON Schemas, fixtures, and one validation command
+  - record baseline measures and an accountable product-owner decision in docs/01-product/validation/2026-07-25-mvp-validation-report.md without confidential source material
+  - resolve the artifact-envelope and approval-reference conflicts and obtain the human sign-offs required by docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md
+  - run the Definition of Ready check and promote MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md only when every prerequisite passes
   - implement one executable workflow before adding infrastructure breadth
   - introduce a thin Model Gateway only after the workflow shape is proven, limited to an interface, deterministic mock, and one real provider
 
@@ -63,6 +65,15 @@ golden_path: MEOS/15_GOLDEN_PATH.md
 architecture_rules: MEOS/11_ARCHITECTURE_RULES.md
 adr_process: MEOS/14_ADR_PROCESS.md
 artifact_contracts: docs/02-architecture/DATA_CONTRACTS.md
+current_validation_report: docs/01-product/validation/2026-07-25-mvp-validation-report.md
+validation_case_catalog: docs/01-product/validation/VALIDATION_CASE_CATALOG.md
+validation_session_instruments: docs/01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md
+validation_artifact_worksheets: docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md
+validation_instrument_dry_run: docs/01-product/validation/2026-07-26-validation-instrument-dry-run.md
+contract_acceptance: docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md
+blocking_architecture_decision: docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md
+current_task: MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md
+readiness_review: docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md
 
 roles:
   chief_architect:

@@ -1,6 +1,14 @@
 # Content and Visual Review Workspace
 
-Status: Proposed product specification
+**Status:** Proposed post-MVP publication-specialization specification
+**Scope:** Future combined editorial and visual publication review; not part of the decisive MVP slice
+
+This document does not govern pre-build MVP validation or the first executable
+creative-direction slice. For the MVP, an article may be source material for an
+Intake Package, but article authoring, editorial approval, publication packaging,
+CMS export, and social adaptation remain out of scope. The controlling MVP flow
+is defined in [`../PRD.md`](../PRD.md) and
+[`MVP_VALIDATION_PLAN.md`](MVP_VALIDATION_PLAN.md).
 
 ## Product outcome
 

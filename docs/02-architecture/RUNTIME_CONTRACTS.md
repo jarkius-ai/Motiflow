@@ -33,7 +33,11 @@ Runtime contracts use these canonical artifact names for the decisive workflow s
 
 Legacy aliases remain readable for migration purposes only. In particular, `StrategicContext` maps to `Knowledge Fusion Package`, `PromptPackage` maps to `Generation Specification`, and generic approval records must be specialized as either `Direction Approval Record` or `Final Approval Record`.
 
-## Canonical artifact envelope
+## Current conflicting runtime-envelope draft
+
+This nested example predates proposed ADR-0003 and is not canonical for Task
+001. In particular, singular versionless `parent_artifact_id` cannot prove
+multi-parent freshness.
 
 ```yaml
 artifact:
@@ -69,6 +73,16 @@ artifact:
 ```
 
 Required fields may not be omitted. Optional dimensions use `null`, not ambiguous absence, when the schema requires an explicit value.
+
+## Pending ADR-0003 decisive-slice overlay
+
+The pending proposal uses a flat envelope with `artifact_id`, `artifact_type`,
+`workflow_run_id`, and versioned `parent_artifact_refs`. Every parent entry has
+exactly `artifact_id`, `artifact_type`, and positive integer
+`artifact_version`; semantic validation rejects missing, type-mismatched, or
+stale parent versions. `created_by` contains only `type` and `id`; `producer`
+retains technical component/model details. This proposal is not accepted and
+must not be implemented before the ADR and C-03 are approved.
 
 ## Engine contract
 
@@ -279,7 +293,10 @@ critic_evaluation:
 
 A critic does not mutate the reviewed artifact.
 
-## Human gate contract
+## Current conflicting human-gate draft
+
+This example is retained as a conflict input. Its singular `artifact_ref` and
+`waived` value are not proposed canonical output.
 
 ```yaml
 approval_record:
@@ -300,6 +317,13 @@ approval_record:
 Allowed decisions: `approved`, `rejected`, `revision_requested`, `waived`.
 
 Canonical gate IDs are `direction_approval` and `final_approval`. Generation must not start without a valid approved `direction_approval` record for the current `Creative Direction Package`, and export must not start without a valid approved `final_approval` record for the current `Generated Candidate Set` plus `Critic Evaluation Package`.
+
+Under pending ADR-0003, approval payloads use versioned `artifact_refs` entries
+and decisions `approved`, `rejected`, or `revision_requested`. The schema proof
+checks `created_by.type == human` and
+`created_by.id == payload.actor.actor_id`. `payload.actor.actor_role` remains
+recorded, but project-role and gate authorization are deferred to runtime
+authorization-policy implementation. This proposal remains unaccepted.
 
 ## Error contract
 
