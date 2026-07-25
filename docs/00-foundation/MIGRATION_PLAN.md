@@ -30,24 +30,28 @@ Move Motiflow from an organically expanded repository into a coherent, AI-naviga
 ```text
 Motiflow/
 ├── apps/
+│   ├── studio/
+│   ├── api/
+│   └── worker/
 ├── packages/
-│   ├── core/
+│   ├── creative-kernel/
 │   ├── orchestrator/
 │   ├── engines/
-│   ├── agents/
-│   ├── evaluation/
+│   ├── critics/
 │   ├── connectors/
-│   ├── sdk/
+│   ├── schemas/
+│   ├── workflows/
+│   ├── engine-sdk/
+│   ├── connector-sdk/
 │   └── shared/
-├── schemas/
-├── workflows/
-├── prompts/
 ├── knowledge/
+├── prompts/
+├── evaluations/
 ├── docs/
 ├── infrastructure/
 ├── tools/
 ├── examples/
-└── tests/
+└── diagrams/
 ```
 
 This is a target state. Directories should be introduced only when they contain implemented or intentionally governed artifacts.
