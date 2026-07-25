@@ -16,37 +16,37 @@ Begin at [`START_HERE.md`](../START_HERE.md), which defines the canonical onboar
 
 ### Current Milestone
 
-Repository foundation alignment is in progress. Document authority, canonical terminology, target repository structure, migration sequencing, and root onboarding are being normalized before structural migration or product implementation.
+Documentation and architecture baseline work is complete on `main`. The repository is now in pre-implementation readiness for the first executable slice: pull requests #1 through #4 are merged, `origin/main` is at `dbce311`, and runtime/application implementation has not yet begun on the default branch.
 
 ### Completed
 
+- PR #1 merged: repository foundation and canonical onboarding baseline established.
+- PR #2 merged: documentation normalization baseline completed.
+- PR #3 merged: runtime and architecture contract baseline frozen before implementation.
+- PR #4 merged: AI execution layer documentation and implementation sequencing accepted on `main`.
 - Project Charter and foundational architecture context established.
 - MEOS engineering and AI constitutions established.
 - Context strategy and machine-readable role and task routing established.
 - Task Specification and Definition of Ready established.
 - Quality Gate and engineering improvement flywheel established.
-- Architecture Rules and ADR Process established.
-- Coding Standard and Review Standard established.
-- Golden Path from idea to production established.
+- Architecture Rules, ADR process, coding standard, review standard, and Golden Path established.
 - AI Workforce Charter and machine-readable roles established.
 - Foundation standards for document authority, terminology, and repository structure added.
-- Repository migration plan and initial terminology ADR added.
-- Canonical root reading order aligned across repository entry points.
+- Repository migration plan, glossary, architecture dependency map, and initial terminology ADR added.
 
 ### Current Focus
 
-Complete the repository-alignment foundation PR, verify links and terminology, and prepare the next focused documentation-normalization phase.
+Translate the accepted documentation and architecture baseline into the first implementation-ready task without inventing speculative structure. The immediate focus is Phase 4A readiness: scope the first executable slice, define its verification plan, and introduce only the canonical directories required by real code.
 
 ### Next Priorities
 
-1. Review and accept the foundation terminology ADR.
-2. Verify root-document links, paths, and exact casing.
-3. Classify authoritative, supporting, operational, historical, and generated documents.
-4. Identify duplicate, obsolete, and orphaned documentation.
-5. Create the architecture dependency map and repository glossary.
-6. Select the first implementation-ready vertical slice.
-7. Execute that slice through the MEOS Golden Path with real build, test, review, and release evidence.
-8. Add lean automated checks only for rules proven valuable by repository use.
+1. Select and scope the first implementation slice from the accepted roadmap, expected to begin with provider-neutral Model Gateway contracts plus supporting schemas and tests.
+2. Write or refine the task specification, acceptance criteria, and verification plan for that slice under `MEOS/06_DEFINITION_OF_READY.md`.
+3. Introduce only the canonical implementation directories required by the first real code change; avoid speculative repository skeletons.
+4. Implement the first contracts-and-testability slice with build, test, and review evidence.
+5. Follow with mock adapter, validation, prompt-control, and routing work in the accepted AI execution order.
+6. Preserve the documentation baseline while implementation begins; structural migration remains incremental and evidence-driven.
+7. Add lean automation only after a rule has proven valuable through real implementation work.
 
 ### Deferred Until Justified by Real Use
 

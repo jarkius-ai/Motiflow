@@ -1,10 +1,17 @@
 # Motiflow Complete Handoff
 
-Target local path:
+**Status:** Non-authoritative historical continuity context
+**Refreshed against repository truth:** July 25, 2026
+**Current authority:** `START_HERE.md`, `PROJECT_CHARTER.md`, `MASTER_CONTEXT.md`, `CONTEXT_INDEX.yaml`, `MEOS/20_PROJECT_BOOTSTRAP.md`, accepted ADRs, and live Git state on `main`
+**Verified repository truth for this refresh:** PRs #1-#4 are merged, the current/default branch is `main`, `origin/main` is at `dbce311`, and implementation has not begun on the default branch
+
+Preserve this file for continuity and historical reconstruction only. Do not treat it as the controlling source of truth when it conflicts with accepted repository documents or current Git state.
+
+Historical origin path:
 
 `/Users/jarkius/workspace/dev/temp-memory/motiflow`
 
-This handoff consolidates the Motiflow project context, architectural decisions, GitHub status, pending work, and implementation roadmap so development can continue locally and later merge back to the remote repository.
+This handoff consolidates earlier Motiflow project context, architectural decisions, pending work, and implementation ideas so historical continuity is preserved without depending on prior chat history.
 
 ## 1. Product
 
@@ -59,9 +66,9 @@ Each article package should contain:
 - model, prompt, and cost provenance
 - decision history
 
-## 4. Lifecycle folders
+## 4. Lifecycle states
 
-Use lifecycle state as the primary organization:
+Use lifecycle state as the primary operational organization:
 
 ```text
 Inbox
@@ -74,7 +81,7 @@ Inbox
   → Archived
 ```
 
-Article IDs, slugs, and timestamps remain metadata, but operational flow is lifecycle-based.
+Article IDs, slugs, and timestamps remain metadata, but operational flow is lifecycle-based. These are workflow and package states, not the approved top-level repository directory structure.
 
 ## 5. Permanent retention
 
@@ -200,7 +207,7 @@ Model selection is capability-based, not vendor-based.
 
 Every invocation should record workflow ID, package ID, stage, capability, provider, model, prompt ID/version, schema version, latency, token usage, retries, fallback, cost, validation result, errors, and output hash.
 
-## 12. Known GitHub state
+## 12. Repository state snapshot
 
 Repository:
 
@@ -208,61 +215,26 @@ Repository:
 jarkius-ai/Motiflow
 ```
 
-Default branch:
+Verified branch state on July 25, 2026:
 
-```text
-main
-```
+- current branch: `main`
+- default branch: `main`
+- remote head: `dbce311`
+- merged pull requests: `#1`, `#2`, `#3`, `#4`
+- implementation status on `main`: not started
 
-Known completed work:
+Documentation and architecture baseline accepted on `main`:
 
-- PR1 — repository foundation
-- PR2 — documentation normalization
-- PR3 — architecture contract freeze
-- PR4 — AI Execution Layer documentation
+- PR #1 — repository foundation
+- PR #2 — documentation normalization
+- PR #3 — runtime and architecture contract freeze
+- PR #4 — AI execution layer documentation and sequencing
 
-Current branch:
+Historical note:
 
-```text
-agent/ai-execution-layer
-```
+The earlier `agent/ai-execution-layer` branch and draft-PR context described a pre-merge state and is now obsolete.
 
-Draft PR:
-
-```text
-#4 docs: define Motiflow AI execution layer
-```
-
-Base:
-
-```text
-agent/architecture-contract-freeze
-```
-
-Head:
-
-```text
-agent/ai-execution-layer
-```
-
-Known committed files:
-
-```text
-docs/02-architecture/AI_EXECUTION_LAYER.md
-docs/03-delivery/AI_EXECUTION_IMPLEMENTATION_PLAN.md
-docs/03-delivery/UPDATED_PHASE_ROADMAP.md
-docs/adr/ADR-0002-PROVIDER_NEUTRAL_AI_GATEWAY.md
-```
-
-Known PR status from the successful GitHub operation:
-
-- draft: true
-- commits: 4
-- changed files: 4
-- additions: 375
-- deletions: 0
-
-## 13. Not yet confirmed on remote
+## 13. Not yet implemented on `main`
 
 - AI_BOOTSTRAP.md
 - CURRENT_STATE.yaml
@@ -287,62 +259,64 @@ Known PR status from the successful GitHub operation:
 - end-to-end tests
 - publishing connectors
 
-## 14. Recommended repository structure
+## 14. Accepted canonical target repository structure
+
+Authoritative source:
+
+`docs/00-foundation/REPOSITORY_STRUCTURE.md`
 
 ```text
 Motiflow/
-├── AI_BOOTSTRAP.md
-├── CURRENT_STATE.yaml
-├── apps/
-│   ├── api/
-│   ├── worker/
-│   └── review-web/
-├── packages/
-│   ├── ai/
-│   │   ├── gateway/
-│   │   ├── registry/
-│   │   ├── routing/
-│   │   ├── validation/
-│   │   ├── telemetry/
-│   │   ├── mock/
-│   │   └── providers/
-│   ├── orchestrator/
-│   ├── workflow-engine/
-│   ├── publication/
-│   ├── editorial-memory/
-│   ├── knowledge/
-│   ├── decision-ledger/
-│   ├── review/
-│   └── shared/
-├── schemas/
-├── workflows/
-├── examples/
-├── tests/
+├── README.md
+├── START_HERE.md
+├── PROJECT_CHARTER.md
+├── MASTER_CONTEXT.md
+├── CONTEXT_INDEX.yaml
+├── MEOS/
 ├── docs/
-└── data/
-    ├── Inbox/
-    ├── Imported/
-    ├── Analyzed/
-    ├── Generated/
-    ├── Reviewing/
-    ├── Approved/
-    ├── Published/
-    └── Archived/
+│   ├── 00-foundation/
+│   ├── 01-product/
+│   ├── 02-architecture/
+│   ├── 03-engineering/
+│   ├── 04-ai/
+│   ├── 05-design/
+│   ├── 06-operations/
+│   ├── adr/
+│   └── archive/
+├── apps/
+│   ├── studio/
+│   ├── api/
+│   └── worker/
+├── packages/
+│   ├── creative-kernel/
+│   ├── orchestrator/
+│   ├── engines/
+│   ├── critics/
+│   ├── connectors/
+│   ├── schemas/
+│   ├── workflows/
+│   ├── engine-sdk/
+│   ├── connector-sdk/
+│   └── shared/
+├── knowledge/
+├── prompts/
+├── evaluations/
+├── examples/
+├── tools/
+├── infrastructure/
+└── diagrams/
 ```
+
+Use lifecycle states for publication flow and retention, not as a competing top-level repository tree.
 
 ## 15. Pending implementation priorities
 
 ### P0 — Bootstrap synchronization
 
-Add:
+Status on July 25, 2026:
 
-- AI_BOOTSTRAP.md
-- CURRENT_STATE.yaml
-- conversation handoff
-- implementation backlog
-- implementation plan
-
-Goal: make the repository understandable to GPT Desktop without chat history.
+- superseded by `START_HERE.md`, `CONTEXT_INDEX.yaml`, and `MEOS/20_PROJECT_BOOTSTRAP.md`
+- do not create alternate bootstrap authorities unless an accepted task explicitly requires them
 
 ### P1 — Model Gateway contracts
 
@@ -601,19 +575,28 @@ Crawler Markdown
 Start with:
 
 ```text
-MG-001 — Implement ModelGateway TypeScript contracts
+MG-001 — Implement provider-neutral Model Gateway and connector SDK contracts
 ```
 
-Suggested files:
+Suggested canonical paths to introduce only when implementation begins:
 
 ```text
-packages/ai/gateway/src/types.ts
-packages/ai/gateway/src/model-gateway.ts
-packages/ai/gateway/src/errors.ts
-packages/ai/gateway/src/provenance.ts
-packages/ai/gateway/src/index.ts
-packages/ai/gateway/test/model-gateway.contract.test.ts
+packages/connector-sdk/src/model-gateway.ts
+packages/connector-sdk/src/model-request.ts
+packages/connector-sdk/src/model-result.ts
+packages/connector-sdk/src/errors.ts
+packages/connector-sdk/src/index.ts
+packages/schemas/model-invocation.schema.json
+tests/contract/model-gateway.contract.test.ts
 ```
+
+Follow with these canonical package paths rather than a `packages/ai/*` subtree:
+
+- `packages/connectors/mock/` for the deterministic mock adapter
+- `packages/connectors/` for provider-specific adapters
+- `packages/schemas/` for capability and output schemas
+- `packages/workflows/` for executable workflow definitions
+- `packages/creative-kernel/` and `packages/orchestrator/` when runtime ownership is needed by the implementation slice
 
 Then:
 
@@ -627,56 +610,17 @@ MG-007 — Publication Package Manifest
 MG-008 — First End-to-End Workflow
 ```
 
-## 19. Local-to-remote workflow
+## 19. Repository workflow note
 
-Store this file at:
+The earlier branch-specific workflow in this handoff is obsolete. It described a pre-merge state before PR #4 landed.
 
-```bash
-/Users/jarkius/workspace/dev/temp-memory/motiflow/MOTIFLOW_COMPLETE_HANDOFF.md
-```
+Current verified truth:
 
-Clone or update the repository:
+- worktree branch: `main`
+- remote default branch: `main`
+- remote head: `dbce311`
 
-```bash
-cd /Users/jarkius/workspace/dev
-git clone https://github.com/jarkius-ai/Motiflow.git motiflow-repo
-cd motiflow-repo
-git fetch origin
-git switch agent/ai-execution-layer
-git pull --ff-only origin agent/ai-execution-layer
-```
-
-Copy the handoff:
-
-```bash
-cp /Users/jarkius/workspace/dev/temp-memory/motiflow/MOTIFLOW_COMPLETE_HANDOFF.md    /Users/jarkius/workspace/dev/motiflow-repo/AI_BOOTSTRAP.md
-```
-
-Inspect:
-
-```bash
-git status
-git diff
-```
-
-Commit directly:
-
-```bash
-git add AI_BOOTSTRAP.md
-git commit -m "docs: add complete Motiflow bootstrap handoff"
-git push origin agent/ai-execution-layer
-```
-
-Safer branch option:
-
-```bash
-git switch -c agent/bootstrap-sync
-git add AI_BOOTSTRAP.md
-git commit -m "docs: add complete Motiflow bootstrap handoff"
-git push -u origin agent/bootstrap-sync
-```
-
-Then open a PR into `agent/ai-execution-layer`.
+Use current repository state, accepted MEOS process, and task-specific branches as needed. Do not follow the old `agent/ai-execution-layer` checkout, copy, or PR instructions from prior versions of this handoff.
 
 ## 20. North Star
 
