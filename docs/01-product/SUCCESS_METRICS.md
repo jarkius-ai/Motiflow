@@ -1,5 +1,9 @@
 # Success Metrics
 
+**Status:** Supporting product specification
+**Owner:** Product
+**Scope:** Motiflow outcome measures and success criteria
+
 Motiflow measures success across strategic quality, creative quality, operational performance, trust, and business outcomes.
 
 ## North Star

@@ -1,5 +1,9 @@
 # Engineering Architecture Baseline
 
+**Status:** Supporting engineering specification
+**Owner:** Engineering and Chief Architect
+**Scope:** Initial implementation stack, bounded modules, and engineering architecture direction
+
 ## Initial stack direction
 
 - Backend: Laravel 11+ on PHP 8.3 or later
@@ -20,7 +24,7 @@ The stack is a starting direction, not an irreversible constraint. Architecture 
 - Workflow Definitions
 - Workflow Runtime
 - Engine Registry
-- Provider Gateway
+- Model Gateway
 - Reviews and Approvals
 - Assets and Provenance
 - Knowledge and Connectors

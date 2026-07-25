@@ -1,5 +1,9 @@
 # Product Personas
 
+**Status:** Supporting product specification
+**Owner:** Product
+**Scope:** Motiflow user roles, needs, and decision responsibilities
+
 ## 1. Creative Lead
 
 Owns creative quality and direction across campaigns or content programs.

@@ -17,7 +17,8 @@ ACDS defines how the product reasons and operates. MEOS defines how the reposito
 - **Specialist Engine** — a bounded reasoning component with explicit input and output contracts.
 - **Critic** — a specialist evaluator that scores one or more explicit quality dimensions and returns evidence-backed findings.
 - **Connector** — an adapter to an external provider or enterprise service. A connector must not contain domain orchestration logic.
-- **Gateway** — a controlled runtime boundary that applies policy, routing, credentials, observability, and provider selection across connectors.
+- **Connector Gateway** — the outer controlled runtime boundary for external providers and enterprise services. It applies policy, credentials, observability, and normalized connector access.
+- **Model Gateway** — the provider-neutral model-execution contract inside the connector boundary. It routes declared model capabilities, applies model-specific policy, validation, retry/fallback, provenance, usage, and cost controls without exposing provider SDKs to engines.
 - **Workflow** — a versioned DAG definition that coordinates engines, gates, connectors, and human actions.
 - **Run** — one execution instance of a workflow.
 - **Package** — an immutable, versioned, validated information object exchanged between stages.

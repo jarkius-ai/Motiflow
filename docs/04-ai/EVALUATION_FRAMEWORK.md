@@ -1,5 +1,9 @@
 # Evaluation Framework
 
+**Status:** AI quality specification
+**Owner:** AI Engineering and QA
+**Scope:** Deterministic, semantic, critic, and human evaluation layers
+
 Motiflow evaluates both intermediate reasoning artifacts and final creative outputs.
 
 ## Evaluation layers

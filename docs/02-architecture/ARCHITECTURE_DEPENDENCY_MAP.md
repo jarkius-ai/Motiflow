@@ -19,7 +19,7 @@ Creative Kernel ↔ Workflow Orchestrator
             ↓
 Specialist Engines / Critics / Agent roles
             ↓
-Connector Gateway / Connector implementations
+Model Gateway → Connector Gateway / Connector implementations
             ↓
 External Providers and Enterprise Systems
 

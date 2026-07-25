@@ -1,5 +1,9 @@
 # Creative Kernel
 
+**Status:** Architecture specification
+**Owner:** Chief Architect
+**Scope:** Creative Kernel responsibilities, boundaries, and governed artifact state
+
 The Creative Kernel is Motiflow's domain foundation. It defines the stable language, rules, and lifecycle for creative work independently of any model provider or workflow engine.
 
 ## Responsibilities

@@ -1,5 +1,9 @@
 # AI Execution Implementation Plan
 
+**Status:** Implementation planning artifact
+**Owner:** Delivery and Chief Architect
+**Scope:** Sequenced implementation of the provider-neutral AI execution foundation
+
 ## Objective
 
 Implement the provider-neutral execution foundation required to automate the path from crawled Markdown to a review-ready Publication Package.

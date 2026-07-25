@@ -56,7 +56,8 @@ Motiflow addresses these weaknesses by separating discovery, reasoning, directio
 - **Creative Kernel:** integrity and governance runtime
 - **Workflow Orchestrator:** execution planner and state coordinator
 - **Specialist Engine:** bounded reasoning component with defined input and output contracts
-- **Connector Gateway:** controlled interface to external models, knowledge sources, storage, and enterprise services
+- **Connector Gateway:** outer controlled interface to external models, knowledge sources, storage, and enterprise services
+- **Model Gateway:** provider-neutral model-execution contract inside the Connector Gateway; engines depend on it rather than provider SDKs
 - **Motiflow Studio:** human workspace for briefs, workflow visibility, comparison, review, and approval
 
 ## 7. High-level architecture

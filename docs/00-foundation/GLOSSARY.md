@@ -34,7 +34,11 @@ An execution actor that may use one or more engines, tools, models, and policies
 A controlled adapter to an external model, knowledge source, storage system, publishing destination, or enterprise service.
 
 ### Connector Gateway
-The centralized policy and normalization layer through which external providers are accessed. Engines do not call providers directly.
+The outer policy and normalization layer through which external providers and enterprise services are accessed. Engines do not call providers directly.
+
+### Model Gateway
+
+The provider-neutral model-execution contract inside the Connector Gateway. It routes declared model capabilities and owns model-specific validation, retry/fallback, provenance, usage, and cost controls.
 
 ### Critic
 A focused evaluator that inspects an artifact against a specific quality dimension and produces structured findings rather than generic praise.

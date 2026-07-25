@@ -1,7 +1,7 @@
 # Motiflow Repository Migration Plan
 
 **Status:** Proposed  
-**Target branch:** `agent/repository-alignment-foundation`
+**Target branch:** `main`
 
 ## Purpose
 
@@ -66,7 +66,7 @@ Deliverables:
 - align the root reading order;
 - add the first terminology ADR;
 - document migration sequencing;
-- open a draft PR without moving or deleting files.
+- land foundation changes through focused, reviewable pull requests without moving or deleting files.
 
 Canonical reading order:
 

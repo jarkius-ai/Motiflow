@@ -1,5 +1,9 @@
 # Data Contracts
 
+**Status:** Architecture contract specification
+**Owner:** Chief Architect
+**Scope:** Versioned artifact, package, event, and data exchange contracts
+
 Motiflow engines exchange explicit, versioned artifacts. JSON Schema is the initial machine-readable contract format; application types are generated from those schemas where practical.
 
 ## Common envelope

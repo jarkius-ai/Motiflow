@@ -1,5 +1,9 @@
 # Motiflow Delivery Roadmap
 
+**Status:** Delivery planning artifact
+**Owner:** Delivery and Product
+**Scope:** Motiflow implementation phases and sequencing after the documentation baseline
+
 ## Completed foundation stream
 
 - Phase 1 — Repository foundation

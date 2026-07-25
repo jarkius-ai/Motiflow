@@ -1,5 +1,9 @@
 # Engine Catalog
 
+**Status:** Architecture catalog
+**Owner:** Chief Architect
+**Scope:** Bounded engine, critic, gateway, and connector responsibilities
+
 Each engine is a replaceable specialist that communicates through Creative Kernel contracts.
 
 ## Discovery engines
@@ -35,8 +39,8 @@ Selects and composes the dominant narrative, metaphor, mood, composition, and ar
 ### Prompt Compiler
 Converts provider-neutral creative packages into provider-specific generation requests.
 
-### Generation Gateway
-Routes requests to image, video, layout, copy, or other generation providers.
+### Model Gateway
+Routes provider-neutral requests for image, video, layout, copy, and other model capabilities through the Connector Gateway. Provider-specific SDKs remain inside connector adapters.
 
 ### Adaptation Engine
 Transforms approved direction across formats, channels, dimensions, and variants.

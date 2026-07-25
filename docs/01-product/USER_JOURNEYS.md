@@ -1,5 +1,9 @@
 # Core User Journeys
 
+**Status:** Supporting product specification
+**Owner:** Product and Design
+**Scope:** Core Motiflow user flows from brief through approval
+
 ## Journey A: Brief to approved creative direction
 
 1. User creates a project and submits a business brief.

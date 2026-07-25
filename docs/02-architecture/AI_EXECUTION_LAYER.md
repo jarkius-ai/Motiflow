@@ -1,5 +1,9 @@
 # AI Execution Layer
 
+**Status:** Proposed architecture specification
+**Owner:** Chief Architect
+**Scope:** Provider-neutral model execution, routing, validation, provenance, and usage controls
+
 ## Purpose
 
 The AI Execution Layer connects Motiflow engines to external language and multimodal models without coupling the Creative Kernel or Workflow Orchestrator to any provider.

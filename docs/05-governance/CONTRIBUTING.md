@@ -1,5 +1,9 @@
 # Contributing to Motiflow
 
+**Status:** Engineering governance guidance
+**Owner:** MEOS maintainers
+**Scope:** Contributor workflow, review expectations, and repository change discipline
+
 ## Before changing the system
 
 1. Read `PROJECT_CHARTER.md` and `MASTER_CONTEXT.md`.

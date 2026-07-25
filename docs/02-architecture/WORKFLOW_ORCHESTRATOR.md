@@ -1,5 +1,9 @@
 # Workflow Orchestrator
 
+**Status:** Architecture specification
+**Owner:** Chief Architect
+**Scope:** Workflow planning, execution, dependency, retry, and approval boundaries
+
 The Workflow Orchestrator executes Motiflow workflows as governed directed acyclic graphs.
 
 ## Responsibilities
