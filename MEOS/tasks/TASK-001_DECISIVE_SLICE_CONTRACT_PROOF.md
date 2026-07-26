@@ -3,7 +3,7 @@ task_id: TASK-001
 title: Prove the decisive-slice contracts before runtime implementation
 status: proposed
 readiness: BLOCKED
-owner: accountable product and engineering owners pending sign-off
+owner: Jarkius
 assigned_role: backend
 review_roles: [reviewer, qa, architect]
 priority: high
@@ -66,6 +66,7 @@ risks:
   - {risk: schema encodes an unresolved envelope, mitigation: acceptance and merged correction are prerequisites, owner: chief architect}
   - {risk: ungoverned validation dependency, mitigation: explicit approval and lockfile, owner: engineering lead}
   - {risk: gate bypass hidden by happy path, mitigation: AC-04 through AC-06 negative fixtures, owner: qa}
+  - {risk: one person holds product owner, facilitator, chief architect, and engineering lead roles, mitigation: independent reviewer and QA evidence are mandatory and cannot be supplied by the accountable owner alone, owner: reviewer}
 verification:
   required_tests:
     - ./tools/validate-decisive-slice-contracts
@@ -100,6 +101,13 @@ As the team implementing Motiflow's first vertical slice, I want the ten
 canonical artifacts expressed as executable JSON Schemas with deterministic
 positive and negative fixtures, so that later workflow code cannot reinterpret
 the two approval gates, lineage, or package vocabulary.
+
+Jarkius is the accountable task owner and holds the Product owner, Facilitator,
+Chief Architect, and Engineering lead roles. This assignment is not a product
+decision, contract disposition, approval, signature, or implementation
+authorization. `review_roles`, `verification.independent_review`, and the QA
+handoff remain mandatory; independent Reviewer and QA evidence must come from a
+separate reviewer/agent role and may not be inferred from Jarkius's self-review.
 
 ## Objective
 

@@ -2,7 +2,7 @@
 
 - Status: Proposed
 - Date: 2026-07-25
-- Decision owners: Product owner, Chief Architect, Engineering lead
+- Decision owners: Jarkius (Product owner, Chief Architect, Engineering lead)
 - Related task: `MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md`
 - Supersedes: None
 - Superseded by: None
@@ -394,6 +394,12 @@ may draft or revise this proposal, but they may not mark it `Accepted`.
 
 | Authority | Name | Decision | Date | Notes |
 |---|---|---|---|---|
-| Product owner | PENDING | PENDING | PENDING | Human approval required |
-| Chief Architect | PENDING | PENDING | PENDING | Human approval required |
-| Engineering lead | PENDING | PENDING | PENDING | Human approval required |
+| Product owner | Jarkius | PENDING | PENDING | Human approval required |
+| Chief Architect | Jarkius | PENDING | PENDING | Human approval required |
+| Engineering lead | Jarkius | PENDING | PENDING | Human approval required |
+
+These names assign accountability only. They do not mark this ADR accepted or
+record approval. The same-person role overlap requires independent Reviewer and
+QA evidence under the MEOS
+[`Review Standard`](../../MEOS/13_REVIEW_STANDARD.md#2-independence-and-separation-of-duties)
+before the proposal can contribute to readiness; no second human is assumed.

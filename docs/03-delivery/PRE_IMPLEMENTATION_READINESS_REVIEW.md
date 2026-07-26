@@ -21,7 +21,7 @@ evidence, the accountable product-owner decision, accepted architecture and
 contract decisions, and required human sign-off are absent.
 
 The reproducible target is **100/100** for the completed evidence package, not
-the current result of **37/100**. Per `MEOS/10_QUALITY_GATE.md`, no numerical
+the current result of **40/100**. Per `MEOS/10_QUALITY_GATE.md`, no numerical
 score can compensate for a failed mandatory gate.
 
 A score of **97/100** is arithmetically possible only as an incomplete result:
@@ -39,7 +39,7 @@ requires **100/100** and every mandatory gate passing.
 Lens findings:
 
 - **Analyst:** the hypothesis, sample size, eight-case catalog, and evidence instruments are explicit, but no field evidence exists.
-- **Product Manager:** MVP scope is coherent; the product-owner authority and proceed/revise/stop decision are pending.
+- **Product Manager:** Jarkius is the accountable Product owner; the proceed/revise/stop decision is pending.
 - **Architect:** the ten-artifact chain and two gates align; ADR-0003 now proposes one envelope and approval-reference resolution, but human acceptance is pending.
 - **Developer:** Task 001 is bounded and verifiable; dependency/toolchain authority and controlling contracts block readiness.
 - **UX Designer:** role coverage and gate-comprehension checks are defined; intended-user sessions have not occurred.
@@ -53,12 +53,12 @@ Lens findings:
 | Testable validation protocol | PASS | `docs/01-product/MVP_VALIDATION_PLAN.md` |
 | 5–10 representative inputs executed | FAIL | Input matrix and session evidence are pending |
 | 2–3 intended users involved | FAIL | Participant matrix and sessions are pending |
-| Product-owner decision | FAIL | No named owner or proceed/revise/stop record |
-| Human contract acceptance | FAIL | C-01–C-06 and signatories are pending |
+| Product-owner decision | FAIL | Jarkius is named; no proceed/revise/stop record exists |
+| Human contract acceptance | FAIL | C-01–C-06 decisions and required signatures are pending |
 | Architecture conflict resolution | FAIL | ADR-0003 is proposed, not accepted; controlling contracts remain unreconciled |
 | Required ADR | FAIL | ADR-0003 exists in `Proposed`; Chief Architect acceptance is pending |
 | Independently buildable story | PASS (prepared) | `MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md` |
-| Story Definition of Ready | FAIL | Task prerequisites and owner are pending |
+| Story Definition of Ready | FAIL | Task owner is Jarkius; evidence, acceptance, toolchain, and independent-review prerequisites remain pending |
 | Verification command named | PASS (contract) | `./tools/validate-decisive-slice-contracts`; implementation does not exist yet |
 | Rollback path | PASS | Task-level pre-consumer revert and post-consumer versioning rule |
 | Durable trail | PASS | `review-candidate commit` `efc4b5e2bb71b6da2e2ee39ce187fd39bd117411`, dated report, acceptance record, task packet, this review |
@@ -104,10 +104,10 @@ anchor. Mandatory gates remain independent and can fail even at 100 points.
 | Scope fidelity and wedge clarity | 15 | 15 | Preserve current boundary |
 | Dataset execution and coverage | 20 | 5 | Execute the eight prepared cases and record valid terminal outcomes |
 | Participant execution and coverage | 15 | 0 | Complete sessions with 2–3 intended users |
-| Instrumentation and rubric quality | 20 | 15 | Name the facilitator and tools, then pin the instrument and contract revisions |
+| Instrumentation and rubric quality | 20 | 15 | Facilitator is named; freeze the tools, versions, and settings |
 | Evidence and traceability | 15 | 2 | Declare restricted storage controls, complete evidence, then commit actual decision links and sign-offs in the `evidence/sign-off commit` |
-| Sign-off and governance | 15 | 0 | Name authorities, accept ADR-0003 and C-01–C-06, record product decision and signatures |
-| **Total** | **100** | **37** | **Target: 100, with every mandatory gate passing** |
+| Sign-off and governance | 15 | 3 | Obtain independent review evidence, accept ADR-0003 and C-01–C-06, and record product decision and signatures |
+| **Total** | **100** | **40** | **Target: 100, with every mandatory gate passing** |
 
 The structural review package is substantially complete. The five dataset
 points represent catalog coverage, not execution; the instrumentation points
@@ -115,9 +115,10 @@ represent versionable instruments, not participant outcomes. The two
 traceability points cover only the stable evidence-ID convention; no points are
 awarded for pending storage, execution, incomplete revision trace, or governance.
 
-The current **37** is exactly: scope fidelity/alignment/drift control `15`,
+The current **40** is exactly: scope fidelity/alignment/drift control `15`,
 dataset preparation `5`, protocol `5`, ratings/comprehension `5`, deterministic
-and critic instruments `5`, and evidence IDs `2`. Every other anchor is `0`.
+and critic instruments `5`, evidence IDs `2`, and named governance `3`. Every
+other anchor is `0`.
 
 ## Current anchor-by-anchor audit
 
@@ -137,20 +138,20 @@ credit.
 | Protocol | 5 | `EARNED` | Versioned facilitator sequence, timing, clarification, and stop rules exist |
 | Ratings and comprehension | 5 | `EARNED` | Anchored ratings and unprompted two-gate checks exist |
 | Deterministic and critic instruments | 5 | `EARNED` | Pre-generation, deterministic, critic, and audience-separation instruments exist |
-| Controlled setup | 5 | `NOT EARNED` | The `review-candidate commit` SHA is frozen, but facilitator and baseline/proposed tool versions/settings are pending |
+| Controlled setup | 5 | `NOT EARNED` | Jarkius is the facilitator and the `review-candidate commit` SHA is frozen, but baseline/proposed tool versions and settings are pending; participants and restricted storage separately keep session authorization blocked |
 | Evidence IDs | 2 | `EARNED` | Stable opaque ID formats exist for session and evidence classes |
 | Restricted evidence controls | 3 | `NOT EARNED` | External location, access owner, and retention/deletion rule are pending |
 | Completed evidence | 7 | `NOT EARNED` | Run sheets, stop records, aggregates, denominators, and per-role variance are pending |
 | Revision trace | 3 | `NOT EARNED` | The `review-candidate commit` `efc4b5e2bb71b6da2e2ee39ce187fd39bd117411` exists and the `trace-preparation commit` records it, but no `evidence/sign-off commit` with actual decision links exists |
-| Named governance | 3 | `NOT EARNED` | Product owner, Chief Architect, and engineering lead names are pending |
+| Named governance | 3 | `EARNED` | Jarkius is explicitly named as Product owner, Chief Architect, and Engineering lead; the rubric does not require distinct people, and naming grants no decision or approval credit |
 | Contract acceptance | 6 | `NOT EARNED` | ADR-0003 and C-01–C-06 remain proposed/pending |
 | Final decision and DoR | 6 | `NOT EARNED` | Product decision, signatures, and final Definition of Ready evidence are pending |
 
 ## Honest machine-verifiable ceiling
 
-- Score entering Cycle 2: **37/100**.
-- Score after the Cycle 2 corrections: **37/100**.
-- Maximum score attainable without user/human evidence or authority: **37/100**.
+- Previously audited score: **37/100**.
+- Score after the explicit governance assignments: **40/100**.
+- Current machine-verifiable ceiling: **40/100**.
 
 The `trace-preparation commit` records the committed candidate SHA, but it does
 not earn the 3-point revision-trace anchor. That anchor requires all three
@@ -158,10 +159,20 @@ governed stages, including an
 `evidence/sign-off commit` containing real decision links, dispositions, and
 signatures. Awarding it now would violate the all-or-zero rule.
 
-The remaining **63 points** require user/human input: dataset execution `15`,
+The remaining **60 points** require user/human input: dataset execution `15`,
 participant preparation `3`, participant execution `12`, controlled setup `5`,
 restricted evidence controls `3`, completed evidence `7`, revision trace `3`,
-named governance `3`, contract acceptance `6`, and final decision/DoR `6`.
+contract acceptance `6`, and final decision/DoR `6`.
+
+Jarkius holds the Product owner, Facilitator, Chief Architect, and Engineering
+lead roles. The named-governance rubric requires names, not distinct people, so
+the overlap does not invalidate its 3 points. It does create a material
+separation-of-duties risk under the MEOS
+[`Engineering Constitution`](../../MEOS/01_ENGINEERING_CONSTITUTION.md#14-separation-of-duties)
+and [`Review Standard`](../../MEOS/13_REVIEW_STANDARD.md#2-independence-and-separation-of-duties):
+Jarkius's self-review cannot be the sole approval. Independent Reviewer and QA
+identities and evidence remain `PENDING` and are mandatory before contract
+acceptance or `READY`; no second human is inferred.
 
 ## Target score calculation
 
@@ -184,11 +195,11 @@ incomplete and remains `NOT READY`; it cannot waive that missing anchor or any
 mandatory gate. For this packet, **100/100 plus every passing mandatory gate**
 is the only valid completed/`READY` result.
 
-The shortest honest arithmetic path from the current 37 to 97 is to earn the
-other 60 blocked points while leaving only the 3-point revision-trace anchor
+The shortest honest arithmetic path from the current 40 to 97 is to earn 57 of
+the remaining 60 points while leaving only the 3-point revision-trace anchor
 unearned. That requires real participant preparation and execution, controlled
-setup and restricted-evidence controls, completed evidence, named governance,
-contract acceptance, and the product-owner decision/Definition of Ready record.
+setup and restricted-evidence controls, completed evidence, contract
+acceptance, and the product-owner decision/Definition of Ready record.
 This pre-evidence/sign-off-commit 97-point state is incomplete and must remain
 `NOT READY`. The shortest path from there to valid `READY` is to create the governed
 `evidence/sign-off commit`, earn the final 3 points, and rerun every mandatory
@@ -196,7 +207,7 @@ gate; all must pass.
 
 ## Ordered next actions
 
-1. Product owner names the facilitator, restricted evidence location, 2–3 intended users, and baseline/proposed tools in the dated report.
+1. Product owner records the restricted evidence location, 2–3 intended users, and baseline/proposed tools in the dated report.
 2. Facilitator schedules the prepared eight-case catalog across the participant roles and runs the standard instruments.
 3. Complete every session row, friction decision, aggregate, and exit-criteria check; do not award execution points for scheduled or partial sessions.
 4. Product owner records `PROCEED`, `REVISE`, or `STOP` tied to the evidence.
@@ -217,5 +228,6 @@ approval references, two-gate semantics, and MVP boundary.
 | Unaccepted architecture decision | ADR-0003 is only proposed | Chief Architect accepts, revises, or rejects it explicitly |
 | Scope expansion | Publication workspace is marked post-MVP | Keep article/CMS/social behavior out of Task 001 |
 | Unapproved dependency | C-06 and Task 001 require explicit approval | Name the validator/toolchain before readiness |
+| Concentrated governance roles | Jarkius holds Product owner, Facilitator, Chief Architect, and Engineering lead roles | Require independent Reviewer and QA evidence; do not treat self-review as independent approval |
 
 **Checkpoint decision:** `DIG DEEPER` until field evidence and sign-offs are recorded.
