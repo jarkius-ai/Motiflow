@@ -54,7 +54,11 @@ Product documents may expand the charter but must not redefine Motiflow, ACDS, M
 
 Current delivery-planning artifacts include:
 
+- `docs/03-delivery/AUTONOMOUS_AGENT_TEAM_CHARTER.md`
+- `docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md`
+- `docs/03-delivery/PLAN_TO_EVIDENCE_TRACEABILITY_MATRIX.md`
 - `docs/03-delivery/PENDING_WORK_TO_READY.md`
+- `docs/03-delivery/RELEASE_AND_STAGING_DECISION_PLAN.md`
 - `docs/03-delivery/UPDATED_PHASE_ROADMAP.md`
 - `docs/03-delivery/AI_EXECUTION_IMPLEMENTATION_PLAN.md`
 - `docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md`

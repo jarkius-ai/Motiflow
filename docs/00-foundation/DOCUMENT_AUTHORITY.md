@@ -1,6 +1,6 @@
 # Document Authority Standard
 
-**Status:** Proposed foundation standard  
+**Status:** Proposed foundation standard
 **Applies to:** All Motiflow contributors, AI agents, specifications, architecture decisions, implementation tasks, and review evidence.
 
 ## Purpose
@@ -20,6 +20,11 @@ This standard establishes one authoritative read order and one conflict-resoluti
 9. Current implementation, tests, and verification evidence
 
 `START_HERE.md` is the navigation entry point. It is not a higher-authority policy document than the Project Charter or Master Context.
+
+The numeric prefixes in `MEOS/` identify governance topics and do not define
+the onboarding step number. `MEOS/20_PROJECT_BOOTSTRAP.md` is the designated
+MEOS bootstrap entry point; task routing determines which other MEOS documents
+are required.
 
 ## Authority levels
 
