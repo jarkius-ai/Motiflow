@@ -1,7 +1,7 @@
 # Decisive-Slice Contract Acceptance
 
 **Status:** Review-ready; human acceptance pending
-**Owner:** Product and Chief Architect
+**Owner:** Jarkius — Product owner, Chief Architect, and Engineering lead
 **Scope:** Pre-implementation freeze for the ten-artifact, two-gate MVP contract
 **Related authority:** [`DATA_CONTRACTS.md`](DATA_CONTRACTS.md), [`RUNTIME_CONTRACTS.md`](RUNTIME_CONTRACTS.md), [`WORKFLOW_STATE_MACHINE.md`](WORKFLOW_STATE_MACHINE.md), [`VERSIONING_AND_COMPATIBILITY.md`](VERSIONING_AND_COMPATIBILITY.md), [`../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md`](../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md)
 **Preparation base revision:** `df7af54`
@@ -181,13 +181,21 @@ Laravel bootstrap
 
 | Authority | Name | Decision | `review-candidate commit` SHA | Date | Constraints / rationale |
 |---|---|---|---|---|---|
-| Accountable product owner | PENDING | PENDING | PENDING | PENDING | PENDING |
-| Chief architect | PENDING | PENDING | PENDING | PENDING | PENDING |
-| Engineering lead | PENDING | PENDING | PENDING | PENDING | PENDING |
+| Accountable product owner | Jarkius | PENDING | PENDING | PENDING | PENDING |
+| Chief architect | Jarkius | PENDING | PENDING | PENDING | PENDING |
+| Engineering lead | Jarkius | PENDING | PENDING | PENDING | PENDING |
 
 Product signs scope, gates, and workflow intent. Architecture signs envelope,
 references, invalidation, and versioning. Engineering signs feasibility,
 locations, validator/toolchain, and the single-command contract.
+
+The shared assignee records accountability but does not collapse the three
+decisions or constitute any signature. Because Jarkius holds all three named
+authority roles, the separation-of-duties risk must be controlled by recorded
+independent Reviewer and QA evidence under the MEOS
+[`Review Standard`](../../MEOS/13_REVIEW_STANDARD.md#2-independence-and-separation-of-duties).
+Until that evidence and each explicit decision are recorded, every disposition
+and the acceptance outcome remain `PENDING`; no additional human is inferred.
 
 ## Acceptance outcome
 

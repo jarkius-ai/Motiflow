@@ -1,7 +1,7 @@
 # MVP Validation Report — 2026-07-25 Round
 
 **Status:** Open; preparation and participant evidence pending
-**Owner:** Product owner — name pending
+**Owner:** Jarkius — Product owner
 **Scope:** Readiness-to-build validation for the decisive creative-direction slice
 **Protocol:** [`../MVP_VALIDATION_PLAN.md`](../MVP_VALIDATION_PLAN.md)
 **Case catalog:** [`VALIDATION_CASE_CATALOG.md`](VALIDATION_CASE_CATALOG.md)
@@ -64,7 +64,7 @@ and raw notes in the declared restricted evidence location.
 
 ## Controlled setup
 
-- Facilitator: PENDING
+- Facilitator: Jarkius
 - Baseline workflow and allowed tools: PENDING
 - Proposed-workflow tools, model/provider versions, and settings: PENDING
 - Timing rule and pause handling: `VALIDATION_SESSION_INSTRUMENTS.md` section 4
@@ -79,7 +79,7 @@ and raw notes in the declared restricted evidence location.
 Do not schedule or run a session until every item is checked. `CASE_PREPARED`
 does not satisfy this gate.
 
-- [ ] Accountable product owner and facilitator are named.
+- [x] Accountable product owner and facilitator are named.
 - [ ] Two or three participant IDs, role coverage, consent evidence IDs, and
   session dates are recorded.
 - [ ] Restricted evidence location, access owner, and retention/deletion rule
@@ -93,6 +93,16 @@ does not satisfy this gate.
   input material will be used.
 
 **Session authorization:** `BLOCKED`
+
+Jarkius holds the Product owner, Facilitator, Chief Architect, and Engineering
+lead roles for this round. This records identity only; it is not consent,
+participant evidence, a product decision, contract disposition, approval, or
+signature. Under the MEOS
+[`Separation of Duties`](../../../MEOS/01_ENGINEERING_CONSTITUTION.md#14-separation-of-duties)
+and [`Review Standard`](../../../MEOS/13_REVIEW_STANDARD.md#2-independence-and-separation-of-duties),
+self-review is not independent approval. Independent Reviewer and QA identities
+and evidence remain `PENDING` and are required before readiness can pass; no
+second human is inferred.
 
 Post-session revision requirement: the later `evidence/sign-off commit` must
 record actual evidence, dispositions, decision links, and signatures. A signed
@@ -166,7 +176,7 @@ Per-role variance and interpretation: PENDING
 
 ## Product-owner decision
 
-- Accountable product owner: PENDING
+- Accountable product owner: Jarkius
 - Decision: `PENDING`
 - Rationale tied to evidence: PENDING
 - Approved decisive-slice scope: PENDING
@@ -174,7 +184,7 @@ Per-role variance and interpretation: PENDING
 - Constraints or required corrections: PENDING
 - Rerun scope if `REVISE`: PENDING
 - Reviewed `review-candidate commit` SHA: PENDING
-- Name / role / date: PENDING
+- Name / role / date: Jarkius / Product owner / PENDING
 
 ## Report integrity
 

@@ -1,6 +1,6 @@
 version: 5
 status: active
-owner: Chief Architect
+owner: Jarkius (Chief Architect)
 release: pre-implementation-readiness
 
 repository_state:
@@ -77,13 +77,24 @@ readiness_review: docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md
 pending_work_to_ready: docs/03-delivery/PENDING_WORK_TO_READY.md
 readiness_review_candidate_sha: efc4b5e2bb71b6da2e2ee39ce187fd39bd117411
 readiness_revision_trace_status: review_candidate_committed_trace_preparation_recorded_evidence_signoff_pending
-readiness_score_current: 37
-readiness_machine_verifiable_ceiling: 37
+readiness_score_current: 40
+readiness_machine_verifiable_ceiling: 40
+
+governance_assignments:
+  product_owner: Jarkius
+  facilitator: Jarkius
+  chief_architect: Jarkius
+  engineering_lead: Jarkius
+  scope: identity_assignment_only
+  decisions_dispositions_approvals_signatures: pending
+  independence_control: independent_reviewer_and_qa_evidence_required
 
 roles:
   chief_architect:
+    assigned_to: Jarkius
     required: [MEOS/11_ARCHITECTURE_RULES.md, MEOS/14_ADR_PROCESS.md, docs/02-architecture/**, docs/adr/**, docs/01-product/**]
   product_owner:
+    assigned_to: Jarkius
     required: [docs/00-foundation/**, docs/01-product/**]
   backend:
     required: [docs/02-architecture/**, docs/03-engineering/**, docs/01-product/**]

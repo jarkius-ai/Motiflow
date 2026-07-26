@@ -1,7 +1,8 @@
 # Pending Work to Ready
 
 **Status:** Active delivery control
-**Owner:** Product owner, Chief Architect, and Engineering Lead
+**Owner:** Jarkius — Product owner, Chief Architect, and Engineering lead
+**Facilitator:** Jarkius
 **Scope:** Clear the blocked path from pre-implementation readiness to Task 001 implementation
 **Last updated:** 2026-07-26
 
@@ -13,10 +14,19 @@ may begin.
 ## Current decision
 
 Motiflow is **not ready for implementation**. The current machine-verifiable
-readiness score is **37/100**, and the honest ceiling remains **37/100** until
-real participant evidence, human decisions, and sign-off are recorded.
+readiness score is **40/100**, which is also the honest ceiling for the evidence
+currently recorded. It may rise only as additional required controls,
+participant evidence, human decisions, and sign-off are recorded.
 
 Task 001 stays `proposed` and `BLOCKED` until every gate below passes.
+
+The four role assignments are identity records only. They are not decisions,
+dispositions, approvals, signatures, consent, or session evidence. Jarkius's
+same-person role overlap creates a separation-of-duties risk: self-review cannot
+be the only approval, and independent Reviewer and QA evidence is required by
+the MEOS [`Review Standard`](../../MEOS/13_REVIEW_STANDARD.md#2-independence-and-separation-of-duties).
+Those independent identities and records remain `PENDING`; no second human is
+invented.
 
 ## Phase A — Authorize validation setup
 
@@ -24,8 +34,8 @@ Goal: make the prepared validation round runnable without claiming evidence.
 
 Required outputs:
 
-- named accountable product owner;
-- named facilitator;
+- named accountable product owner — Jarkius (`RECORDED`);
+- named facilitator — Jarkius (`RECORDED`);
 - two or three opaque participant IDs with role coverage;
 - consent evidence IDs stored outside the repository;
 - restricted evidence location, access owner, and retention/deletion rule;
@@ -73,7 +83,7 @@ Goal: turn validation evidence into an accountable product decision.
 
 Required outputs:
 
-- accountable product owner name;
+- accountable product owner name — Jarkius (`RECORDED`);
 - decision: `PROCEED`, `REVISE`, or `STOP`;
 - rationale tied to the evidence;
 - approved decisive-slice scope and explicit exclusions;
@@ -105,7 +115,8 @@ Required outputs:
 - C-04 approval-reference and decision-set disposition;
 - C-05 schema dialect, versioning, and unknown-field policy disposition;
 - C-06 validator/toolchain, dependency, lockfile, and owner disposition;
-- Chief Architect and Engineering Lead sign-off;
+- Chief Architect and Engineering lead names — Jarkius (`RECORDED`);
+- Chief Architect and Engineering lead decisions and sign-off — `PENDING`;
 - required corrections merged into controlling contract documents.
 
 Repository updates:
