@@ -14,21 +14,43 @@ Read these documents in order:
 4. [`MEOS/20_PROJECT_BOOTSTRAP.md`](MEOS/20_PROJECT_BOOTSTRAP.md) — current delivery state, engineering controls, and continuation procedure
 5. task-specific product, architecture, engineering, AI, design, contract, ADR, and implementation documents selected by `CONTEXT_INDEX.yaml`
 
+The number in `MEOS/20_PROJECT_BOOTSTRAP.md` is the document's MEOS topic
+identifier, not its position in this onboarding list. Do not read the MEOS
+directory numerically from `01` through `20`; use `CONTEXT_INDEX.yaml` to load
+the minimum complete context for the task.
+
 `START_HERE.md` is the navigation authority. It does not replace the governing content of the documents it routes to.
 
 The current blocked-path control document is
 [`docs/03-delivery/PENDING_WORK_TO_READY.md`](docs/03-delivery/PENDING_WORK_TO_READY.md).
 Use it to order the pending validation, sign-off, and Task 001 readiness work.
 
-## Current Navigation Bias
+The reusable agent operating model is
+[`docs/03-delivery/AUTONOMOUS_AGENT_TEAM_CHARTER.md`](docs/03-delivery/AUTONOMOUS_AGENT_TEAM_CHARTER.md).
+Use it to assign AI work and preserve human decision boundaries.
 
-For immediate planning and execution, route toward the smallest creative-direction-first MVP proof unless a newer accepted task specification supersedes it.
+The current documentation and planning quality result is
+[`docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md`](docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md).
+Keep that score separate from product and task implementation readiness.
 
-- Prove one end-to-end path from source material through approved creative direction, one-provider generation, critic review, and final approval
-- Keep two explicit human approval gates in view:
-  - Approval Gate 1: approve the creative direction before downstream production hardens around it
-  - Approval Gate 2: approve the final candidate after critic review and before export
-- Park publication-platform breadth, editorial authoring expansion, multi-provider infrastructure, and publishing connectors until that MVP proof is accepted
+## Current Execution Order
+
+No implementation task is currently ready. Follow this sequence without skipping
+the human-evidence and authority gates:
+
+1. execute the prepared MVP validation protocol with intended users;
+2. record the accountable product-owner `PROCEED`, `REVISE`, or `STOP` decision;
+3. close C-01 through C-06 and accept, revise, or reject ADR-0003;
+4. run the Definition of Ready and promote Task 001 only if every prerequisite passes;
+5. implement the ten-artifact schema, fixture, validator, and CI contract proof; and
+6. only after that proof is accepted, continue toward the creative-direction-first
+   workflow with its two explicit human approval gates.
+
+The product destination remains one end-to-end path from source material through
+approved creative direction, one-provider generation, critic review, and final
+approval. Publication-platform breadth, editorial authoring expansion,
+multi-provider infrastructure, and publishing connectors remain parked until
+that MVP proof is accepted.
 
 If `CONTEXT_INDEX.yaml` or `MEOS/20_PROJECT_BOOTSTRAP.md` still route immediate work toward broad Model Gateway-first infrastructure, treat that as stale routing to reconcile rather than a reason to skip the creative-direction-first proof.
 
@@ -50,7 +72,7 @@ Architecture-significant terminology changes must follow the ADR process and exp
 
 Use this instruction:
 
-> Read `START_HERE.md`, then `PROJECT_CHARTER.md`, `MASTER_CONTEXT.md`, `CONTEXT_INDEX.yaml`, and `MEOS/20_PROJECT_BOOTSTRAP.md`. Follow the minimum task- and role-specific route defined in `CONTEXT_INDEX.yaml`, but explicitly surface any stale routing that still prioritizes broad Model Gateway-first work over the creative-direction-first MVP proof. Summarize the verified project state, identify assumptions or conflicts, and continue from the next approved priority without inventing requirements.
+> Read `START_HERE.md`, then `PROJECT_CHARTER.md`, `MASTER_CONTEXT.md`, `CONTEXT_INDEX.yaml`, and `MEOS/20_PROJECT_BOOTSTRAP.md`. Follow the minimum task- and role-specific route defined in `CONTEXT_INDEX.yaml`. Treat validation evidence, product and architecture decisions, and Task 001 readiness as the current ordered path; do not jump to the eventual provider-backed workflow. Summarize the verified project state, identify assumptions or conflicts, and continue from the next approved priority without inventing requirements.
 
 Do not treat previous chat memory as the source of truth. Repository artifacts, accepted decisions, current tasks, executable checks, and recorded evidence are authoritative.
 

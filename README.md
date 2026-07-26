@@ -28,6 +28,10 @@ The canonical foundation reading order is:
 5. [`MEOS/20_PROJECT_BOOTSTRAP.md`](./MEOS/20_PROJECT_BOOTSTRAP.md)
 6. task-specific product, architecture, engineering, AI, design, contract, ADR, and implementation documents
 
+The `20` in the MEOS bootstrap filename is a topic identifier, not a fifth-step
+sequence number. MEOS documents are selected by task routing; they are not read
+as one numeric series.
+
 Foundation standards:
 
 - [`DOCUMENT_AUTHORITY.md`](./docs/00-foundation/DOCUMENT_AUTHORITY.md)
@@ -47,13 +51,21 @@ Foundation standards:
 
 ## Current Decisive Slice
 
-The next implementation slice should prove a creative-direction-first MVP, not broad platform breadth.
+The product destination is a creative-direction-first MVP, not broad platform
+breadth. No implementation task is ready yet.
 
-- Start with one end-to-end path from source material to validated creative direction
-- Carry that direction through one provider-backed generation and review loop
-- Require **Approval Gate 1** before committing creative direction downstream
-- Require **Approval Gate 2** after candidate critique and before export or any equivalent finalization step
-- Park publication-platform breadth, editorial authoring expansion, multi-provider infrastructure, and publishing connectors until MVP proof is accepted
+The current ordered work is to execute intended-user validation, record the
+product decision, close C-01 through C-06 and ADR-0003, and pass Task 001's
+Definition of Ready. The first implementation after those gates is the bounded
+ten-artifact schema, fixture, validator, and CI contract proof. The
+provider-backed generation and review loop follows only after that proof is
+accepted.
+
+The eventual workflow retains **Approval Gate 1** before committing creative
+direction downstream and **Approval Gate 2** after candidate critique and before
+export or equivalent finalization. Publication-platform breadth, editorial
+authoring expansion, multi-provider infrastructure, and publishing connectors
+remain parked until MVP proof is accepted.
 
 ## Target Repository Structure
 
@@ -93,4 +105,9 @@ Directories should be introduced only when they contain implemented or intention
 
 **Pre-implementation readiness for a creative-direction-first MVP proof.**
 
-The documentation baseline is reconciled and review-ready. The next work is to execute the MVP validation plan, record the accountable product-owner decision, and prepare the first ready implementation task for the source-to-direction-to-generation-to-review loop. Broad Model Gateway infrastructure, publication-platform expansion, editorial authoring breadth, and connector ecosystems remain deferred.
+The documentation baseline is reconciled and review-ready. The next work is to
+execute the MVP validation plan, record the accountable product-owner decision,
+close the contract and ADR decisions, and promote the bounded Task 001 contract
+proof only after its Definition of Ready passes. Broad Model Gateway
+infrastructure, publication-platform expansion, editorial authoring breadth,
+and connector ecosystems remain deferred.
