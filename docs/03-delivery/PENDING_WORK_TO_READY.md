@@ -1,6 +1,6 @@
 # Pending Work to Ready
 
-**Status:** Active delivery control
+**Status:** Operational delivery control; promoted by the accountable owner (Jarkius) 2026-07-26
 **Owner:** Jarkius — Product owner, Chief Architect, and Engineering lead
 **Facilitator:** Jarkius
 **Scope:** Clear the blocked path from pre-implementation readiness to Task 001 implementation
@@ -14,7 +14,7 @@ may begin.
 ## Current decision
 
 Motiflow is **not ready for implementation**. The current machine-verifiable
-readiness score is **40/100**, which is also the honest ceiling for the evidence
+readiness score is **46/100** after the 2026-07-26 contract acceptance (49 once the evidence/sign-off commit lands), which remains the honest ceiling for the evidence
 currently recorded. It may rise only as additional required controls,
 participant evidence, human decisions, and sign-off are recorded.
 
@@ -36,7 +36,7 @@ Required outputs:
 
 - named accountable product owner — Jarkius (`RECORDED`);
 - named facilitator — Jarkius (`RECORDED`);
-- two or three opaque participant IDs with role coverage;
+- the recorded solo-round participant ID (scope revised 2026-07-26; original 2–3-participant requirement deferred to the post-build pilot);
 - consent evidence IDs stored outside the repository;
 - restricted evidence location, access owner, and retention/deletion rule;
 - frozen baseline workflow tools and proposed-workflow tools, versions, and
@@ -116,19 +116,21 @@ Required outputs:
 - C-05 schema dialect, versioning, and unknown-field policy disposition;
 - C-06 validator/toolchain, dependency, lockfile, and owner disposition;
 - Chief Architect and Engineering lead names — Jarkius (`RECORDED`);
-- Chief Architect and Engineering lead decisions and sign-off — `PENDING`;
+- Chief Architect and Engineering lead decisions and sign-off — `DONE 2026-07-26` (dispositions and signatures recorded; post-session evidence/sign-off commit pending);
 - required corrections merged into controlling contract documents.
 
 Repository updates:
 
 - complete `docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`;
 - update
-  `docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md`
+  `docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md`
   from proposed to the accepted, revised, or rejected outcome;
 - reconcile accepted corrections in the controlling architecture documents.
 
 Exit condition: contract acceptance outcome is `ACCEPTED`, and no C-01 through
-C-06 decision remains `PENDING`.
+C-06 decision remains `PENDING`. **Met 2026-07-26** — the acceptance outcome is
+`ACCEPTED` with all six dispositions recorded; Phase E (the post-session
+evidence/sign-off commit) remains open.
 
 ## Phase E — Create the evidence/sign-off commit
 
@@ -161,7 +163,7 @@ Required outputs:
 
 - completed MEOS Definition of Ready report appended to
   `MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md`;
-- frontmatter changed from `status: proposed` to `status: ready-for-dev`;
+- frontmatter changed from `status: proposed` to `status: READY` (MEOS/19 vocabulary);
 - frontmatter changed from `readiness: BLOCKED` to `readiness: READY`;
 - owner replaced with the accountable human owner;
 - required verification command and validator/toolchain authority confirmed.

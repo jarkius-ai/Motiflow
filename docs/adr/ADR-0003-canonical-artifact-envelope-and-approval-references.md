@@ -1,7 +1,7 @@
 # ADR-0003: Canonical Artifact Envelope and Approval References
 
-- Status: Proposed
-- Date: 2026-07-25
+- Status: Accepted
+- Date: 2026-07-25 (proposed); 2026-07-26 (accepted)
 - Decision owners: Jarkius (Product owner, Chief Architect, Engineering lead)
 - Related task: `MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md`
 - Supersedes: None
@@ -323,7 +323,7 @@ Negative:
 - Risk: teams implement against different draft shapes before acceptance.
   Mitigation: keep this ADR in `Proposed`, block Task 001 implementation until
   human acceptance is recorded, and do not treat any current example as schema
-  source of truth.
+  source of truth (mitigation closed at acceptance on 2026-07-26).
 - Risk: approval records still under-specify artifact typing or freshness.
   Mitigation: require `artifact_refs` to identify concrete current versions and
   validate gate-specific cardinality semantically, not just structurally.
@@ -389,17 +389,16 @@ Pre-acceptance review checks:
 
 ## Approval
 
-This ADR remains `Proposed` until explicit human approval is recorded. AI agents
-may draft or revise this proposal, but they may not mark it `Accepted`.
-
 | Authority | Name | Decision | Date | Notes |
 |---|---|---|---|---|
-| Product owner | Jarkius | PENDING | PENDING | Human approval required |
-| Chief Architect | Jarkius | PENDING | PENDING | Human approval required |
-| Engineering lead | Jarkius | PENDING | PENDING | Human approval required |
+| Product owner | Jarkius | ACCEPT | 2026-07-26 | Explicit human decision recorded in an interactive session and transcribed into `DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md` |
+| Chief Architect | Jarkius | ACCEPT | 2026-07-26 | Canonical envelope and approval-reference shape accepted as written |
+| Engineering lead | Jarkius | ACCEPT | 2026-07-26 | Validator feasibility accepted; toolchain revised to Python per ADR-0005 |
 
-These names assign accountability only. They do not mark this ADR accepted or
-record approval. The same-person role overlap requires independent Reviewer and
-QA evidence under the MEOS
-[`Review Standard`](../../MEOS/13_REVIEW_STANDARD.md#2-independence-and-separation-of-duties)
-before the proposal can contribute to readiness; no second human is assumed.
+The approvals above are explicit human decisions made by Jarkius on 2026-07-26
+against `review-candidate commit`
+`efc4b5e2bb71b6da2e2ee39ce187fd39bd117411`; an AI agent transcribed them but
+did not make them. The same-person role overlap is controlled by recorded
+independent agent-review evidence and the residual-risk acceptance in
+[`DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`](../02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md);
+no second human is assumed.

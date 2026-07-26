@@ -1,4 +1,4 @@
-version: 5
+version: 6
 status: active
 owner: Jarkius (Chief Architect)
 release: pre-implementation-readiness
@@ -7,21 +7,21 @@ repository_state:
   current_branch: main
   default_branch: main
   remote_head: origin/main
-  merged_pull_requests: [1, 2, 3, 4]
+  merged_pull_requests: [1, 2, 3, 4, 5]
   implementation_status: not_started
 
 current_milestone: decisive-slice-validation-and-task-readiness
 current_focus:
-  - execute the MVP validation plan and record the product-owner proceed, revise, or stop decision
-  - complete docs/01-product/validation/2026-07-25-mvp-validation-report.md with real participant evidence
-  - close docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md through required human review
+  - execute the solo-round MVP validation sessions per the recorded product-owner scope revision in docs/01-product/MVP_VALIDATION_PLAN.md
+  - complete docs/01-product/validation/2026-07-25-mvp-validation-report.md with recorded session evidence
+  - land the governed evidence/sign-off commit for the accepted docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md (C-01 to C-06 ACCEPT, ADR-0003 accepted, ADR-0005 stack decision, 2026-07-26)
   - promote MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md from blocked to ready only after its prerequisites pass
   - preserve canonical repository boundaries and avoid speculative structure before code exists
   - keep review-ready sequencing artifacts distinct from human-accepted product and architecture decisions
 next_priorities:
-  - run docs/01-product/MVP_VALIDATION_PLAN.md with 5 to 10 representative inputs and 2 to 3 intended users or design partners
+  - run docs/01-product/MVP_VALIDATION_PLAN.md solo-round sessions with the eight prepared cases (product owner as sole intended user per the 2026-07-26 scope revision)
   - record baseline measures and an accountable product-owner decision in docs/01-product/validation/2026-07-25-mvp-validation-report.md without confidential source material
-  - resolve the artifact-envelope and approval-reference conflicts and obtain the human sign-offs required by docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md
+  - carry the accepted contract decisions (C-01 to C-06, ADR-0003, ADR-0005) into the evidence/sign-off commit and reconcile controlling contract documents
   - run the Definition of Ready check and promote MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md only when every prerequisite passes
   - implement one executable workflow before adding infrastructure breadth
   - introduce a thin Model Gateway only after the workflow shape is proven, limited to an interface, deterministic mock, and one real provider
@@ -71,7 +71,7 @@ validation_session_instruments: docs/01-product/validation/VALIDATION_SESSION_IN
 validation_artifact_worksheets: docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md
 validation_instrument_dry_run: docs/01-product/validation/2026-07-26-validation-instrument-dry-run.md
 contract_acceptance: docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md
-blocking_architecture_decision: docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md
+blocking_architecture_decision: docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md
 current_task: MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md
 readiness_review: docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md
 pending_work_to_ready: docs/03-delivery/PENDING_WORK_TO_READY.md
@@ -79,12 +79,12 @@ agent_team_charter: docs/03-delivery/AUTONOMOUS_AGENT_TEAM_CHARTER.md
 plan_to_evidence_traceability: docs/03-delivery/PLAN_TO_EVIDENCE_TRACEABILITY_MATRIX.md
 release_and_staging_plan: docs/03-delivery/RELEASE_AND_STAGING_DECISION_PLAN.md
 documentation_planning_quality_review: docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md
-documentation_planning_quality_score: 97
+documentation_planning_quality_score: 99
 documentation_planning_quality_status: pass
 readiness_review_candidate_sha: efc4b5e2bb71b6da2e2ee39ce187fd39bd117411
 readiness_revision_trace_status: review_candidate_committed_trace_preparation_recorded_evidence_signoff_pending
-readiness_score_current: 40
-readiness_machine_verifiable_ceiling: 40
+readiness_score_current: 46
+readiness_machine_verifiable_ceiling: 49  # 49 when the post-session evidence/sign-off commit lands
 
 governance_assignments:
   product_owner: Jarkius
@@ -92,9 +92,10 @@ governance_assignments:
   chief_architect: Jarkius
   engineering_lead: Jarkius
   scope: identity_assignment_only
-  decisions_dispositions_approvals_signatures: pending
+  decisions_dispositions_approvals_signatures: contract_decisions_signed_2026-07-26_validation_evidence_pending
   independence_control: independent_reviewer_and_qa_evidence_required
 
+# roles.yaml is the authoritative role registry; on conflict roles.yaml wins
 roles:
   chief_architect:
     assigned_to: Jarkius
@@ -103,9 +104,9 @@ roles:
     assigned_to: Jarkius
     required: [docs/00-foundation/**, docs/01-product/**]
   backend:
-    required: [docs/02-architecture/**, docs/03-engineering/**, docs/01-product/**]
+    required: [docs/02-architecture/**, docs/02-architecture/**, docs/01-product/**]
   frontend:
-    required: [docs/01-product/**, docs/02-architecture/**, docs/03-engineering/**, docs/05-design/**]
+    required: [docs/01-product/**, docs/02-architecture/**] # docs/05-design/** is planned; directory not yet created
   ai_engineer:
     required: [docs/04-ai/**, docs/02-architecture/**, docs/01-product/**]
   qa:

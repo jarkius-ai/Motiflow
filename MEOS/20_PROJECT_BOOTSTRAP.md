@@ -26,6 +26,8 @@ Accepted product and architecture decisions remain controlled by the Product Cha
 - PR #2 merged: documentation normalization baseline completed.
 - PR #3 merged: proposed runtime and architecture contract baseline added for review before implementation.
 - PR #4 merged: AI execution layer documentation and proposed implementation sequencing added on `main`.
+- PR #5 merged: explicit governance role assignment without weakening readiness gates.
+- 2026-07-26: product owner accepted C-01–C-06 and ADR-0003, decided the Python backend stack (ADR-0005), and revised the validation round to a recorded solo scope; these decisions land in a decision-recording commit, and the governed `evidence/sign-off commit` follows the solo-round sessions.
 - Project Charter and foundational architecture context established.
 - MEOS engineering and AI constitutions established.
 - Context strategy and machine-readable role and task routing established.
@@ -47,8 +49,8 @@ The operational artifacts for this gate are:
 - [`../docs/01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md`](../docs/01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md) — controlled facilitator, measurement, deterministic-review, and critic instruments;
 - [`../docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md`](../docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md) — provisional ten-artifact manual worksheets for field validation;
 - [`../docs/01-product/validation/2026-07-26-validation-instrument-dry-run.md`](../docs/01-product/validation/2026-07-26-validation-instrument-dry-run.md) — internal difficult-case protocol check; not participant evidence;
-- [`../docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`](../docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md) — review packet; human acceptance pending;
-- [`../docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md`](../docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md) — proposed envelope and approval-reference resolution; Chief Architect acceptance pending;
+- [`../docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`](../docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md) — accepted 2026-07-26 (C-01–C-06 dispositions recorded; the post-session evidence/sign-off commit is still pending);
+- [`../docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md`](../docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md) — envelope and approval-reference resolution accepted by the Chief Architect 2026-07-26 (decision recorded; post-session evidence/sign-off commit pending);
 - [`tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md`](tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md) — first bounded story; blocked until its prerequisites pass; and
 - [`../docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md`](../docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md) — current BMAD readiness evidence and score.
 
@@ -59,9 +61,9 @@ records that SHA without claiming field evidence, decisions, or signatures. The
 
 ### Next Priorities
 
-1. Run `docs/01-product/MVP_VALIDATION_PLAN.md` with 5–10 representative inputs and 2–3 intended users or design partners.
+1. Run `docs/01-product/MVP_VALIDATION_PLAN.md` with 5–10 representative inputs under the recorded solo-round scope (Jarkius as sole intended user this round, per the 2026-07-26 revision; multi-user coverage deferred to the post-build pilot).
 2. Complete the dated validation report with baseline measures and an accountable product-owner proceed, revise, or stop decision without committing confidential participant material.
-3. Resolve the artifact-envelope and approval-reference conflicts and obtain the required human acceptance of the two-gate state machine, canonical ten-artifact vocabulary, and first contract-proof boundary; review-ready status is not acceptance.
+3. Carry the accepted C-01–C-06/ADR-0003/ADR-0005 decisions into the controlling contract documents and the post-session evidence/sign-off commit.
 4. Run `MEOS/06_DEFINITION_OF_READY.md` against Task 001 and promote it from blocked to ready only when every prerequisite passes.
 5. Introduce only the canonical implementation directories required by that task; avoid speculative repository skeletons and do not create a `packages/ai/` subtree.
 6. Implement one executable workflow before broadening infrastructure.

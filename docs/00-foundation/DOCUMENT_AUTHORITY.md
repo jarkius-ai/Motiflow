@@ -1,6 +1,6 @@
 # Document Authority Standard
 
-**Status:** Proposed foundation standard
+**Status:** Accepted foundation standard (accepted by Jarkius, 2026-07-26)
 **Applies to:** All Motiflow contributors, AI agents, specifications, architecture decisions, implementation tasks, and review evidence.
 
 ## Purpose
@@ -82,3 +82,35 @@ A document that changes an established decision must include:
 ## Documentation rule
 
 Documents must reference canonical concepts rather than redefine them. Product identity belongs in the Project Charter and Master Context. Engineering process belongs in MEOS. Domain details belong in their corresponding `docs/` area.
+
+## What belongs in MEOS/ versus docs/
+
+This is the normative placement rule. Two concerns live in this repository and
+they must not blur:
+
+- **`MEOS/` — how we build.** The engineering operating system: constitutions,
+  standards, quality gates, review and readiness rules, role registry, ADR
+  process, bootstrap/continuation procedure, and task specifications
+  (`MEOS/tasks/`). MEOS documents govern how work is specified, reviewed,
+  verified, and released. They never define product behavior.
+- **`docs/` — the product we build.** Product intent, personas, journeys,
+  validation evidence, architecture contracts, ADR decisions, AI evaluation,
+  and design material. `docs/` documents define what Motiflow is and how it
+  behaves. They never redefine engineering process.
+
+Declared exceptions, with rationale:
+
+- `docs/03-delivery/` holds delivery *planning* artifacts (roadmaps, readiness
+  reviews, traceability, release plans). They sequence product work, so they
+  read as product-adjacent, but they are controlled by MEOS standards
+  (Definition of Ready, Quality Gate). They stay in `docs/` because they are
+  audience-facing plans about the product's delivery, while their control
+  rules remain in `MEOS/`. Task specifications remain in `MEOS/tasks/` because
+  a task is a unit of governed work, not a product statement.
+- `docs/05-governance/CONTRIBUTING.md` is contributor-facing guidance owned by
+  MEOS maintainers; it stays in `docs/` as an entry-point convention and must
+  defer to `MEOS/` standards on any conflict.
+
+When placing a new document, ask: does it change what the product is
+(`docs/`), or how work on it is governed (`MEOS/`)? If genuinely both, split
+it. On conflict, this section is controlled by the authority levels above.

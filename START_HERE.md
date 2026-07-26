@@ -17,7 +17,9 @@ Read these documents in order:
 The number in `MEOS/20_PROJECT_BOOTSTRAP.md` is the document's MEOS topic
 identifier, not its position in this onboarding list. Do not read the MEOS
 directory numerically from `01` through `20`; use `CONTEXT_INDEX.yaml` to load
-the minimum complete context for the task.
+the minimum complete context for the task. Topic numbers 04, 07–09, and 16–18
+are reserved and currently unassigned; the absence of a number is not a missing
+document.
 
 `START_HERE.md` is the navigation authority. It does not replace the governing content of the documents it routes to.
 
@@ -38,12 +40,19 @@ Keep that score separate from product and task implementation readiness.
 No implementation task is currently ready. Follow this sequence without skipping
 the human-evidence and authority gates:
 
-1. execute the prepared MVP validation protocol with intended users;
+1. execute the prepared MVP validation protocol under the recorded solo-round
+   scope in `docs/01-product/MVP_VALIDATION_PLAN.md`;
 2. record the accountable product-owner `PROCEED`, `REVISE`, or `STOP` decision;
-3. close C-01 through C-06 and accept, revise, or reject ADR-0003;
-4. run the Definition of Ready and promote Task 001 only if every prerequisite passes;
-5. implement the ten-artifact schema, fixture, validator, and CI contract proof; and
-6. only after that proof is accepted, continue toward the creative-direction-first
+3. close C-01 through C-06 and accept, revise, or reject ADR-0003 —
+   **done 2026-07-26:** all six dispositions and ADR-0003 are `ACCEPT`, with
+   the C-06 toolchain revised to Python per ADR-0005 (see
+   `docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`);
+4. after the sessions and decision, create the governed
+   `evidence/sign-off commit` that records the session evidence together with
+   the already-recorded 2026-07-26 contract decisions;
+5. run the Definition of Ready and promote Task 001 only if every prerequisite passes;
+6. implement the ten-artifact schema, fixture, validator, and CI contract proof; and
+7. only after that proof is accepted, continue toward the creative-direction-first
    workflow with its two explicit human approval gates.
 
 The product destination remains one end-to-end path from source material through

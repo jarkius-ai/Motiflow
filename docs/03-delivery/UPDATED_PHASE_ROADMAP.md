@@ -1,39 +1,43 @@
 # Motiflow Delivery Roadmap
 
 **Status:** Review-ready delivery planning artifact
-**Owner:** Delivery and Product
+**Owner:** Jarkius — Product owner and Delivery
 **Scope:** Motiflow implementation phases and sequencing after the documentation baseline
 
 This document proposes delivery sequencing. It does not, by itself, change human-accepted product intent, architecture, or ADR decisions.
 
+Delivery phases are numbered `D1`–`D8` to avoid collision with the product
+roadmap phases in [`../ROADMAP.md`](../ROADMAP.md), which uses its own
+Phase 0–8 numbering; see the mapping table there.
+
 ## Merged documentation stream
 
-- Phase 1 — Repository foundation
-- Phase 2 — Documentation normalization
-- Phase 2.5 — Proposed runtime contract baseline
+- Delivery Phase D1 — Repository foundation
+- Delivery Phase D2 — Documentation normalization
+- Delivery Phase D2.5 — Proposed runtime contract baseline
 
 ## Product and implementation stream
 
-### Phase 3 — Manual validation baseline
+### Delivery Phase D3 — Manual validation baseline
 
 Define the manual validation path for the decisive creative-direction slice before broad automation begins.
 
-### Phase 4 — Two-gate workflow review
+### Delivery Phase D4 — Two-gate workflow review
 
 Review and obtain required human acceptance of the proposed first workflow, which preserves two explicit gates:
 
 - Gate 1: require authorized human approval of the Creative Direction Package before generation proceeds.
 - Gate 2: require authorized human final approval after generated candidates and critics complete.
 
-### Phase 5 — Canonical schemas, fixtures, and validation command
+### Delivery Phase D5 — Canonical schemas, fixtures, and validation command
 
 Create the canonical contracts, fixtures, and one repository validation command needed to prove the first slice without expanding into broader infrastructure.
 
-### Phase 6 — One executable workflow
+### Delivery Phase D6 — One executable workflow
 
 Implement one executable workflow that carries a creative brief through direction definition, generation handoff, critique, and approval readiness.
 
-### Phase 7 — Thin Model Gateway
+### Delivery Phase D7 — Thin Model Gateway
 
 Add only the thinnest model-execution layer required by the first workflow:
 
@@ -41,7 +45,7 @@ Add only the thinnest model-execution layer required by the first workflow:
 - deterministic mock implementation;
 - one real provider integration.
 
-### Phase 8 — Generated candidates, critics, and final approval
+### Delivery Phase D8 — Generated candidates, critics, and final approval
 
 Use the first workflow and thin gateway to produce generated candidates, run critics, and record the final approval decision with full provenance.
 

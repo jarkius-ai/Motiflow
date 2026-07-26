@@ -13,7 +13,7 @@ The worksheets deliberately remain editable during validation. A field that is
 missing, confusing, redundant, or dependent on facilitator invention is a
 finding, not permission to hide the gap. These worksheets do not settle the
 canonical envelope proposed in
-[`ADR-0003`](../../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md)
+[`ADR-0003`](../../adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md)
 and must not be copied into schemas until the ADR and contract packet are
 accepted.
 

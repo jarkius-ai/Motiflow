@@ -65,7 +65,7 @@ roles:
 
   backend:
     purpose: Implement reliable server-side behavior and integrations.
-    reads: [docs/02-architecture/**, docs/03-engineering/**, docs/01-product/**]
+    reads: [docs/02-architecture/**, docs/02-architecture/**, docs/01-product/**]
     owns: [backend_code, api_implementation, data_access, backend_tests]
     outputs: [implementation, tests, contract_updates, completion_report]
     must_handoff_to: [reviewer, qa]
@@ -74,7 +74,7 @@ roles:
 
   frontend:
     purpose: Implement accessible, testable user experiences within approved contracts.
-    reads: [docs/01-product/**, docs/02-architecture/**, docs/03-engineering/**, docs/05-design/**]
+    reads: [docs/01-product/**, docs/02-architecture/**] # docs/05-design/** is planned; directory not yet created
     owns: [frontend_code, user_interactions, frontend_tests]
     outputs: [implementation, tests, screenshots_or_visual_evidence, completion_report]
     must_handoff_to: [reviewer, qa]

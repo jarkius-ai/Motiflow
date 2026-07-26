@@ -44,7 +44,7 @@ Documents under `MEOS/` define how work is prepared, executed, verified, reviewe
 
 ### AI and design documents
 
-Documents under `docs/04-ai/` and `docs/05-design/` define bounded AI-engine behavior, evaluation, design language, and UX/design contracts. They must use canonical package and architecture boundaries.
+Documents under `docs/04-ai/` and `docs/05-design/` (planned, not yet created) define bounded AI-engine behavior, evaluation, design language, and UX/design contracts. They must use canonical package and architecture boundaries.
 
 ## Overlap findings
 

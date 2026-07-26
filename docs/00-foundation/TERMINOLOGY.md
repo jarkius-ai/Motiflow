@@ -1,6 +1,6 @@
 # Motiflow Terminology Standard
 
-**Status:** Proposed foundation standard
+**Status:** Accepted foundation standard (accepted by Jarkius, 2026-07-26)
 
 ## System identity
 

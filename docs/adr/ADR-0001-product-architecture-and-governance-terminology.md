@@ -1,8 +1,11 @@
 # ADR-0001: Product, Architecture, and Governance Terminology
 
-- **Status:** Proposed
-- **Date:** 2026-07-25
-- **Decision owners:** Motiflow maintainers
+- Status: Accepted
+- Date: 2026-07-25 (accepted 2026-07-26)
+- Decision owners: Motiflow maintainers
+- Related task: None
+- Supersedes: None
+- Superseded by: None
 
 ## Context
 
@@ -64,3 +67,15 @@ Rejected because product and architecture authority must remain visible outside 
 ## Compliance
 
 New or materially revised authoritative documents must follow this ADR. Deprecated terminology should be corrected or explicitly identified as historical.
+
+## Migration and Rollback
+
+The terminology is already applied repo-wide through the merged documentation baseline; no further migration is required. Rollback would require a superseding ADR and a coordinated terminology change across authoritative documents.
+
+## Verification
+
+Authoritative documents use Motiflow, ACDS, MEOS, Creative Kernel, and Workflow Orchestrator with the canonical meanings above; no document treats ACDS or MEOS as an alternative product name.
+
+## Approval
+
+Accepted by Jarkius (Product owner, Chief Architect) 2026-07-26; terminology already ratified through merged PRs #1–#5 and applied repo-wide.

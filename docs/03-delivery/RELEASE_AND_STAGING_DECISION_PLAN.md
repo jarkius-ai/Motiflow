@@ -1,7 +1,7 @@
 # Release and Staging Decision Plan
 
-**Status:** Active delivery control
-**Owner:** Release Manager, Engineering Lead, and accountable service owner
+**Status:** Operational delivery control; promoted by the accountable owner (Jarkius) 2026-07-26
+**Owner:** Jarkius — Engineering lead (release-manager role UNASSIGNED; must be filled or explicitly assumed before any release authorization)
 **Scope:** Evidence, rollback, monitoring, and authority required to move Motiflow artifacts between environments
 **Applies now:** Planning only; no releasable product implementation exists
 

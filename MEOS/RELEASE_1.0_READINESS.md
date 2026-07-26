@@ -7,7 +7,7 @@ version: 1.0
 authoritative: true
 readers: [all-contributors]
 provides: [meos-release-assessment, release-scope, residual-risks]
-requires: [MEOS-001, MEOS-002, MEOS-003, MEOS-005, MEOS-006, MEOS-010, MEOS-011, MEOS-014, MEOS-015, MEOS-019]
+requires: [MEOS-001, MEOS-002, MEOS-003, MEOS-005, MEOS-006, MEOS-010, MEOS-011, MEOS-012, MEOS-013, MEOS-014, MEOS-015, MEOS-019]
 related: [CONTEXT_INDEX.yaml, MEOS/roles.yaml]
 ---
 
@@ -22,7 +22,7 @@ This assessment certifies the **Motiflow Engineering Operating System (MEOS) doc
 Overall readiness score: **94 / 100**
 
 This is the historical MEOS 1.0 release-baseline score. The current Motiflow
-documentation and planning package is reassessed separately at **97/100** in
+documentation and planning package is reassessed separately at **99/100** in
 [`../docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md`](../docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md).
 Neither score represents product implementation readiness.
 
@@ -67,6 +67,8 @@ All mandatory governance gates are present and no known release-blocking gap rem
 - `MEOS/06_DEFINITION_OF_READY.md`
 - `MEOS/10_QUALITY_GATE.md`
 - `MEOS/11_ARCHITECTURE_RULES.md`
+- `MEOS/12_CODING_STANDARD.md`
+- `MEOS/13_REVIEW_STANDARD.md`
 - `MEOS/14_ADR_PROCESS.md`
 - `MEOS/15_GOLDEN_PATH.md`
 - `MEOS/19_AI_WORKFORCE_CHARTER.md`

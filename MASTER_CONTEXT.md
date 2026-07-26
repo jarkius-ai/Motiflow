@@ -280,7 +280,7 @@ The UI should feel like a creative operating environment, not a generic chatbot 
 The current preferred implementation direction is:
 
 - **Frontend:** React with TypeScript
-- **Backend:** Laravel
+- **Backend:** Python 3.12+ (FastAPI direction) per `docs/adr/ADR-0005-python-backend-and-react-typescript-stack.md`
 - **Primary database:** PostgreSQL
 - **Cache, queue, and ephemeral coordination:** Redis
 - **Object storage:** S3-compatible storage

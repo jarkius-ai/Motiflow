@@ -15,7 +15,7 @@ React-based application for project intake, direction review, workflow visibilit
 
 ### Application API
 
-Laravel-based API responsible for authentication, authorization, project operations, package access, approval commands, and client-facing orchestration requests.
+Python (FastAPI) API responsible for authentication, authorization, project operations, package access, approval commands, and client-facing orchestration requests.
 
 ### Creative Kernel
 
@@ -324,7 +324,7 @@ Legacy aliases map as follows:
 A practical first deployment may use:
 
 - React application
-- Laravel application and workers
+- Python API application and workers
 - PostgreSQL
 - Redis
 - S3-compatible object storage

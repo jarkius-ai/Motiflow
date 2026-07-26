@@ -8,7 +8,7 @@ The authoritative navigation index is [`00-foundation/DOCUMENT_INDEX.md`](00-fou
 
 1. `PROJECT_CHARTER.md` — enduring human-facing vision, mission, and scope
 2. `MASTER_CONTEXT.md` — consolidated operational context
-3. `docs/adr/` — approved architectural decisions
+3. `docs/adr/` — architecture decision records (proposed and accepted)
 4. Current product, architecture, engineering, AI, and governance specifications
 5. `docs/archive/` — historical source material only
 6. Chat history and informal notes — non-authoritative inputs
@@ -22,8 +22,7 @@ docs/
 ├── 00-foundation/   # manifesto, philosophy, principles
 ├── 01-product/      # users, journeys, requirements, outcomes
 ├── 02-architecture/ # kernel, orchestrator, engines, contracts
-├── 03-delivery/     # review-ready sequencing proposals
-├── 03-engineering/  # implementation architecture and standards
+├── 03-delivery/     # delivery planning, sequencing, readiness, and release controls
 ├── 04-ai/           # evaluation, memory, prompting, review
 ├── 05-governance/   # transitional contribution guidance
 ├── adr/             # architecture decision records

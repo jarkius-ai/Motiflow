@@ -14,6 +14,14 @@
 **`evidence/sign-off commit`:** PENDING; created after evidence and decisions are recorded, then optionally identified by a signed tag
 **Restricted evidence location:** Pending; do not store participant identities or confidential inputs here
 
+Naming note: this round is named for its packet-preparation date (2026-07-25);
+the frozen `review-candidate commit` SHA above was committed 2026-07-26.
+
+**Scope revision (2026-07-26):** the accountable product owner recorded a
+solo-round `REVISE` — the sole intended user is Jarkius, per
+[`../MVP_VALIDATION_PLAN.md`](../MVP_VALIDATION_PLAN.md) — and the participant
+tables below remain to be executed under that solo scope.
+
 ## Decision status
 
 **Current decision:** `NOT RECORDED`
@@ -34,14 +42,14 @@ one coverage requirement.
 
 | Case | External evidence ID | Source type | Channel | Completeness | Ambiguity / contradiction | Brand / policy sensitivity | Expected decision difficulty | Status |
 |---|---|---|---|---|---|---|---|---|
-| C-01 | `VCAT-C-01` | structured brief | paid social static | high | low | low | medium | `CASE_PREPARED` |
-| C-02 | `VCAT-C-02` | structured brief | landing-page hero | high | low | medium | medium | `CASE_PREPARED` |
-| C-03 | `VCAT-C-03` | unstructured brief | email header | low | high; incomplete | low | high | `CASE_PREPARED` |
-| C-04 | `VCAT-C-04` | mixed brief notes | paid social static | medium | contradictory | medium | high | `CASE_PREPARED` |
-| C-05 | `VCAT-C-05` | structured brief | product-page hero | high | low | high brand sensitivity | high | `CASE_PREPARED` |
-| C-06 | `VCAT-C-06` | structured brief | paid social static | high | medium | high policy sensitivity | high | `CASE_PREPARED` |
-| C-07 | `VCAT-C-07` | article-derived brief | editorial illustration | medium | medium | low | high | `CASE_PREPARED` |
-| C-08 | `VCAT-C-08` | sparse noisy input | display banner | low | high; missing dependency | medium | high | `CASE_PREPARED` |
+| VC-01 | `VCAT-VC-01` | structured brief | paid social static | high | low | low | medium | `CASE_PREPARED` |
+| VC-02 | `VCAT-VC-02` | structured brief | landing-page hero | high | low | medium | medium | `CASE_PREPARED` |
+| VC-03 | `VCAT-VC-03` | unstructured brief | email header | low | high; incomplete | low | high | `CASE_PREPARED` |
+| VC-04 | `VCAT-VC-04` | mixed brief notes | paid social static | medium | contradictory | medium | high | `CASE_PREPARED` |
+| VC-05 | `VCAT-VC-05` | structured brief | product-page hero | high | low | high brand sensitivity | high | `CASE_PREPARED` |
+| VC-06 | `VCAT-VC-06` | structured brief | paid social static | high | medium | high policy sensitivity | high | `CASE_PREPARED` |
+| VC-07 | `VCAT-VC-07` | article-derived brief | editorial illustration | medium | medium | low | high | `CASE_PREPARED` |
+| VC-08 | `VCAT-VC-08` | sparse noisy input | display banner | low | high; missing dependency | medium | high | `CASE_PREPARED` |
 
 Coverage exceptions and rationale: none. The catalog covers two well-formed,
 two ambiguous/contradictory, two brand/policy-sensitive, one article-derived,

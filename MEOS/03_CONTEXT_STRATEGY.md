@@ -25,6 +25,7 @@ Before execution, every agent must answer:
 5. What evidence will prove completion?
 
 ## Required Read Sequence
+This sequence assumes the `START_HERE.md` foundation order (`START_HERE.md` → `PROJECT_CHARTER.md` → `MASTER_CONTEXT.md` → `CONTEXT_INDEX.yaml` → `MEOS/20_PROJECT_BOOTSTRAP.md`) has already been followed.
 1. `MEOS/20_PROJECT_BOOTSTRAP.md`
 2. `CONTEXT_INDEX.yaml`
 3. The role definition in `MEOS/roles.yaml`

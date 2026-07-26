@@ -1,0 +1,343 @@
+#!/usr/bin/env python3
+"""check-docs: documentation-governance checker for the Motiflow repository.
+
+Checks tracked Markdown and YAML files for: broken relative links/anchors,
+YAML parseability, required metadata, context-routing path existence,
+ADR naming conventions, and canonical task states (MEOS/19).
+
+Stdlib only, except an optional PyYAML import (skipped with a warning if absent).
+Exit code 0 only when zero errors.
+"""
+import os
+import re
+import subprocess
+import sys
+import urllib.parse
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CANONICAL_STATES = {"PROPOSED", "READY", "IN_PROGRESS", "REVIEW", "LOOP",
+                    "BLOCKED", "ACCEPTED", "RELEASED"}
+MD_SCOPES = ("docs/", "MEOS/", ".chatgpt/", "ai-scratchpad/")
+
+errors, warnings = [], []
+
+
+def err(check, msg):
+    errors.append((check, msg))
+
+
+def warn(check, msg):
+    warnings.append((check, msg))
+
+
+def tracked_files():
+    """All git-tracked files; falls back to a filesystem walk without .git."""
+    try:
+        out = subprocess.run(["git", "-C", ROOT, "ls-files", "-z"],
+                             capture_output=True, check=True)
+        return [p for p in out.stdout.decode("utf-8").split("\0") if p]
+    except (OSError, subprocess.CalledProcessError):
+        warn("SETUP", "git unavailable; walking filesystem instead")
+        found = []
+        for base, dirs, names in os.walk(ROOT):
+            dirs[:] = [d for d in dirs if d not in (".git", ".omx")]
+            for n in names:
+                found.append(os.path.relpath(os.path.join(base, n), ROOT))
+        return found
+
+
+def in_md_scope(path):
+    return path.endswith(".md") and (
+        "/" not in path or path.startswith(MD_SCOPES))
+
+
+def strip_fenced_code(lines):
+    """Yield (lineno, line) pairs outside fenced code blocks."""
+    fence = None
+    for i, line in enumerate(lines, 1):
+        m = re.match(r"^\s*(```+|~~~+)", line)
+        if m:
+            tick = m.group(1)[0] * 3
+            if fence is None:
+                fence = tick
+            elif line.strip().startswith(fence):
+                fence = None
+            continue
+        if fence is None:
+            yield i, line
+
+
+def slugify(heading):
+    """GitHub-style anchor slug for a heading line's text."""
+    text = re.sub(r"!?\[([^\]]*)\]\([^)]*\)", r"\1", heading)  # links -> text
+    text = re.sub(r"[`*_~]", "", text).strip().lower()
+    text = re.sub(r"[^\w\- ]", "", text, flags=re.UNICODE)
+    return text.replace(" ", "-")
+
+
+def heading_slugs(md_path):
+    """Return (strict_slugs, loose_keys) for a markdown file, cached."""
+    if md_path in heading_slugs.cache:
+        return heading_slugs.cache[md_path]
+    strict, loose, counts = set(), set(), {}
+    try:
+        with open(md_path, encoding="utf-8") as f:
+            lines = f.read().splitlines()
+    except OSError:
+        lines = []
+    for _, line in strip_fenced_code(lines):
+        m = re.match(r"^\s{0,3}(#{1,6})\s+(.*?)\s*#*\s*$", line)
+        if not m:
+            continue
+        slug = slugify(m.group(2))
+        n = counts.get(slug, 0)
+        counts[slug] = n + 1
+        strict.add(slug if n == 0 else f"{slug}-{n}")
+        loose.add(re.sub(r"[^a-z0-9]", "", slug))
+    # Explicit HTML anchors also count.
+    text = "\n".join(lines)
+    for m in re.finditer(r'<a\s+(?:name|id)="([^"]+)"', text):
+        strict.add(m.group(1))
+    heading_slugs.cache[md_path] = (strict, loose)
+    return strict, loose
+
+
+heading_slugs.cache = {}
+
+LINK_RE = re.compile(r"!?\[(?:[^\[\]]|\[[^\]]*\])*\]\(\s*(<[^>]*>|[^()\s]+"
+                     r"(?:\([^()]*\)[^()\s]*)*)")
+
+
+def check_link(src, lineno, raw_target):
+    target = raw_target.strip("<>")
+    target = target.split(" ")[0].strip()  # drop optional "title"
+    if re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*:", target):  # http, https, mailto…
+        return
+    if not target:
+        return
+    path_part, _, anchor = target.partition("#")
+    path_part = urllib.parse.unquote(path_part)
+    src_abs = os.path.join(ROOT, src)
+    if path_part:
+        if path_part.startswith("/"):
+            dest = os.path.join(ROOT, path_part.lstrip("/"))
+        else:
+            dest = os.path.normpath(os.path.join(os.path.dirname(src_abs),
+                                                 path_part))
+        if not os.path.exists(dest):
+            err("LINKS", f"{src}:{lineno}: broken link -> {target}")
+            return
+    else:
+        dest = src_abs  # same-file anchor
+    if anchor and dest.endswith(".md") and os.path.isfile(dest):
+        strict, loose = heading_slugs(dest)
+        a = urllib.parse.unquote(anchor).lower()
+        if a in strict:
+            return
+        if re.sub(r"[^a-z0-9]", "", a) in loose or not re.fullmatch(
+                r"[a-z0-9\-_]+", a):
+            warn("LINKS", f"{src}:{lineno}: anchor #{anchor} not confidently "
+                          f"resolvable in {os.path.relpath(dest, ROOT)}")
+        else:
+            err("LINKS", f"{src}:{lineno}: missing anchor #{anchor} in "
+                         f"{os.path.relpath(dest, ROOT)}")
+
+
+def check_links(md_files):
+    for src in md_files:
+        try:
+            with open(os.path.join(ROOT, src), encoding="utf-8") as f:
+                lines = f.read().splitlines()
+        except OSError as e:
+            err("LINKS", f"{src}: unreadable ({e})")
+            continue
+        for lineno, line in strip_fenced_code(lines):
+            clean = re.sub(r"(?<!`)`[^`]*`(?!`)", "``", line)  # inline code
+            for m in LINK_RE.finditer(clean):
+                check_link(src, lineno, m.group(1))
+
+
+def load_yaml_module():
+    try:
+        import yaml
+        return yaml
+    except ImportError:
+        warn("YAML", "SKIP: PyYAML not installed; YAML parse and routing "
+                     "checks skipped (pip install pyyaml)")
+        return None
+
+
+def check_yaml(yaml_mod, yaml_files):
+    parsed = {}
+    if yaml_mod is None:
+        return parsed
+    for path in yaml_files:
+        try:
+            with open(os.path.join(ROOT, path), encoding="utf-8") as f:
+                parsed[path] = yaml_mod.safe_load(f)
+        except Exception as e:
+            err("YAML", f"{path}: parse failure: {e}")
+    return parsed
+
+
+def check_metadata(md_files):
+    scopes = ("docs/01-product/", "docs/02-architecture/", "docs/03-delivery/")
+    for path in md_files:
+        if not path.startswith(scopes):
+            continue
+        try:
+            with open(os.path.join(ROOT, path), encoding="utf-8") as f:
+                head = f.read().splitlines()[:15]
+        except OSError:
+            continue
+        if not any(re.match(r"^# \S", ln) for ln in head):
+            err("METADATA", f"{path}: no top-level H1 in first 15 lines")
+        if not any("**Status:**" in ln for ln in head):
+            err("METADATA", f"{path}: no '**Status:**' line in first 15 lines")
+
+
+PATHY = re.compile(r"^[\w./*-]+$")
+
+
+def routing_paths(node, keys, active=False, found=None):
+    """Collect path-like strings under the given list keys."""
+    if found is None:
+        found = []
+    if isinstance(node, dict):
+        for k, v in node.items():
+            routing_paths(v, keys, active or k in keys, found)
+    elif isinstance(node, list):
+        for v in node:
+            routing_paths(v, keys, active, found)
+    elif active and isinstance(node, str):
+        s = node.strip()
+        if PATHY.match(s) and ("/" in s or "." in s):
+            found.append(s)
+    return found
+
+
+def planned_lines(path):
+    """Set of path tokens appearing on lines marked '# planned'."""
+    tokens = set()
+    try:
+        with open(os.path.join(ROOT, path), encoding="utf-8") as f:
+            for line in f:
+                if "# planned" in line:
+                    tokens.update(re.findall(r"[\w./-]*/[\w./*-]*|[\w-]+\."
+                                             r"(?:md|yaml|yml)", line))
+    except OSError:
+        pass
+    return tokens
+
+
+def check_routing(parsed):
+    sources = {"CONTEXT_INDEX.yaml": ("required", "require"),
+               "MEOS/roles.yaml": ("reads", "required_reading")}
+    for path, keys in sources.items():
+        if path not in parsed:
+            if os.path.exists(os.path.join(ROOT, path)):
+                warn("ROUTING", f"{path}: not parsed; routing check skipped")
+            else:
+                err("ROUTING", f"{path}: file missing")
+            continue
+        planned = planned_lines(path)
+        for ref in routing_paths(parsed[path], keys):
+            root = ref.split("*", 1)[0].rstrip("/") if "*" in ref else ref
+            if not root or ref in planned or root in planned:
+                continue
+            if not os.path.exists(os.path.join(ROOT, root)):
+                err("ROUTING", f"{path}: referenced path does not exist: "
+                               f"{ref}")
+
+
+def check_adrs(md_files):
+    pat = re.compile(r"^ADR-(\d{4})(-[a-z0-9]+)+\.md$")
+    seen = {}
+    for path in md_files:
+        if not path.startswith("docs/adr/"):
+            continue
+        name = os.path.basename(path)
+        if name in ("README.md",):
+            continue
+        m = pat.match(name)
+        if not m:
+            err("ADR", f"{path}: filename does not match "
+                       f"ADR-NNNN-kebab-case.md")
+            continue
+        num = m.group(1)
+        if num in seen:
+            err("ADR", f"{path}: duplicate ADR number {num} "
+                       f"(also {seen[num]})")
+        seen[num] = path
+        with open(os.path.join(ROOT, path), encoding="utf-8") as f:
+            lines = f.read().splitlines()
+        h1 = next((ln for ln in lines if ln.startswith("# ")), "")
+        if not h1.startswith(f"# ADR-{num}:"):
+            err("ADR", f"{path}: H1 must start with '# ADR-{num}:' "
+                       f"(found: {h1[:60]!r})")
+
+
+def check_task_states(md_files):
+    state_keys = ("status", "readiness", "state", "task_state")
+    for path in md_files:
+        if not (path.startswith("MEOS/tasks/") and path.endswith(".md")):
+            continue
+        with open(os.path.join(ROOT, path), encoding="utf-8") as f:
+            lines = f.read().splitlines()
+        if not lines or lines[0].strip() != "---":
+            warn("TASK-STATES", f"{path}: no YAML frontmatter found")
+            continue
+        for line in lines[1:]:
+            if line.strip() == "---":
+                break
+            m = re.match(r"^(\w+):\s*(\S+)\s*$", line)
+            if not m or m.group(1) not in state_keys:
+                continue
+            value = m.group(2).strip("\"'")
+            norm = value.upper().replace("-", "_")
+            if norm not in CANONICAL_STATES:
+                err("TASK-STATES", f"{path}: non-canonical {m.group(1)} "
+                    f"'{value}' (MEOS/19 allows: "
+                    f"{', '.join(sorted(CANONICAL_STATES))})")
+            elif value != norm:
+                warn("TASK-STATES", f"{path}: {m.group(1)} '{value}' should "
+                     f"use canonical uppercase '{norm}'")
+
+
+def main():
+    files = tracked_files()
+    md_files = sorted(p for p in files if in_md_scope(p))
+    yaml_files = sorted(p for p in files if p.endswith((".yaml", ".yml")))
+
+    check_links(md_files)
+    yaml_mod = load_yaml_module()
+    parsed = check_yaml(yaml_mod, yaml_files)
+    check_metadata(md_files)
+    if yaml_mod is not None:
+        check_routing(parsed)
+    check_adrs(md_files)
+    check_task_states(md_files)
+
+    order = ["SETUP", "LINKS", "YAML", "METADATA", "ROUTING", "ADR",
+             "TASK-STATES"]
+    print(f"check-docs: {len(md_files)} markdown files, "
+          f"{len(yaml_files)} yaml files scanned\n")
+    for group in order:
+        group_errs = [m for c, m in errors if c == group]
+        group_warns = [m for c, m in warnings if c == group]
+        status = "FAIL" if group_errs else ("WARN" if group_warns else "OK")
+        print(f"[{status}] {group}")
+        for m in group_errs:
+            print(f"    ERROR   {m}")
+        for m in group_warns:
+            print(f"    warning {m}")
+    print()
+    if errors:
+        print(f"FAIL ({len(errors)} errors, {len(warnings)} warnings)")
+        return 1
+    print(f"PASS ({len(warnings)} warnings)")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
