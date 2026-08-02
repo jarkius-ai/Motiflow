@@ -1,12 +1,10 @@
-version: 7
+version: 8
 status: active
 owner: Jarkius (Chief Architect)
 release: pre-implementation-readiness
 
 repository_state:
   default_branch: main
-  review_branch: agent/reconcile-target-blueprint
-  active_review_pr: 7
   implementation_status: not_started
   runtime_capabilities_active: []
 
@@ -15,11 +13,11 @@ identity:
   product_architecture: ACDS
   engineering_governance: MEOS
 
-current_milestone: documentation-responsibility-review-and-decisive-slice-readiness
+current_milestone: decisive-slice-validation-and-task-readiness
 current_focus:
-  - complete independent architecture and QA review of PR 7
-  - execute the MVP validation plan and record the Product Owner proceed, revise, or stop decision
-  - complete the dated MVP validation report with real participant evidence
+  - execute the MVP validation plan with intended users
+  - record the Product Owner proceed, revise, or stop decision
+  - complete the dated MVP validation report with participant evidence and baseline measures
   - close decisive-slice contract acceptance and ADR-0003 through required human review
   - promote Task 001 from blocked to ready only after every prerequisite passes
   - preserve the accepted target direction without treating future phases as implemented
@@ -31,7 +29,9 @@ current_state:
   readiness_machine_verifiable_ceiling: 40
   task_001_status: blocked
   adr_0003_status: proposed
-  adr_0004_status: accepted_direction
+  adr_0004_status: accepted
+  target_direction_status: accepted
+  reconciliation_review_status: independent_review_pending
   product_validation_status: participant_evidence_pending
   agent_reach_status: deferred_not_installed
   browser_provider_status: deferred_not_selected
