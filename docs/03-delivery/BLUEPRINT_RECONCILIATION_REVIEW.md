@@ -5,7 +5,7 @@
 - **Reviewed source:** External `PROJECT_BLUEPRINT.md` v0.5.0-review
 - **Source SHA-256:** `da8e88c5c384ff63c5f4ef76f67cd8ee83ee73e1a778c1b4c7a349f8fd06a366`
 - **Source scope:** 32 parts, 193 fixed files, 39 reserved directories, 5 dynamic path classes
-- **Decision:** ADR-0004 accepted on 2026-08-02
+- **Decision:** ADR-0006 accepted on 2026-08-02
 
 ## 1. Review question
 
@@ -168,7 +168,7 @@ Controls include:
 - canonical owner routing in `CONTEXT_INDEX.yaml`;
 - Document Responsibility Model;
 - Architecture Change Gate;
-- accepted ADR-0004;
+- accepted ADR-0006;
 - evidence-based Capability Map;
 - explicit current-state Bootstrap;
 - provider-specific high-risk routing;

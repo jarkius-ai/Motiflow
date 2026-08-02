@@ -12,9 +12,10 @@ Implement the narrowest executable path that proves Motiflow can move from a bri
 
 ## Required sequence
 
-Deliver:
+The numbered steps below correspond to Delivery Phases D3–D8 in
+[`UPDATED_PHASE_ROADMAP.md`](UPDATED_PHASE_ROADMAP.md).
 
-### 1. Manual validation baseline
+### 1. Manual validation baseline (Delivery Phase D3)
 
 Deliver:
 
@@ -29,7 +30,7 @@ Exit criteria:
 - expected approval signals and rejection reasons are explicit;
 - the first automation work has a stable target to preserve.
 
-### 2. Two-gate workflow correction
+### 2. Two-gate workflow correction (Delivery Phase D4)
 
 Deliver:
 
@@ -44,7 +45,7 @@ Exit criteria:
 - final approval cannot be implied by intermediate success;
 - rejected or superseded paths remain traceable.
 
-### 3. Canonical schemas, fixtures, and validation command
+### 3. Canonical schemas, fixtures, and validation command (Delivery Phase D5)
 
 Deliver:
 
@@ -59,7 +60,7 @@ Exit criteria:
 - fixtures protect the intended slice behavior from drift;
 - the validation command is the default proof for the slice contracts.
 
-### 4. One executable workflow
+### 4. One executable workflow (Delivery Phase D6)
 
 Deliver:
 
@@ -73,7 +74,7 @@ Exit criteria:
 - its stage boundaries match the two-gate design;
 - the workflow is simpler to reason about than any broader infrastructure alternative.
 
-### 5. Thin Model Gateway
+### 5. Thin Model Gateway (Delivery Phase D7)
 
 Deliver:
 
@@ -88,7 +89,7 @@ Exit criteria:
 - mock execution produces repeatable outputs for fixtures;
 - one real provider path works without requiring routing breadth or a provider mesh.
 
-### 6. Generated candidates, critics, and final approval
+### 6. Generated candidates, critics, and final approval (Delivery Phase D8)
 
 Deliver:
 

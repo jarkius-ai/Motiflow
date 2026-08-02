@@ -4,7 +4,7 @@
 - **Owner:** Product Owner, Chief Architect, Delivery
 - **Source:** External `PROJECT_BLUEPRINT.md` v0.5.0-review
 - **Source SHA-256:** `da8e88c5c384ff63c5f4ef76f67cd8ee83ee73e1a778c1b4c7a349f8fd06a366`
-- **Decision:** ADR-0004
+- **Decision:** ADR-0006
 - **Responsibility:** Map source-blueprint concepts to their repository owner and disposition
 - **Does not own:** Current implementation state, phase authorization, or task instructions
 
@@ -40,8 +40,8 @@ Disposition is not implementation state. State is owned by `../02-architecture/T
 | Motiflow product identity | Charter and Master Context | Adopt | Foundation | No competing identity |
 | ACDS architecture | Master Context and architecture docs | Adopt | Foundation | Material change requires ADR |
 | MEOS engineering operating system | `MEOS/` | Adopt | Foundation | Remains sole engineering governance |
-| One monolithic blueprint as sole authority | Layered responsibility model | Reject | ADR-0004 | No document owns vision, architecture, state, roadmap, tasks, and evidence together |
-| Full up-front 193-file generation | Incremental repository introduction rule | Reject | ADR-0004 | Exact path requires accepted need or ready task |
+| One monolithic blueprint as sole authority | Layered responsibility model | Reject | ADR-0006 | No document owns vision, architecture, state, roadmap, tasks, and evidence together |
+| Full up-front 193-file generation | Incremental repository introduction rule | Reject | ADR-0006 | Exact path requires accepted need or ready task |
 | Deterministic artifact/contract discipline | Existing contracts and MEOS | Adapt | Phase 1 onward | Apply through schemas, fixtures, tests, and evidence |
 | Ten canonical artifacts | Existing decisive-slice authority | Adopt | Phase 1 | ADR-0003 and contract acceptance required |
 | Two human creative gates | Existing workflow model | Adopt | Phases 1–3 | Non-bypassable |
@@ -132,4 +132,4 @@ The repository rejects:
 - provider or proxy activation from architecture prose;
 - broad autonomous publishing or engagement in early phases.
 
-ADR-0004 records the accepted direction. Independent review and QA remain required before PR #7 is ready to merge. No implementation phase is activated by this matrix.
+ADR-0006 records the accepted direction. Independent review and QA remain required before PR #7 is ready to merge. No implementation phase is activated by this matrix.

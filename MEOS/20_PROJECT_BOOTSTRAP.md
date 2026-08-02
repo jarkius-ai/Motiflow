@@ -11,27 +11,28 @@ Begin at [`START_HERE.md`](../START_HERE.md).
 - **Motiflow** is the product and repository identity.
 - **ACDS** is the product/runtime architecture.
 - **MEOS** governs task readiness, engineering execution, review, verification, and release.
-- **ADR-0004** accepts the product-to-platform direction and document responsibility model.
+- **ADR-0006** accepts the product-to-platform direction and document responsibility model.
 
 ## 2. Verified current state
 
 | Area | State |
 |---|---|
 | Default-branch runtime/application implementation | Not started |
-| Documentation and planning quality | 97/100 — pass |
-| Task 001 implementation readiness | 40/100 — blocked |
-| Intended-user MVP validation | Pending |
+| Documentation and planning quality | 99/100 — pass |
+| Task 001 implementation readiness | 46/100 — blocked (ceiling 49 pending evidence/sign-off commit) |
+| Intended-user MVP validation | Pending (solo-round scope) |
 | Product Owner PROCEED/REVISE/STOP decision | Pending |
-| ADR-0003 | Proposed; decision pending |
-| Decisive-slice contract acceptance | Pending |
-| ADR-0004 | Accepted direction on 2026-08-02 |
+| ADR-0003 | Accepted 2026-07-26; post-session evidence/sign-off commit pending |
+| Decisive-slice contract acceptance | Accepted 2026-07-26 (C-01–C-06); evidence/sign-off commit pending |
+| ADR-0005 (Python backend/React-TypeScript stack) | Accepted 2026-07-26 |
+| ADR-0006 | Accepted direction on 2026-08-02 |
 | Target-platform reconciliation independent review | Pending |
 | Target-platform reconciliation independent QA | Pending |
 | Agent Reach | Deferred; not installed or integrated |
 | Browser provider | Deferred; none selected or implemented |
 | Proxy infrastructure | Not required, approved, or implemented |
 
-ADR-0004 acceptance does not alter the Task 001 blockers or activate a future phase.
+ADR-0006 acceptance does not alter the Task 001 blockers or activate a future phase.
 
 ## 3. Current milestone
 
@@ -45,15 +46,42 @@ The target-platform reconciliation provides:
 - complete external-blueprint reconciliation and 193-file dispositions;
 - an accepted documentation responsibility model;
 - an architecture-change gate;
-- accepted ADR-0004 direction.
+- accepted ADR-0006 direction.
+
+Delivery history to date:
+
+- PR #1 merged: repository foundation and canonical onboarding baseline established.
+- PR #2 merged: documentation normalization baseline completed.
+- PR #3 merged: proposed runtime and architecture contract baseline added for review before implementation.
+- PR #4 merged: AI execution layer documentation and proposed implementation sequencing added on `main`.
+- PR #5 merged: explicit governance role assignment without weakening readiness gates.
+- PR #6 merged: delivery planning made independently auditable before implementation.
+- 2026-07-26: product owner accepted C-01–C-06 and ADR-0003, decided the Python backend stack (ADR-0005), and revised the validation round to a recorded solo scope; these decisions land in a decision-recording commit, and the governed `evidence/sign-off commit` follows the solo-round sessions.
+- 2026-08-02: product owner recorded `ACCEPT DIRECTION` on the target-platform blueprint responsibility model and phased expansion (ADR-0006); PR #7 remains in draft pending independent review and QA evidence.
+- Project Charter and foundational architecture context established.
+- MEOS engineering and AI constitutions established.
+- Context strategy and machine-readable role and task routing established.
+- Task Specification and Definition of Ready established.
+- Quality Gate and engineering improvement flywheel established.
+- Architecture Rules, ADR process, coding standard, review standard, and Golden Path established.
+- AI Workforce Charter and machine-readable roles established.
+- Foundation standards for document authority, terminology, and repository structure added.
+- Repository migration plan, glossary, architecture dependency map, and initial terminology ADR added.
 
 The current implementation path remains the decisive creative slice. No broad acquisition, editorial, browser, publishing, measurement, or enterprise work is authorized.
 
 ## 4. Current implementation gate
 
-The first implementation task remains:
+The first implementation task remains [`tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md`](tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md), evidenced by:
 
-[`tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md`](tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md)
+- [`../docs/01-product/validation/2026-07-25-mvp-validation-report.md`](../docs/01-product/validation/2026-07-25-mvp-validation-report.md) — open evidence record; participant evidence pending;
+- [`../docs/01-product/validation/VALIDATION_CASE_CATALOG.md`](../docs/01-product/validation/VALIDATION_CASE_CATALOG.md) — eight prepared synthetic case packets; round authorization still pending;
+- [`../docs/01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md`](../docs/01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md) — controlled facilitator, measurement, deterministic-review, and critic instruments;
+- [`../docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md`](../docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md) — provisional ten-artifact manual worksheets for field validation;
+- [`../docs/01-product/validation/2026-07-26-validation-instrument-dry-run.md`](../docs/01-product/validation/2026-07-26-validation-instrument-dry-run.md) — internal difficult-case protocol check; not participant evidence;
+- [`../docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`](../docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md) — accepted 2026-07-26 (C-01–C-06 dispositions recorded; the post-session evidence/sign-off commit is still pending);
+- [`../docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md`](../docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md) — envelope and approval-reference resolution accepted by the Chief Architect 2026-07-26 (decision recorded; post-session evidence/sign-off commit pending);
+- [`../docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md`](../docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md) — current BMAD readiness evidence and score.
 
 It remains `BLOCKED` until all applicable prerequisites pass:
 
@@ -84,7 +112,7 @@ It remains `BLOCKED` until all applicable prerequisites pass:
 - [`../docs/01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md`](../docs/01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md)
 - [`../docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md`](../docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md)
 - [`../docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`](../docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md)
-- [`../docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md`](../docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md)
+- [`../docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md`](../docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md)
 - [`../docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md`](../docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md)
 - [`../docs/03-delivery/PENDING_WORK_TO_READY.md`](../docs/03-delivery/PENDING_WORK_TO_READY.md)
 
@@ -98,18 +126,23 @@ It remains `BLOCKED` until all applicable prerequisites pass:
 - [`../docs/03-delivery/BLUEPRINT_RECONCILIATION_VALIDATION.md`](../docs/03-delivery/BLUEPRINT_RECONCILIATION_VALIDATION.md)
 - [`../docs/03-delivery/BLUEPRINT_FILE_MANIFEST_DISPOSITION.md`](../docs/03-delivery/BLUEPRINT_FILE_MANIFEST_DISPOSITION.md)
 - [`../docs/03-delivery/DOCUMENT_RESPONSIBILITY_MIGRATION_REPORT.md`](../docs/03-delivery/DOCUMENT_RESPONSIBILITY_MIGRATION_REPORT.md)
-- [`../docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md`](../docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md)
+- [`../docs/adr/ADR-0006-target-blueprint-and-phased-expansion.md`](../docs/adr/ADR-0006-target-blueprint-and-phased-expansion.md)
 
 ## 6. Next approved priorities
 
 1. Obtain independent architecture/documentation review of the target-platform reconciliation.
 2. Obtain independent QA verification of links, state claims, terminology, and non-authorization controls.
 3. Correct any review findings before adopting the reconciliation package on the default branch.
-4. Run the intended-user MVP validation protocol.
-5. Record the Product Owner product decision.
-6. Resolve ADR-0003 and decisive-slice contracts.
-7. Re-run Definition of Ready for Task 001.
-8. Begin Phase 1 only if Task 001 becomes `READY`.
+4. Run `docs/01-product/MVP_VALIDATION_PLAN.md` with 5–10 representative inputs under the recorded solo-round scope (Jarkius as sole intended user this round, per the 2026-07-26 revision; multi-user coverage deferred to the post-build pilot).
+5. Complete the dated validation report with baseline measures and an accountable product-owner proceed, revise, or stop decision without committing confidential participant material.
+6. Carry the accepted C-01–C-06/ADR-0003/ADR-0005 decisions into the controlling contract documents and the post-session evidence/sign-off commit.
+7. Run `MEOS/06_DEFINITION_OF_READY.md` against Task 001 and promote it from blocked to ready only when every prerequisite passes.
+8. Introduce only the canonical implementation directories required by that task; avoid speculative repository skeletons and do not create a `packages/ai/` subtree.
+9. Implement one executable workflow before broadening infrastructure.
+10. Add a thin Model Gateway only after the workflow shape is proven, limited to an interface, deterministic mock, and one real provider.
+11. Complete generated candidates, critics, final approval, and provenance evidence before platform expansion.
+12. Preserve the documentation baseline while implementation begins; structural migration remains incremental and evidence-driven.
+13. Begin Phase 1 only if Task 001 becomes `READY`.
 
 ## 7. Deferred until their activation gates pass
 

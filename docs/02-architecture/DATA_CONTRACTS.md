@@ -30,9 +30,9 @@ Every artifact includes:
 }
 ```
 
-## Pending ADR-0003 decisive-slice overlay
+## Accepted ADR-0003 decisive-slice overlay (contract-text reconciliation lands with the follow-up reconciliation change)
 
-The pending proposal replaces versionless parent IDs with
+The accepted shape replaces versionless parent IDs with
 `parent_artifact_refs`. Each entry contains exactly `artifact_id`,
 `artifact_type`, and positive integer `artifact_version`:
 
@@ -49,7 +49,8 @@ The pending proposal replaces versionless parent IDs with
 }
 ```
 
-The proposal remains unaccepted. If accepted, semantic validation must reject a
+ADR-0003 and C-03 were accepted 2026-07-26; implement only the accepted shape.
+Semantic validation must reject a
 parent reference whose artifact does not exist, stored type differs, or version
 is no longer the current non-invalidated dependency version. `created_by` has
 only `type` and `id`; approval role remains under `payload.actor.actor_role`.

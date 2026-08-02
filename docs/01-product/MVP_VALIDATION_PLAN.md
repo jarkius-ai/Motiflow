@@ -16,7 +16,22 @@ This plan does not validate article authoring, SEO adaptation, social variants, 
 
 ## Participants and inputs
 
-- 2–3 intended users or design partners representing creative, content, or approval roles
+> **Product-owner scope revision (2026-07-26, Jarkius):** for this MVP round,
+> the accountable product owner is the sole intended user. Jarkius owns
+> creative direction and approval outcomes for the first decisive slice and
+> executes the prepared case packets personally as structured solo desk
+> sessions using the standard instruments. This is a recorded `REVISE`
+> decision on the original 2–3-participant requirement, not a claim that
+> multi-user evidence exists. Its consequences are explicit: handoff behavior
+> between distinct direction-owner and approver humans is **not** validated in
+> this round; that evidence is deferred to the post-build controlled pilot in
+> [`SUCCESS_METRICS.md`](SUCCESS_METRICS.md) before any broader release. All
+> role-overlap caveats below apply at maximum strength and must be restated in
+> the validation report.
+
+- 1 intended user for this round (the accountable product owner, per the
+  revision above); the original target of 2–3 intended users or design
+  partners remains the standard for the post-build pilot
 - 5–10 representative briefs or source articles
 - at least one ambiguous input that requires clarification
 - at least one brand- or policy-sensitive input
@@ -27,7 +42,9 @@ Participant coverage must include:
 - at least one person who approves business, brand, or production outcomes.
 
 A participant may cover more than one role, but the report must identify the
-overlap as reduced evidence for handoff behavior.
+overlap as reduced evidence for handoff behavior. In the solo round the
+overlap is total and the report must carry it as an accepted evidence
+limitation, not a footnote.
 
 ## Evidence audiences
 
@@ -177,7 +194,7 @@ session.
 
 The first implementation task may be marked ready only when:
 
-- 5–10 inputs reach a recorded terminal outcome with 2–3 intended users; a stopped case counts only when its failure is itself evaluated and documented, and the round must still contain at least five such outcomes;
+- 5–10 inputs reach a recorded terminal outcome under the recorded participant scope (solo round per the 2026-07-26 revision; multi-user coverage deferred to the post-build pilot); a stopped case counts only when its failure is itself evaluated and documented, and the round must still contain at least five such outcomes;
 - at least 80% of unprompted gate-comprehension checks pass, and no participant leaves both gates conflated after review;
 - the product-facing brief, direction, gates, candidate review, and
   approval/provenance records are sufficient for every completed participant

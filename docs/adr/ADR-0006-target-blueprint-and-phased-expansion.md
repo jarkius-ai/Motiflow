@@ -1,4 +1,4 @@
-# ADR-0004: Target Blueprint Responsibility Model and Phased Expansion
+# ADR-0006: Target Blueprint Responsibility Model and Phased Expansion
 
 - **Status:** Accepted
 - **Date:** 2026-08-02

@@ -1,13 +1,14 @@
 # Decisive-Slice Contract Acceptance
 
-**Status:** Review-ready; human acceptance pending
+**Status:** Accepted with one recorded revision (C-06 toolchain, per ADR-0005); evidence/sign-off commit pending
 **Owner:** Jarkius — Product owner, Chief Architect, and Engineering lead
 **Scope:** Pre-implementation freeze for the ten-artifact, two-gate MVP contract
-**Related authority:** [`DATA_CONTRACTS.md`](DATA_CONTRACTS.md), [`RUNTIME_CONTRACTS.md`](RUNTIME_CONTRACTS.md), [`WORKFLOW_STATE_MACHINE.md`](WORKFLOW_STATE_MACHINE.md), [`VERSIONING_AND_COMPATIBILITY.md`](VERSIONING_AND_COMPATIBILITY.md), [`../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md`](../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md)
+**Related authority:** [`DATA_CONTRACTS.md`](DATA_CONTRACTS.md), [`RUNTIME_CONTRACTS.md`](RUNTIME_CONTRACTS.md), [`WORKFLOW_STATE_MACHINE.md`](WORKFLOW_STATE_MACHINE.md), [`VERSIONING_AND_COMPATIBILITY.md`](VERSIONING_AND_COMPATIBILITY.md), [`../adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md`](../adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md)
 **Preparation base revision:** `df7af54`
-**`review-candidate commit` SHA:** `efc4b5e2bb71b6da2e2ee39ce187fd39bd117411`; committed and awaiting human review evidence
+**`review-candidate commit` SHA:** `efc4b5e2bb71b6da2e2ee39ce187fd39bd117411`; reviewed with dispositions recorded 2026-07-26
 **`trace-preparation commit`:** RECORDED; records the candidate SHA only
-**`evidence/sign-off commit`:** PENDING; required after actual review and acceptance decisions
+**Decision-recording commit:** the commit landing this signed revision records the 2026-07-26 dispositions
+**`evidence/sign-off commit`:** PENDING — follows the solo-round sessions and product-owner decision; it will reference these dispositions plus the session evidence, and its SHA is recorded in `CONTEXT_INDEX.yaml` after commit
 
 ## Acceptance rule
 
@@ -36,7 +37,7 @@ The review freezes only:
 
 1. the ten canonical decisive-slice artifact names and order;
 2. the two non-bypassable human gates;
-3. the canonical v1 artifact envelope and approval-reference shape proposed in [`ADR-0003`](../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md);
+3. the canonical v1 artifact envelope and approval-reference shape proposed in [`ADR-0003`](../adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md);
 4. downstream invalidation and lineage rules;
 5. initial schema-versioning and unknown-field behavior; and
 6. the scope and location of the first schema/fixture validation proof.
@@ -58,8 +59,8 @@ part of this acceptance.
 
 Legacy aliases are migration inputs only. `Publication Package` is post-MVP.
 
-**Disposition:** `PENDING`
-**Required correction:** PENDING or none
+**Disposition:** `ACCEPT` — 2026-07-26, Jarkius (Product owner and Chief Architect)
+**Required correction:** none
 
 ### C-02 — Two human gates
 
@@ -68,8 +69,8 @@ Direction Package before generation. Final approval must reference the current
 Generated Candidate Set and Critic Evaluation Package before export. Neither
 gate may be inferred from successful execution or critic scores.
 
-**Disposition:** `PENDING`
-**Required correction:** PENDING or none
+**Disposition:** `ACCEPT` — 2026-07-26, Jarkius (Product owner and Chief Architect)
+**Required correction:** none
 
 ### C-03 — Canonical artifact envelope
 
@@ -85,7 +86,7 @@ gate may be inferred from successful execution or critic scores.
   `package_type`, `source_packages`, and score-based confidence.
 
 **Recommended decision:** Adopt the proposed canonical shape in
-[`ADR-0003`](../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md):
+[`ADR-0003`](../adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md):
 a flat top-level artifact envelope that keeps `DATA_CONTRACTS.md` field naming
 for identity, replaces versionless parent IDs with versioned
 `parent_artifact_refs` entries containing `artifact_id`, `artifact_type`, and
@@ -96,8 +97,8 @@ treats the `SYSTEM_DESIGN.md` package example as illustrative only.
 `payload.actor`. No schemas may be generated from any current example until
 human approval is recorded.
 
-**Disposition:** `PENDING`
-**Selected shape or corrections:** PENDING
+**Disposition:** `ACCEPT` — 2026-07-26, Jarkius (Chief Architect)
+**Selected shape or corrections:** the ADR-0003 proposed shape, as written
 
 ### C-04 — Approval decisions and reference cardinality
 
@@ -107,7 +108,7 @@ package. It also lists `waived` while the state machine describes both gates as
 non-bypassable.
 
 **Recommended decision:** Use the proposed approval contract in
-[`ADR-0003`](../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md):
+[`ADR-0003`](../adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md):
 approval records carry a non-empty `artifact_refs` array, direction approval
 references exactly one current Creative Direction Package, final approval
 references exactly one current Generated Candidate Set and one current Critic
@@ -121,8 +122,8 @@ Task 001 proves only that an approval actor is structurally human and that
 policy for `payload.actor.actor_role` is deferred to runtime authorization work;
 it is not part of C-06 or the schema proof.
 
-**Disposition:** `PENDING`
-**Selected shape or corrections:** PENDING
+**Disposition:** `ACCEPT` — 2026-07-26, Jarkius (Chief Architect)
+**Selected shape or corrections:** the ADR-0003 proposed shape, as written
 
 ### C-05 — Schema and unknown-field policy
 
@@ -131,8 +132,8 @@ version `1.0.0`. Decision-bearing objects reject unknown properties. Explicit
 extension objects, if accepted, must be non-decision-bearing and namespaced.
 Structural validation is followed by semantic lineage and gate validation.
 
-**Disposition:** `PENDING`
-**Required correction:** PENDING or none
+**Disposition:** `ACCEPT` — 2026-07-26, Jarkius (Product owner and Chief Architect)
+**Required correction:** none
 
 ### C-06 — First contract-proof scope and command
 
@@ -152,60 +153,78 @@ logic already owned by that repository command. The
 validator implementation dependency requires explicit approval in the task or
 repository dependency policy before implementation begins.
 
-**Proposed validator/toolchain:** Use a plain PHP 8.3+ CLI entrypoint with
-Composer and `opis/json-schema:^2` for structural JSON Schema 2020-12
-validation. Task 001 must not bootstrap Laravel or require an application
+**Approved validator/toolchain:** Use a plain Python 3.12+ CLI entrypoint with
+`jsonschema>=4.21,<5` for structural JSON Schema 2020-12 validation, per the
+accepted backend-stack decision in
+[`ADR-0005`](../adr/ADR-0005-python-backend-and-react-typescript-stack.md).
+Task 001 must not bootstrap the application framework or require an application
 container. Keep gate, freshness, versioned lineage, and invalidation rules in a
-small repository-owned semantic validator invoked by the same wrapper command. Opis
-documents support for JSON Schema 2020-12 and PHP 7.4+ (PHP 8 recommended):
-[`opis.io/json-schema/2.x`](https://opis.io/json-schema/2.x/). Pin the accepted
-version in `composer.lock`; do not download dependencies inside the validation
+small repository-owned semantic validator invoked by the same wrapper command.
+Pin the accepted version in a committed lockfile (`uv.lock` or
+`requirements.lock`); do not download dependencies inside the validation
 command or CI validation step.
 
 Alternatives considered for C-06 review:
 
+- the earlier PHP/Composer/`opis/json-schema` proposal was superseded when the
+  product owner reopened and decided the backend stack on 2026-07-26
+  (ADR-0005); it matched a Laravel direction that no longer exists;
 - a Node/Ajv-only validator would introduce a second runtime before the
   repository has selected a Node package boundary for backend tooling; and
 - a custom JSON Schema implementation would duplicate a standard validator and
   create avoidable compliance risk.
 
-This is a reviewed proposal, not dependency approval. Approval must name the
-dependency range, lockfile policy, and owner below.
-
-**Disposition:** `PENDING`
-**Approved validator/toolchain:** PENDING; proposed plain PHP 8.3+ CLI /
-Composer / `opis/json-schema:^2` plus repository-owned semantic checks, without
-Laravel bootstrap
+**Disposition:** `ACCEPT` — 2026-07-26, Jarkius (Engineering lead)
+**Approved validator/toolchain:** plain Python 3.12+ CLI / `jsonschema>=4.21,<5`
+pinned in a committed lockfile, plus repository-owned semantic checks, without
+application-framework bootstrap; dependency owner: Jarkius
 
 ## Required human sign-off
 
 | Authority | Name | Decision | `review-candidate commit` SHA | Date | Constraints / rationale |
 |---|---|---|---|---|---|
-| Accountable product owner | Jarkius | PENDING | PENDING | PENDING | PENDING |
-| Chief architect | Jarkius | PENDING | PENDING | PENDING | PENDING |
-| Engineering lead | Jarkius | PENDING | PENDING | PENDING | PENDING |
+| Accountable product owner | Jarkius | ACCEPT | `efc4b5e2bb71b6da2e2ee39ce187fd39bd117411` | 2026-07-26 | Scope, ten-artifact vocabulary, and two-gate intent accepted as frozen |
+| Chief architect | Jarkius | ACCEPT | `efc4b5e2bb71b6da2e2ee39ce187fd39bd117411` | 2026-07-26 | Envelope, approval references, invalidation, and versioning accepted per ADR-0003 |
+| Engineering lead | Jarkius | ACCEPT with revision | `efc4b5e2bb71b6da2e2ee39ce187fd39bd117411` | 2026-07-26 | C-06 toolchain revised from the frozen PHP proposal to Python 3.12+ / `jsonschema` per accepted ADR-0005; all other C-06 scope accepted as frozen |
 
 Product signs scope, gates, and workflow intent. Architecture signs envelope,
 references, invalidation, and versioning. Engineering signs feasibility,
 locations, validator/toolchain, and the single-command contract.
 
+The decisions above were made explicitly by Jarkius in a recorded interactive
+session on 2026-07-26 and transcribed into this record; they are not inferred
+acknowledgements. The C-06 toolchain revision is controlled by
+[`ADR-0005`](../adr/ADR-0005-python-backend-and-react-typescript-stack.md),
+which supersedes the PHP proposal contained in the frozen packet.
+
 The shared assignee records accountability but does not collapse the three
-decisions or constitute any signature. Because Jarkius holds all three named
-authority roles, the separation-of-duties risk must be controlled by recorded
-independent Reviewer and QA evidence under the MEOS
-[`Review Standard`](../../MEOS/13_REVIEW_STANDARD.md#2-independence-and-separation-of-duties).
-Until that evidence and each explicit decision are recorded, every disposition
-and the acceptance outcome remain `PENDING`; no additional human is inferred.
+decisions. Because Jarkius holds all three named authority roles, the
+separation-of-duties risk under the MEOS
+[`Review Standard`](../../MEOS/13_REVIEW_STANDARD.md#2-independence-and-separation-of-duties)
+is controlled by recorded independent agent-review evidence (see the
+verification record in
+[`DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md`](../03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md))
+and is additionally carried as an explicitly accepted residual risk in the
+acceptance outcome below; no additional human is inferred.
 
 ## Acceptance outcome
 
-**Outcome:** `PENDING`
+**Outcome:** `ACCEPTED`
 Allowed outcomes: `ACCEPTED | REWORK | REJECTED`
 
-**Accepted `review-candidate commit` SHA:** PENDING
-**`evidence/sign-off commit`:** PENDING; optional signed tag also pending
-**Residual risks accepted by:** PENDING
-**Required follow-up:** PENDING
+**Accepted `review-candidate commit` SHA:** `efc4b5e2bb71b6da2e2ee39ce187fd39bd117411`
+**Decision-recording commit:** the commit that lands this signed revision
+records the 2026-07-26 dispositions and signatures now
+**`evidence/sign-off commit`:** the governed `evidence/sign-off commit` follows
+the solo-round sessions and product-owner decision; it will reference these
+dispositions plus the session evidence, and its SHA is recorded in
+`CONTEXT_INDEX.yaml` after commit, honoring the no-self-referential-SHA rule
+**Residual risks accepted by:** Jarkius, 2026-07-26 — concentrated governance
+roles (single human holds product, architecture, and engineering authority),
+controlled by recorded independent agent review and revisit-before-release
+**Required follow-up:** generate v1 schemas only from the ADR-0003 accepted
+shape; carry the ADR-0005 toolchain into Task 001; revisit the
+separation-of-duties control before any production release authorization
 
 ## Checkpoint walkthrough
 
@@ -217,4 +236,5 @@ Allowed outcomes: `ACCEPTED | REWORK | REJECTED`
 | Compatibility | Fixes the dialect and unknown-field behavior before v1 schemas exist | C-05 |
 | Build feasibility | Fixes ownership, command, dependency authority, and CI as thin enforcement of the one repository command | C-06 |
 
-**Human checkpoint decision:** `APPROVE | REWORK | DIG DEEPER` — PENDING
+**Human checkpoint decision:** `APPROVE` — 2026-07-26, Jarkius, with the C-06
+toolchain revision recorded via ADR-0005

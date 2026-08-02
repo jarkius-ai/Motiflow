@@ -1,7 +1,7 @@
 ---
 task_id: TASK-001
 title: Prove the decisive-slice contracts before runtime implementation
-status: proposed
+status: PROPOSED
 readiness: BLOCKED
 owner: Jarkius
 assigned_role: backend
@@ -43,11 +43,11 @@ inputs:
     - docs/02-architecture/RUNTIME_CONTRACTS.md
     - docs/02-architecture/WORKFLOW_STATE_MACHINE.md
     - docs/02-architecture/VERSIONING_AND_COMPATIBILITY.md
-    - docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md
+    - docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md
   artifacts: []
 references:
   requirements: [docs/PRD.md, docs/01-product/MVP_VALIDATION_PLAN.md]
-  architecture: [docs/SYSTEM_DESIGN.md, docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md, docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md]
+  architecture: [docs/SYSTEM_DESIGN.md, docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md, docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md]
   contracts: [docs/02-architecture/DATA_CONTRACTS.md, docs/02-architecture/RUNTIME_CONTRACTS.md, docs/02-architecture/WORKFLOW_STATE_MACHINE.md]
 affected_contracts:
   - {id: decisive-slice-artifacts-v1, type: artifact, change: compatible, migration: not-applicable-before-first-consumer}
@@ -144,7 +144,7 @@ All are mandatory:
 
 - [ ] [`../../docs/01-product/validation/2026-07-25-mvp-validation-report.md`](../../docs/01-product/validation/2026-07-25-mvp-validation-report.md) records completed field evidence and a product-owner `PROCEED` decision.
 - [ ] [`../../docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`](../../docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md) records `ACCEPTED` with all C-01–C-06 decisions closed.
-- [ ] [`../../docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md`](../../docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md) records the Chief Architect's accepted envelope and approval-reference decision.
+- [ ] [`../../docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md`](../../docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md) records the Chief Architect's accepted envelope and approval-reference decision.
 - [ ] The canonical envelope and approval-reference corrections are merged into the controlling contract documents.
 - [ ] The validator implementation/toolchain and any new dependency are explicitly approved.
 - [ ] The accountable human owner is named in this task.
@@ -152,7 +152,7 @@ All are mandatory:
 Until these pass, analysis and review may continue but implementation artifacts
 must not be created. When they pass, run the readiness check in
 [`../06_DEFINITION_OF_READY.md`](../06_DEFINITION_OF_READY.md) and append its
-dated evidence here. Set frontmatter `status: ready-for-dev` and `readiness:
+dated evidence here. Set frontmatter `status: READY` (MEOS/19 task-state vocabulary) and `readiness:
 READY` only after every applicable readiness item passes.
 
 ## In scope
@@ -175,7 +175,7 @@ READY` only after every applicable readiness item passes.
 - Publication Package, article authoring, CMS, social, or export integrations.
 - Type generation, schema registry services, or SDKs.
 - Project-role, tenant, or gate-authorization policy enforcement.
-- Laravel application bootstrap or application-container integration.
+- Application-framework bootstrap or application-container integration.
 - Broad reusable validation framework beyond the accepted decisive slice.
 - Unrelated repository automation or a general-purpose CI platform redesign.
 
@@ -293,8 +293,9 @@ tools/
 ## Constraints
 
 - No new dependency without explicit approval and a committed lockfile.
-- The proposed validator boundary is plain PHP CLI plus Composer and the
-  explicitly approved Opis version; it must not bootstrap Laravel. This remains
+- The approved validator boundary is a plain Python 3.12+ CLI with
+  `jsonschema>=4.21,<5` pinned in a committed lockfile, per ADR-0005 and the
+  accepted C-06 record; it must not bootstrap the application framework. This remains
   a proposal until the engineering lead approves the dependency and lockfile.
 - No network access during the validation command after dependency installation.
 - Fixtures contain synthetic or anonymized data only.

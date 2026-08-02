@@ -1,10 +1,12 @@
-version: 8
+version: 9
 status: active
 owner: Jarkius (Chief Architect)
 release: pre-implementation-readiness
 
 repository_state:
   default_branch: main
+  remote_head: origin/main
+  merged_pull_requests: [1, 2, 3, 4, 5, 6, 7]
   implementation_status: not_started
   runtime_capabilities_active: []
 
@@ -15,27 +17,46 @@ identity:
 
 current_milestone: decisive-slice-validation-and-task-readiness
 current_focus:
-  - execute the MVP validation plan with intended users
-  - record the Product Owner proceed, revise, or stop decision
-  - complete the dated MVP validation report with participant evidence and baseline measures
-  - close decisive-slice contract acceptance and ADR-0003 through required human review
-  - promote Task 001 from blocked to ready only after every prerequisite passes
+  - execute the solo-round MVP validation sessions per the recorded product-owner scope revision in docs/01-product/MVP_VALIDATION_PLAN.md
+  - complete docs/01-product/validation/2026-07-25-mvp-validation-report.md with recorded session evidence
+  - land the governed evidence/sign-off commit for the accepted docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md (C-01 to C-06 ACCEPT, ADR-0003 accepted, ADR-0005 stack decision, 2026-07-26)
+  - promote MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md from blocked to ready only after its prerequisites pass
+  - preserve canonical repository boundaries and avoid speculative structure before code exists
+  - keep review-ready sequencing artifacts distinct from human-accepted product and architecture decisions
   - preserve the accepted target direction without treating future phases as implemented
+next_priorities:
+  - run docs/01-product/MVP_VALIDATION_PLAN.md solo-round sessions with the eight prepared cases (product owner as sole intended user per the 2026-07-26 scope revision)
+  - record baseline measures and an accountable product-owner decision in docs/01-product/validation/2026-07-25-mvp-validation-report.md without confidential source material
+  - carry the accepted contract decisions (C-01 to C-06, ADR-0003, ADR-0005) into the evidence/sign-off commit and reconcile controlling contract documents
+  - run the Definition of Ready check and promote MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md only when every prerequisite passes
+  - implement one executable workflow before adding infrastructure breadth
+  - introduce a thin Model Gateway only after the workflow shape is proven, limited to an interface, deterministic mock, and one real provider
 
 current_state:
-  documentation_planning_quality_score: 97
+  documentation_planning_quality_score: 99
   documentation_planning_quality_status: pass
-  readiness_score_current: 40
-  readiness_machine_verifiable_ceiling: 40
+  readiness_score_current: 46
+  readiness_machine_verifiable_ceiling: 49  # 49 when the post-session evidence/sign-off commit lands
+  readiness_review_candidate_sha: efc4b5e2bb71b6da2e2ee39ce187fd39bd117411
+  readiness_revision_trace_status: review_candidate_committed_trace_preparation_recorded_evidence_signoff_pending
   task_001_status: blocked
-  adr_0003_status: proposed
-  adr_0004_status: accepted
+  adr_0003_status: accepted
+  adr_0006_status: accepted
   target_direction_status: accepted
   reconciliation_review_status: independent_review_pending
   product_validation_status: participant_evidence_pending
   agent_reach_status: deferred_not_installed
   browser_provider_status: deferred_not_selected
   proxy_status: not_required_not_approved_not_implemented
+
+governance_assignments:
+  product_owner: Jarkius
+  facilitator: Jarkius
+  chief_architect: Jarkius
+  engineering_lead: Jarkius
+  scope: identity_assignment_only
+  decisions_dispositions_approvals_signatures: contract_decisions_signed_2026-07-26_validation_evidence_pending
+  independence_control: independent_reviewer_and_qa_evidence_required
 
 bootstrap:
   entrypoint: START_HERE.md
@@ -92,10 +113,14 @@ current_readiness_references:
   validation_artifact_worksheets: docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md
   validation_dry_run: docs/01-product/validation/2026-07-26-validation-instrument-dry-run.md
   contract_acceptance: docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md
-  blocking_architecture_decision: docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md
+  blocking_architecture_decision: docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md
   current_task: MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md
   readiness_review: docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md
   pending_work: docs/03-delivery/PENDING_WORK_TO_READY.md
+  agent_team_charter: docs/03-delivery/AUTONOMOUS_AGENT_TEAM_CHARTER.md
+  plan_to_evidence_traceability: docs/03-delivery/PLAN_TO_EVIDENCE_TRACEABILITY_MATRIX.md
+  release_and_staging_plan: docs/03-delivery/RELEASE_AND_STAGING_DECISION_PLAN.md
+  documentation_planning_quality_review: docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md
 
 future_platform_references:
   blueprint: docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md
@@ -106,8 +131,9 @@ future_platform_references:
   reconciliation_validation: docs/03-delivery/BLUEPRINT_RECONCILIATION_VALIDATION.md
   manifest_disposition: docs/03-delivery/BLUEPRINT_FILE_MANIFEST_DISPOSITION.md
   responsibility_migration: docs/03-delivery/DOCUMENT_RESPONSIBILITY_MIGRATION_REPORT.md
-  accepted_direction: docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md
+  accepted_direction: docs/adr/ADR-0006-target-blueprint-and-phased-expansion.md
 
+# roles.yaml is the authoritative role registry; on conflict roles.yaml wins
 roles:
   product_owner:
     assigned_to: Jarkius
@@ -239,6 +265,7 @@ task_routing:
       - human_authorization
 
 routing_rules:
+  default: bootstrap
   task_must_declare_role: true
   task_must_declare_review_roles: true
   task_must_declare_references: true

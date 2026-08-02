@@ -3,7 +3,7 @@
 - **Status:** Completed refactor record
 - **Date:** 2026-08-02
 - **Owner:** Product Owner, Chief Architect, Documentation
-- **Decision:** ADR-0004
+- **Decision:** ADR-0006
 - **Branch:** `agent/reconcile-target-blueprint`
 
 ## Purpose
@@ -41,7 +41,7 @@ Evidence                = WHAT IS ACTUALLY TRUE
 | Repository file manifest | External v0.5.0 manifest | Manifest disposition records | Preserved as historical design inventory, not bootstrap authority |
 | Agent Reach | External blueprint | Target Blueprint provider-neutral acquisition seam, Capability Map, Roadmap Phase 4 | Adapted as deferred optional adapter |
 | Browser technologies | External blueprint | Target Blueprint provider-neutral browser seam, Capability Map, Roadmap Phase 6 | Deferred; no provider selected |
-| Proxy behavior | External blueprint risk/fallback discussion | ADR-0004, Blueprint security constraints, Architecture Change Gate | Not required or authorized; future use requires separate decision |
+| Proxy behavior | External blueprint risk/fallback discussion | ADR-0006, Blueprint security constraints, Architecture Change Gate | Not required or authorized; future use requires separate decision |
 | Publication Package | Existing publication contract and external blueprint | Architecture contract and Roadmap Phase 5 | Preserved as post-MVP specialization |
 | Publishing authorization | External blueprint and publication planning | Target architecture seam and Roadmap Phase 6 | Separated from final creative approval |
 | Measurement and learning | External blueprint | Target Blueprint domain and Roadmap Phase 7 | Preserved as governed future capability |
@@ -92,7 +92,7 @@ The following source contributions remain represented:
 - `docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md`
 - `docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md`
 - `docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`
-- `docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md`
+- `docs/adr/ADR-0006-target-blueprint-and-phased-expansion.md`
 
 ### Added
 
@@ -108,7 +108,7 @@ The following source contributions remain represented:
 
 Jarkius accepted the product-to-platform direction and documentation responsibility model on 2026-08-02.
 
-ADR-0004 is accepted for direction. Independent Reviewer and QA evidence remain required before PR #7 should be marked ready to merge under current MEOS controls.
+ADR-0006 is accepted for direction. Independent Reviewer and QA evidence remain required before PR #7 should be marked ready to merge under current MEOS controls.
 
 ## Unchanged blockers
 
@@ -130,6 +130,6 @@ This refactor does not change:
 - [x] MEOS remains the only engineering governance system.
 - [x] External provider examples remain non-binding.
 - [x] Original blueprint manifest retained through explicit dispositions.
-- [x] Human `ACCEPT DIRECTION` recorded in ADR-0004.
+- [x] Human `ACCEPT DIRECTION` recorded in ADR-0006.
 - [ ] Independent architecture review completed.
 - [ ] Independent QA/link verification completed.

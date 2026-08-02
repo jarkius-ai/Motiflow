@@ -8,7 +8,7 @@ authoritative: true
 readers: [backend, frontend, ai_engineer, reviewer, qa]
 provides: [coding-rules, implementation-baseline, ai-code-policy]
 requires: [MEOS-001, MEOS-005, MEOS-011]
-related: [MEOS/10_QUALITY_GATE.md, MEOS/13_REVIEW_STANDARD.md, docs/03-engineering/**]
+related: [MEOS/10_QUALITY_GATE.md, MEOS/13_REVIEW_STANDARD.md, docs/02-architecture/**]
 ---
 
 # Coding Standard

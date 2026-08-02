@@ -8,10 +8,11 @@ This document sets engineering direction and repository boundaries. Review-ready
 
 ## Initial stack direction
 
-- Backend application: select and record a currently supported Laravel release
-  and compatible supported PHP version at implementation freeze; do not carry
-  an unsupported framework baseline forward by default
-- Frontend: React with TypeScript and Inertia.js
+- Backend application: Python 3.12+ with FastAPI as the application-layer
+  direction, per
+  [`ADR-0005`](../adr/ADR-0005-python-backend-and-react-typescript-stack.md);
+  record exact framework and runtime versions at implementation freeze
+- Frontend: React with TypeScript
 - Database: PostgreSQL
 - Cache and queues: Redis
 - Object storage: S3-compatible storage
@@ -20,11 +21,13 @@ This document sets engineering direction and repository boundaries. Review-ready
 
 The stack is a starting direction, not an irreversible constraint. Architecture decisions should be recorded before major deviations.
 
-Task 001's contract validator is not the backend application. Its pending
-toolchain proposal is a plain PHP CLI entrypoint with Composer and an approved,
-locked Opis version; it must not bootstrap Laravel or add framework
-dependencies. The engineering lead must approve that toolchain before any
-dependency or implementation is added.
+Task 001's contract validator is not the backend application. Its approved
+toolchain is a plain Python 3.12+ CLI entrypoint using `jsonschema` (>=4.21,
+2020-12 dialect) pinned in a committed lockfile; it must not bootstrap the
+application framework or add framework dependencies. See
+[`ADR-0005`](../adr/ADR-0005-python-backend-and-react-typescript-stack.md) and
+the C-06 record in
+[`DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`](DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md).
 
 ## Bounded modules
 

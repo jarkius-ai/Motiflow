@@ -51,4 +51,4 @@ The embedded v0.5.0 manifest is historical design inventory only. It is not copi
 - [x] Delivery roles are not duplicated as runtime-agent files.
 - [x] Phase 4–8 capabilities remain deferred.
 - [ ] Independent architecture/documentation review confirms the mappings.
-- [ ] Human decision on ADR-0004 confirms or revises the authority model.
+- [ ] Human decision on ADR-0006 confirms or revises the authority model.

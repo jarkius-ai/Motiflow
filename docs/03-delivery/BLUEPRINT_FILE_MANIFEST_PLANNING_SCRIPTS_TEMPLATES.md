@@ -1,5 +1,8 @@
 # Blueprint Manifest Disposition — Planning Scripts Templates
 
+- **Status:** Review-ready source-manifest reconciliation appendix
+- **Owner:** Chief Architect and Documentation
+
 This appendix is part of `BLUEPRINT_FILE_MANIFEST_DISPOSITION.md`. It is a source-reconciliation record, not file-creation authority.
 
 | ID | Original path | Disposition | Repository home or target | Phase | Rule |

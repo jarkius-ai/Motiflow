@@ -3,6 +3,9 @@
 - Status: Proposed
 - Date: 2026-07-25
 - Decision owners: Motiflow architecture
+- Related task: None (gateway is future work; the decisive slice needs only a thin interface and deterministic mock)
+- Supersedes: None
+- Superseded by: None
 
 ## Context
 
@@ -50,3 +53,15 @@ Provider-specific features may be exposed through typed capability extensions, b
 1. **Single provider throughout the application** — rejected due to lock-in and operational risk.
 2. **Direct SDK calls in each engine** — rejected due to duplicated policy and poor observability.
 3. **Let the LLM orchestrate the entire workflow** — rejected because workflow state, approvals, budgets, and persistence must remain deterministic.
+
+## Migration and Rollback
+
+No gateway implementation exists yet, so there is nothing to migrate. If accepted and later replaced, engines depend only on the `ModelGateway` contract, so rollback or replacement is confined to the gateway and its adapters.
+
+## Verification
+
+When implemented: no engine imports a provider SDK directly; tests run against the deterministic mock adapter without external credentials; every invocation records the required provenance and accounting fields.
+
+## Approval
+
+Not yet accepted. The gateway is future work; acceptance is deferred until the decisive-slice proof requires more than the thin interface and deterministic mock.

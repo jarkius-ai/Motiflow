@@ -1,6 +1,6 @@
-# Phase 2 Completion Record
+# Migration Phase 2 Completion Record
 
-**Status:** Historical completion record for the documentation normalization baseline
+**Status:** Historical completion record for the documentation normalization baseline (Migration Phase 2 of [`MIGRATION_PLAN.md`](MIGRATION_PLAN.md))
 **Date:** 2026-07-25
 
 ## Completed

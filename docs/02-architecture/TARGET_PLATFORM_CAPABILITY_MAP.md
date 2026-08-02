@@ -43,7 +43,7 @@ A capability state changes only from repository evidence and the applicable huma
 - Agent Reach is deferred and not installed.
 - No browser provider is selected or implemented.
 - Proxy infrastructure is not required, approved, or implemented.
-- ADR-0004 acceptance does not activate any implementation phase.
+- ADR-0006 acceptance does not activate any implementation phase.
 
 ## 4. Governance and authority
 
@@ -54,10 +54,10 @@ A capability state changes only from repository evidence and the applicable huma
 | MEOS engineering governance | Implemented governance | `MEOS/` | Continue task-by-task enforcement |
 | Canonical onboarding | Implemented governance | `START_HERE.md` | Keep routing current |
 | Machine-readable context routing | Implemented governance | `CONTEXT_INDEX.yaml` | Validate and update with authority changes |
-| Document Responsibility Model | Implemented governance | `docs/00-foundation/DOCUMENT_RESPONSIBILITY_MODEL.md`, ADR-0004 | Independent review and continued enforcement |
+| Document Responsibility Model | Implemented governance | `docs/00-foundation/DOCUMENT_RESPONSIBILITY_MODEL.md`, ADR-0006 | Independent review and continued enforcement |
 | Architecture Change Gate | Implemented governance | `docs/00-foundation/ARCHITECTURE_CHANGE_GATE.md` | Apply to consequential changes |
 | Independent reviewer and QA separation | Contracted | MEOS Review Standard and Quality Gate | Assign independent evidence per task/PR |
-| Target Platform Blueprint | Accepted foundation | ADR-0004, `TARGET_PLATFORM_BLUEPRINT.md` | Update through architecture review and ADR when material |
+| Target Platform Blueprint | Accepted foundation | ADR-0006, `TARGET_PLATFORM_BLUEPRINT.md` | Update through architecture review and ADR when material |
 | Blueprint reconciliation | Accepted direction; structural review complete | reconciliation matrix, review, validation, manifest dispositions | Independent review and QA before PR readiness |
 | External v0.5.0 file manifest | Rejected as immediate authority; retained as reference | manifest disposition records | Individual paths introduced only by accepted need and ready task |
 
@@ -183,7 +183,7 @@ A capability state changes only from repository evidence and the applicable huma
 
 | Phase | Entry condition | Exit evidence |
 |---:|---|---|
-| 0 | Repository authority and external blueprint available | Responsibility model, reconciliation, accepted ADR-0004, independent review/QA |
+| 0 | Repository authority and external blueprint available | Responsibility model, reconciliation, accepted ADR-0006, independent review/QA |
 | Pre-1 | Validation protocol and decision instruments ready | Intended-user evidence, Product Owner decision, contract acceptance, ADR-0003, Task 001 DoR |
 | 1 | Pre-1 mandatory gates pass | Schemas, fixtures, validator, CI, independent review |
 | 2 | Phase 1 accepted | Executable creative direction through Gate 1 |

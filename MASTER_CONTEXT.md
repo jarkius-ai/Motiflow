@@ -285,7 +285,7 @@ Implementation process and quality gates are owned by MEOS, not by this document
 Current preferred foundations are:
 
 - React with TypeScript for human-facing applications;
-- Laravel for the primary application/API backend;
+- Python 3.12+ (FastAPI direction) for the primary application/API backend per `docs/adr/ADR-0005-python-backend-and-react-typescript-stack.md`;
 - PostgreSQL for durable relational state;
 - Redis for queue, cache, and ephemeral coordination;
 - S3-compatible object storage;

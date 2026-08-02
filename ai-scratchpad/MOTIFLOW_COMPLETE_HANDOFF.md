@@ -3,7 +3,7 @@
 **Status:** Non-authoritative historical continuity context
 **Refreshed against repository truth:** July 25, 2026
 **Current authority:** `START_HERE.md`, `PROJECT_CHARTER.md`, `MASTER_CONTEXT.md`, `CONTEXT_INDEX.yaml`, `MEOS/20_PROJECT_BOOTSTRAP.md`, accepted ADRs, and live Git state on `main`
-**Verified repository truth for this refresh:** PRs #1-#4 are merged, the current/default branch is `main`, `origin/main` contains the reconciled documentation baseline, and implementation has not begun on the default branch
+**Verified repository truth for this refresh:** as of 2026-07-26, PRs #1-#5 are merged (PR #5, governance role assignment, merged 2026-07-26), the current/default branch is `main`, `origin/main` contains the reconciled documentation baseline, and implementation has not begun on the default branch
 
 Preserve this file for continuity and historical reconstruction only. Do not treat it as the controlling source of truth when it conflicts with accepted repository documents or current Git state.
 
@@ -253,12 +253,12 @@ Repository:
 jarkius-ai/Motiflow
 ```
 
-Verified branch state on July 25, 2026:
+Verified branch state as of 2026-07-26:
 
 - current branch: `main`
 - default branch: `main`
 - remote head: `origin/main`
-- merged pull requests: `#1`, `#2`, `#3`, `#4`
+- merged pull requests: `#1`, `#2`, `#3`, `#4`, `#5` (PR #5 merged 2026-07-26)
 - implementation status on `main`: not started
 
 Historical documentation baseline merged on `main`:
@@ -267,6 +267,7 @@ Historical documentation baseline merged on `main`:
 - PR #2 — documentation normalization
 - PR #3 — proposed runtime and architecture contracts
 - PR #4 — AI execution layer documentation and proposed sequencing
+- PR #5 — governance role assignment (merged 2026-07-26)
 
 Historical note:
 
@@ -320,7 +321,7 @@ Motiflow/
 │   ├── 00-foundation/
 │   ├── 01-product/
 │   ├── 02-architecture/
-│   ├── 03-engineering/
+│   ├── 03-delivery/
 │   ├── 04-ai/
 │   ├── 05-design/
 │   ├── 06-operations/
@@ -410,7 +411,12 @@ Only after P5 is accepted should the team broaden into:
 - publishing connectors
 - large-scale memory, graph, and learning surfaces
 
-## 16. Current engineering sequence
+## 16. Historical sequence summary (superseded)
+
+> **Superseded.** The current delivery sequence lives in
+> `docs/03-delivery/UPDATED_PHASE_ROADMAP.md` (Delivery Phases D1–D8) and the
+> operational path in `docs/03-delivery/PENDING_WORK_TO_READY.md`. The phase
+> sketch below is retained for historical continuity only.
 
 ### Phase 1 — Validation evidence and human decision
 
@@ -463,6 +469,11 @@ Only after P5 is accepted should the team broaden into:
 
 ## 18. Recommended next task
 
+> **Superseded.** The CD-000..CD-006 task labels below are historical. The
+> current first build task is `MEOS/tasks/TASK-001` (decisive-slice contract
+> proof), and the operational path to readiness is
+> `docs/03-delivery/PENDING_WORK_TO_READY.md`.
+
 Start with:
 
 ```text
@@ -509,7 +520,7 @@ CD-006 — Post-proof gateway, connector, and platform expansion
 
 The earlier branch-specific workflow in this handoff is obsolete. It described a pre-merge state before PR #4 landed.
 
-Current verified truth:
+Current verified truth (as of 2026-07-26; PRs #1–#5 merged):
 
 - worktree branch: `main`
 - remote default branch: `main`

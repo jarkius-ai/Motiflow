@@ -1,6 +1,6 @@
 # Repository Structure Standard
 
-**Status:** Proposed target structure  
+**Status:** Accepted foundation standard (accepted by Jarkius, 2026-07-26); the tree below remains a target structure  
 **Migration mode:** Incremental and non-destructive
 
 ## Principles
@@ -28,10 +28,11 @@ Motiflow/
 │   ├── 00-foundation/            # Authority, terminology, structure, principles
 │   ├── 01-product/               # Vision, PRDs, personas, journeys, roadmap
 │   ├── 02-architecture/          # System design, boundaries, contracts, data flows
-│   ├── 03-engineering/           # Development and operational implementation guidance
+│   ├── 03-delivery/              # Delivery planning and readiness controls
 │   ├── 04-ai/                    # Engines, prompts, evaluations, safety, model strategy
-│   ├── 05-design/                # UX, UI, design system, creative language
-│   ├── 06-operations/            # Deployment, observability, runbooks, security operations
+│   ├── 05-governance/            # Engineering-governance guidance (transitional; see note)
+│   ├── 05-design/                # UX, UI, design system, creative language (planned, not yet created)
+│   ├── 06-operations/            # Deployment, observability, runbooks, security operations (planned, not yet created)
 │   ├── adr/                      # Architecture Decision Records
 │   └── archive/                  # Superseded, explicitly non-authoritative material
 │
@@ -60,6 +61,8 @@ Motiflow/
 ├── infrastructure/               # Deployment and environment definitions
 └── diagrams/                     # Source diagrams not embedded with owning docs
 ```
+
+The `docs/` subfolders that exist today are `00-foundation`, `01-product`, `02-architecture`, `03-delivery`, `04-ai`, `05-governance`, `adr`, and `archive`. `docs/05-governance/` holds engineering-governance guidance pending a future consolidation decision; `05-design/` and `06-operations/` are planned targets that have not yet been created.
 
 ## Naming conventions
 

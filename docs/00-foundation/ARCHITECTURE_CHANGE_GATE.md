@@ -2,7 +2,7 @@
 
 - **Status:** Accepted governance checklist
 - **Owner:** Chief Architect and MEOS
-- **Related decision:** ADR-0004
+- **Related decision:** ADR-0006
 - **Purpose:** Prevent architectural drift when introducing or changing a capability
 
 ## Use this gate when

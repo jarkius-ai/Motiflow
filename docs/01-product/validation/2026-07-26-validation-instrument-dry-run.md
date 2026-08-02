@@ -15,7 +15,7 @@ facilitator or implementer invention.
 
 ## Method
 
-Trace the prepared packets for `C-03`, `C-04`, `C-06`, and `C-08` through:
+Trace the prepared packets for `VC-03`, `VC-04`, `VC-06`, and `VC-08` through:
 
 1. baseline capture;
 2. clarification and normalization;
@@ -35,10 +35,10 @@ denominator.
 
 | Case | Intended pressure | Required protocol behavior | Desk-check result |
 |---|---|---|---|
-| `C-03` | Missing audience, objective, dimensions, and success criteria | State that no additional source information is available; record the unresolved field; proceed only when the gap is explicitly judged non-material, otherwise create a valid-stop record | `PASS AFTER CORRECTION` |
-| `C-04` | Contradictory audiences, tones, density, and palette | Preserve contradictions; fail pre-generation sufficiency; record `revision_requested` or a valid stop without creating a Generation Specification | `PASS AFTER CORRECTION` |
-| `C-06` | Policy-sensitive financial-wellness framing | Evaluate constraints before generation; unresolved high/critical policy risk blocks direction authorization and produces revision or a valid stop | `PASS AFTER CORRECTION` |
-| `C-08` | Missing referenced deck, dimensions, audience, and brand context | Do not substitute or infer the dependency; record the last valid stage and an auditable `VST-*` outcome | `PASS AFTER CORRECTION` |
+| `VC-03` | Missing audience, objective, dimensions, and success criteria | State that no additional source information is available; record the unresolved field; proceed only when the gap is explicitly judged non-material, otherwise create a valid-stop record | `PASS AFTER CORRECTION` |
+| `VC-04` | Contradictory audiences, tones, density, and palette | Preserve contradictions; fail pre-generation sufficiency; record `revision_requested` or a valid stop without creating a Generation Specification | `PASS AFTER CORRECTION` |
+| `VC-06` | Policy-sensitive financial-wellness framing | Evaluate constraints before generation; unresolved high/critical policy risk blocks direction authorization and produces revision or a valid stop | `PASS AFTER CORRECTION` |
+| `VC-08` | Missing referenced deck, dimensions, audience, and brand context | Do not substitute or infer the dependency; record the last valid stage and an auditable `VST-*` outcome | `PASS AFTER CORRECTION` |
 
 No row records how a real participant would respond.
 

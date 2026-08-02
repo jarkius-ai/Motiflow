@@ -1,10 +1,10 @@
 # Documentation and Planning Quality Review
 
 **Status:** `PASS - DOCUMENTATION AND PLANNING ONLY`
-**Score:** **97 / 100**
-**Assessment target:** 97
-**Owner:** Documentation and Delivery
-**Reviewed:** 2026-07-26, Asia/Bangkok
+**Score:** **99 / 100**
+**Assessment target:** exceed 97
+**Owner:** Jarkius — Documentation and Delivery
+**Reviewed:** 2026-07-26, Asia/Bangkok (re-scored after alignment fixes and tooling)
 **Evidence class:** Repository self-assessment; no participant evidence, architecture acceptance, or production readiness claimed
 
 ## Scope
@@ -15,8 +15,8 @@ the ten-category, 100-point MEOS documentation/governance scorecard established
 in `MEOS/RELEASE_1.0_READINESS.md`.
 
 It does not score readiness to implement Task 001. That separate result remains
-`NOT READY` at 40/100 in `PRE_IMPLEMENTATION_READINESS_REVIEW.md` until its
-human-evidence and authority requirements pass.
+`NOT READY` at 46/100 in `PRE_IMPLEMENTATION_READINESS_REVIEW.md` until its
+execution-evidence requirements pass.
 
 ## Scoring rules
 
@@ -59,8 +59,8 @@ human-evidence and authority requirements pass.
 | Independent verification | 12 | 12 | Quality Gate, Review Standard, role separation |
 | Improvement loop and stop conditions | 8 | 8 | Flywheel, LOOP/BLOCKED rules, agent stop conditions |
 | Release, rollback, and monitoring path | 8 | 8 | Golden Path plus explicit release/staging decision plan |
-| Repository-only usability | 4 | 1 | repository can be followed manually; automated link, metadata, and routing enforcement remains deferred |
-| **Total** | **100** | **97** | **PASS** |
+| Repository-only usability | 4 | 3 | `tools/check-docs` now enforces links, anchors, YAML parse, metadata, routing, ADR naming, and task-state vocabulary locally and in CI (`.github/workflows/docs-check.yml`); current run passes with zero errors. One point withheld until the CI workflow has produced at least one green run on the hosted default branch |
+| **Total** | **100** | **99** | **PASS** |
 
 Full credit for a governance-path category means that the path is complete as
 documentation. It does not mean the current task has supplied its owners,
@@ -79,26 +79,29 @@ three additional points through repository evidence:
   environment sequence, packet, staging checks, rollback triggers, monitoring,
   and production authority boundary.
 
-## Residual three-point gap
+## Residual one-point gap
 
-Repository-only usability remains 1/4 because no automated repository command
-or CI workflow currently enforces Markdown links, metadata, task schemas, and
-context routing. Creating that tooling is intentionally deferred while Task 001
-is blocked and `PENDING_WORK_TO_READY.md` prohibits implementation artifacts.
+Repository-only usability is 3/4. The accountable owner explicitly exempted
+documentation-governance tooling from the pre-implementation freeze on
+2026-07-26 (rationale recorded in `tools/README.md`); `tools/check-docs` and
+the CI workflow now exist and the local run passes with zero errors and zero
+warnings. The final point is withheld until the workflow demonstrates at least
+one green run on the hosted default branch, because a CI surface that has
+never executed remotely is asserted, not evidenced.
 
-Known manual-check result: every navigational repository-local Markdown target
+Known check result: every navigational repository-local Markdown target
 resolves. The non-existent path `assets/hero-16x9.webp` appears only as an
 illustrative post-MVP value inside a fenced example in
-`PUBLICATION_PACKAGE_CONTRACT.md`; it is not a navigational link. Creating the
-eventual asset remains outside this documentation-only assessment.
+`PUBLICATION_PACKAGE_CONTRACT.md`; it is not a navigational link and sits in a
+fenced block the checker deliberately skips.
 
 ## Verification record
 
 The 2026-07-26 repository audit confirmed:
 
-- score weights total 100 and awarded points total 97;
+- score weights total 100 and awarded points total 99;
 - `CONTEXT_INDEX.yaml` and every other repository YAML file parse successfully;
-- the documentation score and the 40/100 task-readiness score remain separate;
+- the documentation score and the 46/100 task-readiness score remain separate;
 - current routing leads through validation, decisions, and Task 001 readiness
   before implementation; and
 - every navigational repository-local Markdown target resolves; the disclosed
@@ -115,6 +118,6 @@ remaining actionable finding for this narrow documentation-and-planning target.
 ## Decision
 
 Under the fixed MEOS documentation/governance rubric, the documentation and
-planning package passes the requested **97/100** target.
+planning package scores **99/100**, exceeding the requested >97 target.
 This pass authorizes no implementation, architecture acceptance, user-validation
 claim, quality-gate waiver, or production release by itself.

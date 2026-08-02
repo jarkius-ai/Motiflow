@@ -5,7 +5,7 @@
 - **Validated branch:** `agent/reconcile-target-blueprint`
 - **Source blueprint:** External `PROJECT_BLUEPRINT.md` v0.5.0-review
 - **Source SHA-256:** `da8e88c5c384ff63c5f4ef76f67cd8ee83ee73e1a778c1b4c7a349f8fd06a366`
-- **Decision:** ADR-0004 accepted direction
+- **Decision:** ADR-0006 accepted direction
 
 ## 1. Scope
 
@@ -34,7 +34,7 @@ It does not constitute independent review, product validation, Task 001 readines
 | Complete future destination and seams | Target Platform Blueprint | `TARGET_PLATFORM_BLUEPRINT.md` | PASS |
 | Current capability state | Capability Map | `TARGET_PLATFORM_CAPABILITY_MAP.md` | PASS |
 | Phase sequence and activation | Expansion Roadmap | `CAPABILITY_EXPANSION_ROADMAP.md` | PASS |
-| Consequential architecture decision | ADR | ADR-0004 | PASS |
+| Consequential architecture decision | ADR | ADR-0006 | PASS |
 | Readiness, roles, review, quality, release | MEOS | `MEOS/` | PASS |
 | Current delivery state | Project Bootstrap | `MEOS/20_PROJECT_BOOTSTRAP.md` | PASS |
 | Current bounded implementation | Ready task | Task 001 remains blocked | PASS |
@@ -114,7 +114,7 @@ This author review has `independence_confirmed: false` and cannot satisfy the ME
 - PASS — `START_HERE.md` explains the responsibility model and routes product, architecture, state, roadmap, task, and evidence to their canonical owners.
 - PASS — `CONTEXT_INDEX.yaml` identifies canonical owners and minimum context without embedding transient review-branch state.
 - PASS — High-risk external-provider, browser, authenticated, and proxy changes have separate routes.
-- PASS — `DOCUMENT_INDEX.md` includes the responsibility model, change gate, migration report, accepted ADR-0004, and reconciliation records.
+- PASS — `DOCUMENT_INDEX.md` includes the responsibility model, change gate, migration report, accepted ADR-0006, and reconciliation records.
 - PASS — Project Bootstrap reports accepted direction and unchanged implementation blockers without depending on a PR number.
 
 ## 10. Review and CI evidence status
@@ -144,7 +144,7 @@ The absence of failing checks is not evidence that checks passed.
 
 ## 12. Acceptance and remaining gates
 
-Jarkius recorded `ACCEPT DIRECTION` on 2026-08-02. ADR-0004 is accepted for product, architecture, and delivery direction.
+Jarkius recorded `ACCEPT DIRECTION` on 2026-08-02. ADR-0006 is accepted for product, architecture, and delivery direction.
 
 Remaining before the reconciliation change should be marked ready to merge:
 

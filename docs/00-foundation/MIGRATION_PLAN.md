@@ -56,7 +56,7 @@ Motiflow/
 
 This is a target state. Directories should be introduced only when they contain implemented or intentionally governed artifacts.
 
-## Phase 1 — Foundation Alignment
+## Migration Phase 1 — Foundation Alignment
 
 Deliverables:
 
@@ -84,7 +84,7 @@ Exit criteria:
 - all referenced canonical files exist;
 - proposed structural changes are documented but not yet executed.
 
-## Phase 2 — Documentation Normalization
+## Migration Phase 2 — Documentation Normalization
 
 Actions:
 
@@ -102,7 +102,7 @@ Exit criteria:
 - no orphaned authoritative document remains;
 - terminology and link checks pass.
 
-## Phase 3 — Structural Migration
+## Migration Phase 3 — Structural Migration
 
 Actions:
 
@@ -119,7 +119,7 @@ Exit criteria:
 - builds and tests remain green;
 - no obsolete path is referenced by active documentation or automation.
 
-## Phase 4 — Quality Gates
+## Migration Phase 4 — Quality Gates
 
 Introduce automated checks for:
 
@@ -132,7 +132,7 @@ Introduce automated checks for:
 - schema validation;
 - architecture dependency violations.
 
-## Phase 5 — Implementation Readiness
+## Migration Phase 5 — Implementation Readiness
 
 Prioritize implementation-ready slices:
 

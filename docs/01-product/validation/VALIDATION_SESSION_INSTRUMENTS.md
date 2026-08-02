@@ -28,7 +28,7 @@ artifact chain and contract semantics.
 Every scheduled session must have:
 
 - one participant ID such as `U-01`
-- one case ID such as `C-03`
+- one case ID such as `VC-03`
 - one session ID such as `S-U01-C03-01`
 - one facilitator ID
 - one reviewed contract revision
@@ -314,4 +314,4 @@ Use this row shape in the dated validation report:
 
 | Session | Participant | Case | Baseline direction minutes | Baseline total minutes | Baseline direction revisions | Baseline candidate revisions | Baseline usefulness 1-5 | Baseline rationale clarity 1-5 | Proposed direction minutes | Proposed total minutes | Direction revisions | Candidate revisions | Usefulness 1-5 | Rationale clarity 1-5 | Final confidence 1-5 | Approval/provenance confidence 1-5 | Two-gate comprehension | Clarifications | Facilitator interventions | Stop record ID | Outcome |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|---:|---|---|
-| `S-U01-C03-01` | `U-01` | `C-03` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` |
+| `S-U01-C03-01` | `U-01` | `VC-03` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` | `PENDING` |

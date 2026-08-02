@@ -2,7 +2,7 @@
 
 - **Status:** Accepted governance model
 - **Owner:** Product Owner, Chief Architect, Documentation
-- **Decision:** ADR-0004
+- **Decision:** ADR-0006
 - **Purpose:** Assign one canonical owner to each class of project information
 
 ## Core rule
@@ -102,5 +102,5 @@ Changes to this responsibility model require an ADR when they:
 - `../02-architecture/TARGET_PLATFORM_BLUEPRINT.md`
 - `../02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md`
 - `../03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`
-- `../adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md`
+- `../adr/ADR-0006-target-blueprint-and-phased-expansion.md`
 - `../../MEOS/20_PROJECT_BOOTSTRAP.md`

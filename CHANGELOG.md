@@ -6,6 +6,20 @@ The format follows Keep a Changelog principles and uses semantic versioning wher
 
 ## [Unreleased]
 
+### Added — 2026-07-26
+- Pre-implementation readiness packet and validation instruments: validation case catalog, session instruments, artifact worksheets, and instrument dry run under `docs/01-product/validation/`.
+- `docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md`, proposed and then accepted with contract decisions C-01–C-06 (`docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`).
+- Governance role assignment recorded via PR #5 (`MEOS/roles.yaml`, `CONTEXT_INDEX.yaml` governance assignments).
+- Delivery-control documents: `docs/03-delivery/PENDING_WORK_TO_READY.md`, `docs/03-delivery/PLAN_TO_EVIDENCE_TRACEABILITY_MATRIX.md`, `docs/03-delivery/RELEASE_AND_STAGING_DECISION_PLAN.md`, and `docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md` (initial quality score 97/100, re-scored 99/100 after alignment fixes and docs-check tooling).
+- `docs/adr/ADR-0005-python-backend-and-react-typescript-stack.md`: Python 3.12+/FastAPI backend with React/TypeScript frontend, accepted; validator toolchain is Python `jsonschema>=4.21,<5`.
+- Docs-check tooling introduction (link, metadata, and terminology checks) to close the remaining quality-review points.
+
+### Changed — 2026-07-26
+- Contract decisions C-01–C-06 accepted by the product owner; ADR-0003 moved from Proposed to Accepted.
+- ADR files renamed to a single `ADR-NNNN-title` convention (ADR-0001, ADR-0002, ADR-0003, ADR-0004 — formerly ADR-001 — and new ADR-0005).
+- Backend direction changed from Laravel/PHP to Python per ADR-0005; affected foundation and architecture documents updated.
+- MVP validation round rescoped to a recorded solo round: the product owner is the sole intended user; multi-user evidence deferred to a post-build pilot (`docs/01-product/MVP_VALIDATION_PLAN.md`).
+
 ### Planned
 - Validate MEOS against a real Motiflow feature from idea through production.
 - Add automated metadata, link, and context-index validation.

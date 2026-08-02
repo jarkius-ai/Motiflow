@@ -2,6 +2,20 @@
 
 **Status:** Review-ready planning baseline; human acceptance pending
 
+This roadmap uses product Phase 0–8 numbering. Delivery sequencing uses a
+separate `D1`–`D8` numbering in
+[`03-delivery/UPDATED_PHASE_ROADMAP.md`](03-delivery/UPDATED_PHASE_ROADMAP.md);
+the two schemes map as follows.
+
+| Product roadmap phase (this document) | Delivery phase ([`03-delivery/UPDATED_PHASE_ROADMAP.md`](03-delivery/UPDATED_PHASE_ROADMAP.md)) |
+| --- | --- |
+| Phase 0 — Foundation | D1 Repository foundation, D2 Documentation normalization, D2.5 Runtime contract baseline |
+| Phase 1 — Workflow validation and baseline | D3 Manual validation baseline, D4 Two-gate workflow review |
+| Phase 2 — Decisive-slice contracts | D5 Canonical schemas, fixtures, and validation command |
+| Phase 3 — Executable workflow proof | D6 One executable workflow |
+| Phase 4 — One-provider decisive-slice MVP | D7 Thin Model Gateway, D8 Generated candidates, critics, and final approval |
+| Phases 5–8 | No delivery phases defined yet (post-MVP) |
+
 ## Phase 0 — Foundation
 
 **Goal:** Establish one coherent source of truth before implementation.

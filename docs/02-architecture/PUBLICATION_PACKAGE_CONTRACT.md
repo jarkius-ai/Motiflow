@@ -1,6 +1,6 @@
 # Publication Package Contract
 
-Status: Proposed post-MVP specialization
+**Status:** Proposed post-MVP specialization
 Applies to: Motiflow / ACDS runtime
 
 ## Purpose

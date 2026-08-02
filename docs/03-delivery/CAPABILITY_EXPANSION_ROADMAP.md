@@ -5,7 +5,7 @@
 - **Target architecture:** `../02-architecture/TARGET_PLATFORM_BLUEPRINT.md`
 - **Capability state:** `../02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md`
 - **Engineering execution:** MEOS
-- **Decision:** ADR-0004
+- **Decision:** ADR-0006
 - **Responsibility:** Define the ordered journey, phase outcomes, dependencies, activation gates, exit evidence, and expansion seams
 - **Does not own:** Product vision, stable architecture, current state, task authorization, exact test commands, or implementation evidence
 
@@ -116,7 +116,7 @@ Every contributor and AI agent can distinguish:
 - Blueprint Reconciliation Matrix and review.
 - Complete 193-file manifest disposition.
 - Responsibility Migration Report.
-- Accepted ADR-0004.
+- Accepted ADR-0006.
 - Updated `START_HERE.md`, `CONTEXT_INDEX.yaml`, Bootstrap, and Document Index.
 
 ## Exit evidence
@@ -141,7 +141,7 @@ Every contributor and AI agent can distinguish:
 
 ## Status
 
-Direction accepted on 2026-08-02 through ADR-0004. Independent review and QA remain before PR #7 should be marked ready to merge.
+Direction accepted on 2026-08-02 through ADR-0006. Independent review and QA remain before PR #7 should be marked ready to merge.
 
 # Pre-Phase 1 — Product Validation and Contract Decision Gate
 
@@ -570,6 +570,6 @@ Proven internal seams support broader enterprise deployment and governed extensi
 - Current state: `../02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md`
 - Responsibility model: `../00-foundation/DOCUMENT_RESPONSIBILITY_MODEL.md`
 - Change gate: `../00-foundation/ARCHITECTURE_CHANGE_GATE.md`
-- Accepted direction: `../adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md`
+- Accepted direction: `../adr/ADR-0006-target-blueprint-and-phased-expansion.md`
 - Current delivery state: `../../MEOS/20_PROJECT_BOOTSTRAP.md`
 - Task execution and evidence: MEOS and task-specific artifacts

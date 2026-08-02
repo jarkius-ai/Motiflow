@@ -415,7 +415,7 @@ Those concerns are retained in their canonical owners and linked below.
 - Current capability state: `TARGET_PLATFORM_CAPABILITY_MAP.md`
 - Expansion sequencing: `../03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`
 - Reconciliation decisions: `../03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md`
-- Architecture decision: `../adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md`
+- Architecture decision: `../adr/ADR-0006-target-blueprint-and-phased-expansion.md`
 - Context routing: `../../CONTEXT_INDEX.yaml`
 - Current delivery state: `../../MEOS/20_PROJECT_BOOTSTRAP.md`
 - Engineering governance: `../../MEOS/`

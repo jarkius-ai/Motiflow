@@ -1,8 +1,11 @@
-# ADR-001: Use a Hybrid DAG Execution Model
+# ADR-0004: Use a Hybrid DAG Execution Model
 
-- **Status:** Accepted
-- **Date:** 2026-07-25
-- **Decision owners:** Motiflow architecture
+- Status: Accepted
+- Date: 2026-07-25
+- Decision owners: Motiflow architecture
+- Related task: None
+- Supersedes: None
+- Superseded by: None
 
 ## Context
 
@@ -69,6 +72,18 @@ Rejected because it is difficult to evaluate, test, explain, govern, and replace
 - Fusion stages must preserve disagreement and uncertainty.
 - The UI must display stage status and lineage without exposing private chain-of-thought.
 - Approval stages must be first-class workflow nodes.
+
+## Migration and Rollback
+
+No orchestrator implementation exists yet, so there is nothing to migrate. Replacing the hybrid DAG model after implementation begins requires a superseding ADR.
+
+## Verification
+
+When implemented: workflow definitions declare explicit dependencies; independent stages run concurrently; approval stages are first-class nodes; provenance and lineage are recorded for every stage transition.
+
+## Approval
+
+Accepted by Jarkius (Product owner, Chief Architect), recorded 2026-07-26; acceptance regularized retroactively — the decision has governed the documented architecture since 2026-07-25.
 
 ## Related documents
 

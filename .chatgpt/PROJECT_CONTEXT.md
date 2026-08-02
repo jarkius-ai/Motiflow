@@ -23,14 +23,7 @@ Foundation and architecture definition. Production code has not yet become the s
 
 ## Canonical reading order
 
-1. `/PROJECT_CHARTER.md`
-2. `/MASTER_CONTEXT.md`
-3. `/docs/00-foundation/`
-4. `/docs/01-product/`
-5. `/docs/02-architecture/`
-6. `/docs/03-engineering/`
-7. `/docs/04-ai/`
-8. `/docs/adr/`
+The canonical reading order is defined in `/START_HERE.md`: `START_HERE.md` → `PROJECT_CHARTER.md` → `MASTER_CONTEXT.md` → `CONTEXT_INDEX.yaml` → `MEOS/20_PROJECT_BOOTSTRAP.md`. Do not maintain a competing order here.
 
 ## Collaboration rule
 
