@@ -1,41 +1,192 @@
 # Motiflow Target Platform Blueprint
 
-- **Status:** Proposed target-state architecture
+- **Status:** Accepted target-state direction
 - **Owner:** Chief Architect
 - **Product:** Motiflow
 - **Product architecture:** Autonomous Creative Direction System (ACDS)
 - **Engineering governance:** Motiflow Engineering Operating System (MEOS)
-- **Scope:** Complete long-term capability architecture and phased expansion seams
-- **Current implementation authority:** `PROJECT_CHARTER.md`, `MASTER_CONTEXT.md`, accepted ADRs, MEOS, ready task specifications, and verified repository evidence
+- **Responsibility:** Describe the complete future platform, architectural boundaries, capability domains, and stable expansion seams
+- **Does not own:** Current implementation state, delivery phases, task readiness, provider selection, test plans, CI details, or release authorization
 
-## 1. Purpose
+## 1. Role of this blueprint
 
-This blueprint describes the complete Motiflow platform that the focused creative-direction product may expand into. It preserves the long-term system vision without requiring the repository to create or implement every planned component at once.
+This blueprint answers one question:
 
-The blueprint is a **target-state architecture**, not a statement that every capability exists, is validated, or is ready to build. Current product scope and implementation sequencing remain controlled by the repository authority model.
+> When Motiflow matures beyond its first validated product slice, what complete platform should it be able to become without abandoning its core architecture?
 
-Motiflow is built as connected, independently verifiable pieces. Each phase must deliver a useful vertical slice with stable contracts and explicit expansion seams. Later phases extend those seams rather than bypassing or replacing the validated core.
+It is the repository's **destination architecture**. It preserves long-term product coherence while allowing implementation to proceed incrementally.
 
-## 2. Authority and conflict rules
+This document does not authorize work. Future capability state is recorded in `TARGET_PLATFORM_CAPABILITY_MAP.md`; activation order is owned by `CAPABILITY_EXPANSION_ROADMAP.md`; implementation is authorized only by ready MEOS tasks and accepted decisions.
 
-Use this precedence when this blueprint is involved:
+## 2. Authority boundary
 
-1. Explicit authorized human decision for the current task.
-2. `PROJECT_CHARTER.md` for enduring product intent.
-3. `MASTER_CONTEXT.md` for stable ACDS architecture and canonical product boundaries.
-4. Accepted ADRs for architecture-significant decisions.
-5. Accepted product requirements and canonical contracts.
-6. MEOS standards and ready task specifications for delivery execution.
-7. This target blueprint for future-state capability direction.
-8. Supporting plans, proposals, examples, and inference.
+When documents overlap, apply this responsibility model:
 
-This blueprint may expand the target platform but must not silently redefine Motiflow, ACDS, MEOS, the Creative Kernel, Workflow Orchestrator, canonical decisive-slice artifacts, or protected human authority.
+| Concern | Canonical owner |
+|---|---|
+| Product purpose, value, and durable scope | `PROJECT_CHARTER.md` |
+| Stable product/runtime architecture and terminology | `MASTER_CONTEXT.md` |
+| Future complete capability destination | This blueprint |
+| Current capability state | `TARGET_PLATFORM_CAPABILITY_MAP.md` |
+| Expansion order and activation gates | `CAPABILITY_EXPANSION_ROADMAP.md` |
+| Consequential architecture decisions | Accepted ADRs |
+| Engineering execution, readiness, review, and release | MEOS |
+| Today's authorized work | Ready task specifications |
+| What is actually true | Repository implementation and verification evidence |
 
-When a conflict could alter product scope, architecture, security, data, approval semantics, or acceptance criteria, stop and resolve it through the repository authority and ADR process.
+The blueprint must never silently override the Charter, Master Context, accepted ADRs, canonical contracts, or protected human authority.
 
-## 3. Current product core
+## 3. Product destination
 
-The current decisive product slice remains:
+Motiflow is intended to become an operating system for governed enterprise creative intelligence.
+
+The complete platform connects:
+
+```text
+Business intent and source material
+        ↓
+Knowledge acquisition and normalization
+        ↓
+Creative intelligence and knowledge fusion
+        ↓
+Explainable creative direction
+        ↓
+Human direction approval
+        ↓
+Provider-neutral generation specification
+        ↓
+Generation and candidate normalization
+        ↓
+Deterministic and critic evaluation
+        ↓
+Human final approval and provenance
+        ↓
+Editorial and Publication Package assembly
+        ↓
+Explicit publishing authorization
+        ↓
+Channel execution and published-state evidence
+        ↓
+Measurement, governed learning, and reusable knowledge
+```
+
+Not every workflow must use every capability. Each workflow declares the minimum capabilities, contracts, policies, approval gates, and evidence required for its product outcome.
+
+## 4. Architectural model
+
+```text
+Human / API / Approved Connector Input
+                 ↓
+          Motiflow Studio / API
+                 ↓
+      Creative Kernel ↔ Workflow Orchestrator
+                 ↓
+   Specialist Engines / Critics / Bounded Agents
+                 ↓
+          Connector Gateway
+       ┌─────────┼─────────────┐
+       ↓         ↓             ↓
+ Model Gateway  Knowledge     Execution and
+                Providers     Publishing Providers
+       └─────────┼─────────────┘
+                 ↓
+       External Systems and Tools
+
+Cross-cutting roots:
+Schemas • Workflows • Policy • Provenance • Evidence • Security
+Observability • Versioning • Evaluation • Human Authority • Memory
+```
+
+## 5. Stable component responsibilities
+
+### 5.1 Motiflow Studio and API
+
+Own human and system-facing interaction:
+
+- project and brief intake;
+- workflow visibility;
+- artifact comparison;
+- clarification;
+- review and approval;
+- package preview and export;
+- current-state read models.
+
+They must not call provider SDKs directly or mutate canonical artifact state outside application services and Kernel contracts.
+
+### 5.2 Creative Kernel
+
+Owns integrity and governance:
+
+- canonical artifact and package contracts;
+- schema validation and compatibility;
+- immutable versioning and lineage;
+- policy and permission enforcement;
+- approval requirements;
+- provenance and evidence linkage;
+- protected state transitions;
+- invalidation rules.
+
+The Kernel does not perform specialist creative reasoning, choose providers, schedule workflows, or publish externally.
+
+### 5.3 Workflow Orchestrator
+
+Owns execution coordination:
+
+- workflow DAGs;
+- dependency resolution;
+- scheduling and concurrency;
+- retries, timeouts, cancellation, and safe resume;
+- budget and resource controls;
+- approval pauses;
+- capability resolution;
+- run-level observability.
+
+The Orchestrator does not own canonical contracts, creative reasoning, provider implementations, or human authority.
+
+### 5.4 Specialist engines and critics
+
+Engines perform bounded reasoning and transformation through typed contracts. Critics produce findings, evidence, and recommendations without silently rewriting reviewed artifacts.
+
+Engines and critics must not:
+
+- import provider SDKs directly;
+- mutate another component's owned output;
+- bypass Kernel validation;
+- advance workflow state directly;
+- authorize external publication.
+
+### 5.5 Connector Gateway
+
+Owns the controlled boundary to external systems:
+
+- provider-specific adapters;
+- credentials and permissions;
+- request/result normalization;
+- external-call policy;
+- retries and provider diagnostics;
+- audit and usage evidence;
+- platform-specific payloads.
+
+Provider-native types, browser selectors, cookies, account identifiers, and authentication mechanisms remain inside connector implementations.
+
+### 5.6 Model Gateway
+
+Provides provider-neutral model execution for reasoning and generation. It owns capability descriptions, normalized request/result contracts, and model/provider execution evidence.
+
+It remains replaceable and must not become the owner of workflow state or business artifacts.
+
+### 5.7 Human authority
+
+Human decisions are explicit versioned records. The creative core protects two gates:
+
+1. Direction approval before generation.
+2. Final approval after candidate evaluation and before export or publication.
+
+External publication requires a distinct publishing authorization. Creative approval is not automatically permission to post.
+
+## 6. Canonical creative spine
+
+The first durable platform spine remains:
 
 ```text
 Intake Package
@@ -50,442 +201,225 @@ Intake Package
 → Provenance Record
 ```
 
-This chain is the first durable spine of Motiflow. Future research, acquisition, editorial, publication, browser, and measurement capabilities must connect through versioned contracts without weakening its two approval gates, lineage, validation, or provenance.
+Every future domain must extend this spine through versioned references or approved supporting contracts. No later capability may create a second artifact envelope, approval model, provenance system, or workflow-state owner.
 
-## 4. Target end-to-end platform
+## 7. Target capability domains
 
-The long-term platform extends the decisive slice into a governed creative and publication lifecycle:
-
-```text
-Discover
-→ Acquire
-→ Normalize Sources
-→ Intake
-→ Analyze and Fuse Knowledge
-→ Define Creative Direction
-→ Human Direction Approval
-→ Specify Generation
-→ Generate Candidates
-→ Deterministic and Critic Review
-→ Human Final Approval
-→ Assemble Publication Package
-→ Channel Adaptation
-→ Publishing Authorization
-→ Publish
-→ Measure
-→ Learn
-→ Improve
-```
-
-Not every workflow requires every stage. A workflow definition declares the required capabilities, artifact contracts, approval gates, policy, budgets, and completion evidence for its product outcome.
-
-## 5. Architectural model
-
-```text
-Human / API / Approved Connector Input
-                 ↓
-          Motiflow Studio / API
-                 ↓
-      Creative Kernel ↔ Workflow Orchestrator
-                 ↓
-  Specialist Engines / Critics / Bounded Agents
-                 ↓
-          Connector Gateway
-       ┌─────────┼─────────────┐
-       ↓         ↓             ↓
- Model Gateway  Knowledge     Execution and
-                Providers     Publishing Providers
-       └─────────┼─────────────┘
-                 ↓
-       External Systems and Tools
-
-Cross-cutting roots:
-Schemas • Workflows • Policy • Provenance • Evidence • Security
-Observability • Versioning • Human Authority • Evaluation • Memory
-```
-
-### 5.1 Creative Kernel
-
-The Creative Kernel owns canonical contracts, artifact integrity, validation, provenance linkage, policy enforcement, versioning, approval requirements, compatibility rules, and protected state transitions.
-
-It does not perform specialist reasoning, choose a creative idea, schedule tasks, or directly call external providers.
-
-### 5.2 Workflow Orchestrator
-
-The Workflow Orchestrator owns DAG execution, dependency resolution, scheduling, retries, timeouts, cancellation, budgets, approval pauses, provider-capability resolution, and validated handoffs.
-
-It does not absorb engine reasoning, connector implementations, approval authority, or canonical contract ownership.
-
-### 5.3 Specialist engines and critics
-
-Engines produce bounded, typed outputs through declared capabilities. Critics return evidence-backed findings without mutating the reviewed artifacts. Engines and critics use provider-neutral interfaces and never import provider SDKs directly.
-
-### 5.4 Connector Gateway
-
-The Connector Gateway is the controlled boundary for external models, knowledge sources, storage, enterprise services, rendering systems, browser execution, and publishing destinations. It owns credentials, provider normalization, external-call policy, auditability, and provider-specific adaptation.
-
-### 5.5 Human authority
-
-Human decisions remain explicit records. The decisive slice has two protected gates:
-
-- Direction approval before generation.
-- Final approval after candidate evaluation and before export or publication.
-
-Later publication workflows may add a separate publishing-authorization gate. They may not reinterpret final creative approval as permission to post externally.
-
-## 6. Target capability domains
-
-### 6.1 Product intake and project workspace
+### 7.1 Intake and workspace
 
 - Project and brief management.
-- Source attachment and reference capture.
-- Constraint, audience, channel, brand, and objective definition.
-- Clarification handling.
-- Workflow, artifact, approval, and lineage visibility.
+- Source and reference attachment.
+- Audience, brand, objective, channel, and constraint capture.
+- Clarification and decision history.
+- Artifact, workflow, approval, and lineage visibility.
 
-### 6.2 Creative intelligence
+### 7.2 Creative intelligence
 
 - Brief normalization.
-- Narrative analysis.
-- Audience interpretation.
-- Business-context analysis.
-- Brand-constraint analysis.
+- Narrative and audience analysis.
+- Business-context interpretation.
+- Brand and policy constraints.
 - Research synthesis.
-- Knowledge fusion with disagreement and confidence preservation.
+- Knowledge fusion that preserves conflict, uncertainty, and confidence.
 
-### 6.3 Creative direction
+### 7.3 Creative direction
 
-- Dominant narrative and metaphor selection.
-- Symbolism and visual-language development.
+- Dominant narrative and metaphor.
+- Symbolism and visual language.
 - Composition, camera, lighting, material, and palette logic.
-- Prohibited-element and brand-safety rules.
-- Explainable alternatives and rationale.
+- Prohibited elements and brand-safety rules.
+- Alternatives, rationale, and confidence.
 
-### 6.4 Generation and provider execution
+### 7.4 Generation
 
 - Provider-neutral Generation Specification.
-- Deterministic mock execution.
-- One or more rendering-provider connectors.
-- Candidate-set normalization.
-- Provider usage, latency, cost, model, and version provenance.
+- Replaceable rendering providers.
+- Candidate normalization.
+- Cost, latency, model, configuration, and version provenance.
+- Deterministic mock execution for verification.
 
-### 6.5 Evaluation and review
+### 7.5 Evaluation and approval
 
 - Deterministic checks.
-- Focused critic dimensions.
-- Review fusion without hidden score averaging.
+- Focused critics.
+- Dimension-level findings.
+- Revision routing and invalidation.
 - Direction and final approval records.
-- Revision routing and downstream invalidation.
+- Complete provenance closure.
 
-### 6.6 External knowledge acquisition
+### 7.6 Knowledge acquisition
 
-- Read-only web, YouTube, GitHub, and RSS acquisition.
+- Public web, video transcript, repository, and feed acquisition.
 - Search and source discovery.
-- Channel and provider descriptors.
+- Normalized Source Records and Source Bundles.
+- Citations, source hashes, rights, classification, and retrieval evidence.
 - Provider health and diagnostics.
-- Normalized source records.
-- Retrieval evidence, source hashes, citations, and rights metadata.
-- Authenticated channels only through separately approved policy and security gates.
+- Authenticated paths only under separately accepted security and policy controls.
 
-### 6.7 Content and editorial intelligence
+### 7.7 Editorial intelligence
 
-- Research brief assembly.
+- Research briefs.
 - Claim extraction and evidence mapping.
 - Editorial drafting and revision.
-- Factual, brand, and policy review.
-- Social and channel variants derived from an approved source package.
+- Factual, brand, policy, and accessibility review.
+- Channel variants derived from approved source and package versions.
 
-### 6.8 Publication package
+### 7.8 Publication Package
 
-- Approved article or content body.
+- Approved content body.
 - Markdown and sanitized HTML.
 - Selected visual artifacts and crops.
 - Captions, alt text, credits, and accessibility metadata.
-- Citations and claim-to-source links.
-- Editorial, factual, visual, brand, and final review status.
+- Claim-to-source links and citations.
+- Editorial, factual, visual, brand, and approval state.
 - Reproducible export manifest.
 
-### 6.9 Publishing execution
+### 7.9 Publishing execution
 
-- Official API connectors where available and approved.
-- Platform adapters behind normalized publishing contracts.
-- Browser execution only when justified, policy-approved, and independently verified.
-- Draft, preview, dry-run, and human authorization modes.
-- Published-state verification and evidence capture.
+- Official API connectors where suitable.
+- Approved normalized platform adapters.
+- Browser execution only as a replaceable, policy-approved provider.
+- Preview, dry-run, and explicit authorization.
+- Idempotency, target-account verification, and published-state evidence.
 
-### 6.10 Measurement and learning
+### 7.10 Measurement and governed learning
 
-- Approval latency and revision analytics.
-- Direction usefulness and rationale clarity.
-- Candidate-quality and critic-calibration data.
+- Workflow and approval latency.
+- Revision, critic, and quality analytics.
 - Source-quality and factual-accuracy signals.
-- Publication and content-performance ingestion.
-- Cost, latency, retry, and provider-health reporting.
-- Reusable approved brand, knowledge, creative-language, and evaluation memory.
+- Provider cost, latency, and reliability.
+- Publication outcome ingestion.
+- Evidence-backed learning proposals.
+- Human-approved updates to reusable brand, knowledge, creative, and evaluation memory.
 
-### 6.11 Platform and enterprise expansion
+### 7.11 Enterprise and ecosystem
 
-- Multi-tenant policy and isolation.
-- Enterprise identity and role-based approvals.
+- Tenant and project isolation.
+- Enterprise identity and delegated approval.
+- Regional and provider data controls.
 - Engine and connector SDKs.
-- Multi-provider routing and fallback.
-- Regional and provider data-policy controls.
-- Capability marketplace only after governance and demand are proven.
+- Multi-provider routing and resilience.
+- Governed extensibility and marketplace capabilities after trust and demand are proven.
 
-## 7. External acquisition and Agent Reach boundary
+## 8. Stable expansion seams
 
-Agent Reach may be integrated as an optional connector-management and diagnostic provider. It may contribute:
-
-- upstream-tool discovery;
-- safe installation planning;
-- channel readiness checks;
-- compatibility knowledge;
-- health diagnostics;
-- repair recommendations; and
-- preferred and fallback backend information.
-
-Agent Reach does not own Motiflow contracts, workflow state, credentials, policy, normalization, provenance, approval, publishing authority, or product learning.
-
-The preferred boundary is:
-
-```text
-Workflow / Engine
-      ↓ acquisition capability request
-Connector Gateway
-      ↓ Motiflow acquisition provider contract
-Agent Reach provider or direct provider
-      ↓
-Upstream CLI, API, MCP, or reader
-      ↓
-Normalized Motiflow Source Record
-```
-
-Authenticated browser sessions, cookies, proxies, write actions, and platform-specific risk escalation require separate approval. Automatic fallback must never silently escalate from a public read path to a higher-risk authenticated path.
-
-## 8. Capability state model
-
-Every target capability must have one explicit state:
-
-- **Implemented** — code and required verification evidence exist.
-- **Validated** — product or operational evidence demonstrates the intended outcome.
-- **Contracted** — accepted contracts exist, but runtime implementation may not.
-- **Planned** — approved for a future phase but not activated.
-- **Deferred** — intentionally postponed until its activation trigger occurs.
-- **Experimental** — isolated research or POC with no production claim.
-- **Rejected** — considered and intentionally excluded.
-
-`Review-ready`, `proposed`, or `documented` do not mean implemented or validated.
-
-The canonical current-state view is maintained in `TARGET_PLATFORM_CAPABILITY_MAP.md` and repository evidence, not inferred from this blueprint.
-
-## 9. Jigsaw capability contract
-
-Every activated capability or phase must declare:
-
-```yaml
-capability_id:
-product_outcome:
-owner:
-state:
-inputs:
-outputs:
-owned_state:
-dependencies:
-contracts:
-policies:
-human_gates:
-verification:
-failure_behavior:
-expansion_seams:
-deferred_scope:
-activation_gate:
-```
-
-A capability is a valid jigsaw piece only when:
-
-1. Its product outcome is independently useful.
-2. Inputs and outputs are versioned and validated.
-3. Ownership and dependency direction are explicit.
-4. Failure and rollback behavior are defined.
-5. Required human authority is preserved.
-6. Evidence proves its acceptance criteria.
-7. Its expansion seams allow later capability addition without rewriting the validated core.
-
-## 10. Phased implementation model
-
-### Phase 0 — Reconciliation and authority alignment
-
-**Outcome:** One coherent product, architecture, and delivery map.
-
-Deliver the blueprint reconciliation matrix, target capability map, phased expansion roadmap, ADR-0004 proposal, context routing, and document-index updates.
-
-This phase does not authorize Task 001 or runtime implementation.
-
-### Phase 1 — Contract foundation
-
-**Outcome:** The decisive-slice artifact chain is executable as contracts.
-
-Deliver exactly ten accepted artifact schemas, valid and invalid fixtures, semantic lineage and approval checks, one repository validation command, and one CI enforcement path.
-
-**Activation:** Existing validation, contract-acceptance, ADR-0003, toolchain, Definition of Ready, and independent-review prerequisites pass.
-
-### Phase 2 — Executable creative core
-
-**Outcome:** A user can create and approve a governed creative direction.
-
-Deliver the thin Creative Kernel, Workflow Orchestrator, artifact repository, deterministic engines, run-state enforcement, and Direction Approval Record path through the first human gate.
-
-### Phase 3 — Generation and final review
-
-**Outcome:** An approved direction produces evaluated candidates and final approval with provenance.
-
-Deliver a thin Model Gateway, deterministic mock, one real rendering provider, Generation Specification, candidate generation, focused critics, Final Approval Record, and Provenance Record.
-
-This is the first complete creative-direction product MVP.
-
-### Phase 4 — External knowledge acquisition
-
-**Outcome:** The creative workflow can be grounded in normalized, traceable external sources.
-
-Deliver read-only web, YouTube, GitHub, and RSS acquisition; source contracts; provider health; diagnostics; provenance; and an optional Agent Reach adapter.
-
-Authenticated social channels remain deferred unless separately approved.
-
-### Phase 5 — Editorial and Publication Package
-
-**Outcome:** Approved research, editorial content, and visuals can be assembled into one reviewable and reproducible package.
-
-Deliver research brief, claim mapping, editorial drafting, factual and brand review, Publication Package, Markdown/HTML exports, social variants, and package-level approval.
-
-### Phase 6 — Governed publishing connectors
-
-**Outcome:** An approved Publication Package can be published through one authorized target with evidence.
-
-Deliver one platform connector, explicit publishing authorization, dry-run and preview modes, account verification, idempotency, published-state verification, and evidence capture. Expand channels one at a time.
-
-### Phase 7 — Measurement and learning
-
-**Outcome:** Motiflow improves decisions through observed workflow and outcome data.
-
-Deliver quality, approval, revision, source, provider, publishing, cost, and performance measurement with governed learning updates.
-
-### Phase 8 — Platform and enterprise expansion
-
-**Outcome:** Proven capabilities become an extensible enterprise platform.
-
-Deliver multi-provider routing, advanced resilience, SDKs, enterprise tenancy, wider connector ecosystems, and governed capability extensibility only from observed demand.
-
-## 11. Phase activation rules
-
-A phase may begin only when:
-
-- the previous phase's mandatory gates pass;
-- its product outcome and users are explicit;
-- required contracts are accepted;
-- dependencies and data policy are known;
-- a ready task or bounded task set exists;
-- verification and rollback are defined;
-- security review is routed when applicable; and
-- an authorized human approves protected decisions.
-
-A numerical score cannot activate a phase while a mandatory gate fails.
-
-A later phase may conduct isolated research before activation, but experimental work must not change canonical contracts, production state, or current-scope claims.
-
-## 12. Repository introduction rule
-
-The target structure describes ownership boundaries, not an instruction to create every directory immediately.
-
-Introduce a directory, package, registry, workflow, connector, or schema only when one of these is true:
-
-- an accepted contract requires it;
-- a ready task owns it;
-- executable code or governed fixtures will live there; or
-- an authoritative document requires a durable artifact at that path.
-
-Do not generate empty speculative structures merely to make the repository resemble the final platform.
-
-## 13. Expansion seams
-
-The core seams that must remain stable are:
+The following interfaces are the architectural jigsaw joints:
 
 ```text
 Canonical Artifact Envelope
 Workflow Definition Contract
-Engine Capability Contract
+Specialist Engine Contract
 Critic Contract
+Artifact Repository Contract
+Approval Record Contract
+Provenance and Evidence Contract
 Connector Request and Result Contract
 Model Gateway Contract
 Knowledge Acquisition Contract
-Approval Record Contract
-Provenance and Evidence Contract
 Publication Package Contract
 Publishing Connector Contract
 Measurement Event Contract
+Learning Proposal Contract
 ```
 
-Each seam is versioned independently. Provider-native types, browser selectors, model prompts, authentication details, and platform-specific payloads remain inside their owning implementations.
+Each seam is independently versioned. Later capabilities may add implementations behind a seam but must not bypass or silently reinterpret it.
 
-## 14. Security and trust boundaries
+## 9. External provider neutrality
 
-- Apply least privilege and explicit data classification.
-- Keep secrets outside prompts, artifacts, logs, fixtures, screenshots, and source control.
-- Separate research credentials from publishing credentials.
-- Treat acquired content as untrusted input subject to prompt-injection and content-safety controls.
-- Record provider, model, tool, source, version, and policy context for external calls.
-- Require explicit approval before authenticated acquisition, browser-session use, external write actions, or publication.
-- Preserve immutable evidence and decision history unless legal, privacy, or security policy requires deletion.
-- Do not claim platform compliance or invisibility without evidence.
+The blueprint names capability classes, not mandatory vendors.
 
-## 15. Verification model
+### Acquisition provider examples
 
-Every phase requires:
+A future `KnowledgeAcquisitionProvider` may be implemented by:
 
-- requirement and scope evidence;
-- contract validation;
-- deterministic positive and negative tests;
-- architecture and dependency review;
-- security and privacy review where applicable;
-- independent review and QA evidence;
-- documentation and context-routing updates;
-- rollback or safe-stop behavior; and
-- product or operational evidence appropriate to the outcome.
+- manual or uploaded-source ingestion;
+- direct official APIs;
+- public reader services;
+- Agent Reach as an optional adapter;
+- an approved browser source provider;
+- another compliant provider.
 
-Implementation existence is not product validation. Documentation completeness is not implementation readiness. A provider response is not accepted until Motiflow validation and provenance requirements pass.
+Agent Reach is not part of the core architecture and does not own Motiflow contracts, state, policy, credentials, provenance, or approval.
 
-## 16. Linked governance and delivery artifacts
+### Browser provider examples
 
-- `docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md` — maps target concepts to current repository authority and disposition.
-- `docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md` — records current capability state and target phase.
-- `docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md` — defines phase outcomes, dependencies, activation gates, and expansion seams.
-- `docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md` — proposes the formal authority and phased-expansion decision.
-- `CONTEXT_INDEX.yaml` — routes roles and tasks to the minimum complete context.
-- `MEOS/20_PROJECT_BOOTSTRAP.md` — records the current verified delivery state.
+A future browser execution seam may be implemented by:
 
-## 17. Current execution boundary
+- an extension bridge;
+- CDP or Playwright;
+- a bounded semantic browser provider;
+- another policy-approved implementation.
 
-At the time this blueprint is introduced:
+Browser automation is not assumed to exist. It must remain replaceable and independently verifiable.
 
-- runtime implementation has not started on `main`;
-- the decisive-slice validation and human decisions remain pending;
-- ADR-0003 and contract acceptance remain pending;
-- Task 001 remains blocked until its prerequisites and Definition of Ready pass; and
-- future acquisition, Agent Reach, editorial, publication, browser, social, and platform capabilities remain planned or deferred.
+### Proxy status
 
-This blueprint does not change those facts and does not itself authorize implementation.
+Proxy infrastructure is not a platform requirement. It may not be used to evade platform controls or silently escalate access. Any legitimate future need requires a dedicated decision, security/legal review, accepted policy, and a ready task.
 
-## 18. Success definition
+## 10. Data and ownership rules
 
-The blueprint succeeds when Motiflow can expand from one validated creative-direction MVP into a governed research, creation, publication, and learning platform without discarding its core contracts, compromising human authority, or rebuilding the system around a single provider.
+- Canonical artifacts are immutable and versioned.
+- Components exchange identifiers and typed packages rather than shared mutable domain objects.
+- Events describe completed facts; commands request work.
+- External provider data is normalized before entering canonical workflows.
+- Source and provider evidence remains traceable to the artifact versions it influenced.
+- Human edits, overrides, and approvals create durable provenance.
+- Provider credentials and raw authentication material never enter prompts or canonical artifacts.
 
-The desired progression is:
+## 11. Security and trust boundaries
 
-```text
-One validated product outcome
-→ one stable vertical slice
-→ one verified expansion seam
-→ one additional capability
-→ measured value
-→ governed repetition
-→ full platform
-```
+- Least privilege and explicit data classification.
+- Secrets outside prompts, artifacts, logs, fixtures, screenshots, and source control.
+- Separate research and publishing credentials.
+- Acquired content treated as untrusted input.
+- Prompt-injection and content-safety controls at acquisition boundaries.
+- Explicit authorization before authenticated access, browser sessions, external writes, or publication.
+- Provider, model, tool, source, version, policy, and decision evidence retained according to policy.
+- No claims of compliance, invisibility, or platform safety without evidence.
+
+## 12. Architectural constraints
+
+The mature platform must preserve:
+
+- model and provider replaceability;
+- one canonical artifact and provenance model;
+- explicit human authority;
+- provider isolation behind gateways;
+- versioned contracts and compatibility rules;
+- evidence-backed state claims;
+- independent evaluation and review;
+- bounded failure and safe-stop behavior;
+- the ability to expand without rewriting the validated creative core.
+
+## 13. Explicit non-responsibilities
+
+This blueprint does not define:
+
+- current implementation status;
+- phase dates or sprint commitments;
+- task specifications;
+- Definition of Ready or Done;
+- CI workflows or command names;
+- exact test cases;
+- repository file manifests;
+- provider selection or installation;
+- release authorization;
+- acceptance evidence.
+
+Those concerns are retained in their canonical owners and linked below.
+
+## 14. Related authorities
+
+- Product purpose: `../../PROJECT_CHARTER.md`
+- Stable architecture: `../../MASTER_CONTEXT.md`
+- Current capability state: `TARGET_PLATFORM_CAPABILITY_MAP.md`
+- Expansion sequencing: `../03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`
+- Reconciliation decisions: `../03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md`
+- Architecture decision: `../adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md`
+- Context routing: `../../CONTEXT_INDEX.yaml`
+- Current delivery state: `../../MEOS/20_PROJECT_BOOTSTRAP.md`
+- Engineering governance: `../../MEOS/`
+
+## 15. Success definition
+
+The blueprint succeeds when Motiflow can expand from one validated creative-direction product into a governed research, creation, publication, and learning platform without discarding its core contracts, compromising human authority, duplicating architecture ownership, or rebuilding around one provider.
