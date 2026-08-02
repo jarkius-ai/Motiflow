@@ -173,7 +173,10 @@ Per-role variance and interpretation: PENDING
 
 - [ ] 5–10 input cases reach recorded terminal outcomes; a stopped case counts
   only when its failure is evaluated and documented.
-- [ ] 2–3 intended users or design partners participated with required role coverage.
+- [ ] 1 intended user (Jarkius, the accountable product owner) participated
+  under the recorded 2026-07-26 solo-round scope revision with required role
+  coverage. The original 2–3-user target remains the standard for the
+  post-build pilot, not this round.
 - [ ] Baseline and proposed-workflow measures are complete.
 - [ ] Gate-comprehension threshold passes.
 - [ ] Artifact sufficiency threshold passes.

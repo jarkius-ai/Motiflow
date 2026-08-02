@@ -84,20 +84,22 @@ Engines MUST call this interface or an equivalent Motiflow-owned contract. They 
 
 ## Capability routing
 
-The decisive-slice capabilities are:
+The decisive-slice capabilities are (identifiers match the workflow contract
+in `docs/02-architecture/RUNTIME_CONTRACTS.md`):
 
-- brief-normalization
-- knowledge-fusion
-- creative-direction
-- generation-specification
-- candidate-generation
-- candidate-critique
+- brief_normalization
+- knowledge_fusion
+- creative_direction
+- generation_specification
+- candidate_generation
+- deterministic_candidate_review
+- critic_evaluation
 
 Potential later capabilities include:
 
-- metadata-extraction
-- claim-extraction
-- narrative-analysis
+- metadata_extraction
+- claim_extraction
+- narrative_analysis
 - editorial-writing
 - editorial-critique
 - symbolism-development

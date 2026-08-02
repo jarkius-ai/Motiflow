@@ -19,23 +19,27 @@ Before implementation expands beyond schemas, fixtures, and a thin executable pr
 
 ## 2. Primary users
 
-### Creative lead
+The canonical persona definitions, needs, and pain points live in
+[`01-product/PERSONAS.md`](01-product/PERSONAS.md). The personas most load-bearing
+for this MVP are:
+
+### Creative Lead
 
 Needs to establish and approve the core narrative, metaphor, style, and quality threshold.
 
-### Content or marketing lead
+### Brand and Marketing Manager
 
 Needs the visual output to accurately support a business message, audience, channel, and campaign objective.
 
-### Designer or producer
+### Designer or Content Producer
 
 Needs clear, production-ready direction rather than vague prompts and repeated subjective feedback.
 
-### Reviewer or approver
+### Reviewer or Approver
 
 Needs a concise explanation of why a direction was chosen, what changed, and whether it satisfies brand and strategic requirements before downstream production begins.
 
-### Platform administrator
+### Enterprise Administrator
 
 Needs control over users, providers, connectors, policies, retention, and audit records.
 
@@ -170,7 +174,12 @@ The system shall show workflow stage, state, dependency, duration, failure, retr
 
 ## 7. Initial success criteria
 
-Pre-build validation should use 5–10 representative briefs and 2–3 intended users or design partners to establish baseline measures for:
+Pre-build validation should use 5–10 representative briefs to establish
+baseline measures for the criteria below. The recorded 2026-07-26 scope
+revision runs the pre-build round solo (Jarkius as sole intended user);
+2–3-user or design-partner coverage is deferred to the post-build pilot. See
+[`01-product/MVP_VALIDATION_PLAN.md`](01-product/MVP_VALIDATION_PLAN.md) for
+the current authoritative scope.
 
 - time to approved direction
 - revision count

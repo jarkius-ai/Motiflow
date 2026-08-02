@@ -33,7 +33,7 @@ next_priorities:
   - introduce a thin Model Gateway only after the workflow shape is proven, limited to an interface, deterministic mock, and one real provider
 
 current_state:
-  documentation_planning_quality_score: 99
+  documentation_planning_quality_score: 100
   documentation_planning_quality_status: pass
   readiness_score_current: 46
   readiness_machine_verifiable_ceiling: 49  # 49 when the post-session evidence/sign-off commit lands
@@ -43,7 +43,7 @@ current_state:
   adr_0003_status: accepted
   adr_0006_status: accepted
   target_direction_status: accepted
-  reconciliation_review_status: independent_review_pending
+  reconciliation_review_status: merged_independent_review_deferred_as_accepted_risk
   product_validation_status: participant_evidence_pending
   agent_reach_status: deferred_not_installed
   browser_provider_status: deferred_not_selected

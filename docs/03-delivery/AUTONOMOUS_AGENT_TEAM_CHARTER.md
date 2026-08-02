@@ -49,6 +49,30 @@ irreversible operation.
 
 ## Roles and responsibilities
 
+The prose roles below describe *how* the agent team divides delivery work.
+`MEOS/roles.yaml` is the machine-readable role registry used for task routing
+and `may_approve`/`may_not`/escalation enforcement; on conflict, `roles.yaml`
+wins per its own header comment. The mapping is:
+
+| Prose role (this charter) | `roles.yaml` role |
+|---|---|
+| Discovery and context agent | *(no dedicated entry; operates under the assigned role's `reads` scope for the task)* |
+| Product analysis and validation agent | `product_owner` |
+| Architecture agent | `chief_architect` |
+| Delivery planner | *(no dedicated entry; task-specification duties span `product_owner` and `chief_architect`)* |
+| Contract implementer | `implementer` |
+| Test and verification agent | `qa` |
+| Security and privacy agent | `security_reviewer` |
+| Independent reviewer | `reviewer` |
+| Release and staging agent | `release_manager` |
+| Audit and memory agent | `documentation` |
+
+Two prose roles ("Discovery and context agent," "Delivery planner") have no
+dedicated `roles.yaml` entry because they describe a task-scoped capability
+rather than a distinct accountable role; they inherit the `may_approve`,
+`may_not`, and escalation rules of whichever `roles.yaml` role is assigned to
+the task.
+
 ### Discovery and context agent
 
 - Read `START_HERE.md` and route through `CONTEXT_INDEX.yaml`.

@@ -6,54 +6,69 @@
 
 Motiflow engines exchange explicit, versioned artifacts. JSON Schema is the initial machine-readable contract format; application types are generated from those schemas where practical.
 
-## Current common-envelope draft
+## Canonical artifact envelope (accepted ADR-0003, C-03, 2026-07-26)
 
-This example is one input to proposed ADR-0003, not the accepted decisive-slice
-schema. Its versionless `parent_artifact_ids` cannot prove stale-parent
-invalidation and must not be copied into Task 001 schemas.
-
-Every artifact includes:
+Every artifact uses this flat top-level envelope. This is the only canonical
+shape; do not implement any prior draft variant.
 
 ```json
 {
-  "artifact_id": "uuid",
+  "artifact_id": "art_<uuid>",
   "artifact_type": "intake_package",
   "schema_version": "1.0.0",
-  "project_id": "uuid",
-  "workflow_run_id": "uuid",
-  "parent_artifact_ids": [],
-  "created_at": "ISO-8601",
-  "created_by": {"type": "human|engine|system", "id": "string"},
-  "confidence": {"level": "low|medium|high", "basis": []},
-  "provenance": [],
-  "payload": {}
-}
-```
-
-## Accepted ADR-0003 decisive-slice overlay (contract-text reconciliation lands with the follow-up reconciliation change)
-
-The accepted shape replaces versionless parent IDs with
-`parent_artifact_refs`. Each entry contains exactly `artifact_id`,
-`artifact_type`, and positive integer `artifact_version`:
-
-```json
-{
+  "artifact_version": 1,
+  "project_id": "prj_<uuid>",
+  "workflow_run_id": "run_<uuid>",
   "parent_artifact_refs": [
     {
-      "artifact_id": "uuid",
+      "artifact_id": "art_<parent_uuid>",
       "artifact_type": "knowledge_fusion_package",
       "artifact_version": 2
     }
   ],
-  "created_by": {"type": "human|engine|system", "id": "string"}
+  "created_at": "ISO-8601",
+  "created_by": {"type": "human|engine|system", "id": "string"},
+  "producer": {
+    "component_id": "creative-director",
+    "component_version": "0.1.0",
+    "model_provider": null,
+    "model_name": null,
+    "instruction_version": null
+  },
+  "source_refs": [],
+  "confidence": {
+    "evidence": 85,
+    "reasoning": 80,
+    "creative": 75,
+    "basis": ["normalized_brief:communication_objective"]
+  },
+  "provenance": {
+    "evidence_refs": [],
+    "knowledge_versions": [],
+    "correlation_id": "corr_<uuid>",
+    "causation_id": "cmd_<uuid>"
+  },
+  "validation": {"status": "passed", "findings": []},
+  "payload": {}
 }
 ```
 
-ADR-0003 and C-03 were accepted 2026-07-26; implement only the accepted shape.
-Semantic validation must reject a
-parent reference whose artifact does not exist, stored type differs, or version
-is no longer the current non-invalidated dependency version. `created_by` has
-only `type` and `id`; approval role remains under `payload.actor.actor_role`.
+`parent_artifact_refs` is always an array; single-parent artifacts use a
+one-element array. Each entry contains exactly `artifact_id`, `artifact_type`,
+and a positive integer `artifact_version`. Semantic validation must reject a
+parent reference whose artifact does not exist, whose stored type differs, or
+whose version is no longer the current non-invalidated dependency version.
+`created_by` has only `type` and `id`; approval role remains under
+`payload.actor.actor_role`. `producer` is `null` for a purely human-created
+record. Confidence dimensions are integers `0`–`100` or `null` when the
+artifact-specific schema declares the dimension inapplicable; `basis` is
+non-empty whenever any numeric confidence dimension is present.
+
+Field-name aliases from earlier drafts — `id`, `type`, `run_id`,
+`parent_artifact_id`, versionless `parent_artifact_ids`, `package_id`, and
+singular `artifact_ref` — are migration input only and are never canonical
+output. See `docs/adr/ADR-0003-canonical-artifact-envelope-and-approval-references.md`
+for the full decision record.
 
 ## Contract rules
 

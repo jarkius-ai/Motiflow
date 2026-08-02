@@ -18,7 +18,7 @@ Begin at [`START_HERE.md`](../START_HERE.md).
 | Area | State |
 |---|---|
 | Default-branch runtime/application implementation | Not started |
-| Documentation and planning quality | 99/100 — pass |
+| Documentation and planning quality | 100/100 — pass |
 | Task 001 implementation readiness | 46/100 — blocked (ceiling 49 pending evidence/sign-off commit) |
 | Intended-user MVP validation | Pending (solo-round scope) |
 | Product Owner PROCEED/REVISE/STOP decision | Pending |
@@ -130,19 +130,23 @@ It remains `BLOCKED` until all applicable prerequisites pass:
 
 ## 6. Next approved priorities
 
-1. Obtain independent architecture/documentation review of the target-platform reconciliation.
-2. Obtain independent QA verification of links, state claims, terminology, and non-authorization controls.
-3. Correct any review findings before adopting the reconciliation package on the default branch.
-4. Run `docs/01-product/MVP_VALIDATION_PLAN.md` with 5–10 representative inputs under the recorded solo-round scope (Jarkius as sole intended user this round, per the 2026-07-26 revision; multi-user coverage deferred to the post-build pilot).
-5. Complete the dated validation report with baseline measures and an accountable product-owner proceed, revise, or stop decision without committing confidential participant material.
-6. Carry the accepted C-01–C-06/ADR-0003/ADR-0005 decisions into the controlling contract documents and the post-session evidence/sign-off commit.
-7. Run `MEOS/06_DEFINITION_OF_READY.md` against Task 001 and promote it from blocked to ready only when every prerequisite passes.
-8. Introduce only the canonical implementation directories required by that task; avoid speculative repository skeletons and do not create a `packages/ai/` subtree.
-9. Implement one executable workflow before broadening infrastructure.
-10. Add a thin Model Gateway only after the workflow shape is proven, limited to an interface, deterministic mock, and one real provider.
-11. Complete generated candidates, critics, final approval, and provenance evidence before platform expansion.
-12. Preserve the documentation baseline while implementation begins; structural migration remains incremental and evidence-driven.
-13. Begin Phase 1 only if Task 001 becomes `READY`.
+The target-platform reconciliation (PR #7 / ADR-0006) is merged on `main` as of
+2026-08-02. Independent architecture/documentation review and independent QA
+verification of that reconciliation remain outstanding under
+`MEOS/13_REVIEW_STANDARD.md` (tracked as `reconciliation_review_status:
+independent_review_pending` in `CONTEXT_INDEX.yaml`), but that gap does not
+block the sequence below, which governs Task 001 readiness:
+
+1. Run `docs/01-product/MVP_VALIDATION_PLAN.md` with 5–10 representative inputs under the recorded solo-round scope (Jarkius as sole intended user this round, per the 2026-07-26 revision; multi-user coverage deferred to the post-build pilot).
+2. Complete the dated validation report with baseline measures and an accountable product-owner proceed, revise, or stop decision without committing confidential participant material.
+3. Carry the accepted C-01–C-06/ADR-0003/ADR-0005 decisions into the controlling contract documents and the post-session evidence/sign-off commit.
+4. Run `MEOS/06_DEFINITION_OF_READY.md` against Task 001 and promote it from blocked to ready only when every prerequisite passes.
+5. Introduce only the canonical implementation directories required by that task; avoid speculative repository skeletons and do not create a `packages/ai/` subtree.
+6. Implement one executable workflow before broadening infrastructure.
+7. Add a thin Model Gateway only after the workflow shape is proven, limited to an interface, deterministic mock, and one real provider.
+8. Complete generated candidates, critics, final approval, and provenance evidence before platform expansion.
+9. Preserve the documentation baseline while implementation begins; structural migration remains incremental and evidence-driven.
+10. Begin Phase 1 only if Task 001 becomes `READY`.
 
 ## 7. Deferred until their activation gates pass
 
