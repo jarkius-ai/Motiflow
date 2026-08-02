@@ -1,4 +1,4 @@
-version: 5
+version: 6
 status: active
 owner: Jarkius (Chief Architect)
 release: pre-implementation-readiness
@@ -18,10 +18,12 @@ current_focus:
   - promote MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md from blocked to ready only after its prerequisites pass
   - preserve canonical repository boundaries and avoid speculative structure before code exists
   - keep review-ready sequencing artifacts distinct from human-accepted product and architecture decisions
+  - review the target-platform reconciliation without treating future phases as current implementation authority
 next_priorities:
   - run docs/01-product/MVP_VALIDATION_PLAN.md with 5 to 10 representative inputs and 2 to 3 intended users or design partners
   - record baseline measures and an accountable product-owner decision in docs/01-product/validation/2026-07-25-mvp-validation-report.md without confidential source material
   - resolve the artifact-envelope and approval-reference conflicts and obtain the human sign-offs required by docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md
+  - review and accept, revise, or reject docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md without changing the current Task 001 gate
   - run the Definition of Ready check and promote MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md only when every prerequisite passes
   - implement one executable workflow before adding infrastructure breadth
   - introduce a thin Model Gateway only after the workflow shape is proven, limited to an interface, deterministic mock, and one real provider
@@ -64,6 +66,11 @@ workforce_charter: MEOS/19_AI_WORKFORCE_CHARTER.md
 golden_path: MEOS/15_GOLDEN_PATH.md
 architecture_rules: MEOS/11_ARCHITECTURE_RULES.md
 adr_process: MEOS/14_ADR_PROCESS.md
+target_platform_blueprint: docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md
+target_platform_capability_map: docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md
+blueprint_reconciliation_matrix: docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md
+capability_expansion_roadmap: docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md
+phased_expansion_decision: docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md
 artifact_contracts: docs/02-architecture/DATA_CONTRACTS.md
 current_validation_report: docs/01-product/validation/2026-07-25-mvp-validation-report.md
 validation_case_catalog: docs/01-product/validation/VALIDATION_CASE_CATALOG.md
@@ -123,6 +130,9 @@ task_routing:
   architecture_change:
     roles: [chief_architect, reviewer]
     require: [MEOS/11_ARCHITECTURE_RULES.md, MEOS/14_ADR_PROCESS.md, docs/02-architecture/**, docs/adr/**]
+  future_capability_change:
+    roles: [product_owner, chief_architect, reviewer]
+    require: [docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md, docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md, docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md, docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md, MEOS/14_ADR_PROCESS.md]
   product_change:
     roles: [product_owner, reviewer]
     require: [docs/01-product/**]
@@ -155,6 +165,9 @@ routing_rules:
   archived_sources_are_non_authoritative: true
   missing_or_conflicting_context: stop_and_escalate
   architecture_trigger_requires_adr_review: true
+  target_blueprint_does_not_authorize_implementation: true
+  capability_state_requires_repository_evidence: true
+  future_phase_requires_activation_gate: true
   completion_requires_quality_gate: true
   release_requires_golden_path: true
   release_requires_human_authority: true
