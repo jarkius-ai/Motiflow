@@ -1,159 +1,138 @@
 # Motiflow Document Index
 
-**Status:** Authoritative navigation index
-**Owner:** Documentation and Chief Architect
-**Applies to:** Repository documentation
+- **Status:** Authoritative navigation index
+- **Owner:** Documentation and Chief Architect
+- **Responsibility:** Identify the canonical owner and location of each major concern
+- **Does not own:** The detailed content of the documents it indexes
 
-## Purpose
-
-This index identifies the canonical home of each major concern. It is a navigation document, not a replacement for the documents it references.
-
-## Canonical bootstrap
+## 1. Canonical bootstrap
 
 1. [`START_HERE.md`](../../START_HERE.md) — sole onboarding router.
-2. [`PROJECT_CHARTER.md`](../../PROJECT_CHARTER.md) — vision, mission, scope, principles, and product pillars.
-3. [`MASTER_CONTEXT.md`](../../MASTER_CONTEXT.md) — stable system-wide product and architecture context.
-4. [`CONTEXT_INDEX.yaml`](../../CONTEXT_INDEX.yaml) — machine-readable role and task routing.
-5. [`MEOS/20_PROJECT_BOOTSTRAP.md`](../../MEOS/20_PROJECT_BOOTSTRAP.md) — current engineering state and delivery continuation.
+2. [`PROJECT_CHARTER.md`](../../PROJECT_CHARTER.md) — product purpose, durable scope, principles, and value.
+3. [`MASTER_CONTEXT.md`](../../MASTER_CONTEXT.md) — stable ACDS architecture, canonical creative spine, and component boundaries.
+4. [`CONTEXT_INDEX.yaml`](../../CONTEXT_INDEX.yaml) — machine-readable minimum-context routing.
+5. [`MEOS/20_PROJECT_BOOTSTRAP.md`](../../MEOS/20_PROJECT_BOOTSTRAP.md) — verified current delivery state and next approved work.
 
-## Foundation governance
+## 2. Foundation governance
 
 | Concern | Canonical document |
 |---|---|
 | Document authority and conflict resolution | [`DOCUMENT_AUTHORITY.md`](DOCUMENT_AUTHORITY.md) |
+| One canonical owner per information class | [`DOCUMENT_RESPONSIBILITY_MODEL.md`](DOCUMENT_RESPONSIBILITY_MODEL.md) |
+| Architecture and capability change gate | [`ARCHITECTURE_CHANGE_GATE.md`](ARCHITECTURE_CHANGE_GATE.md) |
 | Canonical terminology | [`TERMINOLOGY.md`](TERMINOLOGY.md) |
-| Repository target structure | [`REPOSITORY_STRUCTURE.md`](REPOSITORY_STRUCTURE.md) |
+| Repository structure rules | [`REPOSITORY_STRUCTURE.md`](REPOSITORY_STRUCTURE.md) |
 | Repository migration sequencing | [`MIGRATION_PLAN.md`](MIGRATION_PLAN.md) |
-| Documentation review criteria | [`DOCUMENTATION_QUALITY_CHECKLIST.md`](DOCUMENTATION_QUALITY_CHECKLIST.md) |
-| Documentation inventory and normalization findings | [`NORMALIZATION_REPORT.md`](NORMALIZATION_REPORT.md) |
-| Repository glossary | [`GLOSSARY.md`](GLOSSARY.md) |
+| Documentation quality criteria | [`DOCUMENTATION_QUALITY_CHECKLIST.md`](DOCUMENTATION_QUALITY_CHECKLIST.md) |
+| Documentation inventory/normalization history | [`NORMALIZATION_REPORT.md`](NORMALIZATION_REPORT.md) |
+| Glossary | [`GLOSSARY.md`](GLOSSARY.md) |
 
-## Product authority
+## 3. Product authority
 
 | Concern | Canonical location |
 |---|---|
-| Product charter | `PROJECT_CHARTER.md` |
-| Product vision | [`docs/VISION.md`](../VISION.md) pending focused structural migration |
-| Product requirements | [`docs/PRD.md`](../PRD.md) pending focused structural migration |
+| Durable product vision, mission, scope, principles, and success | [`PROJECT_CHARTER.md`](../../PROJECT_CHARTER.md) |
+| Detailed product requirements | [`docs/PRD.md`](../PRD.md) pending focused migration |
 | Personas and jobs | [`docs/01-product/PERSONAS.md`](../01-product/PERSONAS.md) |
-| User journeys and current UX behavior | [`docs/01-product/USER_JOURNEYS.md`](../01-product/USER_JOURNEYS.md) and other applicable `docs/01-product/` specifications; `docs/05-design/` when implemented |
-| Review-ready product roadmap | [`docs/ROADMAP.md`](../ROADMAP.md) pending focused structural migration |
-| Human-accepted implementation sequencing | An explicitly approved roadmap or task specification |
+| User journeys | [`docs/01-product/USER_JOURNEYS.md`](../01-product/USER_JOURNEYS.md) |
 | MVP validation plan | [`docs/01-product/MVP_VALIDATION_PLAN.md`](../01-product/MVP_VALIDATION_PLAN.md) |
 | Current MVP validation evidence | [`docs/01-product/validation/2026-07-25-mvp-validation-report.md`](../01-product/validation/2026-07-25-mvp-validation-report.md) |
-| Prepared validation cases | [`docs/01-product/validation/VALIDATION_CASE_CATALOG.md`](../01-product/validation/VALIDATION_CASE_CATALOG.md) |
-| Validation session instruments | [`docs/01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md`](../01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md) |
-| Validation artifact worksheets | [`docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md`](../01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md) |
-| Validation instrument dry run | [`docs/01-product/validation/2026-07-26-validation-instrument-dry-run.md`](../01-product/validation/2026-07-26-validation-instrument-dry-run.md) |
+| Validation cases and instruments | `docs/01-product/validation/` |
 
-Product documents may expand the charter but must not redefine Motiflow, ACDS, MEOS, or canonical component boundaries.
+Product documents may refine user outcomes and requirements but must not redefine Motiflow, ACDS, MEOS, or accepted architecture without the appropriate authority and ADR.
 
-## Target platform and phased expansion
-
-These documents describe the complete future-state platform and the controlled path from the focused creative MVP to later capabilities. They do not replace current product authority, accepted contracts, MEOS, ready tasks, or implementation evidence.
+## 4. Stable and target architecture
 
 | Concern | Canonical location |
 |---|---|
-| Complete target-state capability architecture | [`docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md`](../02-architecture/TARGET_PLATFORM_BLUEPRINT.md) |
-| Current and future capability states | [`docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md`](../02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md) |
-| Mapping of broad blueprint concepts to repository authority | [`docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md`](../03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md) |
-| Section-by-section source-blueprint audit | [`docs/03-delivery/BLUEPRINT_RECONCILIATION_REVIEW.md`](../03-delivery/BLUEPRINT_RECONCILIATION_REVIEW.md) |
-| Complete 193-file source-manifest disposition | [`docs/03-delivery/BLUEPRINT_FILE_MANIFEST_DISPOSITION.md`](../03-delivery/BLUEPRINT_FILE_MANIFEST_DISPOSITION.md) |
-| Structural reconciliation validation | [`docs/03-delivery/BLUEPRINT_RECONCILIATION_VALIDATION.md`](../03-delivery/BLUEPRINT_RECONCILIATION_VALIDATION.md) |
-| Connected vertical-slice phases and activation gates | [`docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`](../03-delivery/CAPABILITY_EXPANSION_ROADMAP.md) |
-| Proposed blueprint authority and phased-expansion decision | [`docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md`](../adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md) |
-
-Use `CONTEXT_INDEX.yaml` to load these documents only for target-capability planning, architecture expansion, reconciliation, or phase activation. Their presence does not mean a future capability is implemented or ready.
-
-## Delivery planning status
-
-`docs/03-delivery/` contains supporting delivery-planning and implementation-sequencing artifacts. Unless a document there is explicitly promoted through human approval, treat it as proposed or review-ready rather than as accepted product or architecture authority.
-
-Current delivery-planning artifacts include:
-
-- `docs/03-delivery/AUTONOMOUS_AGENT_TEAM_CHARTER.md`
-- `docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md`
-- `docs/03-delivery/BLUEPRINT_RECONCILIATION_REVIEW.md`
-- `docs/03-delivery/BLUEPRINT_FILE_MANIFEST_DISPOSITION.md`
-- `docs/03-delivery/BLUEPRINT_RECONCILIATION_VALIDATION.md`
-- `docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`
-- `docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md`
-- `docs/03-delivery/PLAN_TO_EVIDENCE_TRACEABILITY_MATRIX.md`
-- `docs/03-delivery/PENDING_WORK_TO_READY.md`
-- `docs/03-delivery/RELEASE_AND_STAGING_DECISION_PLAN.md`
-- `docs/03-delivery/UPDATED_PHASE_ROADMAP.md`
-- `docs/03-delivery/AI_EXECUTION_IMPLEMENTATION_PLAN.md`
-- `docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md`
-
-The first proposed implementation story is
-[`MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md`](../../MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md).
-It remains blocked until its evidence and human-acceptance prerequisites pass.
-
-## Architecture authority
-
-| Concern | Canonical location |
-|---|---|
-| Stable architecture context | `MASTER_CONTEXT.md` |
-| Reference system design | [`docs/SYSTEM_DESIGN.md`](../SYSTEM_DESIGN.md) pending focused structural migration |
-| Detailed architecture specifications | `docs/02-architecture/` |
-| Target-state platform architecture | [`docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md`](../02-architecture/TARGET_PLATFORM_BLUEPRINT.md) |
-| Target capability state | [`docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md`](../02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md) |
-| Architecture dependency direction | [`docs/02-architecture/ARCHITECTURE_DEPENDENCY_MAP.md`](../02-architecture/ARCHITECTURE_DEPENDENCY_MAP.md) |
-| Data and artifact contracts | `docs/02-architecture/DATA_CONTRACTS.md` |
-| Decisive-slice contract acceptance | [`docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`](../02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md) |
+| Stable product/runtime context | [`MASTER_CONTEXT.md`](../../MASTER_CONTEXT.md) |
+| Detailed current architecture specifications | `docs/02-architecture/` |
+| Architecture dependency direction | [`ARCHITECTURE_DEPENDENCY_MAP.md`](../02-architecture/ARCHITECTURE_DEPENDENCY_MAP.md) |
+| Complete future destination and expansion seams | [`TARGET_PLATFORM_BLUEPRINT.md`](../02-architecture/TARGET_PLATFORM_BLUEPRINT.md) |
+| Evidence-based current capability state | [`TARGET_PLATFORM_CAPABILITY_MAP.md`](../02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md) |
+| Data and artifact contracts | [`DATA_CONTRACTS.md`](../02-architecture/DATA_CONTRACTS.md) |
+| Decisive-slice contract acceptance | [`DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`](../02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md) |
+| Publication Package contract | [`PUBLICATION_PACKAGE_CONTRACT.md`](../02-architecture/PUBLICATION_PACKAGE_CONTRACT.md) |
 | Architecture decisions | `docs/adr/` |
-| Proposed canonical artifact-envelope decision | [`docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md`](../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md) |
-| Proposed target-blueprint and phased-expansion decision | [`docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md`](../adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md) |
-| Security architecture | `docs/02-architecture/` and relevant ADRs |
 
-## Engineering governance
+## 5. Target-platform reconciliation and delivery
 
-The `MEOS/` directory contains the authoritative engineering operating system. Its documents govern how work is specified, reviewed, verified, and released; they do not redefine the product or runtime architecture.
+| Concern | Canonical location |
+|---|---|
+| Adopt/adapt/defer/reject mapping | [`BLUEPRINT_RECONCILIATION_MATRIX.md`](../03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md) |
+| Section-level source-blueprint review | [`BLUEPRINT_RECONCILIATION_REVIEW.md`](../03-delivery/BLUEPRINT_RECONCILIATION_REVIEW.md) |
+| Structural reconciliation validation | [`BLUEPRINT_RECONCILIATION_VALIDATION.md`](../03-delivery/BLUEPRINT_RECONCILIATION_VALIDATION.md) |
+| Complete 193-file source-manifest disposition | [`BLUEPRINT_FILE_MANIFEST_DISPOSITION.md`](../03-delivery/BLUEPRINT_FILE_MANIFEST_DISPOSITION.md) and linked appendices |
+| Responsibility migration record | [`DOCUMENT_RESPONSIBILITY_MIGRATION_REPORT.md`](../03-delivery/DOCUMENT_RESPONSIBILITY_MIGRATION_REPORT.md) |
+| Connected Phase 0–8 expansion sequence | [`CAPABILITY_EXPANSION_ROADMAP.md`](../03-delivery/CAPABILITY_EXPANSION_ROADMAP.md) |
+| Accepted blueprint responsibility and phased-expansion decision | [`ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md`](../adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md) |
 
-Key areas include:
+The roadmap and blueprint do not authorize implementation. Phase activation requires accepted decisions, applicable evidence, ready tasks, and MEOS verification.
+
+## 6. Current implementation readiness
+
+| Concern | Canonical location |
+|---|---|
+| Current delivery status and blockers | [`MEOS/20_PROJECT_BOOTSTRAP.md`](../../MEOS/20_PROJECT_BOOTSTRAP.md) |
+| Pending work ordered toward readiness | [`PENDING_WORK_TO_READY.md`](../03-delivery/PENDING_WORK_TO_READY.md) |
+| Current readiness review and score | [`PRE_IMPLEMENTATION_READINESS_REVIEW.md`](../03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md) |
+| Current first task | [`MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md`](../../MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md) |
+| Blocking artifact-envelope decision | [`ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md`](../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md) |
+
+Task 001 remains blocked until its product, contract, architecture, toolchain, reviewer, QA, and Definition of Ready prerequisites pass.
+
+## 7. Engineering governance
+
+The `MEOS/` directory is the only engineering operating system. It owns:
 
 - engineering and AI constitutions;
-- context strategy and role routing;
-- task specification and Definition of Ready;
-- quality gates and review standards;
-- architecture rules and ADR process;
+- role and context routing;
+- task specification;
+- Definition of Ready;
+- coding and architecture standards;
+- review independence;
+- Quality Gate;
+- ADR process;
 - Golden Path and release evidence;
-- AI workforce roles and responsibilities;
 - current project bootstrap.
 
-Use `CONTEXT_INDEX.yaml` to select the minimum complete MEOS context for a task.
+MEOS governs how work is done; it does not redefine product scope or target architecture.
 
-## AI and creative-system specifications
+## 8. AI and creative-system assets
 
 | Concern | Canonical location |
 |---|---|
-| Engine contracts and behavior | `docs/04-ai/` |
-| Evaluation and critic specifications | `docs/04-ai/` and `evaluations/` when implemented |
+| Engine and AI contracts | `docs/04-ai/` |
+| Evaluation specifications | `docs/04-ai/` and `evaluations/` when implemented |
 | Prompt assets | `prompts/` |
-| Reusable knowledge | `knowledge/` |
+| Reusable approved knowledge | `knowledge/` |
 | Workflow definitions | `packages/workflows/` when implemented |
 | Canonical schemas | `packages/schemas/` when implemented |
 
-## Implementation evidence
+These paths are introduced only when accepted contracts or ready tasks require them.
 
-Implementation code, tests, generated artifacts, build output, and operational evidence are authoritative only for the behavior they directly demonstrate. They cannot silently supersede accepted product requirements, architecture contracts, ADRs, or capability-state rules.
+## 9. Implementation truth
 
-## Document classes
+Code, schemas, tests, fixtures, generated artifacts, CI output, review reports, deployment evidence, and other observed records are authoritative only for behavior they directly demonstrate.
 
-- **Authoritative:** controls decisions within a declared concern.
-- **Supporting:** explains or illustrates an authoritative source.
-- **Operational:** records current task, run, release, or verification state.
-- **Historical:** preserves superseded context for traceability.
-- **Generated:** produced from another canonical source and must identify that source.
+They cannot silently supersede the Charter, Master Context, accepted ADRs, or contracts. Conversely, architecture and planning prose cannot be used as evidence that implementation exists.
 
-## Required metadata for new authoritative documents
+## 10. Document classes
+
+- **Authoritative** — controls decisions within a declared concern.
+- **Supporting** — explains or illustrates an authority.
+- **Operational** — records current task, run, review, release, or verification state.
+- **Historical** — preserves superseded context and traceability.
+- **Generated** — derived from an identified canonical source.
+
+## 11. Required metadata for new authoritative documents
 
 Each new authoritative document should state:
 
-- title;
 - status;
 - owner;
-- scope;
-- related authority;
-- superseded or superseding documents, when applicable;
-- last material review date.
+- responsibility;
+- non-responsibilities;
+- related authorities;
+- superseded/superseding references where applicable;
+- last material decision date.
