@@ -13,6 +13,11 @@
 
 This roadmap connects the focused creative-direction product to the complete Motiflow platform as independently useful, contract-connected jigsaw pieces.
 
+**Independent numbering track:** [`../ROADMAP.md`](../ROADMAP.md) also uses a
+"Phase 0"–"Phase 8" scheme, but for the initial product-build sequence, not
+post-MVP capability activation. Phase N here is not the same milestone as
+Phase N there; do not assume they align.
+
 A phase is not permission to build. It becomes executable only when its product evidence, decisions, contracts, security/data controls, dependencies, ready tasks, reviewers, and verification requirements pass.
 
 ## 2. Delivery model
