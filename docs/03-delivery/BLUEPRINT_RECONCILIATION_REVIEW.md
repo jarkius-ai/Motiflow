@@ -21,7 +21,7 @@ Recommended disposition:
 2. Adopt a repository-native target blueprint as future-state direction.
 3. Use the Capability Expansion Roadmap to connect the MVP to the full platform.
 4. Preserve the external blueprint as source evidence with a stable hash.
-5. Dispose all fixed paths through `BLUEPRINT_FILE_MANIFEST_DISPOSITION.md`; do not generate them automatically.
+5. Dispose all fixed paths through [`BLUEPRINT_FILE_MANIFEST_DISPOSITION.md`](BLUEPRINT_FILE_MANIFEST_DISPOSITION.md); do not generate them automatically.
 6. Keep ADR-0004 `Proposed` until human and independent review decisions are recorded.
 
 ## 3. Load-bearing alignment decisions
@@ -89,7 +89,7 @@ Required correction:
 - Map implementation to the repository’s chosen stack and package boundaries rather than the source blueprint’s Python-first `src/motiflow` layout.
 - Introduce schemas, workflows, policies, connectors, tests, and tooling with the exact phase and task that consumes them.
 
-The complete per-file mapping is maintained in `docs/03-delivery/BLUEPRINT_FILE_MANIFEST_DISPOSITION.md`.
+The complete per-file mapping is maintained in [`BLUEPRINT_FILE_MANIFEST_DISPOSITION.md`](BLUEPRINT_FILE_MANIFEST_DISPOSITION.md).
 
 ## 6. Reserved-directory and dynamic-path decision
 
@@ -143,10 +143,10 @@ No later contract may create a second artifact envelope, approval model, provena
 - [x] Route navigation through `START_HERE.md` and `CONTEXT_INDEX.yaml`.
 - [x] Add this section-level review.
 - [x] Add the 193-file disposition record.
-- [ ] Link the two detailed review artifacts from the target blueprint, reconciliation matrix, context index, document index, and PR description.
+- [x] Link the detailed review artifacts from the document index and PR description.
 - [ ] Perform independent architecture/documentation review.
 - [ ] Record human decision on ADR-0004.
 
 ## 10. Merge recommendation
 
-Keep PR #7 in draft until the detailed review artifacts are linked and independently checked. After that, the documentation package may be merged as **review-ready target direction** without changing Task 001 readiness. ADR-0004 acceptance remains a separate explicit human decision; merging the PR must not imply acceptance unless the ADR approval table is updated by authorized humans.
+Keep PR #7 in draft until the detailed review artifacts are independently checked. After that, the documentation package may be merged as **review-ready target direction** without changing Task 001 readiness. ADR-0004 acceptance remains a separate explicit human decision; merging the PR must not imply acceptance unless the ADR approval table is updated by authorized humans.
