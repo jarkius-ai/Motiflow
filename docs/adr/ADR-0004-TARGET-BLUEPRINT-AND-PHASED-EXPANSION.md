@@ -1,280 +1,210 @@
-# ADR-0004: Target Blueprint Authority and Phased Capability Expansion
+# ADR-0004: Target Blueprint Responsibility Model and Phased Expansion
 
-- **Status:** Proposed
+- **Status:** Accepted
 - **Date:** 2026-08-02
-- **Decision owners:** Jarkius (Product owner, Chief Architect, Engineering lead)
-- **Related work:** Blueprint reconciliation and target-platform planning
+- **Decision owners:** Jarkius — Product Owner, Chief Architect, Engineering Lead
+- **Related change:** Draft PR #7
 - **Supersedes:** None
 - **Superseded by:** None
 
 ## Context
 
-Motiflow now has two valuable but differently shaped bodies of planning:
+Motiflow has two valuable bodies of work:
 
-1. The repository defines Motiflow as an enterprise creative-intelligence product, ACDS as its product architecture, MEOS as its engineering operating system, a ten-artifact decisive slice, two protected human approval gates, and a deliberately narrow first implementation path.
-2. A broader blueprint defines a future platform that includes external knowledge acquisition, Agent Reach integration, channel and provider diagnostics, editorial workflows, Publication Packages, browser and publishing connectors, measurement, learning, and enterprise capability expansion.
+1. The existing repository, which defines Motiflow, the Autonomous Creative Direction System (ACDS), the Motiflow Engineering Operating System (MEOS), the decisive creative workflow, contracts, validation gates, and current delivery state.
+2. A separately authored v0.5.0 future-platform blueprint, which describes broader acquisition, browser, editorial, publication, publishing, measurement, and enterprise capabilities.
 
-Both are useful. Treating either one as the only plan creates material risk:
+Adopting the external blueprint verbatim would create competing authority, duplicate MEOS responsibilities, encourage speculative repository generation, and risk confusing future capabilities with current implementation.
 
-- Treating the broad blueprint as an immediate repository-generation instruction encourages premature complexity, speculative directories, and implementation before product evidence and contracts are ready.
-- Treating the current repository boundary as the complete product vision risks losing the intended expansion path into research, editorial, publication, publishing, measurement, and enterprise functionality.
-- Maintaining the blueprint outside the repository creates a competing source of truth and makes future AI sessions dependent on chat history or manually supplied files.
+Discarding it would lose a valuable long-term platform design.
 
-The project needs one explicit relationship between product authority, target architecture, phased delivery, and verified current state.
+The repository therefore requires an explicit responsibility model that preserves the future destination while keeping current product authority, delivery governance, tasks, and evidence unambiguous.
 
 ## Decision drivers
 
-- Preserve the complete Motiflow platform vision.
-- Keep the creative-direction decisive slice as the first validated product core.
-- Prevent proposed capabilities from being reported as implemented.
-- Avoid creating the entire final repository structure before tasks require it.
-- Use stable contracts and expansion seams so later capabilities connect without rewriting the validated core.
-- Keep repository artifacts authoritative over chat memory and loose external documents.
-- Preserve MEOS readiness, independent verification, quality gates, and human authority.
-- Make the system understandable to strong and constrained AI agents through explicit routing and state.
+- One clear source of truth for humans and AI agents.
+- A complete long-term platform destination without a big-bang implementation.
+- A focused creative-direction MVP as the first product.
+- No duplicate architecture, artifact, provenance, approval, or workflow-state ownership.
+- Explicit separation of vision, architecture, state, sequencing, execution, and evidence.
+- Provider neutrality for Agent Reach, browser technologies, APIs, and future connectors.
+- Incremental repository growth based on accepted contracts and ready tasks.
+- Reduced context load and lower risk of LLM interpretation drift.
 
 ## Considered options
 
-### Option A — Replace the repository architecture with the broad blueprint
+### Option A — Replace the repository with the external blueprint
 
-**Advantages**
+Rejected. It would weaken the repository's layered authority, duplicate MEOS, conflict with the existing ACDS product wedge, and treat a 193-file target manifest as immediate implementation authority.
 
-- One exhaustive document contains the complete target system.
-- Future capabilities and file structures are visible immediately.
-- Bootstrap agents receive highly explicit generation instructions.
+### Option B — Keep the external blueprint separate
 
-**Disadvantages**
+Rejected. Two parallel workspaces would drift and leave future agents uncertain which source controls product and architecture decisions.
 
-- Conflicts with the repository's established Motiflow/ACDS/MEOS authority model.
-- Encourages implementation breadth before validating the first product outcome.
-- Duplicates MEOS governance and canonical architecture documents.
-- Makes a large static manifest look like required current state.
-- Increases context size and drift risk.
+### Option C — Import the full blueprint as a second canonical authority
 
-### Option B — Discard the broad blueprint and use only the current repository
+Rejected. It would preserve detail but not responsibility separation. Current state, delivery phases, tasks, and target architecture would remain mixed.
 
-**Advantages**
+### Option D — Reconcile the blueprint into repository-owned documents with one owner per concern
 
-- Maintains a narrow, coherent MVP.
-- Avoids speculative architecture and directories.
-- Keeps current authority simple.
-
-**Disadvantages**
-
-- Loses a valuable, detailed expansion architecture.
-- Leaves acquisition, Agent Reach, editorial, publication, browser, publishing, and measurement direction under-specified.
-- Makes later expansion more likely to be reinvented inconsistently.
-
-### Option C — Keep the blueprint external and reference it informally
-
-**Advantages**
-
-- Avoids changing repository authority.
-- Retains the complete blueprint for occasional consultation.
-
-**Disadvantages**
-
-- Creates a competing source outside version control.
-- Future work depends on chat history, links, or manually transferred files.
-- The external copy can drift from accepted repository decisions.
-- Agents cannot reliably determine which version is current.
-
-### Option D — Integrate a target-state blueprint into the repository and activate it through phased capability governance
-
-**Advantages**
-
-- Preserves the complete platform vision inside the source of truth.
-- Keeps Product Charter, Master Context, accepted ADRs, MEOS, tasks, and evidence authoritative for current work.
-- Separates target state from verified current state.
-- Turns the broad architecture into connected jigsaw phases.
-- Allows directories and components to appear only when activated.
-- Retains explicit expansion seams for future development.
-
-**Disadvantages**
-
-- Adds governance documents that must be maintained.
-- Requires disciplined updates across capability state, roadmap, context routing, and decisions.
-- Some concepts from the original broad blueprint must be adapted or rejected rather than copied directly.
+Accepted.
 
 ## Decision
 
-Motiflow should adopt **Option D**.
+Motiflow adopts the following documentation responsibility model:
 
-### 1. Repository authority remains layered
+| Concern | Canonical owner |
+|---|---|
+| Why Motiflow exists and durable product scope | `PROJECT_CHARTER.md` |
+| Stable product/runtime identity and architecture | `MASTER_CONTEXT.md` |
+| Complete future capability destination and expansion seams | `docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md` |
+| Evidence-based current state of every capability | `docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md` |
+| Ordered expansion phases and activation gates | `docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md` |
+| Mapping from the external blueprint into repository authority | `docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md` and manifest disposition records |
+| Consequential architecture decisions | Accepted ADRs |
+| Readiness, roles, execution, review, quality, and release | MEOS |
+| Today's authorized work | Ready MEOS task specifications |
+| What actually exists and works | Implementation, tests, and verification evidence |
 
-The repository retains this authority model:
+The Target Platform Blueprint is the **destination architecture**. It defines capability domains, component responsibilities, trust boundaries, architectural constraints, and stable expansion seams. It does not own delivery phases, task readiness, CI commands, exact test plans, current implementation state, provider installation, or release authorization.
 
-- `PROJECT_CHARTER.md` controls enduring product intent.
-- `MASTER_CONTEXT.md` controls stable ACDS architecture.
-- Accepted ADRs control architecture-significant decisions within scope.
-- Accepted product requirements and canonical contracts control behavior.
-- MEOS controls engineering governance and delivery.
-- Ready tasks control bounded implementation.
-- Tests, evidence, and operational records prove current behavior.
+The Capability Expansion Roadmap owns Phase 0 through Phase 8 and the jigsaw delivery sequence. A roadmap phase does not authorize implementation. Every phase still requires accepted decisions, applicable product evidence, contracts, security review, ready tasks, and MEOS verification.
 
-### 2. The Target Platform Blueprint defines future-state capability direction
+The Capability Map is the only portfolio-level statement of whether a capability is implemented, validated, contracted, review-ready, planned, deferred, experimental, or rejected. Prose in the blueprint cannot promote a capability's state.
 
-`docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md` becomes the repository-native target-state architecture for the complete platform.
+## Product and build direction
 
-It is authoritative for long-term capability direction only where it does not conflict with a higher-authority accepted source. It is not evidence that capabilities are implemented, validated, accepted, or ready.
+The first product remains the creative-direction MVP:
 
-### 3. Capability activation is phased
+```text
+Intake Package
+→ Normalized Brief
+→ Knowledge Fusion Package
+→ Creative Direction Package
+→ Direction Approval Record
+→ Generation Specification
+→ Generated Candidate Set
+→ Critic Evaluation Package
+→ Final Approval Record
+→ Provenance Record
+```
 
-The platform expands through the phases defined in `docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`:
+The build sequence remains:
 
-0. Reconciliation and authority alignment.
-1. Contract foundation.
-2. Executable creative core through direction approval.
-3. Generation, critics, final approval, and provenance.
-4. External knowledge acquisition and Agent Reach adapter.
-5. Editorial intelligence and Publication Package.
-6. Governed publishing connectors.
-7. Measurement and governed learning.
-8. Platform and enterprise expansion.
+- Pre-Phase 1: intended-user validation, product decision, contract acceptance, and ADR-0003.
+- Phase 1: ten-artifact schema, fixture, validator, and CI contract proof.
+- Phase 2: executable creative core through direction approval.
+- Phase 3: one-provider generation, critics, final approval, and provenance.
+- Phase 4: read-only acquisition and optional Agent Reach adapter.
+- Phase 5: editorial intelligence and Publication Package.
+- Phase 6: one governed publishing connector and optional browser provider.
+- Phase 7: measurement and governed learning.
+- Phase 8: enterprise and ecosystem expansion.
 
-Each phase must deliver one useful vertical slice, accepted contracts, failure behavior, verification evidence, and stable expansion seams.
+Later phases extend accepted seams. They may not bypass or replace the validated creative core.
 
-### 4. Capability state is explicit
+## Provider and external technology decision
 
-`docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md` records whether a capability is implemented, validated, contracted, review-ready, planned, deferred, experimental, or rejected.
+The architecture defines provider-neutral capability interfaces rather than vendor commitments.
 
-A proposed document, mockup, score, branch, or generated code without accepted evidence must not promote the capability state.
+### Agent Reach
 
-### 5. Reconciliation decisions are explicit
+Agent Reach is a deferred optional Phase 4 acquisition-provider adapter behind the Connector Gateway. It is not part of the core runtime and does not own Motiflow contracts, workflow state, credentials, normalization, provenance, policy, approval, or learning.
 
-`docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md` maps broad blueprint concepts to existing repository authority using `adopt`, `adapt`, `defer`, or `reject`.
+It is not installed or authorized by this ADR. Activation requires a security and supply-chain review, accepted acquisition contracts, a bounded proof of concept, and a ready task.
 
-Notable decisions include:
+### Browser execution
 
-- Adopt the repository's Motiflow/ACDS/MEOS identity and authority model.
-- Adopt the ten-artifact decisive slice and two human gates.
-- Adapt acquisition, Agent Reach, browser, editorial, publication, publishing, and measurement concepts into existing ACDS boundaries.
-- Defer later capabilities to their activation phases.
-- Reject immediate generation of a complete speculative file tree.
-- Reject Agent Reach as a core runtime authority; keep it replaceable behind the Connector Gateway.
+Extension Bridge, CDP/Playwright, and semantic browser technologies are deferred provider options behind a browser/execution connector seam. No browser provider is selected or authorized by this ADR.
 
-### 6. Files and directories are introduced incrementally
+### Proxy infrastructure
 
-The target repository structure defines ownership boundaries, not a bootstrap command to create every future path.
+Proxy infrastructure is not a target requirement and is not authorized. Any legitimate future use requires a separately documented product need, security/legal review, accepted policy and contracts or ADR, and a ready task. Automatic escalation from a public read path to a proxy or authenticated path is prohibited.
 
-A new directory or implementation artifact is introduced only when an accepted contract, ready task, executable implementation, governed fixture, or authoritative document requires it.
+## Repository introduction rule
 
-### 7. The existing MVP gate remains unchanged
+The external blueprint's 193-file manifest is retained as historical design inventory and disposition evidence. It is not a current path allow-list and must not be used for mass repository generation.
 
-This decision does not authorize Task 001 or any runtime implementation.
+A new file, directory, package, connector, schema, registry, workflow, script, or template is introduced only when:
 
-The existing intended-user validation, product-owner decision, C-01 through C-06 acceptance, ADR-0003 decision, toolchain approval, Definition of Ready, independent review, and QA requirements remain mandatory.
+- an accepted contract requires it;
+- an accepted architecture decision requires it;
+- a ready task owns it;
+- executable code, governed fixtures, or durable evidence will live there; or
+- an authoritative document requires that exact artifact.
 
-### 8. Future capabilities connect through stable seams
+## Context-routing decision
 
-Later phases must extend versioned contracts such as:
+Every human or AI session begins with:
 
-- canonical artifact envelope;
-- workflow definition;
-- engine and critic capability contracts;
-- Connector and Model Gateway contracts;
-- knowledge acquisition and source provenance;
-- approval and evidence contracts;
-- Publication Package;
-- publishing connector; and
-- measurement event.
+```text
+START_HERE.md
+→ PROJECT_CHARTER.md
+→ MASTER_CONTEXT.md
+→ CONTEXT_INDEX.yaml
+→ MEOS/20_PROJECT_BOOTSTRAP.md
+→ task-specific authorities and evidence
+```
 
-They may not bypass the Creative Kernel, Workflow Orchestrator, Connector Gateway, protected approval gates, or accepted artifact lineage.
+The target blueprint and roadmap are loaded only for future-capability planning, architecture expansion, reconciliation, or phase activation. They are not part of every implementation task's default context.
+
+When documents conflict or state is unclear, work stops and the repository authority and ADR process are applied. Agents must not infer implementation from target architecture.
 
 ## Consequences
 
 ### Positive
 
-- One repository clone contains both the current product core and complete target direction.
-- The team can build a narrow MVP without losing long-term architecture.
-- Future agents can distinguish planned, contracted, implemented, and validated capabilities.
-- Agent Reach and browser automation receive a clear integration boundary and phase.
-- Product expansion can proceed one complete jigsaw piece at a time.
-- Existing MEOS governance is reused rather than duplicated.
-- The repository avoids speculative mass generation while retaining ownership boundaries.
+- The external blueprint becomes useful without becoming a competing constitution.
+- Every major document has one canonical responsibility.
+- The full platform remains visible while implementation stays incremental.
+- Future LLMs can distinguish product, architecture, current state, roadmap, engineering governance, tasks, and evidence.
+- Provider technologies remain replaceable.
+- The repository avoids speculative structure and duplicate systems.
 
 ### Negative
 
-- The new blueprint, map, roadmap, matrix, Context Index, and Project Bootstrap must remain synchronized.
-- Phase changes may require additional ADRs and product validation.
-- Some original blueprint details will remain deferred for a long period.
-- Reviewers must resist treating the target blueprint as current implementation scope.
+- Some information must move from the target blueprint into the roadmap, capability map, MEOS, tasks, engineering documents, or evidence reports.
+- Cross-references must be maintained when responsibilities change.
+- Future architecture proposals require updates to multiple correctly owned documents rather than one monolithic file.
 
-## Risks and mitigations
+These costs are accepted because they reduce long-term ambiguity and drift.
 
-### Risk: target-state documentation is mistaken for current behavior
+## Migration
 
-**Mitigation:** capability-state vocabulary, Context Index routing, Project Bootstrap current state, task evidence, and explicit non-authorization language.
-
-### Risk: the roadmap becomes a fixed waterfall
-
-**Mitigation:** phases define dependency and activation gates, not calendar commitments. Product evidence may revise, stop, reorder, or narrow later phases through explicit decisions.
-
-### Risk: the creative MVP becomes too narrow to support future expansion
-
-**Mitigation:** every phase must expose the declared versioned expansion seams. Architecture review checks that current implementation does not hard-code one provider or close future connector boundaries.
-
-### Risk: the broad blueprint recreates duplicate governance
-
-**Mitigation:** MEOS remains the sole engineering-delivery authority. The target blueprint references MEOS rather than redefining task readiness, quality gates, or release rules.
-
-### Risk: too many documents create navigation burden
-
-**Mitigation:** `START_HERE.md`, `CONTEXT_INDEX.yaml`, and the Document Index route the minimum complete context. Tasks reference only applicable phase and capability documents.
-
-### Risk: Agent Reach or another upstream tool becomes foundational
-
-**Mitigation:** all external tools remain replaceable connectors behind Motiflow-owned contracts, policy, normalization, provenance, and state.
-
-## Migration and rollback
-
-### Migration
-
-1. Add the Target Platform Blueprint.
-2. Add the Blueprint Reconciliation Matrix.
-3. Add the Target Platform Capability Map.
-4. Add the Capability Expansion Roadmap.
-5. Add this ADR in `Proposed` state.
-6. Update `CONTEXT_INDEX.yaml`, `MEOS/20_PROJECT_BOOTSTRAP.md`, and the Document Index to route the new artifacts.
-7. Perform link, terminology, current-state, and scope-drift review.
-8. Record human acceptance, revision, or rejection.
-
-### Compatibility
-
-This is a documentation and governance reconciliation before runtime implementation. It does not change accepted runtime behavior, schema versions, public APIs, or production data.
-
-### Rollback before acceptance
-
-Revert the reconciliation branch or remove the proposed documents and routing updates as one change set. The current repository authority and blocked MVP path remain intact.
-
-### Rollback after acceptance
-
-Create a superseding ADR. Update the target blueprint, capability map, roadmap, reconciliation matrix, context routing, and affected tasks together. Do not leave a partially superseded authority model.
+1. Refactor `TARGET_PLATFORM_BLUEPRINT.md` into a pure destination-architecture document.
+2. Keep phases and activation gates in `CAPABILITY_EXPANSION_ROADMAP.md`.
+3. Keep current state in `TARGET_PLATFORM_CAPABILITY_MAP.md`.
+4. Keep implementation rules and readiness in MEOS.
+5. Keep bounded work in task specifications.
+6. Keep verification truth in evidence and implementation artifacts.
+7. Update `START_HERE.md`, `PROJECT_CHARTER.md`, `MASTER_CONTEXT.md`, `CONTEXT_INDEX.yaml`, the Document Index, reconciliation documents, and PR description.
+8. Record the accepted direction without changing Task 001 readiness.
 
 ## Verification
 
-This decision is implemented correctly only when:
+This decision is implemented correctly when:
 
-- all reconciliation documents exist and link to one another;
-- the Document Index and Context Index route them correctly;
-- the Project Bootstrap distinguishes current MVP work from future target capabilities;
-- no document marks ADR-0004 accepted without explicit human authority;
-- Task 001 remains blocked until its existing prerequisites pass;
-- no future capability is marked implemented without evidence;
-- repository terminology remains consistent;
-- no speculative runtime directories are created by this documentation change; and
-- independent review finds no silent change to the first MVP scope.
+- every major document states its responsibility and non-responsibilities;
+- the blueprint contains no detailed delivery phase, task, CI, or current-state ownership;
+- the roadmap owns the complete phase sequence;
+- the capability map owns all portfolio state claims;
+- MEOS remains the only engineering governance system;
+- `START_HERE.md` clearly explains Motiflow, ACDS, MEOS, ADRs, the blueprint, roadmap, capability map, tasks, and evidence;
+- all 193 external fixed-file records retain explicit dispositions;
+- Agent Reach, browsers, and proxies are not represented as currently active;
+- Task 001, ADR-0003, and product-validation gates remain unchanged; and
+- independent architecture and documentation review confirms no silent scope or authority conflict.
 
 ## Approval
 
-This ADR remains `Proposed` until explicit human approval is recorded. AI agents may draft, critique, and revise it, but may not mark it `Accepted`.
+The following authorized human direction was recorded in the project conversation on 2026-08-02: **ACCEPT DIRECTION**.
 
 | Authority | Name | Decision | Date | Notes |
 |---|---|---|---|---|
-| Product owner | Jarkius | PENDING | PENDING | Confirm product and expansion relationship |
-| Chief Architect | Jarkius | PENDING | PENDING | Confirm authority and dependency model |
-| Engineering lead | Jarkius | PENDING | PENDING | Confirm phased delivery and repository introduction rule |
-| Independent reviewer | PENDING | PENDING | PENDING | Review scope, contradictions, and maintainability |
-| QA / verification | PENDING | PENDING | PENDING | Verify links, states, and non-authorization claims |
+| Product Owner | Jarkius | ACCEPTED | 2026-08-02 | Accept product-to-platform relationship and phased expansion |
+| Chief Architect | Jarkius | ACCEPTED | 2026-08-02 | Accept documentation responsibility and architecture ownership model |
+| Engineering Lead | Jarkius | ACCEPTED | 2026-08-02 | Accept incremental delivery and repository introduction rule |
+| Independent Reviewer | Pending assignment | PENDING | PENDING | Required before PR is ready to merge under current MEOS review controls |
+| QA / Verification | Pending assignment | PENDING | PENDING | Required to verify links, states, and non-authorization claims |
 
-The named owner roles assign accountability only. They do not constitute acceptance or independent approval.
+ADR acceptance establishes direction. It does **not** promote Task 001, prove product validation, authorize a future phase, or mark any runtime capability implemented.
