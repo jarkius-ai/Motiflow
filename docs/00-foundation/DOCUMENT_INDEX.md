@@ -48,6 +48,20 @@ This index identifies the canonical home of each major concern. It is a navigati
 
 Product documents may expand the charter but must not redefine Motiflow, ACDS, MEOS, or canonical component boundaries.
 
+## Target platform and phased expansion
+
+These documents describe the complete future-state platform and the controlled path from the focused creative MVP to later capabilities. They do not replace current product authority, accepted contracts, MEOS, ready tasks, or implementation evidence.
+
+| Concern | Canonical location |
+|---|---|
+| Complete target-state capability architecture | [`docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md`](../02-architecture/TARGET_PLATFORM_BLUEPRINT.md) |
+| Current and future capability states | [`docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md`](../02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md) |
+| Mapping of broad blueprint concepts to repository authority | [`docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md`](../03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md) |
+| Connected vertical-slice phases and activation gates | [`docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`](../03-delivery/CAPABILITY_EXPANSION_ROADMAP.md) |
+| Proposed blueprint authority and phased-expansion decision | [`docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md`](../adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md) |
+
+Use `CONTEXT_INDEX.yaml` to load these documents only for target-capability planning, architecture expansion, reconciliation, or phase activation. Their presence does not mean a future capability is implemented or ready.
+
 ## Delivery planning status
 
 `docs/03-delivery/` contains supporting delivery-planning and implementation-sequencing artifacts. Unless a document there is explicitly promoted through human approval, treat it as proposed or review-ready rather than as accepted product or architecture authority.
@@ -55,6 +69,8 @@ Product documents may expand the charter but must not redefine Motiflow, ACDS, M
 Current delivery-planning artifacts include:
 
 - `docs/03-delivery/AUTONOMOUS_AGENT_TEAM_CHARTER.md`
+- `docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md`
+- `docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`
 - `docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md`
 - `docs/03-delivery/PLAN_TO_EVIDENCE_TRACEABILITY_MATRIX.md`
 - `docs/03-delivery/PENDING_WORK_TO_READY.md`
@@ -74,11 +90,14 @@ It remains blocked until its evidence and human-acceptance prerequisites pass.
 | Stable architecture context | `MASTER_CONTEXT.md` |
 | Reference system design | [`docs/SYSTEM_DESIGN.md`](../SYSTEM_DESIGN.md) pending focused structural migration |
 | Detailed architecture specifications | `docs/02-architecture/` |
+| Target-state platform architecture | [`docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md`](../02-architecture/TARGET_PLATFORM_BLUEPRINT.md) |
+| Target capability state | [`docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md`](../02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md) |
 | Architecture dependency direction | [`docs/02-architecture/ARCHITECTURE_DEPENDENCY_MAP.md`](../02-architecture/ARCHITECTURE_DEPENDENCY_MAP.md) |
 | Data and artifact contracts | `docs/02-architecture/DATA_CONTRACTS.md` |
 | Decisive-slice contract acceptance | [`docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`](../02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md) |
 | Architecture decisions | `docs/adr/` |
 | Proposed canonical artifact-envelope decision | [`docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md`](../adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md) |
+| Proposed target-blueprint and phased-expansion decision | [`docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md`](../adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md) |
 | Security architecture | `docs/02-architecture/` and relevant ADRs |
 
 ## Engineering governance
@@ -111,7 +130,7 @@ Use `CONTEXT_INDEX.yaml` to select the minimum complete MEOS context for a task.
 
 ## Implementation evidence
 
-Implementation code, tests, generated artifacts, build output, and operational evidence are authoritative only for the behavior they directly demonstrate. They cannot silently supersede accepted product requirements, architecture contracts, or ADRs.
+Implementation code, tests, generated artifacts, build output, and operational evidence are authoritative only for the behavior they directly demonstrate. They cannot silently supersede accepted product requirements, architecture contracts, ADRs, or capability-state rules.
 
 ## Document classes
 
