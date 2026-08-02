@@ -1,6 +1,6 @@
 # Blueprint and Document Responsibility Validation
 
-- **Status:** PASS — structural and semantic self-validation
+- **Status:** PASS — structural and semantic self-validation after author-review corrections
 - **Date:** 2026-08-02
 - **Validated branch:** `agent/reconcile-target-blueprint`
 - **Source blueprint:** External `PROJECT_BLUEPRINT.md` v0.5.0-review
@@ -40,7 +40,22 @@ It does not constitute independent review, product validation, Task 001 readines
 | Current bounded implementation | Ready task | Task 001 remains blocked | PASS |
 | Implementation truth | Evidence | No runtime claim made | PASS |
 
-## 4. Blueprint purity checks
+## 4. Second-pass author review
+
+A fresh author review of the complete PR diff found four correctable documentation issues:
+
+| Finding | Severity | Correction |
+|---|---|---|
+| Canonical routing embedded the review branch and PR number as live repository state | Medium | Removed transient branch/PR fields from `CONTEXT_INDEX.yaml` |
+| Project Bootstrap made PR-specific review work part of the durable milestone | Medium | Reframed the milestone around decisive-slice readiness and generic independent review gates |
+| `START_HERE.md` duplicated the complete artifact spine and detailed provider/current-state claims | Medium | Reduced it to navigation and links to Master Context, Capability Map, and Bootstrap |
+| Project Charter duplicated the exact canonical artifact sequence owned by Master Context | Low | Replaced the sequence with a durable product-boundary statement and authoritative link |
+
+All four findings were corrected on the review branch.
+
+This author review has `independence_confirmed: false` and cannot satisfy the MEOS independent-review requirement by itself.
+
+## 5. Blueprint purity checks
 
 - PASS — Blueprint describes destination architecture, capability domains, component responsibilities, constraints, and stable seams.
 - PASS — Blueprint does not own Phase 0–8 sequencing.
@@ -51,7 +66,7 @@ It does not constitute independent review, product validation, Task 001 readines
 - PASS — Blueprint treats provider names as examples, not commitments.
 - PASS — Blueprint explicitly links current state, roadmap, MEOS, tasks, and evidence to their canonical owners.
 
-## 5. Roadmap ownership checks
+## 6. Roadmap ownership checks
 
 - PASS — Roadmap contains complete Pre-Phase 1 and Phase 0–8 sequence.
 - PASS — Every phase declares product outcome, components, gates, evidence, seams, or deferred scope.
@@ -62,7 +77,7 @@ It does not constitute independent review, product validation, Task 001 readines
 - PASS — Browser providers remain deferred to Phase 6 or later.
 - PASS — Proxy infrastructure is not a roadmap requirement and cannot be silent fallback.
 
-## 6. Capability-state checks
+## 7. Capability-state checks
 
 - PASS — Product/architecture direction is recorded as accepted foundation.
 - PASS — Governance routing is distinguished from runtime implementation.
@@ -74,7 +89,7 @@ It does not constitute independent review, product validation, Task 001 readines
 - PASS — Proxy infrastructure is not required, approved, or implemented.
 - PASS — Publication, publishing, measurement, SDK, and enterprise capabilities remain future-state.
 
-## 7. External technology safety checks
+## 8. External technology safety checks
 
 ### Agent Reach
 
@@ -94,15 +109,28 @@ It does not constitute independent review, product validation, Task 001 readines
 - PASS — Cannot be used for evasion or silent escalation.
 - PASS — Legitimate future use requires explicit need, legal/security review, accepted decision/policy, ready task, and independent verification.
 
-## 8. Navigation and routing checks
+## 9. Navigation and routing checks
 
-- PASS — `START_HERE.md` explains Motiflow, ACDS, MEOS, ADR, Blueprint, Capability Map, Roadmap, Task, and Evidence on one screen.
-- PASS — `CONTEXT_INDEX.yaml` identifies canonical owners and minimum context.
+- PASS — `START_HERE.md` explains the responsibility model and routes product, architecture, state, roadmap, task, and evidence to their canonical owners.
+- PASS — `CONTEXT_INDEX.yaml` identifies canonical owners and minimum context without embedding transient review-branch state.
 - PASS — High-risk external-provider, browser, authenticated, and proxy changes have separate routes.
 - PASS — `DOCUMENT_INDEX.md` includes the responsibility model, change gate, migration report, accepted ADR-0004, and reconciliation records.
-- PASS — Project Bootstrap reports accepted direction and unchanged implementation blockers.
+- PASS — Project Bootstrap reports accepted direction and unchanged implementation blockers without depending on a PR number.
 
-## 9. Move-not-delete verification
+## 10. Review and CI evidence status
+
+| Evidence | Observed state |
+|---|---|
+| Submitted GitHub reviews | None |
+| Open inline review threads | None |
+| GitHub combined status/checks on reviewed head | No statuses returned |
+| Independent architecture/documentation review | Not observed |
+| Independent QA/link/state verification | Not observed |
+| Local checkout-based validation in this review environment | Unavailable because direct GitHub network access was unavailable |
+
+The absence of failing checks is not evidence that checks passed.
+
+## 11. Move-not-delete verification
 
 - PASS — Product content consolidated into the Charter.
 - PASS — Stable architecture consolidated into Master Context.
@@ -114,15 +142,15 @@ It does not constitute independent review, product validation, Task 001 readines
 - PASS — Provider details retained as deferred implementation options and risk controls.
 - PASS — Git history preserves superseded wording.
 
-## 10. Acceptance and remaining gates
+## 12. Acceptance and remaining gates
 
 Jarkius recorded `ACCEPT DIRECTION` on 2026-08-02. ADR-0004 is accepted for product, architecture, and delivery direction.
 
-Remaining before PR #7 should be marked ready to merge:
+Remaining before the reconciliation change should be marked ready to merge:
 
-1. Independent architecture/documentation review.
+1. Independent architecture/documentation review by someone other than the authoring agent.
 2. Independent QA verification of links, states, terminology, and non-authorization claims.
-3. Correction of any findings.
+3. Correction or explicit accountable acceptance of any resulting findings.
 
 Remaining before implementation:
 
@@ -132,8 +160,8 @@ Remaining before implementation:
 4. ADR-0003 decision.
 5. Task 001 Definition of Ready.
 
-## 11. Result
+## 13. Result
 
-The documentation responsibility refactor and source-blueprint reconciliation are internally consistent and complete enough for independent review.
+The documentation responsibility refactor and source-blueprint reconciliation pass author self-validation after the recorded corrections.
 
-This PASS must not be interpreted as independent approval, Task 001 readiness, phase activation, runtime implementation, or production readiness.
+The MEOS review outcome remains **BLOCKED** because independent Reviewer and QA evidence are unavailable. This PASS must not be interpreted as independent approval, merge authorization, Task 001 readiness, phase activation, runtime implementation, or production readiness.
