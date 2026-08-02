@@ -20,33 +20,13 @@ This is the canonical entry point for every human contributor and AI agent worki
 
 The documentation responsibility model is defined in [`docs/00-foundation/DOCUMENT_RESPONSIBILITY_MODEL.md`](docs/00-foundation/DOCUMENT_RESPONSIBILITY_MODEL.md). Architecture-significant changes use [`docs/00-foundation/ARCHITECTURE_CHANGE_GATE.md`](docs/00-foundation/ARCHITECTURE_CHANGE_GATE.md).
 
-## Product to build first
+## Product direction
 
-The first product is the governed creative-direction MVP:
+The first product is the governed creative-direction MVP defined by [`PROJECT_CHARTER.md`](PROJECT_CHARTER.md). Its canonical artifact spine and stable runtime boundaries are defined by [`MASTER_CONTEXT.md`](MASTER_CONTEXT.md).
 
-```text
-Intake Package
-→ Normalized Brief
-→ Knowledge Fusion Package
-→ Creative Direction Package
-→ Direction Approval Record
-→ Generation Specification
-→ Generated Candidate Set
-→ Critic Evaluation Package
-→ Final Approval Record
-→ Provenance Record
-```
+Later acquisition, Agent Reach, editorial, publication, browser, publishing, measurement, and enterprise capabilities are governed by the Target Platform Blueprint, Capability Map, and Expansion Roadmap. Their presence in architecture documentation does not mean they are active.
 
-Research acquisition, Agent Reach, editorial authoring, Publication Package execution, browser automation, social publishing, measurement, and enterprise-platform breadth are later phases.
-
-## External technology status
-
-- **Agent Reach:** deferred optional Phase 4 acquisition adapter; not installed, integrated, or in use.
-- **Extension Bridge, CDP/Playwright, semantic browser providers:** deferred Phase 6 or later; not selected or in use.
-- **Proxy infrastructure:** not required, approved, or implemented. Future use requires a dedicated need, security/legal review, accepted decision and policy, and a ready task. Public read paths may not silently escalate to proxy or authenticated access.
-- **Runtime/application implementation:** not started on `main`.
-
-Check the Capability Map before making any claim that a future capability exists.
+For the evidence-based status of any capability—including Agent Reach, browser providers, and proxy infrastructure—use [`docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md`](docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md).
 
 ## Foundation reading order
 
@@ -78,15 +58,14 @@ ADR-0004 records the accepted direction. It does not authorize any roadmap phase
 
 No implementation task is currently ready. Follow this sequence:
 
-1. Complete independent review and QA of PR #7 documentation responsibility and reconciliation changes.
-2. Execute the MVP validation protocol with intended users.
-3. Record the Product Owner `PROCEED`, `REVISE`, or `STOP` decision.
-4. Resolve C-01 through C-06 and accept, revise, or reject ADR-0003.
-5. Run Definition of Ready for Task 001.
-6. Implement the ten-artifact schema, fixture, validator, and CI contract proof only when Task 001 is `READY`.
-7. Continue to the executable creative core only after Phase 1 evidence is accepted.
+1. Execute the MVP validation protocol with intended users.
+2. Record the Product Owner `PROCEED`, `REVISE`, or `STOP` decision.
+3. Resolve C-01 through C-06 and accept, revise, or reject ADR-0003.
+4. Run Definition of Ready for Task 001.
+5. Implement the ten-artifact contract proof only when Task 001 is `READY`.
+6. Continue to the executable creative core only after Phase 1 evidence is accepted.
 
-The accepted target direction does not change the current 40/100 readiness state or blocked Task 001 path.
+The accepted target direction does not change the current readiness score or blocked Task 001 path. Current values and blockers are owned by [`MEOS/20_PROJECT_BOOTSTRAP.md`](MEOS/20_PROJECT_BOOTSTRAP.md) and the Capability Map.
 
 ## For a new AI session
 
