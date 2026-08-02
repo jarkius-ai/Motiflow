@@ -4,6 +4,30 @@ This is the canonical entry point for every human contributor and AI agent worki
 
 Motiflow is the product and repository identity. The Autonomous Creative Direction System (ACDS) is its product architecture. The Motiflow Engineering Operating System (MEOS) governs how the product is designed, implemented, verified, reviewed, and released.
 
+## One-screen orientation
+
+| Term or document | Meaning | Does it authorize implementation? |
+|---|---|---|
+| **Motiflow** | The product: an operating system for governed enterprise creative intelligence | Product identity only |
+| **ACDS** | The product/runtime architecture that turns source material and business intent into governed creative direction and approved outputs | No; contracts and ready tasks are still required |
+| **MEOS** | The engineering operating system for task readiness, AI/human roles, verification, review, and release | Governs execution but does not define product features |
+| **ADR** | A durable architecture decision record | Only when explicitly accepted by authorized humans |
+| **Target Platform Blueprint** | The complete future capability architecture and expansion seams | No; it is target-state direction only |
+| **Capability Map** | The evidence-based state of each current or future capability | No; it prevents plans from being mistaken for implementation |
+| **Expansion Roadmap** | The ordered Phase 0–8 path connecting the MVP to the future platform | No; each phase still requires activation gates and ready tasks |
+| **Current task** | A bounded MEOS task with accepted prerequisites and evidence requirements | Yes, only after Definition of Ready passes |
+
+The first product to build is the creative-direction MVP: source material to normalized brief, knowledge fusion, explainable creative direction, direction approval, one-provider generation, critic evaluation, final approval, and provenance. Acquisition, Agent Reach, editorial authoring, Publication Package execution, browser automation, social publishing, measurement, and enterprise-platform breadth are later phases.
+
+### External technology status
+
+- **Agent Reach:** referenced as a deferred optional Phase 4 acquisition-provider adapter; not installed, integrated, or in use.
+- **Browser Extension Bridge, CDP/Playwright, and semantic browser providers:** deferred Phase 6 or later; not implemented or in use.
+- **Proxy infrastructure:** not an approved or implemented Motiflow capability. Any future use would require an explicit product need, security/legal review, accepted contracts or ADR, and a ready task. No workflow may automatically escalate from a public read path to a proxy or authenticated path.
+- **Current runtime/application implementation:** not started on `main`.
+
+When a document describes a future capability, check `docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md` before making any implementation claim.
+
 ## Foundation Reading Order
 
 Read these documents in order:
