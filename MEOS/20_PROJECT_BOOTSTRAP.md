@@ -25,8 +25,8 @@ Begin at [`START_HERE.md`](../START_HERE.md).
 | ADR-0003 | Proposed; decision pending |
 | Decisive-slice contract acceptance | Pending |
 | ADR-0004 | Accepted direction on 2026-08-02 |
-| PR #7 independent architecture review | Pending |
-| PR #7 independent QA/link verification | Pending |
+| Target-platform reconciliation independent review | Pending |
+| Target-platform reconciliation independent QA | Pending |
 | Agent Reach | Deferred; not installed or integrated |
 | Browser provider | Deferred; none selected or implemented |
 | Proxy infrastructure | Not required, approved, or implemented |
@@ -35,9 +35,9 @@ ADR-0004 acceptance does not alter the Task 001 blockers or activate a future ph
 
 ## 3. Current milestone
 
-**Documentation responsibility review and decisive-slice validation/readiness.**
+**Decisive-slice validation and Task 001 readiness, with target-platform reconciliation awaiting independent review.**
 
-The target-platform reconciliation now provides:
+The target-platform reconciliation provides:
 
 - a repository-native destination blueprint;
 - an evidence-based capability map;
@@ -102,15 +102,14 @@ It remains `BLOCKED` until all applicable prerequisites pass:
 
 ## 6. Next approved priorities
 
-1. Complete independent architecture/documentation review of PR #7.
-2. Complete independent QA and link/state verification of PR #7.
-3. Update review artifacts with findings and corrections.
-4. Keep PR #7 in draft until MEOS review controls pass.
-5. Run the intended-user MVP validation protocol.
-6. Record the Product Owner product decision.
-7. Resolve ADR-0003 and decisive-slice contracts.
-8. Re-run Definition of Ready for Task 001.
-9. Begin Phase 1 only if Task 001 becomes `READY`.
+1. Obtain independent architecture/documentation review of the target-platform reconciliation.
+2. Obtain independent QA verification of links, state claims, terminology, and non-authorization controls.
+3. Correct any review findings before adopting the reconciliation package on the default branch.
+4. Run the intended-user MVP validation protocol.
+5. Record the Product Owner product decision.
+6. Resolve ADR-0003 and decisive-slice contracts.
+7. Re-run Definition of Ready for Task 001.
+8. Begin Phase 1 only if Task 001 becomes `READY`.
 
 ## 7. Deferred until their activation gates pass
 
