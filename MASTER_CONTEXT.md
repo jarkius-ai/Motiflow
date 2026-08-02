@@ -1,385 +1,323 @@
 # Motiflow Master Context
 
-**Architecture name:** Autonomous Creative Direction System (ACDS)  
-**Version:** 1.0  
-**Status:** Review-ready architecture context
-**Product name:** Motiflow  
-**Positioning:** Creative intelligence, orchestrated.
+- **Architecture name:** Autonomous Creative Direction System (ACDS)
+- **Version:** 1.1
+- **Status:** Stable shared architecture context
+- **Product:** Motiflow
+- **Positioning:** Creative intelligence, orchestrated
+- **Responsibility:** Define what Motiflow is, its stable runtime concepts, canonical creative spine, component boundaries, data ownership, and architecture principles
+- **Does not own:** Product vision, current implementation state, phase sequencing, task readiness, provider installation, or verification evidence
 
 ## 1. Purpose
 
-This document is the durable context for Motiflow. Product requirements, architecture, UX, AI-engine design, implementation plans, and future AI-assisted work must align with it unless a later ADR explicitly changes the direction.
+This document provides the minimum durable product/runtime context that every material Motiflow change must preserve unless an accepted ADR changes it.
 
-Motiflow is not merely an image generator or prompt-writing tool. It is a governed creative-intelligence platform that converts business context, research, narrative intent, audience needs, and brand constraints into explainable visual direction and production-ready outputs.
+It is intentionally stable. Product purpose is owned by `PROJECT_CHARTER.md`; future platform destination by the Target Platform Blueprint; current state by the Capability Map and Project Bootstrap; expansion order by the Capability Expansion Roadmap; engineering execution by MEOS.
 
-## 2. Vision
+## 2. System identity
 
-Build the operating system for enterprise creative direction: a platform capable of understanding meaning before creating, coordinating specialist intelligence, preserving decision history, evaluating quality, and connecting to multiple rendering systems without becoming dependent on any single model.
+- **Motiflow** — customer-facing product, platform, and repository identity.
+- **ACDS** — product/runtime architecture for governed creative intelligence.
+- **MEOS** — engineering operating system for readiness, roles, execution, review, verification, and release.
+- **Creative Kernel** — integrity and governance runtime.
+- **Workflow Orchestrator** — workflow planner, scheduler, and state coordinator.
+- **Specialist Engine** — bounded reasoning or transformation component with typed inputs and outputs.
+- **Critic** — independent evaluator that produces findings without silently mutating reviewed artifacts.
+- **Connector Gateway** — controlled boundary to external providers, storage, knowledge sources, browser execution, and enterprise services.
+- **Model Gateway** — provider-neutral model execution contract behind the Connector Gateway.
+- **Motiflow Studio** — human workspace for intake, workflow visibility, comparison, review, approval, and package preview.
 
-## 3. Mission
+These names are canonical and must not be replaced by parallel systems without an accepted ADR.
 
-Help teams move from fragmented briefs, inconsistent prompts, and subjective review toward a structured and repeatable creative process that is faster, more explainable, more consistent, and easier to govern.
-
-## 4. Problem statement
-
-Modern generative workflows often fail because they begin with rendering before establishing strategic intent. Common weaknesses include:
-
-- incomplete or ambiguous briefs
-- generic visual metaphors
-- inconsistent output across teams and models
-- excessive dependence on individual prompt-writing skill
-- no traceable connection between business meaning and visual decisions
-- weak review criteria and subjective approval cycles
-- duplicated context across tools and conversations
-- model lock-in
-- limited governance, provenance, and auditability
-
-Motiflow addresses these weaknesses by separating discovery, reasoning, direction approval, generation specification, generation, deterministic and critic review, final approval, and export into explicit stages with structured contracts.
-
-## 5. Product philosophy
-
-1. **Understand before creating.** No production prompt should be compiled before the system understands the business objective, audience, narrative, constraints, and desired outcome.
-2. **Meaning drives form.** Visual style is derived from strategic meaning rather than selected as decoration.
-3. **One dominant narrative.** Every artifact should communicate a clear primary idea.
-4. **One dominant metaphor.** Supporting symbolism may exist, but the main visual mechanism must remain coherent.
-5. **Separate reasoning from rendering.** Intelligence engines determine what should be communicated; rendering models determine how pixels are produced.
-6. **Structured outputs over uncontrolled prose.** Engines exchange typed packages that can be validated, versioned, compared, and reused.
-7. **Human judgment remains explicit.** Human approval is required at two decisive gates: direction approval before generation and final approval before export or publication.
-8. **Model independence.** Models are replaceable providers behind stable interfaces.
-9. **Explainability by design.** Major decisions must preserve rationale, evidence, confidence, provenance, and alternatives.
-10. **Quality over raw generation volume.** The system optimizes for usable and defensible creative outcomes, not the number of generated variants.
-
-## 6. System identity
-
-- **Motiflow:** customer-facing product and platform brand
-- **ACDS:** underlying autonomous creative-direction architecture
-- **Creative Kernel:** integrity and governance runtime
-- **Workflow Orchestrator:** execution planner and state coordinator
-- **Specialist Engine:** bounded reasoning component with defined input and output contracts
-- **Connector Gateway:** outer controlled interface to external models, knowledge sources, storage, and enterprise services
-- **Model Gateway:** provider-neutral model-execution contract inside the Connector Gateway; engines depend on it rather than provider SDKs
-- **Motiflow Studio:** human workspace for briefs, workflow visibility, comparison, review, and approval
-
-## 7. High-level architecture
+## 3. Stable product architecture
 
 ```text
-Human / API / Connector Input
-            ↓
-       Intake Package
-            ↓
-      Brief Normalization
-            ↓
-      Normalized Brief
-            ↓
-      Creative Kernel
-            ↕
-   Workflow Orchestrator
-            ↓
- ┌───────────────────────────────┐
- │ Specialist Intelligence      │
- │ Narrative • Audience • Brand │
- │ Research • Business Context  │
- └───────────────────────────────┘
-            ↓
-   Knowledge Fusion Package
-            ↓
- ┌───────────────────────────────┐
- │ Creative Reasoning           │
- │ Symbol • Metaphor • Direction│
- │ Direction Approval Gate      │
- └───────────────────────────────┘
-            ↓
-   Generation Specification
-            ↓
-       Generation
-            ↓
-  Deterministic/Critic Review
-            ↓
-   Final Approval Gate
-            ↓
-     Provenance Record
-            ↓
-           Export
-            └── post-MVP: Publication Package → Publish
+Human / API / Approved Connector Input
+                 ↓
+          Motiflow Studio / API
+                 ↓
+      Creative Kernel ↔ Workflow Orchestrator
+                 ↓
+   Specialist Engines / Critics / Bounded Agents
+                 ↓
+          Connector Gateway
+       ┌─────────┼─────────────┐
+       ↓         ↓             ↓
+ Model Gateway  Knowledge     Execution and
+                Providers     Publishing Providers
+       └─────────┼─────────────┘
+                 ↓
+       External Systems and Tools
 ```
 
-## 8. Creative Kernel responsibilities
+Cross-cutting roots are schemas, workflows, policy, provenance, evidence, security, observability, versioning, evaluation, human authority, and approved memory.
 
-The Creative Kernel protects system integrity. It owns:
+## 4. Product philosophy
 
-- canonical schemas and package definitions
-- validation and compatibility rules
-- workflow and artifact state models
-- confidence propagation
-- provenance and evidence linkage
-- policy and permission enforcement
-- versioning and immutability rules
-- approval requirements
-- quality-gate contracts
-- reproducibility metadata
+1. Understand before creating.
+2. Meaning drives form.
+3. One dominant narrative.
+4. One dominant metaphor.
+5. Reasoning and rendering remain separate.
+6. Components exchange structured, versioned outputs rather than uncontrolled prose.
+7. Human judgment remains explicit at protected gates.
+8. Models and providers remain replaceable.
+9. Rationale, evidence, confidence, uncertainty, and provenance are preserved.
+10. Quality is measured by usable outcomes, not generation volume.
 
-The Kernel does not decide the visual idea and does not schedule tasks. It ensures that all parts of the system exchange trustworthy and governable information.
+## 5. Canonical creative spine
 
-## 9. Workflow Orchestrator responsibilities
+The decisive product workflow uses these immutable, versioned artifacts:
 
-The Orchestrator coordinates work. It owns:
+```text
+Intake Package
+→ Normalized Brief
+→ Knowledge Fusion Package
+→ Creative Direction Package
+→ Direction Approval Record
+→ Generation Specification
+→ Generated Candidate Set
+→ Critic Evaluation Package
+→ Final Approval Record
+→ Provenance Record
+```
 
-- DAG planning and execution
-- sequential and parallel stage scheduling
-- dependency resolution
-- retry, timeout, fallback, and cancellation behavior
-- event routing
-- approval-gate pauses and resumptions
-- resource and provider selection
-- run-level status and observability
-- handoff of validated outputs as inputs to downstream engines
+This sequence is the stable core that future acquisition, editorial, publication, publishing, measurement, and enterprise capabilities must extend rather than replace.
 
-The Orchestrator does not replace specialist reasoning. It invokes engines and applies workflow policies defined by the Kernel.
+Supporting artifacts and package sections may exist, but they must not create competing canonical handoffs.
 
-## 10. Hybrid execution model
+## 6. Creative Kernel responsibilities
 
-Motiflow uses a hybrid directed acyclic graph rather than a fully linear chain or unrestricted parallel execution.
+The Creative Kernel owns:
+
+- canonical artifact and package contracts;
+- schema validation and compatibility;
+- immutable versioning and lineage;
+- state-transition protection;
+- invalidation rules;
+- policy and permission enforcement;
+- approval requirements;
+- provenance and evidence linkage;
+- confidence and validation metadata.
+
+It does not:
+
+- decide creative meaning;
+- schedule tasks;
+- select providers;
+- call external systems directly;
+- publish externally.
+
+## 7. Workflow Orchestrator responsibilities
+
+The Workflow Orchestrator owns:
+
+- workflow DAG planning and execution;
+- sequential and parallel stage scheduling;
+- dependency resolution;
+- retries, timeouts, cancellation, and safe resume;
+- budgets and resource controls;
+- approval pauses and resumptions;
+- capability resolution;
+- run status and observability;
+- validated handoffs between components.
+
+It does not own canonical contracts, specialist reasoning, provider implementations, or human approval authority.
+
+## 8. Hybrid execution model
+
+Motiflow uses a hybrid directed acyclic graph.
 
 ### Parallel discovery
 
-Research, audience interpretation, brand constraints, business objectives, and narrative analysis may run concurrently when their inputs are independent.
+Independent research, audience, brand, business, and narrative analyses may run concurrently.
 
-### Fusion
+### Knowledge fusion
 
-The outputs are combined into a validated Knowledge Fusion Package. Conflicts, weak evidence, and confidence gaps are surfaced rather than silently merged.
+Outputs are combined into a validated Knowledge Fusion Package. Conflicts, missing evidence, and confidence gaps remain visible.
 
 ### Sequential creative commitment
 
-Knowledge fusion, core creative direction, direction approval, generation specification, deterministic review, critic review, and final approval require progressively constrained decisions. These stages are predominantly sequential because each decision narrows the next design space and changes which downstream artifacts remain valid.
+Creative direction, direction approval, generation specification, candidate evaluation, and final approval are progressively constrained and predominantly sequential.
 
-### Direction approval and specification
+### Parallel derivation
 
-The Creative Direction Package is the first decisive human gate. The workflow must pause in an awaiting-direction-approval state until a valid Direction Approval Record exists for the current package version.
+After direction approval, bounded composition, lighting, material, camera, palette, and provider-adaptation work may run in parallel where contracts permit.
 
-After direction approval, the system compiles a Generation Specification. This replaces legacy `PromptPackage` terminology and is the only canonical generation handoff.
+### Governed completion
 
-### Parallel design derivation
+Only current approved versions may progress. Revisions invalidate declared downstream artifacts and approvals.
 
-Once direction approval is recorded, composition, lighting, material language, camera logic, palette, and provider-specific adaptation may be derived in parallel inside the Generation Specification.
+## 9. Human approval model
 
-### Compilation and review
+The creative core protects two non-bypassable gates:
 
-The Creative Direction Package is first presented for explicit human direction approval. Only the approved version may be compiled into a Generation Specification. Generated candidates then pass deterministic checks and focused critics before a separate human final-approval gate.
+1. **Direction approval** after the Creative Direction Package and before Generation Specification.
+2. **Final approval** after Generated Candidate Set and Critic Evaluation Package and before export or publication.
 
-## 11. Canonical artifacts
+Every decision records actor, role, timestamp, rationale, decision, conditions, and exact artifact versions.
 
-The decisive MVP workflow slice uses these immutable, versioned canonical artifacts:
+External publication requires a distinct publishing authorization. Final creative approval is not permission to write to an external system.
 
-- Intake Package
-- Normalized Brief
-- Knowledge Fusion Package
-- Creative Direction Package
-- Direction Approval Record
-- Generation Specification
-- Generated Candidate Set
-- Critic Evaluation Package
-- Final Approval Record
-- Provenance Record
+## 10. Data and artifact rules
 
-Legacy aliases map as follows:
+Every canonical artifact should carry:
 
-- `CreativeBrief` → `Intake Package`
-- `StrategicContext` → `Knowledge Fusion Package`
-- `PromptPackage` → `Generation Specification`
-- `GeneratedAsset` → `Generated Candidate Set`
-- `ApprovalDecision` or generic `Approval Record` → `Direction Approval Record` or `Final Approval Record`, depending on gate
-- `Publication Package` → post-MVP specialization container assembled after final approval
+- stable artifact identifier;
+- artifact type;
+- schema and artifact versions;
+- project and workflow-run identifiers;
+- versioned parent references;
+- creation time and accountable creator;
+- producer and provider metadata where applicable;
+- source and evidence references;
+- confidence and uncertainty;
+- provenance;
+- validation state;
+- typed payload.
 
-Research, audience, brand, narrative, symbol, Visual DNA, and composition outputs may be supporting artifacts or owned package sections. They must not introduce competing names for the canonical handoffs above.
+Components exchange identifiers and typed packages rather than shared mutable in-memory domain objects.
 
-Every package should include at minimum:
-
-- unique identifier
-- schema version
-- project and run identifiers
-- creation timestamp
-- producing engine and engine version
-- source package references
-- confidence and uncertainty
-- provenance or evidence references
-- validation status
-- human overrides, when present
-
-## 12. Quality model
-
-Quality must be measured through explicit dimensions rather than one opaque score. Initial dimensions include:
-
-- strategic alignment
-- narrative clarity
-- metaphor strength
-- audience relevance
-- brand alignment
-- visual hierarchy
-- composition quality
-- technical render quality
-- originality and non-generic character
-- accessibility and legibility where text is used
-- policy and safety compliance
-- production usability
-
-A composite score may support prioritization, but it must not hide dimension-level failures.
-
-## 13. Human approval gates
-
-The decisive slice has two explicit human approval gates:
-
-- Direction approval after the Creative Direction Package and before Generation Specification.
-- Final approval after the Generated Candidate Set and Critic Evaluation Package and before export or publication.
-
-Additional review dimensions may be configured around those gates for:
-
-- brand exceptions
-- legal, regulatory, or reputational risk
-- external publication
-- low-confidence recommendations
-- conflicting critic results
-- material changes after approval
-
-Every approval or override must be recorded with actor, timestamp, rationale, and affected package version. The canonical records are `Direction Approval Record` and `Final Approval Record`.
-
-## 14. UX philosophy
-
-Motiflow Studio should make the reasoning process understandable without exposing uncontrolled chain-of-thought. It should show concise rationale, evidence, alternatives, confidence, decisions, dependencies, and change impact.
-
-The interface should prioritize:
-
-- brief clarity
-- visible workflow status
-- side-by-side options
-- structured review
-- clear approval ownership
-- traceable revisions
-- progressive disclosure of technical detail
-- low cognitive load for non-technical creative stakeholders
-
-The UI should feel like a creative operating environment, not a generic chatbot or engineering dashboard.
-
-## 15. Engineering principles
-
-- Contract-first interfaces
-- Schema versioning
-- Idempotent workflow steps
-- Immutable package history
-- Event-driven integration
-- Explicit state transitions
-- Model-provider abstraction
-- Secure-by-default connector access
-- Observability across every run
-- Automated tests for schemas, workflows, engines, and policies
-- Reproducible inputs and configuration
-- Backward compatibility unless an ADR documents a breaking change
-- Documentation updated in the same change as architecture or behavior
-
-## 16. Initial technology direction
-
-The current preferred implementation direction is:
-
-- **Frontend:** React with TypeScript
-- **Backend:** Laravel
-- **Primary database:** PostgreSQL
-- **Cache, queue, and ephemeral coordination:** Redis
-- **Object storage:** S3-compatible storage
-- **Workflow architecture:** event-driven hybrid DAG
-- **API style:** versioned REST initially, with event contracts for asynchronous work
-- **Identity:** enterprise-ready authentication and role-based access control
-- **Deployment:** containerized services with environment-portable infrastructure
-
-These are preferred foundations, not irreversible commitments. Material changes require an ADR.
-
-## 17. Security and governance principles
-
-- Least-privilege access
-- Tenant and project isolation
-- Encryption in transit and at rest
-- Secret management outside source code
-- Auditable connector calls
-- Data-retention controls
-- Explicit model-provider data policies
-- PII and confidential-information classification
-- Role-based approvals
-- Tamper-evident artifact and decision history
-- Configurable regional and enterprise compliance controls
-
-## 18. Repository strategy
-
-The repository is the durable source of truth. Chat conversations may accelerate work, but durable knowledge must be committed into version-controlled documents, schemas, tests, or ADRs.
+## 11. Dependency direction
 
 ```text
-Motiflow/
-├── README.md
-├── MASTER_CONTEXT.md
-├── docs/
-│   ├── VISION.md
-│   ├── PRD.md
-│   ├── SYSTEM_DESIGN.md
-│   ├── ROADMAP.md
-│   └── adr/
-├── apps/
-│   ├── studio/
-│   └── api/
-├── packages/
-│   ├── creative-kernel/
-│   ├── orchestrator/
-│   ├── engine-sdk/
-│   └── connector-sdk/
-├── knowledge/
-├── prompts/
-├── database/
-├── diagrams/
-└── infrastructure/
+Applications
+  → workflow-facing application services
+  → Creative Kernel and Workflow Orchestrator contracts
+  → schemas, workflows, policies, and approved capability interfaces
+
+Engines and Critics
+  → canonical schemas and capability interfaces
+  → Connector Gateway ports
+
+Connectors
+  → normalized connector contracts
+  → external providers
 ```
 
-Empty folders should be introduced only when implementation starts or through placeholder files with a documented purpose.
+Prohibited patterns include:
 
-## 19. Success definition
+- provider SDKs inside engines or workflows;
+- UI-to-database shortcuts;
+- engine-to-engine mutation;
+- workflow transitions outside Orchestrator/Kernel contracts;
+- duplicate domain models for the same artifact;
+- events used as undocumented synchronous RPC;
+- generic shared packages that become uncontrolled dependency hubs.
 
-Motiflow succeeds when teams can reliably:
+## 12. Connector and provider model
 
-- convert an ambiguous brief into a validated creative direction
-- understand why the direction was recommended
-- generate consistent results across multiple rendering providers
-- reduce avoidable revision cycles
-- reuse approved knowledge and visual language
-- measure quality and workflow performance
-- preserve governance, provenance, and approval history
-- replace or add models without redesigning the product
+External systems are replaceable implementations behind provider-neutral contracts.
 
-## 20. Initial product boundary
+The Connector Gateway owns provider-specific authentication, payloads, retries, health, audit, and normalization.
 
-The first release should focus on editorial and enterprise visual-direction workflows. It should not attempt to replace every creative application, digital asset management platform, or project-management tool.
+Agent Reach, browser extension bridges, Playwright/CDP, semantic browser systems, model vendors, reader services, and publishing platforms are possible implementations—not architecture owners and not current-state assumptions.
 
-The MVP should prove the complete reasoning-to-approval loop with a limited number of engines and rendering providers before broadening scope. Publication packaging is a post-MVP specialization layered on top of approved canonical artifacts rather than the MVP's primary output.
+No provider can weaken Motiflow approval, provenance, security, or validation requirements.
 
-## 21. Decision discipline
+## 13. Quality model
 
-Any significant change to architecture, core terminology, canonical packages, security boundaries, data ownership, workflow semantics, or technology foundations must be captured as an ADR containing:
+Quality is evaluated through explicit dimensions such as:
 
-- context
-- decision
-- alternatives considered
-- consequences
-- status
-- date
-- related documents
+- strategic alignment;
+- narrative clarity;
+- metaphor strength;
+- audience relevance;
+- brand alignment;
+- hierarchy and composition;
+- technical quality;
+- originality;
+- accessibility;
+- policy and safety;
+- production usability.
 
-## 22. Near-term priorities
+A composite score may support prioritization but cannot hide a failed mandatory dimension.
 
-1. Stabilize the master context and vocabulary
-2. Define MVP personas, jobs, scope, and measurable success criteria
-3. Finalize canonical package schemas
-4. Specify the Creative Kernel and Orchestrator contracts
-5. Define the first end-to-end reference workflow
-6. Design Motiflow Studio around that workflow
-7. Implement one vertical slice with real provider integration
-8. Add critic evaluation and approval history
-9. Establish observability and evaluation datasets
-10. Iterate from measured outcomes rather than feature volume
+## 14. UX principles
 
-## 23. Working instruction for future AI-assisted sessions
+Motiflow Studio presents concise rationale, evidence, alternatives, confidence, dependencies, decisions, and change impact without exposing hidden chain-of-thought.
 
-Use this document as the authoritative project context. Preserve established terminology and architecture. Clearly identify assumptions, proposed changes, unresolved decisions, and affected documents. Do not silently introduce breaking changes. Convert approved outcomes into repository artifacts rather than relying on conversation history.
+The experience prioritizes:
+
+- brief clarity;
+- visible workflow state;
+- side-by-side comparison;
+- structured review;
+- clear approval ownership;
+- traceable revisions;
+- progressive disclosure;
+- low cognitive load for non-technical stakeholders.
+
+It should feel like a creative operating environment rather than a generic chatbot or engineering console.
+
+## 15. Engineering architecture principles
+
+- Contract-first interfaces.
+- Independent schema versioning.
+- Idempotent workflow steps.
+- Immutable artifact history.
+- Explicit state transitions.
+- Provider abstraction.
+- Secure-by-default external access.
+- Observable workflow execution.
+- Reproducible inputs and configuration.
+- Compatibility and migration discipline.
+- Documentation updated with architecture or behavior changes.
+
+Implementation process and quality gates are owned by MEOS, not by this document.
+
+## 16. Security principles
+
+- Least privilege.
+- Tenant and project isolation when introduced.
+- Encryption in transit and at rest.
+- Secrets outside source code, prompts, artifacts, logs, and fixtures.
+- Auditable connector calls.
+- Data-retention and classification controls.
+- Explicit provider data policies.
+- Role-based approval.
+- Tamper-evident artifact and decision history.
+- Separate research and publishing credentials.
+- Acquired external content treated as untrusted input.
+
+## 17. Stable implementation direction
+
+Current preferred foundations are:
+
+- React with TypeScript for human-facing applications;
+- Laravel for the primary application/API backend;
+- PostgreSQL for durable relational state;
+- Redis for queue, cache, and ephemeral coordination;
+- S3-compatible object storage;
+- versioned REST initially plus asynchronous event contracts;
+- containerized, environment-portable deployment.
+
+These are architectural preferences, not evidence that implementation exists. Material changes require an ADR.
+
+## 18. Decision discipline
+
+An accepted ADR is required when a change materially affects:
+
+- system boundaries or dependency direction;
+- canonical terminology or artifacts;
+- public, persisted, or security-sensitive contracts;
+- provider/platform foundations;
+- workflow or approval semantics;
+- data ownership;
+- difficult-to-reverse technology choices;
+- reliability, privacy, cost, or operability.
+
+## 19. Related authorities
+
+- Product purpose and durable scope: `PROJECT_CHARTER.md`
+- Complete future platform: `docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md`
+- Current capability state: `docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md`
+- Expansion sequence: `docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`
+- Engineering governance: `MEOS/`
+- Current delivery state: `MEOS/20_PROJECT_BOOTSTRAP.md`
+- Context routing: `CONTEXT_INDEX.yaml`
+- Architecture decisions: `docs/adr/`
+
+## 20. Working instruction
+
+Preserve this architecture and terminology. Clearly identify assumptions, proposed changes, affected contracts, and required decisions. Do not infer implementation from architecture prose. Convert accepted outcomes into repository artifacts and evidence rather than relying on chat history.
