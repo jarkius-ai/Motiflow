@@ -148,6 +148,11 @@ All are mandatory:
 - [ ] The canonical envelope and approval-reference corrections are merged into the controlling contract documents.
 - [ ] The validator implementation/toolchain and any new dependency are explicitly approved.
 - [ ] The accountable human owner is named in this task.
+- [ ] An independent reviewer — human or a separate AI agent that did not
+  author the reviewed artifact — has co-signed the Definition of Ready report,
+  with separately-derived findings per `MEOS/13_REVIEW_STANDARD.md`. Jarkius
+  holds the product owner, facilitator, chief architect, and engineering lead
+  roles for this task and may not be that independent reviewer.
 
 Until these pass, analysis and review may continue but implementation artifacts
 must not be created. When they pass, run the readiness check in
