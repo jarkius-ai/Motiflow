@@ -56,7 +56,7 @@ Motiflow measures success across strategic quality, creative quality, operationa
 Targets must first be baselined through [`MVP_VALIDATION_PLAN.md`](MVP_VALIDATION_PLAN.md), then recalibrated during pilot use. The MVP should demonstrate:
 
 - A complete brief-to-final-approved-candidate workflow with both human gates
-- Baseline measurement across 5–10 representative briefs and 2–3 intended users or design partners
+- Baseline measurement across 5–10 representative briefs, run solo per the recorded 2026-07-26 scope revision (2–3-user or design-partner coverage deferred to the post-build pilot; see [`MVP_VALIDATION_PLAN.md`](MVP_VALIDATION_PLAN.md) for the current authoritative scope)
 - Reliable schema validation between every node
 - Selective reruns after feedback
 - Separate human direction and final-candidate approval gates

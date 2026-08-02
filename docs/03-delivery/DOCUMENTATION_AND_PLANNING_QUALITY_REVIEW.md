@@ -1,10 +1,10 @@
 # Documentation and Planning Quality Review
 
 **Status:** `PASS - DOCUMENTATION AND PLANNING ONLY`
-**Score:** **99 / 100**
+**Score:** **100 / 100**
 **Assessment target:** exceed 97
 **Owner:** Jarkius — Documentation and Delivery
-**Reviewed:** 2026-07-26, Asia/Bangkok (re-scored after alignment fixes and tooling)
+**Reviewed:** 2026-08-02, Asia/Bangkok (re-scored after the docs-check workflow's first green run on the hosted default branch, `cc2acb7`)
 **Evidence class:** Repository self-assessment; no participant evidence, architecture acceptance, or production readiness claimed
 
 ## Scope
@@ -59,8 +59,8 @@ execution-evidence requirements pass.
 | Independent verification | 12 | 12 | Quality Gate, Review Standard, role separation |
 | Improvement loop and stop conditions | 8 | 8 | Flywheel, LOOP/BLOCKED rules, agent stop conditions |
 | Release, rollback, and monitoring path | 8 | 8 | Golden Path plus explicit release/staging decision plan |
-| Repository-only usability | 4 | 3 | `tools/check-docs` now enforces links, anchors, YAML parse, metadata, routing, ADR naming, and task-state vocabulary locally and in CI (`.github/workflows/docs-check.yml`); current run passes with zero errors. One point withheld until the CI workflow has produced at least one green run on the hosted default branch |
-| **Total** | **100** | **99** | **PASS** |
+| Repository-only usability | 4 | 4 | `tools/check-docs` enforces links, anchors, YAML parse, metadata, routing, ADR naming, and task-state vocabulary locally and in CI (`.github/workflows/docs-check.yml`); the workflow has a confirmed green run on the hosted default branch (`main` at `cc2acb7`, 2026-08-02) |
+| **Total** | **100** | **100** | **PASS** |
 
 Full credit for a governance-path category means that the path is complete as
 documentation. It does not mean the current task has supplied its owners,
@@ -69,27 +69,25 @@ evidence, approvals, release packet, monitoring record, or rollback proof.
 ## Delta from the MEOS 1.0 baseline
 
 The historical MEOS 1.0 release assessment scored 94/100. This review earns
-three additional points through repository evidence:
+six additional points through repository evidence:
 
 - `+1` context routing and role clarity: MEOS numbering is clarified and the
   reusable agent team is routed from the canonical entry point;
 - `+1` artifact and contract traceability: one matrix now links authority,
-  plans, tasks, evidence, and current decision state; and
+  plans, tasks, evidence, and current decision state;
 - `+1` release, rollback, and monitoring: one decision plan now defines the
   environment sequence, packet, staging checks, rollback triggers, monitoring,
-  and production authority boundary.
+  and production authority boundary; and
+- `+3` repository-only usability: `tools/check-docs` and
+  `.github/workflows/docs-check.yml` enforce links, anchors, YAML parse,
+  metadata, routing, ADR naming, and task-state vocabulary both locally and in
+  CI, versus only a defined (unautomated) Golden Path acceptance test at
+  baseline, and the workflow has a confirmed green run on the hosted default
+  branch (`main` at `cc2acb7`, 2026-08-02).
 
-## Residual one-point gap
+## Known check result
 
-Repository-only usability is 3/4. The accountable owner explicitly exempted
-documentation-governance tooling from the pre-implementation freeze on
-2026-07-26 (rationale recorded in `tools/README.md`); `tools/check-docs` and
-the CI workflow now exist and the local run passes with zero errors and zero
-warnings. The final point is withheld until the workflow demonstrates at least
-one green run on the hosted default branch, because a CI surface that has
-never executed remotely is asserted, not evidenced.
-
-Known check result: every navigational repository-local Markdown target
+Every navigational repository-local Markdown target
 resolves. The non-existent path `assets/hero-16x9.webp` appears only as an
 illustrative post-MVP value inside a fenced example in
 `PUBLICATION_PACKAGE_CONTRACT.md`; it is not a navigational link and sits in a
@@ -97,9 +95,10 @@ fenced block the checker deliberately skips.
 
 ## Verification record
 
-The 2026-07-26 repository audit confirmed:
+The 2026-07-26 repository audit confirmed (score updated to 100/100 on
+2026-08-02 after the docs-check workflow's first green run on `main`):
 
-- score weights total 100 and awarded points total 99;
+- score weights total 100 and awarded points total 100;
 - `CONTEXT_INDEX.yaml` and every other repository YAML file parse successfully;
 - the documentation score and the 46/100 task-readiness score remain separate;
 - current routing leads through validation, decisions, and Task 001 readiness

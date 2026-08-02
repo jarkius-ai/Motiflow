@@ -340,7 +340,9 @@ Migration after human acceptance:
 
 1. Update `DATA_CONTRACTS.md`, `RUNTIME_CONTRACTS.md`, and the illustrative
    example in `SYSTEM_DESIGN.md` in one reviewed change so the documents converge
-   on the accepted vocabulary.
+   on the accepted vocabulary. **Done 2026-08-02:** all three documents now
+   state the canonical envelope and approval-reference shape as the sole
+   contract text; no conflicting draft variant remains.
 2. Define v1 JSON Schemas and fixtures only after those contract docs align.
 3. Implement `./tools/validate-decisive-slice-contracts` as the single local and
    CI entrypoint for structural and semantic validation.

@@ -45,7 +45,9 @@ Exit criteria:
 Deliverables:
 
 - 5–10 representative briefs or source articles;
-- 2–3 intended users or design partners;
+- 2–3 intended users or design partners (the current round runs solo per the
+  2026-07-26 scope revision in [`01-product/MVP_VALIDATION_PLAN.md`](01-product/MVP_VALIDATION_PLAN.md);
+  multi-user coverage is deferred to the post-build pilot);
 - manual execution of the proposed two-gate creative-direction and candidate-review workflow;
 - baseline for time to approved direction and revision count;
 - baseline for direction usefulness and rationale clarity;

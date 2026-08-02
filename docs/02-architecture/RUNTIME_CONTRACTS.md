@@ -33,56 +33,60 @@ Runtime contracts use these canonical artifact names for the decisive workflow s
 
 Legacy aliases remain readable for migration purposes only. In particular, `StrategicContext` maps to `Knowledge Fusion Package`, `PromptPackage` maps to `Generation Specification`, and generic approval records must be specialized as either `Direction Approval Record` or `Final Approval Record`.
 
-## Current conflicting runtime-envelope draft
+## Canonical artifact envelope (accepted ADR-0003, C-03, 2026-07-26)
 
-This nested example predates proposed ADR-0003 and is not canonical for Task
-001. In particular, singular versionless `parent_artifact_id` cannot prove
-multi-parent freshness.
+Runtime consumers use the same flat envelope defined in `DATA_CONTRACTS.md` —
+no outer `artifact` wrapper, and no field renames. This is the only canonical
+shape; do not implement any prior draft variant.
 
 ```yaml
-artifact:
-  id: art_<uuid>
-  type: creative_direction_package
-  schema_version: 1.0.0
-  artifact_version: 1
-  project_id: prj_<uuid>
-  run_id: run_<uuid>
-  parent_artifact_id: null
-  status: valid
-  created_at: 2026-07-25T00:00:00Z
-  producer:
-    component_id: creative-director
-    component_version: 0.1.0
-    model_provider: optional
-    model_name: optional
-    instruction_version: optional
-  source_refs: []
-  confidence:
-    evidence: 0
-    reasoning: 0
-    creative: 0
-  provenance:
-    evidence_refs: []
-    knowledge_versions: []
-    correlation_id: corr_<uuid>
-    causation_id: cmd_<uuid>
-  validation:
-    status: passed
-    findings: []
-  payload: {}
+artifact_id: art_<uuid>
+artifact_type: creative_direction_package
+schema_version: 1.0.0
+artifact_version: 1
+project_id: prj_<uuid>
+workflow_run_id: run_<uuid>
+parent_artifact_refs:
+  - artifact_id: art_<parent_uuid>
+    artifact_type: knowledge_fusion_package
+    artifact_version: 2
+created_at: 2026-07-25T00:00:00Z
+created_by:
+  type: human | engine | system
+  id: <string>
+producer:
+  component_id: creative-director
+  component_version: 0.1.0
+  model_provider: null
+  model_name: null
+  instruction_version: null
+source_refs: []
+confidence:
+  evidence: 85
+  reasoning: 80
+  creative: 75
+  basis:
+    - normalized_brief:communication_objective
+provenance:
+  evidence_refs: []
+  knowledge_versions: []
+  correlation_id: corr_<uuid>
+  causation_id: cmd_<uuid>
+validation:
+  status: passed
+  findings: []
+payload: {}
 ```
 
-Required fields may not be omitted. Optional dimensions use `null`, not ambiguous absence, when the schema requires an explicit value.
-
-## Accepted ADR-0003 decisive-slice overlay (contract-text reconciliation lands with the follow-up reconciliation change)
-
-The accepted shape uses a flat envelope with `artifact_id`, `artifact_type`,
-`workflow_run_id`, and versioned `parent_artifact_refs`. Every parent entry has
-exactly `artifact_id`, `artifact_type`, and positive integer
-`artifact_version`; semantic validation rejects missing, type-mismatched, or
-stale parent versions. `created_by` contains only `type` and `id`; `producer`
-retains technical component/model details. ADR-0003 and C-03 were accepted
-2026-07-26; implement only the accepted shape.
+Required fields may not be omitted. Optional dimensions use `null`, not
+ambiguous absence, when the schema requires an explicit value. Every parent
+entry in `parent_artifact_refs` has exactly `artifact_id`, `artifact_type`,
+and a positive integer `artifact_version`; semantic validation rejects
+missing, type-mismatched, or stale parent versions. `created_by` contains
+only `type` and `id`; `producer` retains technical component/model details.
+Field-name aliases from earlier drafts — `id`, `type`, `run_id`,
+`parent_artifact_id`, versionless `parent_artifact_ids`, and singular
+`artifact_ref` — are migration input only and are never canonical output.
 
 ## Engine contract
 
@@ -293,37 +297,48 @@ critic_evaluation:
 
 A critic does not mutate the reviewed artifact.
 
-## Current conflicting human-gate draft
+## Canonical human-gate approval record (accepted ADR-0003, C-04, 2026-07-26)
 
-This example is retained as a conflict input. Its singular `artifact_ref` and
-`waived` value are not proposed canonical output.
+Approval records use the envelope's `payload` to carry gate-specific fields.
+`artifact_refs` is a non-empty array; singular `artifact_ref` and the
+`waived` decision are migration input only and are never canonical output.
 
 ```yaml
-approval_record:
-  id: apr_<uuid>
-  project_id: prj_<uuid>
-  run_id: run_<uuid>
-  artifact_ref: art_<uuid>@1
-  record_type: direction_approval_record
-  gate_id: direction_approval
-  decision: approved
-  actor_id: usr_<uuid>
-  actor_role: creative_director
-  rationale: ""
-  created_at: 2026-07-25T00:00:00Z
+payload:
+  gate_id: direction_approval | final_approval
+  decision: approved | rejected | revision_requested
+  artifact_refs:
+    - artifact_id: art_<uuid>
+      artifact_type: creative_direction_package
+      artifact_version: 1
+  actor:
+    actor_id: usr_<uuid>
+    actor_role: creative_director
+  rationale: <non-empty string>
   conditions: []
 ```
 
-Allowed decisions: `approved`, `rejected`, `revision_requested`, `waived`.
+Allowed decisions: `approved`, `rejected`, `revision_requested`. `waived` is
+removed from the canonical decisive-slice contract because the MVP gates are
+non-bypassable.
 
-Canonical gate IDs are `direction_approval` and `final_approval`. Generation must not start without a valid approved `direction_approval` record for the current `Creative Direction Package`, and export must not start without a valid approved `final_approval` record for the current `Generated Candidate Set` plus `Critic Evaluation Package`.
+Canonical gate IDs are `direction_approval` and `final_approval`. Generation
+must not start without a valid approved `direction_approval` record for the
+current `Creative Direction Package`, and export must not start without a
+valid approved `final_approval` record for the current `Generated Candidate
+Set` plus `Critic Evaluation Package`. Each `artifact_refs` entry contains
+exactly `artifact_id`, `artifact_type`, and a positive integer
+`artifact_version`; the referenced artifact must exist, its stored type must
+match `artifact_type`, and the version must be current for the gate when the
+decision is evaluated.
 
-Under accepted ADR-0003, approval payloads use versioned `artifact_refs` entries
-and decisions `approved`, `rejected`, or `revision_requested`. The schema proof
-checks `created_by.type == human` and
+The schema proof checks `created_by.type == human` and
 `created_by.id == payload.actor.actor_id`. `payload.actor.actor_role` remains
 recorded, but project-role and gate authorization are deferred to runtime
-authorization-policy implementation. This proposal remains unaccepted.
+authorization-policy implementation and are outside the schema proof.
+`parent_artifact_refs` expresses versioned derivation lineage, while
+`payload.artifact_refs` expresses the evidence explicitly reviewed by the
+human decision; one does not substitute for the other.
 
 ## Error contract
 

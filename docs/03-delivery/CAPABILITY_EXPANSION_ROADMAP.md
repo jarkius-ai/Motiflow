@@ -152,7 +152,9 @@ The team has evidence that the decisive creative workflow solves a real user pro
 ## Required work
 
 - Run 5–10 representative briefs through the prepared manual protocol.
-- Conduct sessions with 2–3 intended users or design partners.
+- Conduct sessions with the intended user(s) under the current recorded scope
+  (solo per the 2026-07-26 revision in `docs/01-product/MVP_VALIDATION_PLAN.md`;
+  2–3-user or design-partner coverage is deferred to the post-build pilot).
 - Record baseline and outcome measures.
 - Record Product Owner `PROCEED`, `REVISE`, or `STOP`.
 - Resolve C-01 through C-06.

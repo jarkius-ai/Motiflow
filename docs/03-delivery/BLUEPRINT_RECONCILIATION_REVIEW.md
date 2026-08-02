@@ -1,6 +1,6 @@
 # Blueprint Reconciliation and Responsibility Review
 
-- **Status:** Direction accepted; author review complete; independent review pending
+- **Status:** Direction accepted; merged to `main` 2026-08-02; independent review deferred as an explicitly accepted risk (see §12)
 - **Owner:** Product Owner and Chief Architect
 - **Reviewed source:** External `PROJECT_BLUEPRINT.md` v0.5.0-review
 - **Source SHA-256:** `da8e88c5c384ff63c5f4ef76f67cd8ee83ee73e1a778c1b4c7a349f8fd06a366`
@@ -207,19 +207,17 @@ The author review cannot count as the required independent approval under `MEOS/
 
 ## 12. Review outcome
 
-**BLOCKED** under the current MEOS Review Standard.
+**MERGED with an explicitly accepted residual risk**, superseding the prior `BLOCKED` status under the current MEOS Review Standard.
 
-The architecture direction is coherent, and all author-review findings were corrected. The remaining blocker is separation of duties: an author may self-review but may not provide the only approval for non-trivial work, and QA must independently verify the applicable acceptance criteria.
+The architecture direction is coherent, and all author-review findings were corrected. Separation of duties under `MEOS/13_REVIEW_STANDARD.md#2-independence-and-separation-of-duties` was not satisfied: no reviewer other than the authoring agent recorded architecture/documentation review evidence, and no independent QA verified links, state claims, terminology, or non-authorization controls before merge.
 
-## 13. Merge recommendation
+**Residual risk accepted by:** Jarkius, 2026-08-02, as the accountable human authority — merge proceeded without independent review/QA evidence rather than leaving the PR indefinitely blocked on an unassigned reviewer role. This mirrors the same concentrated-authority risk already accepted in `docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md`.
 
-Keep the reconciliation change in draft until:
+**Required follow-up:** obtain independent architecture/documentation review and independent QA verification of the merged reconciliation before any production release, or before this reconciliation is used to justify activating a further roadmap phase. Track under `CONTEXT_INDEX.yaml` `reconciliation_review_status`.
 
-1. A reviewer other than the authoring agent records architecture/documentation review evidence.
-2. Independent QA verifies links, state claims, terminology, and non-authorization controls.
-3. Any resulting findings are corrected or explicitly accepted by accountable authority.
+## 13. Merge history
 
-After those controls pass, the change may be marked ready and merged. Merging it still does not activate Phase 1 or change Task 001 readiness.
+The reconciliation change (PR #7) was merged to `main` on 2026-08-02 (`cc2acb7`) under the residual-risk acceptance in §12, after resolving a merge conflict with intervening `main` commits and an ADR-number collision (renumbered to ADR-0006). Merging did not activate Phase 1 or change Task 001 readiness.
 
 ## 14. Implementation recommendation
 

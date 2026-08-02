@@ -37,21 +37,14 @@ Coordinates execution of workflow definitions as directed acyclic graphs. It res
 
 ### Engine Runtime
 
-Hosts or invokes specialist engines through a common contract. Initial engines are expected to include:
+Hosts or invokes specialist engines through a common contract. The
+authoritative engine list, grouped by discovery/reasoning/production/evaluation
+role, is [`docs/02-architecture/ENGINE_CATALOG.md`](02-architecture/ENGINE_CATALOG.md):
 
-- Brief Normalizer
-- Narrative Intelligence
-- Audience Intelligence
-- Business Context Intelligence
-- Brand Constraint Intelligence
-- Knowledge Fusion
-- Symbol Intelligence
-- Creative Director
-- Visual DNA
-- Generation Specification Compiler
-- Narrative Critic
-- Visual Critic
-- Brand and Policy Critic
+- Research Engine, Audience Engine, Brand Engine, Business Context Engine (discovery)
+- Knowledge Fusion Engine, Narrative Intelligence Engine, Symbol Intelligence Engine, Creative Director Engine (reasoning)
+- Prompt Compiler, Model Gateway, Adaptation Engine (production)
+- Visual Critic, Brand Critic, Business Critic, Constraint Critic, Synthesis Critic (evaluation)
 
 ### Connector Gateway
 
@@ -119,7 +112,7 @@ Generation
     ↓
 Generated Candidate Set
     ↓
-[ Deterministic Review | Narrative Critic | Visual Critic | Brand/Policy Critic ]
+[ Deterministic Review | Visual Critic | Brand Critic | Business Critic | Constraint Critic | Synthesis Critic ]
     ↓
 Awaiting Final Approval
     ↓
@@ -130,34 +123,39 @@ Provenance Record
 Export
 ```
 
-## 5. Package contract
+## 5. Artifact contract
 
-Every engine receives a validated envelope and returns a new immutable package.
+Every engine receives a validated envelope and returns a new immutable
+artifact, using the canonical envelope from `docs/02-architecture/DATA_CONTRACTS.md`
+(illustrative excerpt only; that document is the field-vocabulary source of truth):
 
 ```json
 {
-  "package_id": "uuid",
-  "package_type": "creative_direction_package",
-  "schema_version": "1.0",
-  "project_id": "uuid",
-  "run_id": "uuid",
+  "artifact_id": "art_<uuid>",
+  "artifact_type": "creative_direction_package",
+  "schema_version": "1.0.0",
+  "artifact_version": 1,
+  "project_id": "prj_<uuid>",
+  "workflow_run_id": "run_<uuid>",
+  "parent_artifact_refs": [
+    {"artifact_id": "art_<parent_uuid>", "artifact_type": "knowledge_fusion_package", "artifact_version": 2}
+  ],
+  "created_by": {"type": "engine", "id": "creative-director"},
   "producer": {
-    "engine": "creative-director",
-    "version": "0.1.0",
-    "model_provider": "optional",
-    "model": "optional"
+    "component_id": "creative-director",
+    "component_version": "0.1.0",
+    "model_provider": null,
+    "model_name": null,
+    "instruction_version": null
   },
-  "source_packages": ["uuid"],
   "confidence": {
-    "score": 0.82,
-    "basis": "evidence-and-rule-summary",
-    "uncertainties": []
+    "evidence": 85,
+    "reasoning": 80,
+    "creative": 75,
+    "basis": ["normalized_brief:communication_objective"]
   },
-  "provenance": [],
-  "validation": {
-    "status": "valid",
-    "schema": "creative-direction/1.0"
-  },
+  "provenance": {"evidence_refs": [], "knowledge_versions": [], "correlation_id": "corr_<uuid>", "causation_id": "cmd_<uuid>"},
+  "validation": {"status": "valid", "findings": []},
   "payload": {},
   "created_at": "RFC3339 timestamp"
 }

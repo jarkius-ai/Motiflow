@@ -5,7 +5,7 @@ status: PROPOSED
 readiness: BLOCKED
 owner: Jarkius
 assigned_role: backend
-review_roles: [reviewer, qa, architect]
+review_roles: [reviewer, qa, chief_architect]
 priority: high
 risk_class: medium
 
@@ -322,6 +322,14 @@ tools/
 - Project-native lint/static checks introduced with the chosen toolchain — pass.
 - Independent contract review — confirms traceability to C-01–C-06 and AC-01–AC-08.
 - `MEOS/10_QUALITY_GATE.md` — all applicable mandatory gates pass and score is at least 95 for this task.
+
+## Security and privacy
+
+N/A for this task. Scope is limited to JSON Schemas, deterministic fixtures,
+a local validator command, and a CI workflow that invokes it; no runtime
+service, external connector, secret, or participant/personal data is
+introduced. Security review applies once a runtime component or connector is
+implemented against these schemas.
 
 ## Rollback
 

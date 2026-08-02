@@ -63,6 +63,15 @@ roles:
     may_approve: [product_scope, acceptance_criteria]
     escalates: [strategy_conflict, unresolved_stakeholder_decision]
 
+  implementer:
+    purpose: Implement approved contracts, schemas, or cross-cutting changes not owned by a single backend/frontend/ai_engineer track (e.g. contract or external-provider changes).
+    reads: [task_specification, affected_architecture, affected_contracts, affected_tests]
+    owns: [implementation, contract_updates, tests]
+    outputs: [implementation, tests, contract_updates, completion_report]
+    must_handoff_to: [reviewer, qa]
+    may_not: [approve_own_work, accept_architecture_change]
+    escalates: [missing_contract, schema_change, architecture_change, security_risk]
+
   backend:
     purpose: Implement reliable server-side behavior and integrations.
     reads: [docs/02-architecture/**, docs/02-architecture/**, docs/01-product/**]

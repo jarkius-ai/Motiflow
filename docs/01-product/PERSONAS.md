@@ -51,3 +51,11 @@ Builds custom engines, connectors, workflows, and product extensions.
 **Needs:** stable contracts, SDKs, test harnesses, event schemas, examples, and versioning rules.
 
 **Pain points:** tightly coupled prompts, undocumented state, inconsistent payloads, and brittle orchestration.
+
+## 7. Reviewer or Approver
+
+Holds direction-approval or final-approval authority at one of the two non-bypassable human gates; distinct from the Creative Lead when a campaign or brand structure requires a separate sign-off authority.
+
+**Needs:** a concise explanation of why a direction was chosen, what changed since the prior version, and whether it satisfies brand and strategic requirements before downstream production or export begins.
+
+**Pain points:** approving without understanding the reasoning chain, re-litigating decisions already made upstream, and unclear accountability for what a decision actually approved.
