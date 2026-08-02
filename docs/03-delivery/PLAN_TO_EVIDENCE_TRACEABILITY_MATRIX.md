@@ -36,7 +36,7 @@ documents; it does not replace them or promote pending decisions.
 | Autonomous agent execution | `MEOS/02_AI_CONSTITUTION.md`, `MEOS/19_AI_WORKFORCE_CHARTER.md` | `docs/03-delivery/AUTONOMOUS_AGENT_TEAM_CHARTER.md` | role-separated handoffs, tests, reviews, escalation records | Proposed operating model; protected authority unchanged |
 | Implementation sequence | accepted tasks and architecture | `docs/03-delivery/UPDATED_PHASE_ROADMAP.md`, `AI_EXECUTION_IMPLEMENTATION_PLAN.md` | accepted task outputs and quality-gate evidence | Review-ready; Task 001 is first proposed build |
 | Staging and release | `MEOS/10_QUALITY_GATE.md`, `MEOS/15_GOLDEN_PATH.md` | `docs/03-delivery/RELEASE_AND_STAGING_DECISION_PLAN.md` | release packet, rollback proof, monitoring plan, authorization | Plan ready; no releasable product exists |
-| Documentation and planning quality | `MEOS/RELEASE_1.0_READINESS.md`, documentation checklist | `docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md` | link, metadata, routing, authority, and consistency checks | 99/100 documentation-plan assessment; docs-check tooling enforced |
+| Documentation and planning quality | `MEOS/RELEASE_1.0_READINESS.md`, documentation checklist | `docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md` | link, metadata, routing, authority, and consistency checks | 100/100 documentation-plan assessment; docs-check tooling enforced |
 
 ## Critical path
 

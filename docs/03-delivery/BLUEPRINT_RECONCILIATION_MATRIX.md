@@ -132,4 +132,4 @@ The repository rejects:
 - provider or proxy activation from architecture prose;
 - broad autonomous publishing or engagement in early phases.
 
-ADR-0006 records the accepted direction. Independent review and QA remain required before PR #7 is ready to merge. No implementation phase is activated by this matrix.
+ADR-0006 records the accepted direction. PR #7 merged 2026-08-02 with an explicitly accepted residual risk; independent review and QA evidence remain outstanding. No implementation phase is activated by this matrix.

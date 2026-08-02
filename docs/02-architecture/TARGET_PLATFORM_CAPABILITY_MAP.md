@@ -38,8 +38,8 @@ A capability state changes only from repository evidence and the applicable huma
 - The documentation responsibility model and context routing are implemented as repository governance.
 - Runtime and application implementation have not started on `main`.
 - Intended-user MVP validation remains pending.
-- ADR-0003 and decisive-slice contract acceptance remain pending.
-- Task 001 remains blocked with readiness score 40/100.
+- ADR-0003 is `Accepted` (2026-07-26); decisive-slice contract acceptance is accepted with one recorded revision (C-06 toolchain), evidence/sign-off commit pending.
+- Task 001 remains blocked with readiness score 46/100.
 - Agent Reach is deferred and not installed.
 - No browser provider is selected or implemented.
 - Proxy infrastructure is not required, approved, or implemented.
@@ -69,7 +69,7 @@ A capability state changes only from repository evidence and the applicable huma
 | Intended-user evidence | Planned | dated validation report placeholder | Complete sessions and record evidence |
 | Product Owner PROCEED/REVISE/STOP decision | Planned | named authority | Evidence-backed decision |
 | Ten-artifact decisive-slice vocabulary | Review-ready | Charter, Master Context, contract docs | Human contract acceptance |
-| Canonical artifact envelope | Review-ready | ADR-0003 | Accept/revise/reject ADR-0003 |
+| Canonical artifact envelope | Accepted | ADR-0003 (2026-07-26) | Carry into evidence/sign-off commit |
 | Versioned parent references | Review-ready | ADR-0003 and Task 001 | Contract acceptance and schema proof |
 | Direction Approval Record contract | Review-ready | workflow/runtime contracts | Accepted schemas and fixtures |
 | Final Approval Record contract | Review-ready | workflow/runtime contracts | Accepted schemas and fixtures |

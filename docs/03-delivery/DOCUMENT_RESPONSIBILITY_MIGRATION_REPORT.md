@@ -108,7 +108,7 @@ The following source contributions remain represented:
 
 Jarkius accepted the product-to-platform direction and documentation responsibility model on 2026-08-02.
 
-ADR-0006 is accepted for direction. Independent Reviewer and QA evidence remain required before PR #7 should be marked ready to merge under current MEOS controls.
+ADR-0006 is accepted for direction. PR #7 merged 2026-08-02 with an explicitly accepted residual risk; independent Reviewer and QA evidence remain outstanding under current MEOS controls.
 
 ## Unchanged blockers
 

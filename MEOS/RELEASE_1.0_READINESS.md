@@ -22,7 +22,7 @@ This assessment certifies the **Motiflow Engineering Operating System (MEOS) doc
 Overall readiness score: **94 / 100**
 
 This is the historical MEOS 1.0 release-baseline score. The current Motiflow
-documentation and planning package is reassessed separately at **99/100** in
+documentation and planning package is reassessed separately at **100/100** in
 [`../docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md`](../docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md).
 Neither score represents product implementation readiness.
 
