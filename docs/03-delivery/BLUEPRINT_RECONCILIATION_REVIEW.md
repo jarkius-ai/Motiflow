@@ -1,11 +1,10 @@
 # Blueprint Reconciliation and Responsibility Review
 
-- **Status:** Direction accepted; independent review pending
+- **Status:** Direction accepted; author review complete; independent review pending
 - **Owner:** Product Owner and Chief Architect
 - **Reviewed source:** External `PROJECT_BLUEPRINT.md` v0.5.0-review
 - **Source SHA-256:** `da8e88c5c384ff63c5f4ef76f67cd8ee83ee73e1a778c1b4c7a349f8fd06a366`
 - **Source scope:** 32 parts, 193 fixed files, 39 reserved directories, 5 dynamic path classes
-- **Review target:** Draft PR #7
 - **Decision:** ADR-0004 accepted on 2026-08-02
 
 ## 1. Review question
@@ -27,7 +26,7 @@ The external blueprint contributes a strong future vision for acquisition, brows
 
 It is not safe as a monolithic implementation authority. Its product, architecture, state, phase, engineering, task, CI, test, and file-manifest concerns must be assigned to separate canonical owners.
 
-That refactor has now been applied on PR #7.
+That refactor has been applied on the review branch.
 
 ## 3. Accepted responsibility model
 
@@ -62,20 +61,7 @@ Evidence
 
 ## 4. Product outcome after reconciliation
 
-The first product remains the governed creative-direction MVP:
-
-```text
-Intake Package
-→ Normalized Brief
-→ Knowledge Fusion Package
-→ Creative Direction Package
-→ Direction Approval Record
-→ Generation Specification
-→ Generated Candidate Set
-→ Critic Evaluation Package
-→ Final Approval Record
-→ Provenance Record
-```
+The first product remains the governed creative-direction MVP defined by the Project Charter. Its exact canonical artifact spine and runtime boundaries are owned by Master Context.
 
 The mature platform may later add:
 
@@ -176,7 +162,7 @@ The main confusion risks were:
 5. Treating a provider named in architecture as selected or installed.
 6. Treating documentation score as implementation readiness.
 
-Controls now include:
+Controls include:
 
 - one-screen orientation in `START_HERE.md`;
 - canonical owner routing in `CONTEXT_INDEX.yaml`;
@@ -188,31 +174,56 @@ Controls now include:
 - provider-specific high-risk routing;
 - `stop_and_escalate` rules for conflict.
 
-## 10. Current status
+## 10. Author review findings
+
+A second-pass author review found and corrected:
+
+1. Transient review-branch and PR-number state embedded in `CONTEXT_INDEX.yaml`.
+2. PR-specific review work embedded in the durable Project Bootstrap milestone.
+3. Current-state and provider-detail duplication in `START_HERE.md`.
+4. Exact canonical artifact-spine duplication in the Project Charter.
+
+The corrected files now route those facts to their canonical owners.
+
+The author review cannot count as the required independent approval under `MEOS/13_REVIEW_STANDARD.md`.
+
+## 11. Current status
 
 | Item | Status |
 |---|---|
 | Product-to-platform direction | Accepted |
-| Documentation responsibility model | Accepted and applied |
+| Documentation responsibility model | Accepted and applied on review branch |
 | Blueprint destination architecture | Refactored |
 | Phase 0–8 roadmap | Retained and aligned |
-| Capability Map | Active and aligned |
+| Capability Map | Aligned as review candidate |
 | 193-file dispositions | Complete |
-| Structural/semantic self-validation | Pass |
+| Structural/semantic self-validation | Pass after corrections |
+| Author review | Complete; independence not confirmed |
 | Independent architecture/documentation review | Pending |
 | Independent QA/link/state verification | Pending |
+| GitHub status checks | None observed |
 | Runtime implementation | Not started |
 | Task 001 | Blocked at 40/100 readiness |
 
-## 11. Merge recommendation
+## 12. Review outcome
 
-Keep PR #7 in draft until independent Reviewer and QA checks are recorded and any findings are corrected.
+**BLOCKED** under the current MEOS Review Standard.
 
-After those review controls pass, PR #7 may be marked ready to merge as an accepted architecture/governance reconciliation. Merging it still does not activate Phase 1 or change Task 001 readiness.
+The architecture direction is coherent, and all author-review findings were corrected. The remaining blocker is separation of duties: an author may self-review but may not provide the only approval for non-trivial work, and QA must independently verify the applicable acceptance criteria.
 
-## 12. Implementation recommendation
+## 13. Merge recommendation
 
-After PR #7 review is complete, return to the existing decisive-slice path:
+Keep the reconciliation change in draft until:
+
+1. A reviewer other than the authoring agent records architecture/documentation review evidence.
+2. Independent QA verifies links, state claims, terminology, and non-authorization controls.
+3. Any resulting findings are corrected or explicitly accepted by accountable authority.
+
+After those controls pass, the change may be marked ready and merged. Merging it still does not activate Phase 1 or change Task 001 readiness.
+
+## 14. Implementation recommendation
+
+After the reconciliation review is complete, return to the existing decisive-slice path:
 
 1. Intended-user validation.
 2. Product Owner `PROCEED`, `REVISE`, or `STOP`.
