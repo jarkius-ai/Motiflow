@@ -57,7 +57,8 @@ Delivery history to date:
 - PR #5 merged: explicit governance role assignment without weakening readiness gates.
 - PR #6 merged: delivery planning made independently auditable before implementation.
 - 2026-07-26: product owner accepted C-01–C-06 and ADR-0003, decided the Python backend stack (ADR-0005), and revised the validation round to a recorded solo scope; these decisions land in a decision-recording commit, and the governed `evidence/sign-off commit` follows the solo-round sessions.
-- 2026-08-02: product owner recorded `ACCEPT DIRECTION` on the target-platform blueprint responsibility model and phased expansion (ADR-0006); PR #7 remains in draft pending independent review and QA evidence.
+- 2026-08-02: product owner recorded `ACCEPT DIRECTION` on the target-platform blueprint responsibility model and phased expansion (ADR-0006); PR #7 merged with an explicitly accepted residual risk pending independent review and QA evidence.
+- 2026-08-02: PR #8 landed the ADR-0003 contract reconciliation and fixed governance/product documentation gaps.
 - Project Charter and foundational architecture context established.
 - MEOS engineering and AI constitutions established.
 - Context strategy and machine-readable role and task routing established.
@@ -134,7 +135,7 @@ The target-platform reconciliation (PR #7 / ADR-0006) is merged on `main` as of
 2026-08-02. Independent architecture/documentation review and independent QA
 verification of that reconciliation remain outstanding under
 `MEOS/13_REVIEW_STANDARD.md` (tracked as `reconciliation_review_status:
-independent_review_pending` in `CONTEXT_INDEX.yaml`), but that gap does not
+merged_independent_review_deferred_as_accepted_risk` in `CONTEXT_INDEX.yaml`), but that gap does not
 block the sequence below, which governs Task 001 readiness:
 
 1. Run `docs/01-product/MVP_VALIDATION_PLAN.md` with 5–10 representative inputs under the recorded solo-round scope (Jarkius as sole intended user this round, per the 2026-07-26 revision; multi-user coverage deferred to the post-build pilot).

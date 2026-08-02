@@ -66,9 +66,11 @@ and raw notes in the declared restricted evidence location.
 
 | Participant | Persona / role | Direction-owner coverage | Business / brand / production approval coverage | Decision authority | Consent evidence ID | Session date | Status |
 |---|---|---:|---:|---|---|---|---|
-| U-01 | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING |
-| U-02 | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING |
-| U-03 | PENDING or not used | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING |
+| U-01 | PENDING (Jarkius, solo-round) | PENDING | PENDING | PENDING | PENDING | PENDING | PENDING |
+
+Under the 2026-07-26 solo-round scope revision, only U-01 (Jarkius) is in
+scope for this round. The original 2–3-participant target (U-02, U-03) is
+deferred to the post-build pilot, not tracked here.
 
 ## Controlled setup
 
@@ -88,8 +90,9 @@ Do not schedule or run a session until every item is checked. `CASE_PREPARED`
 does not satisfy this gate.
 
 - [x] Accountable product owner and facilitator are named.
-- [ ] Two or three participant IDs, role coverage, consent evidence IDs, and
-  session dates are recorded.
+- [ ] One participant ID (Jarkius, per the 2026-07-26 solo-round scope
+  revision), role coverage, consent evidence ID, and session date are
+  recorded. The 2–3-participant target is deferred to the post-build pilot.
 - [ ] Restricted evidence location, access owner, and retention/deletion rule
   are recorded outside this public packet.
 - [ ] Baseline and proposed tool names, versions, and settings are frozen.

@@ -127,7 +127,7 @@ Every contributor and AI agent can distinguish:
 - The Capability Map records all state claims.
 - MEOS remains the only engineering governance system.
 - Agent Reach, browser providers, and proxies are not represented as active.
-- Task 001 remains blocked and readiness remains 40/100.
+- Task 001 remains blocked and readiness remains 46/100.
 - Independent architecture/documentation review passes.
 - Independent QA/link/state verification passes.
 
@@ -141,7 +141,7 @@ Every contributor and AI agent can distinguish:
 
 ## Status
 
-Direction accepted on 2026-08-02 through ADR-0006. Independent review and QA remain before PR #7 should be marked ready to merge.
+Direction accepted on 2026-08-02 through ADR-0006. PR #7 merged 2026-08-02 with an explicitly accepted residual risk; independent review and QA evidence remain outstanding.
 
 # Pre-Phase 1 — Product Validation and Contract Decision Gate
 

@@ -3,7 +3,7 @@
 - **Status:** Accepted
 - **Date:** 2026-08-02
 - **Decision owners:** Jarkius — Product Owner, Chief Architect, Engineering Lead
-- **Related change:** Draft PR #7
+- **Related change:** PR #7 (merged `cc2acb7`, 2026-08-02)
 - **Supersedes:** None
 - **Superseded by:** None
 

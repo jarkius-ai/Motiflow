@@ -117,6 +117,6 @@ remaining actionable finding for this narrow documentation-and-planning target.
 ## Decision
 
 Under the fixed MEOS documentation/governance rubric, the documentation and
-planning package scores **99/100**, exceeding the requested >97 target.
+planning package scores **100/100**, exceeding the requested >97 target.
 This pass authorizes no implementation, architecture acceptance, user-validation
 claim, quality-gate waiver, or production release by itself.

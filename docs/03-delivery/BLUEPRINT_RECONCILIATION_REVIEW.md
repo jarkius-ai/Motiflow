@@ -203,7 +203,7 @@ The author review cannot count as the required independent approval under `MEOS/
 | Independent QA/link/state verification | Pending |
 | GitHub status checks | None observed |
 | Runtime implementation | Not started |
-| Task 001 | Blocked at 40/100 readiness |
+| Task 001 | Blocked at 46/100 readiness |
 
 ## 12. Review outcome
 
