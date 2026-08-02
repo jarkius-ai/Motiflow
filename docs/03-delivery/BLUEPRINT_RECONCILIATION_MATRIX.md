@@ -1,124 +1,135 @@
 # Blueprint Reconciliation Matrix
 
-- **Status:** Review-ready delivery and architecture reconciliation
-- **Owner:** Chief Architect and Delivery
-- **Source target:** `docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md`
-- **Current product authority:** `PROJECT_CHARTER.md`, `MASTER_CONTEXT.md`, accepted ADRs, and accepted product contracts
-- **Delivery authority:** MEOS and ready task specifications
+- **Status:** Accepted direction; implementation dispositions remain phase-gated
+- **Owner:** Product Owner, Chief Architect, Delivery
+- **Source:** External `PROJECT_BLUEPRINT.md` v0.5.0-review
+- **Source SHA-256:** `da8e88c5c384ff63c5f4ef76f67cd8ee83ee73e1a778c1b4c7a349f8fd06a366`
+- **Decision:** ADR-0004
+- **Responsibility:** Map source-blueprint concepts to their repository owner and disposition
+- **Does not own:** Current implementation state, phase authorization, or task instructions
 
-## Purpose
+## 1. Dispositions
 
-This matrix prevents the long-term target blueprint and the current Motiflow repository from becoming competing plans. It identifies how each major target capability relates to existing repository authority, when it may become active, and what decision or evidence is required before implementation.
+- **Adopt** — existing repository direction is canonical.
+- **Adapt** — retain the concept but fit it into ACDS, MEOS, and canonical contracts.
+- **Defer** — retain as a future capability activated only by its roadmap gate.
+- **Reject** — exclude because it duplicates authority, conflicts with the product, or creates unsafe/premature structure.
+- **Archive/reference** — preserve source intent and traceability without current authority.
 
-## Dispositions
+Disposition is not implementation state. State is owned by `../02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md`.
 
-- **Adopt** — existing repository direction already provides the preferred model.
-- **Adapt** — retain the concept, but fit it into ACDS, MEOS, canonical contracts, or current dependency rules.
-- **Defer** — preserve as a future capability and activate only after its trigger.
-- **Reject** — do not carry forward because it conflicts with product identity, duplicates authority, or creates premature structure.
+## 2. Responsibility reconciliation
 
-A disposition does not mean implementation. Capability state is recorded separately in `TARGET_PLATFORM_CAPABILITY_MAP.md`.
+| Source information class | Canonical repository owner | Disposition | Result |
+|---|---|---|---|
+| Product vision, mission, scope, and value | `PROJECT_CHARTER.md` | Adopt repository | External overlap consolidated; Charter is canonical |
+| Stable ACDS identity and component boundaries | `MASTER_CONTEXT.md` and accepted ADRs | Adopt/adapt | Source concepts mapped to Creative Kernel, Orchestrator, Gateways, engines, critics, and Studio |
+| Complete future capability destination | `TARGET_PLATFORM_BLUEPRINT.md` | Adopt/adapt | Preserved as provider-neutral destination architecture |
+| Current capability state | `TARGET_PLATFORM_CAPABILITY_MAP.md` | Reject from static blueprint | State requires evidence and decisions |
+| Phase sequencing and activation | `CAPABILITY_EXPANSION_ROADMAP.md` | Adapt | Phase 0–8 retained outside the blueprint |
+| Engineering roles, readiness, QA, and release | MEOS | Adopt repository | Duplicate source governance rejected |
+| Bounded implementation work | `MEOS/tasks/` | Reject from blueprint | Work begins only through ready tasks |
+| CI, exact tests, command names | Tasks and engineering evidence | Move | Removed from destination architecture |
+| Repository file manifest | Manifest disposition records | Reject immediate authority | All 193 paths retained as reviewed inventory, not a path allow-list |
+| Provider selection and installation | Capability contract, ADR/security review, ready task | Reject from blueprint | Provider examples remain non-binding |
 
-## Reconciliation principles
+## 3. Product and architecture concepts
 
-1. Preserve Motiflow, ACDS, MEOS, Creative Kernel, Workflow Orchestrator, Connector Gateway, and Model Gateway terminology.
-2. Preserve the ten-artifact decisive slice and two protected human approval gates.
-3. Use MEOS for task readiness, context routing, implementation, independent review, quality gates, and release.
-4. Treat the target blueprint as future-state capability direction, not current-state evidence.
-5. Introduce directories and implementation artifacts only when an accepted contract or ready task requires them.
-6. Connect future capabilities through stable contracts rather than replacing the validated core.
+| Source concept | Repository equivalent | Disposition | Target phase or owner | Activation/decision rule |
+|---|---|---|---|---|
+| Motiflow product identity | Charter and Master Context | Adopt | Foundation | No competing identity |
+| ACDS architecture | Master Context and architecture docs | Adopt | Foundation | Material change requires ADR |
+| MEOS engineering operating system | `MEOS/` | Adopt | Foundation | Remains sole engineering governance |
+| One monolithic blueprint as sole authority | Layered responsibility model | Reject | ADR-0004 | No document owns vision, architecture, state, roadmap, tasks, and evidence together |
+| Full up-front 193-file generation | Incremental repository introduction rule | Reject | ADR-0004 | Exact path requires accepted need or ready task |
+| Deterministic artifact/contract discipline | Existing contracts and MEOS | Adapt | Phase 1 onward | Apply through schemas, fixtures, tests, and evidence |
+| Ten canonical artifacts | Existing decisive-slice authority | Adopt | Phase 1 | ADR-0003 and contract acceptance required |
+| Two human creative gates | Existing workflow model | Adopt | Phases 1–3 | Non-bypassable |
+| Creative Kernel | Existing ACDS component | Adopt | Phase 2 | Thin implementation after contract proof |
+| Workflow Orchestrator | Existing ACDS component | Adopt | Phase 2 | One executable workflow before breadth |
+| Model Gateway | Existing provider-neutral boundary | Adapt | Phase 3 | Mock and one provider first |
+| Multi-provider mesh | Future platform | Defer | Phase 8 | Proven multiple-provider need |
+| Critics and review fusion | Existing evaluation model | Adapt | Phase 3 | Dimension findings cannot be hidden by aggregate score |
 
-## Matrix
+## 4. Acquisition and external-provider concepts
 
-| Target concept | Repository authority or current equivalent | Disposition | Target phase | Activation or decision requirement |
+| Source concept | Repository boundary | Disposition | Target phase | Rule |
 |---|---|---|---:|---|
-| Motiflow product identity | `PROJECT_CHARTER.md`, `MASTER_CONTEXT.md`, terminology standard | Adopt | 0 | No change without product and ADR authority |
-| ACDS architecture | `MASTER_CONTEXT.md`, system design, architecture dependency map | Adopt | 0 | Preserve component boundaries |
-| MEOS engineering operating system | `MEOS/` constitutions, roles, gates, Golden Path | Adopt | 0 | Use as delivery authority rather than duplicate it |
-| Single canonical onboarding route | `START_HERE.md`, `CONTEXT_INDEX.yaml` | Adopt | 0 | Route minimum complete context |
-| One monolithic file as sole authority | Existing layered authority model | Reject | 0 | Blueprint remains subordinate target architecture |
-| Full up-front 193-file repository generation | Incremental repository structure standard | Reject | 0 | Create only task-owned or contract-required paths |
-| Deterministic generation discipline | MEOS contracts, context routing, task evidence | Adapt | 0–1 | Apply to schemas, tasks, checks, and generated artifacts |
-| Capability-first architecture | `MASTER_CONTEXT.md`, Model/Connector Gateway, engine contracts | Adopt | 1–8 | Capabilities use versioned provider-neutral contracts |
-| Ten canonical decisive-slice artifacts | Data and runtime contracts; ADR-0003 proposal | Adopt | 1 | Human acceptance and Task 001 readiness required |
-| Artifact lineage and invalidation | Data contracts, runtime contracts, workflow state machine | Adopt | 1 | ADR-0003 and C-01–C-06 acceptance |
-| Two human creative approval gates | Charter, Master Context, workflow state machine | Adopt | 1–3 | Must remain non-bypassable |
-| Creative Kernel | `MASTER_CONTEXT.md`, architecture dependency map | Adopt | 2 | Thin implementation after contract proof |
-| Workflow Orchestrator | `MASTER_CONTEXT.md`, runtime and workflow contracts | Adopt | 2 | One executable workflow before breadth |
-| Deterministic mock engines | AI execution plan and Model Gateway direction | Adopt | 2–3 | Required for repeatable tests |
-| Model Gateway | AI execution layer and ADR-0002 | Adapt | 3 | Thin interface, mock, and one provider first |
-| Multi-provider routing mesh | Eventual AI execution architecture | Defer | 8 | Observed demand and one-provider proof |
-| Generation provider connectors | Connector Gateway boundary | Adapt | 3 | One approved rendering provider first |
-| Critic registry and review fusion | Existing critic contracts and evaluation framework | Adapt | 3 | Start with focused critics; no opaque score override |
-| External web acquisition | Knowledge connector capability | Defer | 4 | Creative core MVP accepted and acquisition contracts approved |
-| YouTube acquisition | Knowledge connector capability | Defer | 4 | Read-only provider and source provenance proof |
-| GitHub acquisition | Knowledge connector capability | Defer | 4 | Read-only provider and source provenance proof |
-| RSS acquisition | Knowledge connector capability | Defer | 4 | Read-only provider and source provenance proof |
-| Channel registry | Connector capability descriptors | Adapt | 4 | Add only activated channels; no speculative marketplace |
-| Provider health and `doctor` diagnostics | Connector operability and provider health | Adapt | 4 | Machine-readable health contract and safe remediation |
-| Agent Reach integration | Optional knowledge connector-management provider | Adapt | 4 | Security and supply-chain review; read-only wrapper first |
-| Agent Reach as core runtime | Conflicts with Motiflow-owned contracts and state | Reject | — | Keep replaceable behind Connector Gateway |
-| Authenticated X/Reddit/social acquisition | Higher-risk knowledge providers | Defer | 4+ | Separate security, legal, credential, and platform review |
-| Browser-session acquisition | Connector Gateway and browser capability | Defer | 4+ | Explicit profile, credential, injection, and audit controls |
-| Research Agent | Motiflow Intelligence engine or bounded MEOS role | Adapt | 4–5 | Do not confuse delivery agent with runtime engine |
-| Normalized Content Source | Supporting source artifact and Knowledge Fusion input | Adapt | 4 | Define versioned source contract and provenance |
-| Research-to-draft workflow | Editorial workflow after creative core | Defer | 5 | Acquisition proof and editorial product validation |
-| Article and editorial authoring | Publication specialization, explicitly post-MVP | Defer | 5 | Product evidence and accepted editorial contracts |
-| Claim-to-source mapping | Provenance and factual-review capability | Adapt | 4–5 | Required before approved editorial package |
-| Publication Package | Existing proposed publication contract | Adopt and refine | 5 | Preserve dependency on approved creative artifacts |
-| Markdown and sanitized HTML export | Publication Package contract | Adopt | 5 | Reproducible export and sanitation tests |
-| Social variants | Publication Package optional output | Defer | 5 | Derived from approved package; not independent truth |
-| LinkedIn publishing connector | Post-MVP publishing connector | Defer | 6 | One authorized target, explicit publish approval, evidence |
-| Viva Engage publishing connector | Post-MVP publishing connector | Defer | 6+ | Add after first publishing connector proof |
-| Browser Bridge provider | Optional execution provider | Adapt and defer | 6 | Official API or approved connector preferred first |
-| Playwright/CDP provider | Browser execution implementation | Defer | 6 | Dedicated profile, security controls, verification |
-| Semantic browser provider | Higher-variance fallback | Defer | 6+ | Bounded actions and independent verification |
-| Research and publishing credential separation | Security boundary | Adopt | 4–6 | Mandatory before authenticated research or write actions |
-| Publishing approval gate | Additional external-action authority | Adapt | 6 | Separate from Final Approval Record |
-| Published-state evidence | Existing evidence and provenance model | Adapt | 6 | Target verification, identifiers, timestamps, account proof |
-| Engagement and performance measurement | Measurement and learning capability | Defer | 7 | Publishing or pilot data plus privacy policy |
-| Source-quality scoring | Knowledge and evaluation capability | Defer | 7 | Ground-truth and calibration evidence |
-| Cost, token, latency, retry ledger | AI execution architecture | Defer | 7–8 | Add when real provider usage justifies it |
-| Reusable brand and creative memory | Knowledge and memory product pillar | Adapt | 7 | Only approved, versioned, policy-compliant knowledge |
-| Autonomous engagement optimization | High-risk product behavior | Reject for early phases | — | Requires separate product, ethics, and safety decision |
-| Connector SDK | Target platform boundary | Defer | 8 | Stable internal connector patterns and external demand |
-| Engine SDK | Target platform boundary | Defer | 8 | Stable engine contract and multiple implementations |
-| Capability marketplace | Ecosystem expansion | Defer | 8+ | Governance, trust, signing, compatibility, and demand |
-| Enterprise tenancy and RBAC | Product and security architecture | Adapt and defer | 8 | Pilot identity decision first; scale from proven workflow |
-| Full multi-channel autonomous platform | Long-term target | Defer | 8+ | Phase-by-phase evidence and human authorization |
+| Public web acquisition | Knowledge acquisition provider | Defer | 4 | Read-only contract and security controls |
+| YouTube transcript acquisition | Knowledge acquisition provider | Defer | 4 | Normalized source and provenance |
+| Public GitHub acquisition | Knowledge acquisition provider | Defer | 4 | Read-only and rights-aware |
+| RSS/Atom acquisition | Knowledge acquisition provider | Defer | 4 | Normalized feed evidence |
+| Channel registry | Connector capability descriptors | Adapt/defer | 4 | Add only activated capabilities |
+| Provider health and doctor diagnostics | Connector operability | Adapt/defer | 4 | Machine-readable health contract |
+| Agent Reach | Optional acquisition adapter | Adapt/defer | 4 | Not core; security/supply-chain review and wrapper POC required |
+| Agent Reach as runtime/state authority | Conflicts with Motiflow ownership | Reject | — | Must remain replaceable behind Connector Gateway |
+| Authenticated social acquisition | High-risk provider path | Defer | 4+ | Separate product/legal/security/credential decision |
+| Browser-session acquisition | High-risk connector path | Defer | 4+ | Dedicated profile, injection controls, audit, ready task |
+| Proxy infrastructure | Not a platform requirement | Reject as default | — | Separate legitimate need and accepted high-risk decision required |
 
-## Blueprint section disposition
+## 5. Editorial, publication, and publishing concepts
 
-| Target blueprint area | Disposition | Governing repository home |
-|---|---|---|
-| Product mission and identity | Adopt repository | Project Charter and Master Context |
-| Architecture principles and boundaries | Adopt/adapt | Master Context, architecture docs, ADRs |
-| Agent governance and work execution | Adopt repository | MEOS |
-| Canonical artifact and workflow contracts | Adopt repository | `docs/02-architecture/` and accepted schemas |
-| Browser and publishing architecture | Adapt/defer | Target blueprint, capability map, future ADRs |
-| Acquisition and Agent Reach | Adapt/defer | Target blueprint, future connector contracts and ADR |
-| Repository file manifest | Reject as immediate generation authority | Repository structure standard and task ownership |
-| Future capability inventory | Adopt as target state | Target blueprint and capability map |
-| Phase sequencing | Adapt | Capability Expansion Roadmap and ready tasks |
-| Current implementation status | Reject from static blueprint | Context Index, Project Bootstrap, tasks, tests, evidence |
+| Source concept | Repository boundary | Disposition | Target phase | Rule |
+|---|---|---|---:|---|
+| Research Agent | Motiflow Intelligence engine or bounded delivery role | Adapt | 4–5 | Runtime engine and MEOS role remain distinct |
+| Normalized Content Source | Normalized Source Record/Source Bundle | Adapt | 4 | Must reference canonical provenance |
+| Research-to-draft workflow | Editorial workflow | Defer | 5 | Acquisition and editorial validation first |
+| Article/editorial authoring | Editorial intelligence | Defer | 5 | Post-creative-MVP product evidence required |
+| Claim-to-source mapping | Provenance/factual review | Adapt | 4–5 | Required for approved editorial content |
+| Publication Package | Existing post-MVP contract | Adopt/refine | 5 | Wraps approved creative chain; does not replace it |
+| Markdown and sanitized HTML | Publication exports | Adopt/defer | 5 | Reproducibility and sanitation evidence |
+| Social variants | Derived package outputs | Defer | 5 | Must derive from approved package versions |
+| LinkedIn/Viva/CMS connectors | Publishing connector implementations | Defer | 6+ | One authorized target at a time |
+| Browser Extension Bridge | Optional browser provider | Adapt/defer | 6 | Official/approved API preferred; security review required |
+| Playwright/CDP | Optional browser provider | Defer | 6 | Dedicated profile and action policy |
+| Semantic browser | Higher-variance fallback | Defer | 6+ | Bounded action and independent verification |
+| Publishing approval | Separate Publishing Authorization Record | Adapt | 6 | Final creative approval is not permission to publish |
+| Published-state evidence | Evidence/provenance extension | Adapt | 6 | Verify destination, account, identifier, time, and content hash |
 
-## Required follow-through
+## 6. Measurement and enterprise concepts
 
-The reconciliation is complete only when:
+| Source concept | Repository boundary | Disposition | Target phase | Rule |
+|---|---|---|---:|---|
+| Workflow, revision, source, provider, and publication metrics | Measurement events | Defer | 7 | Stable definitions and sufficient data |
+| Governed learning | Learning proposals and approved memory updates | Adapt/defer | 7 | Metrics cannot silently change policy/contracts |
+| Cost/token/latency ledger | Provider evidence | Defer | 7–8 | Real usage must justify it |
+| Brand and creative memory | Approved knowledge | Adapt/defer | 7 | Versioning, policy, and retention required |
+| Connector and Engine SDKs | Ecosystem seams | Defer | 8 | Stable internal contracts and demand |
+| Enterprise tenancy/RBAC | Enterprise platform | Adapt/defer | 8 | Identity, isolation, and authority model required |
+| Capability marketplace | Governed ecosystem | Defer | 8+ | Signing, trust, compatibility, and demand |
+| Autonomous engagement optimization | New high-risk product | Reject current roadmap | — | Separate ethics, safety, and product decision required |
 
-- the target blueprint is linked from the document index and context routing;
-- the capability map records current states without overstating implementation;
-- the expansion roadmap defines phase outcomes and activation gates;
-- ADR-0004 records an authorized decision or remains visibly proposed;
-- Task 001 remains governed by its existing prerequisites;
-- later task specifications reference the relevant phase and expansion seam; and
-- superseded standalone blueprint copies are treated as working inputs rather than competing repository authority.
+## 7. File-level reconciliation
 
-## Review questions
+All 193 fixed-file records from the external source are dispositioned in:
 
-1. Does any row silently change current MVP scope?
-2. Does any adapted capability bypass the Creative Kernel, Workflow Orchestrator, Connector Gateway, or approval boundaries?
-3. Does any deferred capability appear as implemented or ready?
-4. Does the phase preserve a complete useful product outcome?
-5. Can later phases connect through explicit contracts without rewriting the decisive core?
-6. Is a new ADR, product-validation round, security review, or human decision required?
+- `BLUEPRINT_FILE_MANIFEST_DISPOSITION.md`
+- `BLUEPRINT_FILE_MANIFEST_ROOT_AGENTS_CAPABILITIES.md`
+- `BLUEPRINT_FILE_MANIFEST_CHANNELS_PROVIDERS_POLICIES.md`
+- `BLUEPRINT_FILE_MANIFEST_CONTRACTS_WORKFLOWS.md`
+- `BLUEPRINT_FILE_MANIFEST_DOCUMENTS.md`
+- `BLUEPRINT_FILE_MANIFEST_PLANNING_SCRIPTS_TEMPLATES.md`
+
+The source also declares 39 reserved directories and 5 dynamic path classes; these remain reviewed target inventory, not immediate repository structure.
+
+## 8. Accepted conclusion
+
+The external blueprint is strategically compatible after reconciliation.
+
+The repository adopts:
+
+- its broader future capability vision;
+- provider-neutral acquisition, browser, editorial, publication, publishing, measurement, and enterprise concepts;
+- its useful contract and provenance ideas;
+- its expansion intent.
+
+The repository rejects:
+
+- monolithic authority;
+- duplicate MEOS governance;
+- a competing artifact or workflow-state system;
+- immediate mass file generation;
+- provider or proxy activation from architecture prose;
+- broad autonomous publishing or engagement in early phases.
+
+ADR-0004 records the accepted direction. Independent review and QA remain required before PR #7 is ready to merge. No implementation phase is activated by this matrix.
