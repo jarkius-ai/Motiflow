@@ -29,7 +29,7 @@ Disposition is not implementation state. State is owned by `../02-architecture/T
 | Phase sequencing and activation | `CAPABILITY_EXPANSION_ROADMAP.md` | Adapt | Phase 0–8 retained outside the blueprint |
 | Engineering roles, readiness, QA, and release | MEOS | Adopt repository | Duplicate source governance rejected |
 | Bounded implementation work | `MEOS/tasks/` | Reject from blueprint | Work begins only through ready tasks |
-| CI, exact tests, command names | Tasks and engineering evidence | Move | Removed from destination architecture |
+| CI, exact tests, command names | Tasks and engineering evidence | Adapt | Removed from destination architecture |
 | Repository file manifest | Manifest disposition records | Reject immediate authority | All 193 paths retained as reviewed inventory, not a path allow-list |
 | Provider selection and installation | Capability contract, ADR/security review, ready task | Reject from blueprint | Provider examples remain non-binding |
 
