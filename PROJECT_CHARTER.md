@@ -1,91 +1,175 @@
 # Motiflow Project Charter
 
-**Status:** Foundational product authority  
-**Product:** Motiflow  
-**Product architecture:** Autonomous Creative Direction System (ACDS)  
-**Engineering governance:** Motiflow Engineering Operating System (MEOS)
+- **Status:** Foundational product authority
+- **Product:** Motiflow
+- **Product architecture:** Autonomous Creative Direction System (ACDS)
+- **Engineering governance:** Motiflow Engineering Operating System (MEOS)
+- **Responsibility:** Define why Motiflow exists, whom it serves, the durable product value, scope, principles, and strategic direction
+- **Does not own:** Detailed runtime architecture, current capability state, delivery phases, implementation tasks, engineering process, or verification evidence
 
-## Purpose
+## 1. Purpose
 
-This charter defines Motiflow's enduring product intent: vision, mission, scope, principles, product pillars, and strategic direction. It governs product-level decisions but does not duplicate detailed architecture, delivery controls, contracts, or implementation plans.
+This charter is Motiflow's durable product authority. It defines the problem the product exists to solve and the value it must continue to create as capabilities expand.
 
-## Vision
+Detailed architecture belongs in `MASTER_CONTEXT.md` and accepted ADRs. The complete future platform belongs in the Target Platform Blueprint. Current state, delivery sequence, engineering execution, and implementation evidence are owned by their linked repository documents.
+
+## 2. Vision
 
 Build the operating system for enterprise creative intelligence, transforming business intent into governed, explainable creative execution.
 
-## Mission
+## 3. Mission
 
-Enable organizations to move beyond prompt engineering by coordinating specialized intelligence and creative engines through a trustworthy, reviewable workflow.
+Enable organizations to move beyond fragmented briefs and isolated prompt engineering by coordinating specialized intelligence, creative reasoning, generation, evaluation, and human approval through a trustworthy and reusable workflow.
 
-## North Star
+## 4. North Star
 
-Every material creative decision should be traceable, measurable, reusable, and aligned with business outcomes.
+Every material creative decision should be traceable, explainable, measurable, reusable, and aligned with business outcomes.
 
-## Product Identity
+## 5. Product identity
 
-- **Motiflow** is the customer-facing product, platform, and repository identity.
-- **ACDS** is the underlying product architecture.
-- **MEOS** is the engineering governance and delivery system used to build, verify, review, and release Motiflow.
+- **Motiflow** is the customer-facing product, future platform, and repository identity.
+- **ACDS** is the underlying product/runtime architecture.
+- **MEOS** is the engineering operating system used to specify, build, verify, review, and release Motiflow.
+- **ADRs** record consequential architecture decisions when accepted by authorized humans.
+- **The Target Platform Blueprint** describes the complete future capability destination; it does not authorize implementation.
 
-These names are related but not interchangeable. Canonical definitions are maintained in [`docs/00-foundation/TERMINOLOGY.md`](docs/00-foundation/TERMINOLOGY.md) and architecture-significant changes require an ADR.
+These terms are related but not interchangeable.
 
-## Guiding Principles
+## 6. Problem
 
-- Understand before generating.
-- Reason before rendering.
-- Meaning over decorative aesthetics.
-- One dominant story and one dominant metaphor per visual concept.
-- Human oversight for high-impact, low-confidence, brand-sensitive, or publishing decisions.
-- Model-agnostic architecture and replaceable providers.
-- Canonical, versioned contracts between components.
-- Explainability, provenance, and quality through orchestration.
-- Measured outcomes over feature volume.
+Enterprise creative work often begins with generation before teams have aligned on meaning. This creates:
 
-## Product Pillars
+- incomplete and ambiguous briefs;
+- generic visual metaphors;
+- inconsistent output between people and providers;
+- excessive dependence on individual prompt-writing skill;
+- weak links between business intent and creative decisions;
+- subjective review and avoidable revision cycles;
+- duplicated context across tools and conversations;
+- provider lock-in;
+- poor provenance, governance, and auditability.
 
-1. **Creative Intelligence** — understand narrative, audience, business meaning, technical context, brand, and evidence.
-2. **Workflow Orchestration** — coordinate parallel discovery, sequential creative commitment, review, retry, and approval.
-3. **Enterprise Governance** — preserve policy, permissions, provenance, auditability, and human authority.
-4. **Knowledge and Memory** — reuse approved context, brand systems, visual language, decisions, and evaluations.
-5. **Multi-Model Execution** — compile and route governed creative specifications through replaceable providers.
-6. **Quality and Evaluation** — combine focused critics, measurable scorecards, regression checks, and human review.
+Motiflow addresses this by making understanding, direction, evidence, evaluation, and approval explicit before and after generation.
 
-## Initial Product Boundary
+## 7. Product principles
 
-The first release focuses on editorial and enterprise technology creative-direction workflows. Motiflow v1 is not intended to replace general graphic-design suites, digital asset management platforms, presentation authoring systems, project-management tools, or human brand approval.
+1. **Understand before generating.**
+2. **Meaning over decorative aesthetics.**
+3. **One dominant narrative and one dominant metaphor.**
+4. **Reasoning and rendering remain separate.**
+5. **Human authority remains explicit for material decisions.**
+6. **Canonical versioned contracts connect components.**
+7. **Models and external providers remain replaceable.**
+8. **Explainability and provenance are designed in, not added later.**
+9. **Measured outcomes matter more than feature volume.**
+10. **Expansion must preserve the validated core rather than bypass it.**
 
-The MVP must prove one complete path from source material to a validated, explainable Creative Direction Package, explicit human direction approval, one-provider generation, focused critic review, and explicit human final approval with provenance.
+## 8. Product pillars
 
-The canonical decisive-slice sequence is:
+### 8.1 Creative intelligence
 
-`Intake Package` → `Normalized Brief` → `Knowledge Fusion Package` → `Creative Direction Package` → `Direction Approval Record` → `Generation Specification` → `Generated Candidate Set` → `Critic Evaluation Package` → `Final Approval Record` → `Provenance Record`.
+Understand narrative, audience, business meaning, technical context, brand, evidence, constraints, and uncertainty.
 
-An article or other editorial document may be source material for that path. The creative-direction-first MVP does not author complete articles, generate SEO packages, produce social variants, operate CMS publishing flows, or deliver full publication-platform behavior. Generation exists only to prove that an approved direction produces reviewable candidates; broader publishing and platform specialization remain later expansions.
+### 8.2 Workflow orchestration
 
-Before broad implementation, the team must test the proposed workflow manually with representative briefs and intended users, establish a baseline, and record which stages create measurable value.
+Coordinate parallel discovery, sequential creative commitment, validation, review, retry, and approval.
 
-## Strategic Goal
+### 8.3 Enterprise governance
 
-Evolve Motiflow from a focused creative application into an extensible platform with governed workflows, SDKs, connectors, evaluation systems, and an ecosystem for enterprise creative operations.
+Preserve policy, permissions, provenance, auditability, security boundaries, and human authority.
 
-## Success Definition
+### 8.4 Knowledge and memory
 
-Motiflow succeeds when teams can reliably:
+Reuse approved context, brand systems, visual language, decisions, sources, and evaluations without silently turning unapproved material into truth.
 
-- turn ambiguous source material into a validated creative direction;
+### 8.5 Multi-model execution
+
+Compile governed specifications and route them through replaceable providers behind stable interfaces.
+
+### 8.6 Quality and evaluation
+
+Combine deterministic checks, focused critics, measurable scorecards, regression evidence, and human review.
+
+## 9. Initial product boundary
+
+The first product proves one complete governed path from source material through explainable creative direction, explicit direction approval, one-provider generation, critic evaluation, final approval, and provenance.
+
+The canonical artifact sequence and runtime boundaries for that path are owned by [`MASTER_CONTEXT.md`](MASTER_CONTEXT.md).
+
+The initial product focuses on editorial and enterprise technology creative-direction workflows.
+
+It does not initially:
+
+- author complete articles as the primary product;
+- operate a broad publication platform;
+- publish autonomously to social or enterprise channels;
+- manage a large provider marketplace;
+- replace general graphic-design, digital-asset, presentation, or project-management tools;
+- remove human brand or publication authority.
+
+Generation exists in the first product to prove that approved direction produces coherent, reviewable candidates.
+
+## 10. Long-term strategic direction
+
+Motiflow may expand from the creative-direction product into a governed research, content, publication, publishing, measurement, and enterprise platform.
+
+That expansion must:
+
+- remain compatible with the creative spine;
+- add capabilities through versioned seams;
+- preserve human authority and provenance;
+- remain provider-neutral;
+- be activated through measured product need and accepted decisions;
+- avoid creating parallel artifact, approval, policy, or workflow-state systems.
+
+The complete destination is owned by `docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md`. Its ordered delivery is owned by `docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`.
+
+## 11. Product success
+
+Motiflow succeeds when intended users can reliably:
+
+- convert ambiguous source material into a validated creative direction;
 - understand why the direction was recommended;
-- generate coherent results across replaceable rendering providers;
+- approve or revise direction before generation;
+- generate coherent results through replaceable providers;
+- evaluate candidates using explicit criteria;
 - reduce avoidable revision cycles;
 - reuse approved knowledge and visual language;
 - measure quality, cost, speed, and workflow performance;
 - preserve governance, provenance, approval, and change history.
 
-## Documentation Authority
+Future platform success additionally requires that research, editorial, publication, publishing, and learning capabilities extend this value without weakening it.
 
-Use [`docs/00-foundation/DOCUMENT_AUTHORITY.md`](docs/00-foundation/DOCUMENT_AUTHORITY.md) to resolve conflicts.
+## 12. Product decision discipline
 
-The canonical foundation reading order is:
+A product change must identify:
 
-`START_HERE.md` → `PROJECT_CHARTER.md` → `MASTER_CONTEXT.md` → `CONTEXT_INDEX.yaml` → `MEOS/20_PROJECT_BOOTSTRAP.md` → task-specific documents.
+- target user and problem;
+- expected outcome and evidence;
+- in-scope and out-of-scope behavior;
+- impact on the Charter, Master Context, Blueprint, Capability Map, Roadmap, contracts, and tasks;
+- required human authority.
 
-This charter controls product intent. `MASTER_CONTEXT.md` controls stable shared architecture. Accepted ADRs control architecture-significant decisions. MEOS controls engineering governance and delivery execution.
+A future capability described in the blueprint is not automatically accepted product scope.
+
+## 13. Related authorities
+
+- Stable product/runtime architecture: `MASTER_CONTEXT.md`
+- Complete future destination: `docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md`
+- Current capability state: `docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md`
+- Expansion sequence: `docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`
+- Architecture decisions: `docs/adr/`
+- Engineering governance: `MEOS/`
+- Current delivery state: `MEOS/20_PROJECT_BOOTSTRAP.md`
+- Context routing: `CONTEXT_INDEX.yaml`
+
+## 14. Canonical reading order
+
+```text
+START_HERE.md
+→ PROJECT_CHARTER.md
+→ MASTER_CONTEXT.md
+→ CONTEXT_INDEX.yaml
+→ MEOS/20_PROJECT_BOOTSTRAP.md
+→ task-specific authorities and evidence
+```
