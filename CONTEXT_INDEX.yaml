@@ -1,37 +1,41 @@
-version: 6
+version: 7
 status: active
 owner: Jarkius (Chief Architect)
 release: pre-implementation-readiness
 
 repository_state:
-  current_branch: main
   default_branch: main
-  remote_head: origin/main
-  merged_pull_requests: [1, 2, 3, 4]
+  review_branch: agent/reconcile-target-blueprint
+  active_review_pr: 7
   implementation_status: not_started
-
-current_milestone: decisive-slice-validation-and-task-readiness
-current_focus:
-  - execute the MVP validation plan and record the product-owner proceed, revise, or stop decision
-  - complete docs/01-product/validation/2026-07-25-mvp-validation-report.md with real participant evidence
-  - close docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md through required human review
-  - promote MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md from blocked to ready only after its prerequisites pass
-  - preserve canonical repository boundaries and avoid speculative structure before code exists
-  - keep review-ready sequencing artifacts distinct from human-accepted product and architecture decisions
-  - review the target-platform reconciliation without treating future phases as current implementation authority
-next_priorities:
-  - run docs/01-product/MVP_VALIDATION_PLAN.md with 5 to 10 representative inputs and 2 to 3 intended users or design partners
-  - record baseline measures and an accountable product-owner decision in docs/01-product/validation/2026-07-25-mvp-validation-report.md without confidential source material
-  - resolve the artifact-envelope and approval-reference conflicts and obtain the human sign-offs required by docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md
-  - review and accept, revise, or reject docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md without changing the current Task 001 gate
-  - run the Definition of Ready check and promote MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md only when every prerequisite passes
-  - implement one executable workflow before adding infrastructure breadth
-  - introduce a thin Model Gateway only after the workflow shape is proven, limited to an interface, deterministic mock, and one real provider
+  runtime_capabilities_active: []
 
 identity:
   product: Motiflow
   product_architecture: ACDS
   engineering_governance: MEOS
+
+current_milestone: documentation-responsibility-review-and-decisive-slice-readiness
+current_focus:
+  - complete independent architecture and QA review of PR 7
+  - execute the MVP validation plan and record the Product Owner proceed, revise, or stop decision
+  - complete the dated MVP validation report with real participant evidence
+  - close decisive-slice contract acceptance and ADR-0003 through required human review
+  - promote Task 001 from blocked to ready only after every prerequisite passes
+  - preserve the accepted target direction without treating future phases as implemented
+
+current_state:
+  documentation_planning_quality_score: 97
+  documentation_planning_quality_status: pass
+  readiness_score_current: 40
+  readiness_machine_verifiable_ceiling: 40
+  task_001_status: blocked
+  adr_0003_status: proposed
+  adr_0004_status: accepted_direction
+  product_validation_status: participant_evidence_pending
+  agent_reach_status: deferred_not_installed
+  browser_provider_status: deferred_not_selected
+  proxy_status: not_required_not_approved_not_implemented
 
 bootstrap:
   entrypoint: START_HERE.md
@@ -40,134 +44,217 @@ bootstrap:
     - MASTER_CONTEXT.md
     - CONTEXT_INDEX.yaml
     - MEOS/20_PROJECT_BOOTSTRAP.md
-  governance_references:
-    - docs/00-foundation/DOCUMENT_AUTHORITY.md
-    - docs/00-foundation/TERMINOLOGY.md
-    - docs/00-foundation/REPOSITORY_STRUCTURE.md
-    - docs/00-foundation/MIGRATION_PLAN.md
-    - docs/00-foundation/DOCUMENTATION_QUALITY_CHECKLIST.md
-  engineering_baseline:
-    - MEOS/01_ENGINEERING_CONSTITUTION.md
-    - MEOS/02_AI_CONSTITUTION.md
-    - MEOS/03_CONTEXT_STRATEGY.md
-    - MEOS/19_AI_WORKFORCE_CHARTER.md
-    - MEOS/roles.yaml
-    - MEOS/05_TASK_SPECIFICATION.md
-    - MEOS/06_DEFINITION_OF_READY.md
-    - MEOS/11_ARCHITECTURE_RULES.md
-    - MEOS/15_GOLDEN_PATH.md
+  load_policy: minimum_complete_context
 
-mandatory_completion_context:
+canonical_responsibilities:
+  product_purpose: PROJECT_CHARTER.md
+  stable_architecture: MASTER_CONTEXT.md
+  future_destination: docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md
+  capability_state: docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md
+  expansion_sequence: docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md
+  document_responsibility: docs/00-foundation/DOCUMENT_RESPONSIBILITY_MODEL.md
+  architecture_change_gate: docs/00-foundation/ARCHITECTURE_CHANGE_GATE.md
+  architecture_decisions: docs/adr/
+  engineering_governance: MEOS/
+  current_delivery_state: MEOS/20_PROJECT_BOOTSTRAP.md
+  current_task: MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md
+  implementation_truth: implementation_tests_and_evidence
+
+foundation_governance:
+  - docs/00-foundation/DOCUMENT_AUTHORITY.md
+  - docs/00-foundation/DOCUMENT_RESPONSIBILITY_MODEL.md
+  - docs/00-foundation/ARCHITECTURE_CHANGE_GATE.md
+  - docs/00-foundation/TERMINOLOGY.md
+  - docs/00-foundation/REPOSITORY_STRUCTURE.md
+  - docs/00-foundation/MIGRATION_PLAN.md
+  - docs/00-foundation/DOCUMENTATION_QUALITY_CHECKLIST.md
+  - docs/00-foundation/DOCUMENT_INDEX.md
+
+engineering_baseline:
+  - MEOS/01_ENGINEERING_CONSTITUTION.md
+  - MEOS/02_AI_CONSTITUTION.md
+  - MEOS/03_CONTEXT_STRATEGY.md
+  - MEOS/05_TASK_SPECIFICATION.md
+  - MEOS/06_DEFINITION_OF_READY.md
   - MEOS/10_QUALITY_GATE.md
+  - MEOS/11_ARCHITECTURE_RULES.md
+  - MEOS/13_REVIEW_STANDARD.md
+  - MEOS/14_ADR_PROCESS.md
   - MEOS/15_GOLDEN_PATH.md
+  - MEOS/19_AI_WORKFORCE_CHARTER.md
+  - MEOS/roles.yaml
 
-role_registry: MEOS/roles.yaml
-workforce_charter: MEOS/19_AI_WORKFORCE_CHARTER.md
-golden_path: MEOS/15_GOLDEN_PATH.md
-architecture_rules: MEOS/11_ARCHITECTURE_RULES.md
-adr_process: MEOS/14_ADR_PROCESS.md
-target_platform_blueprint: docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md
-target_platform_capability_map: docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md
-blueprint_reconciliation_matrix: docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md
-capability_expansion_roadmap: docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md
-phased_expansion_decision: docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md
-artifact_contracts: docs/02-architecture/DATA_CONTRACTS.md
-current_validation_report: docs/01-product/validation/2026-07-25-mvp-validation-report.md
-validation_case_catalog: docs/01-product/validation/VALIDATION_CASE_CATALOG.md
-validation_session_instruments: docs/01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md
-validation_artifact_worksheets: docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md
-validation_instrument_dry_run: docs/01-product/validation/2026-07-26-validation-instrument-dry-run.md
-contract_acceptance: docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md
-blocking_architecture_decision: docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md
-current_task: MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md
-readiness_review: docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md
-pending_work_to_ready: docs/03-delivery/PENDING_WORK_TO_READY.md
-agent_team_charter: docs/03-delivery/AUTONOMOUS_AGENT_TEAM_CHARTER.md
-plan_to_evidence_traceability: docs/03-delivery/PLAN_TO_EVIDENCE_TRACEABILITY_MATRIX.md
-release_and_staging_plan: docs/03-delivery/RELEASE_AND_STAGING_DECISION_PLAN.md
-documentation_planning_quality_review: docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md
-documentation_planning_quality_score: 97
-documentation_planning_quality_status: pass
-readiness_review_candidate_sha: efc4b5e2bb71b6da2e2ee39ce187fd39bd117411
-readiness_revision_trace_status: review_candidate_committed_trace_preparation_recorded_evidence_signoff_pending
-readiness_score_current: 40
-readiness_machine_verifiable_ceiling: 40
+current_readiness_references:
+  validation_plan: docs/01-product/MVP_VALIDATION_PLAN.md
+  validation_report: docs/01-product/validation/2026-07-25-mvp-validation-report.md
+  validation_case_catalog: docs/01-product/validation/VALIDATION_CASE_CATALOG.md
+  validation_session_instruments: docs/01-product/validation/VALIDATION_SESSION_INSTRUMENTS.md
+  validation_artifact_worksheets: docs/01-product/validation/VALIDATION_ARTIFACT_WORKSHEETS.md
+  validation_dry_run: docs/01-product/validation/2026-07-26-validation-instrument-dry-run.md
+  contract_acceptance: docs/02-architecture/DECISIVE_SLICE_CONTRACT_ACCEPTANCE.md
+  blocking_architecture_decision: docs/adr/ADR-0003-CANONICAL_ARTIFACT_ENVELOPE_AND_APPROVAL_REFERENCES.md
+  current_task: MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md
+  readiness_review: docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md
+  pending_work: docs/03-delivery/PENDING_WORK_TO_READY.md
 
-governance_assignments:
-  product_owner: Jarkius
-  facilitator: Jarkius
-  chief_architect: Jarkius
-  engineering_lead: Jarkius
-  scope: identity_assignment_only
-  decisions_dispositions_approvals_signatures: pending
-  independence_control: independent_reviewer_and_qa_evidence_required
+future_platform_references:
+  blueprint: docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md
+  capability_map: docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md
+  expansion_roadmap: docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md
+  reconciliation_matrix: docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md
+  reconciliation_review: docs/03-delivery/BLUEPRINT_RECONCILIATION_REVIEW.md
+  reconciliation_validation: docs/03-delivery/BLUEPRINT_RECONCILIATION_VALIDATION.md
+  manifest_disposition: docs/03-delivery/BLUEPRINT_FILE_MANIFEST_DISPOSITION.md
+  responsibility_migration: docs/03-delivery/DOCUMENT_RESPONSIBILITY_MIGRATION_REPORT.md
+  accepted_direction: docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md
 
 roles:
-  chief_architect:
-    assigned_to: Jarkius
-    required: [MEOS/11_ARCHITECTURE_RULES.md, MEOS/14_ADR_PROCESS.md, docs/02-architecture/**, docs/adr/**, docs/01-product/**]
   product_owner:
     assigned_to: Jarkius
-    required: [docs/00-foundation/**, docs/01-product/**]
+    required:
+      - PROJECT_CHARTER.md
+      - docs/01-product/**
+      - applicable_current_state_and_evidence
+  chief_architect:
+    assigned_to: Jarkius
+    required:
+      - MASTER_CONTEXT.md
+      - MEOS/11_ARCHITECTURE_RULES.md
+      - MEOS/14_ADR_PROCESS.md
+      - docs/02-architecture/**
+      - docs/adr/**
   backend:
-    required: [docs/02-architecture/**, docs/03-engineering/**, docs/01-product/**]
+    required:
+      - task_specification
+      - affected_architecture
+      - affected_contracts
+      - affected_tests
   frontend:
-    required: [docs/01-product/**, docs/02-architecture/**, docs/03-engineering/**, docs/05-design/**]
+    required:
+      - task_specification
+      - affected_user_journey
+      - affected_design_contract
+      - affected_api_contracts
   ai_engineer:
-    required: [docs/04-ai/**, docs/02-architecture/**, docs/01-product/**]
-  qa:
-    required: [task_specification, acceptance_criteria, affected_contracts, implementation_and_tests]
-  security_reviewer:
-    required: [affected_architecture, data_contracts, threat_models, implementation_diff]
+    required:
+      - task_specification
+      - affected_ai_contracts
+      - evaluation_criteria
+      - safety_cost_and_provider_constraints
   reviewer:
-    required: [task_specification, context_manifest, implementation_diff, test_results, affected_docs_and_contracts]
+    required:
+      - task_specification
+      - context_manifest
+      - implementation_or_documentation_diff
+      - verification_results
+      - affected_authorities
+  qa:
+    required:
+      - acceptance_criteria
+      - affected_contracts
+      - implementation_or_documentation_output
+      - independent_verification
+  security_reviewer:
+    required:
+      - affected_architecture
+      - data_flows
+      - threat_model
+      - security_tests
   documentation:
-    required: [changed_artifacts, controlling_requirements, architecture_decisions]
+    required:
+      - docs/00-foundation/DOCUMENT_RESPONSIBILITY_MODEL.md
+      - changed_artifacts
+      - controlling_authorities
+      - cross_reference_validation
   release_manager:
-    required: [quality_gate_report, test_results, migration_and_rollback_plan, release_notes, monitoring_plan]
+    required:
+      - quality_gate_report
+      - release_notes
+      - migration_and_rollback_plan
+      - monitoring_plan
+      - human_authorization
 
 task_routing:
+  current_mvp_readiness:
+    roles: [product_owner, chief_architect, reviewer, qa]
+    require:
+      - current_readiness_references
+      - MEOS/06_DEFINITION_OF_READY.md
+      - MEOS/13_REVIEW_STANDARD.md
   architecture_change:
     roles: [chief_architect, reviewer]
-    require: [MEOS/11_ARCHITECTURE_RULES.md, MEOS/14_ADR_PROCESS.md, docs/02-architecture/**, docs/adr/**]
+    require:
+      - MASTER_CONTEXT.md
+      - docs/00-foundation/ARCHITECTURE_CHANGE_GATE.md
+      - MEOS/11_ARCHITECTURE_RULES.md
+      - MEOS/14_ADR_PROCESS.md
+      - affected_architecture
+      - applicable_adrs
   future_capability_change:
     roles: [product_owner, chief_architect, reviewer]
-    require: [docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md, docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md, docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md, docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md, MEOS/14_ADR_PROCESS.md]
-  product_change:
-    roles: [product_owner, reviewer]
-    require: [docs/01-product/**]
-  backend_change:
-    roles: [backend, reviewer, qa]
-    require: [affected_api_contracts, affected_data_contracts, affected_tests]
-  frontend_change:
-    roles: [frontend, reviewer, qa]
-    require: [affected_user_journey, affected_design_contract, affected_api_contracts]
-  ai_change:
-    roles: [ai_engineer, reviewer, qa]
-    require: [affected_ai_contracts, evaluation_criteria, safety_and_cost_constraints]
-  security_sensitive_change:
-    roles: [security_reviewer, reviewer, qa]
-    require: [threat_model, affected_data_flows, security_tests]
+    require:
+      - PROJECT_CHARTER.md
+      - MASTER_CONTEXT.md
+      - future_platform_references
+      - docs/00-foundation/ARCHITECTURE_CHANGE_GATE.md
   contract_change:
     roles: [chief_architect, implementer, reviewer, qa]
-    require: [current_contract, proposed_contract, compatibility_classification, migration_and_rollback]
+    require:
+      - current_contract
+      - proposed_contract
+      - compatibility_classification
+      - migration_and_rollback
+  external_provider_change:
+    roles: [chief_architect, security_reviewer, implementer, reviewer, qa]
+    require:
+      - capability_contract
+      - provider_comparison
+      - threat_model
+      - credential_and_data_policy
+      - disablement_and_replacement_plan
+      - ready_task
+  browser_authenticated_or_proxy_change:
+    roles: [product_owner, chief_architect, security_reviewer, reviewer, qa]
+    require:
+      - explicit_product_need
+      - legal_and_platform_policy_review
+      - threat_model
+      - accepted_adr_or_policy
+      - ready_task
+      - independent_verification
+  product_change:
+    roles: [product_owner, reviewer]
+    require:
+      - PROJECT_CHARTER.md
+      - affected_product_requirements
+      - product_evidence
   release:
-    roles: [release_manager, qa, reviewer]
-    require: [MEOS/15_GOLDEN_PATH.md, quality_gate_report, release_notes, migration_and_rollback_plan, monitoring_plan, human_authorization]
+    roles: [release_manager, reviewer, qa]
+    require:
+      - MEOS/15_GOLDEN_PATH.md
+      - quality_gate_report
+      - release_notes
+      - migration_and_rollback_plan
+      - monitoring_plan
+      - human_authorization
 
 routing_rules:
-  default: bootstrap
   task_must_declare_role: true
   task_must_declare_review_roles: true
   task_must_declare_references: true
   task_must_declare_artifact_contracts: true
+  identify_canonical_owner_before_edit: true
   use_minimum_complete_context: true
   archived_sources_are_non_authoritative: true
+  loose_blueprint_is_non_authoritative: true
   missing_or_conflicting_context: stop_and_escalate
   architecture_trigger_requires_adr_review: true
   target_blueprint_does_not_authorize_implementation: true
+  roadmap_does_not_authorize_implementation: true
   capability_state_requires_repository_evidence: true
   future_phase_requires_activation_gate: true
+  provider_name_does_not_mean_provider_selection: true
+  browser_or_proxy_requires_explicit_high_risk_gate: true
   completion_requires_quality_gate: true
   release_requires_golden_path: true
   release_requires_human_authority: true
