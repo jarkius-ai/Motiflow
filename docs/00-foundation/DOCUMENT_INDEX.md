@@ -93,6 +93,7 @@ Current delivery-planning artifacts include:
 - `docs/03-delivery/UPDATED_PHASE_ROADMAP.md`
 - `docs/03-delivery/AI_EXECUTION_IMPLEMENTATION_PLAN.md`
 - `docs/03-delivery/PRE_IMPLEMENTATION_READINESS_REVIEW.md`
+- `docs/03-delivery/2026-08-02-orchestration-workflow-desk-check.md`
 
 The first proposed implementation story is
 [`MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md`](../../MEOS/tasks/TASK-001_DECISIVE_SLICE_CONTRACT_PROOF.md).
