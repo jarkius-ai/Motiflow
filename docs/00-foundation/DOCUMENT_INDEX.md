@@ -57,6 +57,9 @@ These documents describe the complete future-state platform and the controlled p
 | Complete target-state capability architecture | [`docs/02-architecture/TARGET_PLATFORM_BLUEPRINT.md`](../02-architecture/TARGET_PLATFORM_BLUEPRINT.md) |
 | Current and future capability states | [`docs/02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md`](../02-architecture/TARGET_PLATFORM_CAPABILITY_MAP.md) |
 | Mapping of broad blueprint concepts to repository authority | [`docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md`](../03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md) |
+| Section-by-section source-blueprint audit | [`docs/03-delivery/BLUEPRINT_RECONCILIATION_REVIEW.md`](../03-delivery/BLUEPRINT_RECONCILIATION_REVIEW.md) |
+| Complete 193-file source-manifest disposition | [`docs/03-delivery/BLUEPRINT_FILE_MANIFEST_DISPOSITION.md`](../03-delivery/BLUEPRINT_FILE_MANIFEST_DISPOSITION.md) |
+| Structural reconciliation validation | [`docs/03-delivery/BLUEPRINT_RECONCILIATION_VALIDATION.md`](../03-delivery/BLUEPRINT_RECONCILIATION_VALIDATION.md) |
 | Connected vertical-slice phases and activation gates | [`docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`](../03-delivery/CAPABILITY_EXPANSION_ROADMAP.md) |
 | Proposed blueprint authority and phased-expansion decision | [`docs/adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md`](../adr/ADR-0004-TARGET-BLUEPRINT-AND-PHASED-EXPANSION.md) |
 
@@ -70,6 +73,9 @@ Current delivery-planning artifacts include:
 
 - `docs/03-delivery/AUTONOMOUS_AGENT_TEAM_CHARTER.md`
 - `docs/03-delivery/BLUEPRINT_RECONCILIATION_MATRIX.md`
+- `docs/03-delivery/BLUEPRINT_RECONCILIATION_REVIEW.md`
+- `docs/03-delivery/BLUEPRINT_FILE_MANIFEST_DISPOSITION.md`
+- `docs/03-delivery/BLUEPRINT_RECONCILIATION_VALIDATION.md`
 - `docs/03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`
 - `docs/03-delivery/DOCUMENTATION_AND_PLANNING_QUALITY_REVIEW.md`
 - `docs/03-delivery/PLAN_TO_EVIDENCE_TRACEABILITY_MATRIX.md`
