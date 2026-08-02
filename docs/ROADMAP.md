@@ -16,6 +16,12 @@ the two schemes map as follows.
 | Phase 4 — One-provider decisive-slice MVP | D7 Thin Model Gateway, D8 Generated candidates, critics, and final approval |
 | Phases 5–8 | No delivery phases defined yet (post-MVP) |
 
+**Independent numbering track:** [`03-delivery/CAPABILITY_EXPANSION_ROADMAP.md`](03-delivery/CAPABILITY_EXPANSION_ROADMAP.md)
+also uses a "Phase 0"–"Phase 8" scheme, but for a different track — post-MVP
+activation of the target-platform blueprint's capabilities, not the initial
+build sequence described here. Phase N in that document is not the same
+milestone as Phase N in this document; do not assume they align.
+
 ## Phase 0 — Foundation
 
 **Goal:** Establish one coherent source of truth before implementation.
