@@ -92,20 +92,9 @@ Combine deterministic checks, focused critics, measurable scorecards, regression
 
 ## 9. Initial product boundary
 
-The first product proves one complete path from source material to an approved creative result:
+The first product proves one complete governed path from source material through explainable creative direction, explicit direction approval, one-provider generation, critic evaluation, final approval, and provenance.
 
-```text
-Intake Package
-→ Normalized Brief
-→ Knowledge Fusion Package
-→ Creative Direction Package
-→ Direction Approval Record
-→ Generation Specification
-→ Generated Candidate Set
-→ Critic Evaluation Package
-→ Final Approval Record
-→ Provenance Record
-```
+The canonical artifact sequence and runtime boundaries for that path are owned by [`MASTER_CONTEXT.md`](MASTER_CONTEXT.md).
 
 The initial product focuses on editorial and enterprise technology creative-direction workflows.
 
